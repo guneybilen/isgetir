@@ -19,7 +19,9 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails'," ~> 2.6.1"
+# version 2.6.1 koymadin mi rake db:migrate
+# rspec yuzunden su hatayi veriyor: "undefined method `prerequisites' for nil:NilClass"
 end
 
 # Use unicorn as the web server
