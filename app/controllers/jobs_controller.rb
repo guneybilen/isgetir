@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  # GET /skills
-  # GET /skills.json
+  # GET /jobs
+  # GET /jobs.json
   def index
     @jobs = Job.all
 
@@ -10,8 +10,8 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /skills/1
-  # GET /skills/1.json
+  # GET /jobs/1
+  # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
 
@@ -21,10 +21,13 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /skills/new
-  # GET /skills/new.json
+  # GET /jobs/new
+  # GET /jobs/new.json
   def new
     @job = Job.new
+    2.times do
+      @job.references.build
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,35 +35,41 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /skills/1/edit
+  # GET /jobs/1/edit
   def edit
     @job = Job.find(params[:id])
   end
 
-  # POST /skills
-  # POST /skills.json
+  # POST /jobs
+  # POST /jobs.json
   def create
     @job = Job.new(params[:job])
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Skill was successfully created.' }
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render json: @job, status: :created, location: @job }
       else
-        format.html { render action: "new" }
+        format.html do
+          @job.references.each do |d|
+            unless d.name.blank? then @job.references.build end
+          end
+          #2.times {}
+          render action: "new"
+        end
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /skills/1
-  # PUT /skills/1.json
+  # PUT /jobs/1
+  # PUT /jobs/1.json
   def update
     @job = Job.find(params[:id])
 
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to @job, notice: 'Skill was successfully updated.' }
+        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -69,8 +78,8 @@ class JobsController < ApplicationController
     end
   end
 
-  # DELETE /skills/1
-  # DELETE /skills/1.json
+  # DELETE /jobs/1
+  # DELETE /jobs/1.json
   def destroy
     @job = Job.find(params[:id])
     @job.destroy

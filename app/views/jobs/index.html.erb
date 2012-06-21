@@ -1,12 +1,11 @@
-<h1>Listing skills</h1>
+<h1>Listing Jobs</h1>
 
-<table>
+<table align="center">
   <tr>
     <th>Title</th>
     <th>Location</th>
-    <th>Reference</th>
     <th>Body</th>
-    <th>Published at</th>
+    <th>Created at</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,9 +15,8 @@
   <tr>
     <td><%= job.title %></td>
     <td><%= job.location %></td>
-    <td><%= job.reference %></td>
-    <td><%= job.body %></td>
-    <td><%= job.published_at %></td>
+    <td><%= truncate(job.body, :length => 25, :omission => '... (continued)') %></td>
+    <td><%= job.created_at.to_date %></td>
     <td><%= link_to 'Show', job %></td>
     <td><%= link_to 'Edit', edit_job_path(job) %></td>
     <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %></td>

@@ -11,19 +11,29 @@
 </p>
 
 <p>
-  <b>Reference:</b>
-  <%= @job.reference %>
-</p>
-
-<p>
   <b>Body:</b>
   <%= @job.body %>
 </p>
 
 <p>
-  <b>Published at:</b>
-  <%= @job.published_at %>
+  <b>Created at:</b>
+  <%= @job.created_at.to_date %>
 </p>
+
+<p>
+    <br /><br />
+    <b><%= label_tag "References:" %></b>
+    <% for reference in @job.references  %>
+    <li>Name:<%=reference.name  %></li>
+    <li>Last Name: <%=reference.lastname  %></li>
+    <li>Phone: <%=reference.phone  %></li>
+    <li>Cell: <%=reference.cell  %></li>
+    <li>E-Mail: <%=reference.email  %></li>
+    <br /><br />
+    <% end %>
+</p>
+
+
 
 
 <%= link_to 'Edit', edit_job_path(@job) %> |

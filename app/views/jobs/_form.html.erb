@@ -1,4 +1,4 @@
-<%= form_for(@job) do |f| %>
+<%= form_for @job do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this skill from being saved:</h2>
@@ -20,17 +20,24 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :reference %><br />
-    <%= f.text_field :reference %>
+    <%= f.fields_for :references do |builder| %><br />
+       <%= render 'reference', :f => builder %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>
   </div>
+  <!--
   <div class="field">
     <%= f.label :published_at %><br />
     <%= f.datetime_select :published_at %>
   </div>
+  <div class="field">
+    <%= f.label :created_at %><br />
+    <%= f.datetime_select :created_at %>
+  </div>
+  -->
   <div class="actions">
     <%= f.submit %>
   </div>

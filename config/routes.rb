@@ -1,5 +1,7 @@
 Isgetir::Application.routes.draw do
+  #match 'jobs/new' => 'jobs#new'
   resources :jobs
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
