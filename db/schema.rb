@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621224231) do
+ActiveRecord::Schema.define(:version => 20120728125516) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,16 +26,12 @@ ActiveRecord::Schema.define(:version => 20120621224231) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "job_categories", :force => true do |t|
+    t.integer  "job_id_id"
+    t.integer  "integer_id"
     t.integer  "job_id"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "job_categories", ["job_id", "category_id"], :name => "index_skill_categories_on_skill_id_and_category_id"
+  add_index "comments", ["job_id"], :name => "index_comments_on_job_id"
 
   create_table "jobs", :force => true do |t|
     t.string   "title"
@@ -45,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120621224231) do
     t.datetime "updated_at"
     t.string   "location"
     t.integer  "user_id"
+    t.integer  "category_id"
   end
 
   create_table "profiles", :force => true do |t|
@@ -71,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20120621224231) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "password"
+    t.string   "hashed_password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

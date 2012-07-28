@@ -38,6 +38,17 @@ class JobsController < ApplicationController
   # GET /jobs/1/edit
   def edit
     @job = Job.find(params[:id])
+    @references = @job.references.all
+    if @references.count == 0
+      2.times do
+        @job.references.build
+      end
+    end
+    if @references.count == 1
+      1.times do
+        @job.references.build
+      end
+    end
   end
 
   # POST /jobs
@@ -51,9 +62,16 @@ class JobsController < ApplicationController
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html do
-          @job.references.each do |d|
-            unless d.name.blank? then @job.references.build end
-          end
+           2.times do
+             @job.references.build
+           end
+
+=begin
+             @job.references.each do |d|
+               unless d.name.blank? then @job.references.build end
+             end
+=end
+
           #2.times {}
           render action: "new"
         end

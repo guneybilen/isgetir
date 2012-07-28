@@ -1,8 +1,16 @@
+<%= image_tag "chef.jpg", :size => "75x75", :alt => "Resim" %>
+<%= image_tag "girl.jpg", :size => "75x75", :alt => "Resim" %>
+<%= image_tag "graduate.jpg", :size => "75x75", :alt => "Resim" %>
+<%= image_tag "man.jpg", :size => "75x75", :alt => "Resim" %>
+<%= image_tag "group.jpg", :size => "75x75", :alt => "Resim" %>
+
 <h1>Listing Jobs</h1>
+<hr>
 
 <table align="center">
   <tr>
     <th>Title</th>
+    <th>Category</th>
     <th>Location</th>
     <th>Body</th>
     <th>Created at</th>
@@ -14,6 +22,11 @@
 <% @jobs.each do |job| %>
   <tr>
     <td><%= job.title %></td>
+    <% if !job.category.nil? %>
+        <td><%= job.category.name %></td>
+    <% else %>
+        <td> other </td>
+    <% end %>
     <td><%= job.location %></td>
     <td><%= truncate(job.body, :length => 25, :omission => '... (continued)') %></td>
     <td><%= job.created_at.to_date %></td>
@@ -26,4 +39,6 @@
 
 <br />
 
-<%= link_to 'New Skill', new_job_path %>
+<hr>
+
+<%= link_to 'New Job', new_job_path %>

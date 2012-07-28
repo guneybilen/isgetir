@@ -1,0 +1,34 @@
+body{
+    background-color: #add8e6;
+    font-size: 1em;
+}
+p{
+    font-size: 1em;
+    font-family: arial;
+}
+
+th{
+    text-align: left;
+    padding: 5px;
+}
+table td{
+    font-family: courier;
+    font-size: .90em;
+    padding-top: 20px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+hr {
+    background-color:white;
+    height: 20px;
+    border: 0px;
+}
+
+.field1{
+    width: %30;
+    float: left;
+}
+.field2{
+    float: left;
+}

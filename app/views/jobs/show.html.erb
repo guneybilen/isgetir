@@ -1,40 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%= render @job %>
+<br /><br /><br />
+<h3>Comments</h3>
+<div id="comments">
+<%= render @job.comments %>
+</div>
+<%= render :file => 'comments/new' %>
 
-<p>
-  <b>Title:</b>
-  <%= @job.title %>
-</p>
 
-<p>
-  <b>Location:</b>
-  <%= @job.location %>
-</p>
+<!--
 
-<p>
-  <b>Body:</b>
-  <%= @job.body %>
-</p>
 
 <p>
   <b>Created at:</b>
-  <%= @job.created_at.to_date %>
+
 </p>
 
 <p>
     <br /><br />
     <b><%= label_tag "References:" %></b>
-    <% for reference in @job.references  %>
-    <li>Name:<%=reference.name  %></li>
-    <li>Last Name: <%=reference.lastname  %></li>
-    <li>Phone: <%=reference.phone  %></li>
-    <li>Cell: <%=reference.cell  %></li>
-    <li>E-Mail: <%=reference.email  %></li>
-    <br /><br />
-    <% end %>
+
 </p>
 
 
 
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+< link_to 'Edit', edit_job_path(@job) %> |
+-->
+
+<%= link_to 'Jobs List', jobs_path %>

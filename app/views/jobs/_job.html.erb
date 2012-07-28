@@ -1,0 +1,28 @@
+<%= div_for job do %>
+    <h3>Job</h3>
+    <%= job.title %>
+    <br />
+    <%= job.body %>
+    <br />
+    <%= job.location %>
+    <br />
+    <%= @job.created_at.to_date %>
+    <br />
+
+    <span class='actions'>
+<%= link_to "Edit", edit_job_path(job) %>
+      <%= link_to "Delete", job, :confirm => "Are you sure?",
+                  :method => :delete %>
+</span>
+
+    <h3>References</h3>
+    <% for reference in @job.references  %>
+        <li>Name:<%=reference.name  %></li>
+        <li>Last Name: <%=reference.lastname  %></li>
+        <li>Phone: <%=reference.phone  %></li>
+        <li>Cell: <%=reference.cell  %></li>
+        <li>E-Mail: <%=reference.email  %></li>
+        <br /><br />
+    <% end %>
+
+<% end %>
