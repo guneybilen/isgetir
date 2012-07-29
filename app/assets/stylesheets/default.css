@@ -26,9 +26,19 @@ hr {
 }
 
 .field1{
-    width: %30;
+    clear: left;
     float: left;
 }
 .field2{
     float: left;
+    padding-right: 10px;
+}
+
+.notice, .alert{
+    font-size: 20px;
+    color: red;
+}
+
+.select_box {
+    width: 240px;
 }

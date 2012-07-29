@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
   validates :body, :presence => true
 
   belongs_to :user
-  has_many :job_categories
+  #has_many :job_categories
   belongs_to :category
   has_many :comments
   has_many :references, :dependent => :destroy

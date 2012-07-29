@@ -6,7 +6,9 @@
     <br />
     <%= job.location %>
     <br />
-    <%= @job.created_at.to_date %>
+    <%= job.created_at.to_date %>
+    <br />
+    <%= @category %>
     <br />
 
     <span class='actions'>
@@ -14,9 +16,9 @@
       <%= link_to "Delete", job, :confirm => "Are you sure?",
                   :method => :delete %>
 </span>
-
+    <br /><br /><br />
     <h3>References</h3>
-    <% for reference in @job.references  %>
+    <% for reference in job.references  %>
         <li>Name:<%=reference.name  %></li>
         <li>Last Name: <%=reference.lastname  %></li>
         <li>Phone: <%=reference.phone  %></li>

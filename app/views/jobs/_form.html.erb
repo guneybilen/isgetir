@@ -20,14 +20,24 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.fields_for :references do |builder| %><br />
+    <h2>References</h2>
+    <%= f.fields_for :references do |builder| %>
        <%= render 'reference', :f => builder %>
     <% end %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
+
+   <div class="field1">
+     <br /><br /><br />
+     <%= f.label "Categories" %><br />
+     <%= select("job", "category_id", Category.all.sort.collect {|p| [ p.name, p.id ] },
+                {:include_blank => 'None'}, {:class => "select_box"}) %>
+   </div>
+
+   <div class="field1">
+     <br /><br /><br />
+     <%= f.label :body %><br />
+     <%= f.text_area :body %>
+   </div>
   <!--
   <div class="field">
     <%= f.label :published_at %><br />
@@ -38,7 +48,7 @@
     <%= f.datetime_select :created_at %>
   </div>
   -->
-  <div class="actions">
+  <div class="field1 actions">
     <%= f.submit %>
   </div>
 <% end %>

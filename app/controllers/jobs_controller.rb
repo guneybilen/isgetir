@@ -14,6 +14,7 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
+    @category = Category.where("id= ?", @job.category_id).first.name
 
     respond_to do |format|
       format.html # show.html.erb
