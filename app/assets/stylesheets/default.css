@@ -42,3 +42,35 @@ hr {
 .select_box {
     width: 240px;
 }
+
+#user_bar {
+    float: right;
+}
+
+#log_in {
+    float: right;
+}
+#footer{
+    padding-top: 200px;
+    text-align: center;
+
+}
+
+a:hover {
+    background-color: white;
+}
+
+
+a:link {
+    color:black;
+}
+
+a:visited{
+    color:red;
+}
+
+a:active{
+    color:#add8e6;
+}
+
+

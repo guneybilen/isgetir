@@ -16,4 +16,11 @@ class Job < ActiveRecord::Base
   def long_title
     "#{title} - #{published_at}"
   end
+
+  def owned_by?(owner)
+    return false unless owner.is_a? User
+    # user is defined in sessions_controller
+    user == owner
+
+  end
 end

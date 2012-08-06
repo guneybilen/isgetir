@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :load_job
+  before_filter :load_job, :except => :destroy
+  before_filter :authenticate, :only => :destroy
 
   def create
     @comment = @job.comments.new(params[:comment])
@@ -11,9 +12,18 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @job.comments.find(params[:id])
-    @comment.destroy
-    redirect_to @job, :notice => 'Comment deleted'
+    begin
+      @job = current_user.jobs.find(params[:job_id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to Job.find(params[:job_id]), :alert => "You cannot delete other people's comments!"
+      #render :text => "You cannot delete other people's comment"
+
+      if !@job.nil?
+        @comment = @job.comments.find(params[:id])
+        @comment.destroy
+        redirect_to @job, :notice => 'Comment deleted'
+      end
+    end
   end
 
   private

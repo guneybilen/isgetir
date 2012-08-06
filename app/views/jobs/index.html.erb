@@ -1,10 +1,13 @@
+<%= render "users/header" %>
+
 <%= image_tag "chef.jpg", :size => "75x75", :alt => "Resim" %>
 <%= image_tag "girl.jpg", :size => "75x75", :alt => "Resim" %>
 <%= image_tag "graduate.jpg", :size => "75x75", :alt => "Resim" %>
 <%= image_tag "man.jpg", :size => "75x75", :alt => "Resim" %>
 <%= image_tag "group.jpg", :size => "75x75", :alt => "Resim" %>
 
-<h1>Listing Jobs</h1>
+
+<h1 style="text-align: center;">Listing Jobs</h1>
 <hr>
 
 <!--<div id="jobs">
@@ -34,9 +37,11 @@
     <td><%= job.location %></td>
     <td><%= truncate(job.body, :length => 25, :omission => '... (continued)') %></td>
     <td><%= job.created_at.to_date %></td>
-    <td><%= link_to 'Show', job %></td>
-    <td><%= link_to 'Edit', edit_job_path(job) %></td>
-    <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', job, {:class => "for_hover"} %></td>
+    <% if job.owned_by? current_user  %>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -45,5 +50,3 @@
 
 <hr>
 
-
-<%= link_to 'New Job', new_job_path %>

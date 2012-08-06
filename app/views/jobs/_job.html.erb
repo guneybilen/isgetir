@@ -2,7 +2,7 @@
     <h3>Job</h3>
     <%= job.title %>
     <br />
-    <%= job.body %>
+    <%= simple_format job.body %>
     <br />
     <%= job.location %>
     <br />
@@ -12,10 +12,14 @@
     <br />
 
     <span class='actions'>
-<%= link_to "Edit", edit_job_path(job) %>
-      <%= link_to "Delete", job, :confirm => "Are you sure?",
-                  :method => :delete %>
-</span>
+      <% if job.owned_by? current_user %>
+        <span class='actions'>
+            <%= link_to "Edit", edit_job_path(job) %>
+            <%= link_to "Delete", job, :confirm => "Are you sure?", :method => :delete %>
+        </span>
+      <% end %>
+    </span>
+
     <br /><br /><br />
     <h3>References</h3>
     <% for reference in job.references  %>

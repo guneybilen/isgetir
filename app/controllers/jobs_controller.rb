@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -14,7 +15,11 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
-    @category = Category.where("id= ?", @job.category_id).first.name
+    if Category.where("id= ?", @job.category_id).first.nil?
+      @category = 'Category is not specified'
+    else
+      @category = Category.where("id= ?", @job.category_id).first.name
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +43,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
-    @job = Job.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
     @references = @job.references.all
     if @references.count == 0
       2.times do
@@ -55,7 +60,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(params[:job])
+    @job = current_user.jobs.new(params[:job])
 
     respond_to do |format|
       if @job.save
@@ -84,7 +89,7 @@ class JobsController < ApplicationController
   # PUT /jobs/1
   # PUT /jobs/1.json
   def update
-    @job = Job.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
 
     respond_to do |format|
       if @job.update_attributes(params[:job])
@@ -100,7 +105,8 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
-    @job = Job.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
+
     @job.destroy
 
     respond_to do |format|

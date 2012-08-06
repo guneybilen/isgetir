@@ -1,14 +1,16 @@
 <%= div_for comment do %>
 
-<%= comment.name %> &lt;<%= comment.email %>&gt; said:
-<br />
-<%= comment.body %>
-&nbsp;&nbsp;&nbsp;
-<br />
-<span class='actions'>
+    <%= comment.name %> &lt;<%= comment.email %>&gt; said:
+    <br />
+    <%= comment.body %>
+    &nbsp;&nbsp;&nbsp;
+    <br />
+    <% if @job.owned_by? current_user %>
+        <span class='actions'>
 <%= link_to 'Delete', [@job, comment], :confirm => 'Are you sure?', :method => :delete %>
 </span>
+    <% end  %>
 
-<br /><br /><br />
+    <br /><br /><br />
 
 <% end %>
