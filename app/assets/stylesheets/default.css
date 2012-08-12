@@ -51,6 +51,7 @@ hr {
     float: right;
 }
 #footer{
+    clear: left;
     padding-top: 200px;
     text-align: center;
 
@@ -73,4 +74,7 @@ a:active{
     color:#add8e6;
 }
 
+a.for_black_font_link {
+    color: #000000;
+}
 

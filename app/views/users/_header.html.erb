@@ -1,13 +1,13 @@
 <div id="header">
-  <h1><%= link_to "isgetir.com", root_path %></h1>
+  <h1><%= link_to "isgetir.com", root_path, {:class => "for_black_font_link"} %></h1>
   <div id="user_bar">
     <% if logged_in? %>
-        <%= link_to "New Job", new_job_path %> |
-        <%= link_to "Edit Password", edit_user_path(current_user) %> |
-        <%= link_to "Logout", logout_path %>
+        <%= link_to "New Job", new_job_path, {:class => "for_black_font_link"} %> |
+        <%= link_to "Edit Password", edit_user_path(current_user), {:class => "for_black_font_link"} %> |
+        <%= link_to "Logout", logout_path, {:class => "for_black_font_link"} %>
     <% else %>
-        <%= link_to "Create User", new_user_path, {:id => "create_user"} %>
-        <%= link_to "Login", login_path %>
+        <%= link_to "Create User", new_user_path, {:class => "for_black_font_link"} %>
+        <%= link_to "Login", login_path, {:class => "for_black_font_link"} %>
     <% end %>
   </div>
 </div>
