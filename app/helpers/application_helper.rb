@@ -3,6 +3,7 @@ module ApplicationHelper
   # Accepts two arguments: Form object and the cancel link name
   def submit_or_cancel(form, name='Cancel')
     form.submit + " or " +
-        link_to(name, 'javascript:history.go(-1);', :class => 'cancel')
+        link_to(name, root_path, :class => "for_black_font_link")
+        #link_to(name, 'javascript:history.go(-1);', :class => 'cancel')
   end
 end

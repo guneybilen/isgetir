@@ -1,14 +1,14 @@
 <%= div_for job do %>
     <h3>Job</h3>
-    <%= job.title %>
+    <b><%= label_tag 'Title: '%></b><%= job.title %>
     <br />
-    <%= simple_format job.body %>
+    <b><%= label_tag 'Job: ' %></b><%= simple_format job.body %>
     <br />
-    <%= job.location %>
+    <b><%= label_tag 'Location: ' %></b><%= job.location %>
     <br />
-    <%= job.created_at.to_date %>
+    <b><%= label_tag 'Created at: ' %></b><%= job.created_at.to_date %>
     <br />
-    <%= @category %>
+    <b><%= label_tag 'Category: ' %></b><%= @category %>
     <br />
 
     <span class='actions'>
@@ -23,11 +23,11 @@
     <br /><br /><br />
     <h3>References</h3>
     <% for reference in job.references  %>
-        <li>Name:<%=reference.name  %></li>
-        <li>Last Name: <%=reference.lastname  %></li>
-        <li>Phone: <%=reference.phone  %></li>
-        <li>Cell: <%=reference.cell  %></li>
-        <li>E-Mail: <%=reference.email  %></li>
+        <li><b>Name:</b><%=reference.name  %></li>
+        <li><b>Last Name:</b><%=reference.lastname  %></li>
+        <li><b>Phone:</b><%=reference.phone  %></li>
+        <li><b>Cell:</b><%=reference.cell  %></li>
+        <li><b>E-Mail:</b><%=reference.email  %></li>
         <br /><br />
     <% end %>
 

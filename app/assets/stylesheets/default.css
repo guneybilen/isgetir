@@ -78,3 +78,6 @@ a.for_black_font_link {
     color: #000000;
 }
 
+#errorExplanation {
+    color: red;
+}

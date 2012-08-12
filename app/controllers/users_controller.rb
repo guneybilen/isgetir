@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to jobs_path, :notice => 'User successfully added.'
+      session[:user_id] = @user.id
+      redirect_to jobs_path, :notice => 'User successfully added'
     else
       render :action => 'new'
     end
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      redirect_to jobs_path, :notice => 'Updated user information successfully.'
+      redirect_to jobs_path, :notice => 'Updated user information successfully'
     else
       render :action => 'edit'
     end
