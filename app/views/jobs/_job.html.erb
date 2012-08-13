@@ -14,8 +14,8 @@
     <span class='actions'>
       <% if job.owned_by? current_user %>
         <span class='actions'>
-            <%= link_to "Edit", edit_job_path(job) %>
-            <%= link_to "Delete", job, :confirm => "Are you sure?", :method => :delete %>
+            <%= link_to "Edit", edit_job_path(job), :class => "for_black_font_link" %>
+            <%= link_to "Delete", job, :confirm => "Are you sure?", :method => :delete, :class => "for_black_font_link"%>
         </span>
       <% end %>
     </span>
@@ -28,7 +28,15 @@
         <li><b>Phone:</b><%=reference.phone  %></li>
         <li><b>Cell:</b><%=reference.cell  %></li>
         <li><b>E-Mail:</b><%=reference.email  %></li>
-        <br /><br />
     <% end %>
 
+    <span class='actions'>
+      <% if job.owned_by? current_user %>
+        <span class='actions for_black_font_link'>
+            <%= link_to "Edit", edit_job_path(job), :class => "for_black_font_link"%>
+            <%= link_to "Delete", job, :confirm => "Are you sure?", :method => :delete, :class => "for_black_font_link"%>
+        </span>
+      <% end %>
+    </span>
+    <br/><br/><br/>
 <% end %>

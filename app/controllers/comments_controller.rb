@@ -17,12 +17,12 @@ class CommentsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to Job.find(params[:job_id]), :alert => "You cannot delete other people's comments!"
       #render :text => "You cannot delete other people's comment"
+    end
 
-      if !@job.nil?
-        @comment = @job.comments.find(params[:id])
-        @comment.destroy
-        redirect_to @job, :notice => 'Comment deleted'
-      end
+    if !@job.nil?
+      @comment = @job.comments.find(params[:id])
+      @comment.destroy
+      redirect_to @job, :notice => 'Comment deleted'
     end
   end
 
