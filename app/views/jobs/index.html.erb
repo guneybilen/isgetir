@@ -37,10 +37,10 @@
     <td><%= job.location %></td>
     <td><%= truncate(job.body, :length => 25, :omission => '... (continued)') %></td>
     <td><%= job.created_at.to_date %></td>
-    <td><%= link_to 'Show', job, {:class => "for_hover"} %></td>
+    <td><%= link_to 'Show', job, {:class => "visited"} %></td>
     <% if job.owned_by? current_user  %>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %></td>
+        <td><%= link_to 'Edit', edit_job_path(job), {:class => "visited"} %></td>
+        <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete, :class => "visited" %></td>
     <% end %>
   </tr>
 <% end %>

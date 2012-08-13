@@ -58,7 +58,7 @@ hr {
 }
 
 a:hover {
-    background-color: white;
+    color: white;
 }
 
 
@@ -66,7 +66,7 @@ a:link {
     color:black;
 }
 
-a:visited{
+a.visited:visited{
     color:red;
 }
 
@@ -74,9 +74,6 @@ a:active{
     color:#add8e6;
 }
 
-a.for_black_font_link {
-    color: #000000;
-}
 
 #errorExplanation {
     color: red;
