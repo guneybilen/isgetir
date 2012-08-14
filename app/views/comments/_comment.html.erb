@@ -7,8 +7,9 @@
     <br />
     <% if @job.owned_by? current_user %>
         <span class='actions'>
-<%= link_to 'Delete', [@job, comment], :confirm => 'Are you sure?', :method => :delete %>
-</span>
+            <%= link_to 'Delete', [@job, comment], :confirm => 'Are you sure?',
+                                        :method => :delete, :remote => true %>
+        </span>
     <% end  %>
 
     <br /><br /><br />

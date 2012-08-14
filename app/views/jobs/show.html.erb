@@ -4,7 +4,10 @@
 <div id="comments">
 <%= render @job.comments %>
 </div>
-<%= render :file => 'comments/new' %>
+<%= link_to "new comment", new_job_comment_path(@job, :format => :js),
+:remote => true, :id => 'new_comment_link' %>
+
+ <!--render :file => 'comments/new' %>-->
 
 <%= link_to 'Jobs List', jobs_path %>
 

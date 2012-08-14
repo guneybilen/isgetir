@@ -2,12 +2,19 @@ class CommentsController < ApplicationController
   before_filter :load_job, :except => :destroy
   before_filter :authenticate, :only => :destroy
 
+
   def create
     @comment = @job.comments.new(params[:comment])
     if @comment.save
-      redirect_to @job, :notice => 'Thanks for your comment'
+      respond_to do |format|
+        format.html { redirect_to @job, :notice => 'Thanks for your comment'}
+        format.js
+      end
     else
-      redirect_to @job, :alert => 'Unable to add comment'
+      respond_to do |format|
+        format.html {redirect_to @job, :alert => 'Unable to add comment'}
+        format.js { render 'fail_create.js.erb' }
+      end
     end
   end
 
@@ -22,7 +29,10 @@ class CommentsController < ApplicationController
     if !@job.nil?
       @comment = @job.comments.find(params[:id])
       @comment.destroy
-      redirect_to @job, :notice => 'Comment deleted'
+      respond_to do |format|
+        format.html {redirect_to @job, :notice => 'Comment deleted'}
+        format.js
+      end
     end
   end
 
