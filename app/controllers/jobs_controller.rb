@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate, :except => [:index, :show, :notify_friend]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -68,9 +68,9 @@ class JobsController < ApplicationController
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html do
-           2.times do
-             @job.references.build
-           end
+          2.times do
+            @job.references.build
+          end
 
 =begin
              @job.references.each do |d|
@@ -113,5 +113,11 @@ class JobsController < ApplicationController
       format.html { redirect_to jobs_url }
       format.json { head :ok }
     end
+  end
+
+  def notify_friend
+    @job = Job.find(params[:id])
+    Notifier.email_friend(@job, params[:name], params[:email]).deliver
+    redirect_to @job, :notice => "Successfully sent a message to your friend"
   end
 end

@@ -1,3 +1,5 @@
+#restart server after modifying this file
+
 Isgetir::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -27,4 +29,19 @@ Isgetir::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #restart server after modifying this file
+
+   # Email configuration
+  config.action_mailer.raise_delivery_errors = true
+  # Gmail SMTP server setup
+  ActionMailer::Base.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :enable_starttls_auto => true,
+      :port => 587,
+      :authentication => :plain,
+      :user_name => "admin@isgetir.com",
+      :password => 'xswcde1234'
+  }
+
 end

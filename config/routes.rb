@@ -3,9 +3,16 @@ Isgetir::Application.routes.draw do
 
   #match 'jobs/new' => 'jobs#new'
   resources :jobs do
+    member do
+      post :notify_friend
+    end
     resources :comments
   end
-  resources :users
+  resources :users do
+    collection do
+      post :notify_password
+    end
+  end
   resource :session
 
   match '/login' => "sessions#new", :as => "login"

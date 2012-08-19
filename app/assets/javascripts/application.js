@@ -7,3 +7,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function() {
+  $('div.index').hide();
+  $('div.index').fadeIn('slow');
+
+  $('a.show').click(function() {
+          $link = $(this);
+          $link.text('Showing...')
+      });
+});

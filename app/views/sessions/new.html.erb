@@ -13,3 +13,7 @@
       <%= link_to "Cancel", root_path %>
     </div>
 <% end %>
+<div class="forgotten_password">
+  <%= link_to "Forgot my password",'#', :onclick => "$('#forgot_password').slideDown()" %>
+  <%= render 'forgot_password' %>
+</div>
