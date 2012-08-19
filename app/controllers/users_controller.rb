@@ -24,8 +24,4 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
-
-  def notify_password
-    @user = params[:email]
-  end
 end

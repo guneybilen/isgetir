@@ -8,11 +8,8 @@ Isgetir::Application.routes.draw do
     end
     resources :comments
   end
-  resources :users do
-    collection do
-      post :notify_password
-    end
-  end
+  resources :users
+
   resource :session
 
   match '/login' => "sessions#new", :as => "login"

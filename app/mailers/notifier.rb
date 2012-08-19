@@ -16,4 +16,18 @@ class Notifier < ActionMailer::Base
     mail :to => @job.user.email,
          :subject => "New comment for '#{@job.title}'", :from =>  "admin@isgetir.com"
   end
+
+  def user_added(user)
+    @user = user
+     mail :to => "guneybilen@yahoo.com",
+         :subject => "New user for #{@user.email}",
+         :from =>  "admin@isgetir.com"
+  end
+
+   def job_added(job)
+    @job = job
+     mail :to => "guneybilen@yahoo.com",
+         :subject => "#{@job.user.email} user added a new job: #{@job.title}",
+         :from =>  "admin@isgetir.com"
+  end
 end
