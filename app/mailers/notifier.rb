@@ -5,6 +5,17 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.email_friend.subject
   #
+
+
+
+
+  # :to, :subject, :from - bu ucu gerekiyor methodlarda. yada
+  # en yukarda class'dan sonra :default declare ediceksin
+
+
+
+
+
   def email_friend(job, sender_name, receiver_email)
     @job = job
     @sender_name = sender_name
