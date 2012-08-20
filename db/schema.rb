@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729165401) do
+ActiveRecord::Schema.define(:version => 20120819203936) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -81,6 +81,9 @@ ActiveRecord::Schema.define(:version => 20120729165401) do
     t.string   "hashed_password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

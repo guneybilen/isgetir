@@ -18,7 +18,10 @@ class UsersController < ApplicationController
   end
   def update
     @user = current_user
-    if @user.update_attributes(params[:user])
+    if params[:user][:password].blank?
+      @user.errors.add(:password, ' cannot be blank')
+      render :action => 'edit'
+    elsif @user.update_attributes(params[:user])
       redirect_to jobs_path, :notice => 'Updated user information successfully'
     else
       render :action => 'edit'

@@ -1,4 +1,6 @@
 Isgetir::Application.routes.draw do
+
+
   root :to => 'jobs#index'
 
   #match 'jobs/new' => 'jobs#new'
@@ -11,6 +13,8 @@ Isgetir::Application.routes.draw do
   resources :users
 
   resource :session
+
+  resources :password_resets
 
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"

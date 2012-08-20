@@ -73,6 +73,6 @@ a:active{
 }
 
 
-#errorExplanation {
+div.errorExplanation {
     color: red;
 }

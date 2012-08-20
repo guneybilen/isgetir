@@ -1,4 +1,10 @@
+
+
+
 #restart server after modifying this file
+
+
+
 
 Isgetir::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
@@ -60,7 +66,16 @@ Isgetir::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+
+
+
+
   #restart server after modifying this file
+
+
+
+
+  config.action_mailer.default_url_options = { :host => "www.isgetir.com" }
 
   # Email configuration
   config.action_mailer.raise_delivery_errors = true

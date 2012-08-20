@@ -3,6 +3,8 @@ require "digest"
 class User < ActiveRecord::Base
   attr_accessor :password
 
+  before_create { generate_token(:auth_token) }
+
   has_one :profile
   has_many :jobs, :order => 'published_at DESC, title ASC',
            :dependent => :nullify
@@ -26,6 +28,19 @@ class User < ActiveRecord::Base
   def authenticated?(password)
     self.hashed_password == encrypt(password)
   end
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    Notifier.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
+
   protected
   def encrypt_new_password
     return if password.blank?
@@ -37,4 +52,6 @@ class User < ActiveRecord::Base
   def encrypt(string)
     Digest::SHA1.hexdigest(string)
   end
+
+
 end

@@ -19,15 +19,23 @@ class Notifier < ActionMailer::Base
 
   def user_added(user)
     @user = user
-     mail :to => "guneybilen@yahoo.com",
+    mail :to => "guneybilen@yahoo.com",
          :subject => "New user for #{@user.email}",
          :from =>  "admin@isgetir.com"
   end
 
-   def job_added(job)
+  def job_added(job)
     @job = job
-     mail :to => "guneybilen@yahoo.com",
+    mail :to => "guneybilen@yahoo.com",
          :subject => "#{@job.user.email} user added a new job: #{@job.title}",
          :from =>  "admin@isgetir.com"
   end
+
+
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Password Reset",
+         :from =>  "admin@isgetir.com"
+  end
 end
+

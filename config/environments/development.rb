@@ -1,4 +1,10 @@
+
+
+
 #restart server after modifying this file
+
+
+
 
 Isgetir::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
@@ -30,7 +36,17 @@ Isgetir::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+
+
+
+
   #restart server after modifying this file
+
+
+
+
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
    # Email configuration
   config.action_mailer.raise_delivery_errors = true

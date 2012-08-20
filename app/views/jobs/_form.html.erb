@@ -1,6 +1,6 @@
 <%= form_for @job do |f| %>
   <% if @job.errors.any? %>
-    <div id="error_explanation">
+    <div class="errorExplanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this skill from being saved:</h2>
 
       <ul>

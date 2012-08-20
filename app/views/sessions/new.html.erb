@@ -12,8 +12,18 @@
       <%= submit_tag 'Login' %>
       <%= link_to "Cancel", root_path %>
     </div>
+    <div class="field">
+        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+        <%= label_tag :remember_me %>
+    </div>
 <% end %>
 <div class="forgotten_password">
-  <%= link_to "Forgot my password",'#', :onclick => "$('#forgot_password').slideDown()" %>
-  <%= render 'forgot_password' %>
+      <%= link_to "Forgot my password", '#',
+                  :onclick => "$('#password_reset').slideDown()" %>
+      <%= render :file => 'password_resets/new'%>
 </div>
+
+
+ <!--link_to "forgotten password?", new_password_reset_path -->
+
+
