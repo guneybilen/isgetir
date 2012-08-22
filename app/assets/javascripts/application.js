@@ -10,8 +10,8 @@
 
 
 $(document).ready(function() {
-    $('div.index').hide();
-    $('div.index').fadeIn('slow');
+   // $('div.index').hide();
+   // $('div.index').fadeIn('slow');
 
     $('a.show').click(function() {
         $link = $(this);
