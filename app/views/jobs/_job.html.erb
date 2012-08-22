@@ -21,15 +21,16 @@
     </span>
 
     <br /><br /><br />
-    <h3>References</h3>
-    <% for reference in job.references  %>
-        <li><b>Name:</b><%=reference.name  %></li>
-        <li><b>Last Name:</b><%=reference.lastname  %></li>
-        <li><b>Phone:</b><%=reference.phone  %></li>
-        <li><b>Cell:</b><%=reference.cell  %></li>
-        <li><b>E-Mail:</b><%=reference.email  %></li>
-    <% end %>
-
+    <%= link_to "Read References", '#', {:class => "link_references"} %>
+    <div class="references">
+        <% for reference in job.references  %>
+            <li><b>Name:</b><%=reference.name  %></li>
+            <li><b>Last Name:</b><%=reference.lastname  %></li>
+            <li><b>Phone:</b><%=reference.phone  %></li>
+            <li><b>Cell:</b><%=reference.cell  %></li>
+            <li><b>E-Mail:</b><%=reference.email  %></li>
+        <% end %>
+    </div>
     <span class='actions'>
       <% if job.owned_by? current_user %>
         <span class='actions for_black_font_link'>

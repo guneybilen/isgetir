@@ -10,11 +10,46 @@
 
 
 $(document).ready(function() {
-  $('div.index').hide();
-  $('div.index').fadeIn('slow');
+    $('div.index').hide();
+    $('div.index').fadeIn('slow');
 
-  $('a.show').click(function() {
-          $link = $(this);
-          $link.text('Showing...')
-      });
+    $('a.show').click(function() {
+        $link = $(this);
+        $link.text('Showing...')
+    });
+
+    $("div.references").hide();
+
+    $('a.link_references').click(function()
+    {
+        $("div.references").animate(
+            {
+                opacity: 'toggle',
+                height: 'toggle'
+
+            },
+
+            'slow');
+    });
+
+
+    //var m = $("hr").outerWidth;
+    //var n = $("h1.listing_jobs").outerWidth;
+    var p = $("hr");
+    p.slideUp('slow');
+    p.slideDown('slow');
+
+    //p.hide();
+    //p.css({position: 'relative'}).fadeIn('slow').animate({left: m - n}, 'slow');
+    //p.animate({left: m - n}, 'slow');
+
+    /*$("h1.listing_jobs")
+        .css({position: 'relative'})
+        .fadeTo('fast', 0.5)
+        .animate({left: m - n}, 'slow')
+        .fadeTo('slow', 1.0);*/
+
+
+
+
 });

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  #force_ssl
+
   def create
     if user = User.authenticate(params[:email], params[:password])
       if params[:remember_me]

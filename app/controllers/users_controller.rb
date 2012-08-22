@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  #force_ssl
   before_filter :authenticate, :only => [:edit, :update]
 
   def new
