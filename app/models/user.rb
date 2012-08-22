@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
 
   has_one :profile
-  has_many :jobs, :order => 'published_at DESC, title ASC',
+  has_many :jobs, :order => 'created_at DESC, title ASC',
            :dependent => :nullify
-  has_many :replies, :through => :skills, :source => :comments
+  #has_many :replies, :through => :skills, :source => :comments
 
 
   validates :email, :uniqueness => true,

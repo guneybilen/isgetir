@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+  default_scope :order => 'created_at DESC'
+
   validates :title, :presence => true
   validates :body, :presence => true
 
@@ -12,6 +14,8 @@ class Job < ActiveRecord::Base
   scope :created, where("jobs.created_at IS NOT NULL")
   scope :recent, lambda { created.where("jobs.created_at > ?", 1.week.ago.to_date)}
   scope :where_title, lambda { |term| where("jobs.title LIKE ?", "%#{term}%") }
+
+
 
   def long_title
     "#{title} - #{published_at}"
