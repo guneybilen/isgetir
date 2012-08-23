@@ -10,6 +10,4 @@ tmp/
 
 a/less.exe.stackdump
 b/less.exe.stackdump
-# a/less.exe.stackdump ve b/less.exe.stackdump'da yukardaki giibi .idea/*'da olan
-# olmadi. yani git rm'a gerek kalmadi. git otomatik olarak
-# bunlari track etmeyi birakti.
+
