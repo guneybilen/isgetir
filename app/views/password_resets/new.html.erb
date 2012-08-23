@@ -5,7 +5,8 @@
     <%= text_field_tag :email, params[:email] %>
   </div>
   <div class="actions"><%= submit_tag "Reset Password" %>
-   or <%= link_to "Cancel", root_path %>
+   or <%= link_to "Cancel", '#' , :onclick => "$('#password_reset').slideUp()" %>
   </div>
 <% end %>
+
 
