@@ -35,9 +35,11 @@ $(document).ready(function() {
 
     //var m = $("hr").outerWidth;
     //var n = $("h1.listing_jobs").outerWidth;
-    var p = $("hr");
-    p.slideUp('slow');
-    p.slideDown('slow');
+    var p = $("div#user_bar a");
+    p.slideUp('slow', function() {
+        p.css("color", "red");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
+    })
+    .slideDown('slow');
 
     //p.hide();
     //p.css({position: 'relative'}).fadeIn('slow').animate({left: m - n}, 'slow');
