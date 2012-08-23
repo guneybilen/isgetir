@@ -4,5 +4,12 @@ log/*.log
 tmp/
 .sass-cache/
 .idea/*
+# .idea/* yaptiktan sonra afer a commit yani after a clean state do:
+# git rm .idea/workspace.xml
+# ondan sonra git .idea folderi track etmeyi birakiyor.
+
 a/less.exe.stackdump
 b/less.exe.stackdump
+# a/less.exe.stackdump ve b/less.exe.stackdump'da yukardaki giibi .idea/*'da olan
+# olmadi. yani git rm'a gerek kalmadi. git otomatik olarak
+# bunlari track etmeyi birakti.
