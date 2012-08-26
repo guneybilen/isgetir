@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
-one:
+makinist:
   title: "Makinist"
   location: "Manisa"
   body: "is ariyorum"
+  user_id: users(:lauren).id
   published_at: <%= Time.now %>
 
 
