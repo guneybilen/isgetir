@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     //var m = $("hr").outerWidth;
     //var n = $("h1.listing_jobs").outerWidth;
-    var p = $("div#user_bar a");
+    var p = $("div.menu a");
     p.slideUp('slow', function() {
         p.css("color", "red");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
     })
