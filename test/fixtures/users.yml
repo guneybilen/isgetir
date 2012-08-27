@@ -13,7 +13,11 @@
 # var.
 # yani jobs_controller_test.rb'de put :update yapdiginda
 # jobs_controller'daki update methodu authenticate olmani mecbur tutuyor.
+
 # See application_controller.rb for details.
+
+# See also sessions_controller.rb to see how auth_token is used for
+# keeping the session using auth_token
 
 lauren:
   email: 'lauren@example.com'
