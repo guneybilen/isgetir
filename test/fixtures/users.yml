@@ -2,6 +2,19 @@
 # Notice: yml file'da ilk satirdan sonraki takiben satirda
 # tab yada iki space olmali
 
+# auth_token vermek zorundasin aksi takdirde
+# browser user'i hatirlamiyor ve jobs_controller_test.rb'de
+# login_as (login_as test_helper'da) methodu kullandiktan hemen sonra browser
+# unutuyor user'i. See application_controller.rb current_user
+# method for auth_token usage.
+
+# jobs_controller.rb'de
+#                       before_filter :authenticate, :except => [:index, :show, :notify_friend]
+# var.
+# yani jobs_controller_test.rb'de put :update yapdiginda
+# jobs_controller'daki update methodu authenticate olmani mecbur tutuyor.
+# See application_controller.rb for details.
+
 lauren:
   email: 'lauren@example.com'
   hashed_password: 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4' # => secret
@@ -11,5 +24,6 @@ lauren:
 eugene:
   email: 'eugene@example.com'
   hashed_password: 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4' # => secret
+  auth_token: '330'
   id: 1
 

@@ -53,6 +53,7 @@ hr {
     float: right;
 }
 #footer{
+    clear: left;
     position: relative;
     padding-top: 200px;
 	text-align: center;

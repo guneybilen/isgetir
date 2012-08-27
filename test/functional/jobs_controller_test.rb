@@ -19,8 +19,18 @@ class JobsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create job" do
+  test "should create a job as :lauren user" do
     login_as(:lauren)
+    assert_difference('Job.count') do
+      post :create, :job => { :title => 'Post title',
+                              :body => 'Lorem ipsum..' }
+    end
+    assert_response :redirect
+    assert_redirected_to job_path(assigns(:job))
+  end
+
+   test "should create another job as :eugene user" do
+    login_as :eugene
     assert_difference('Job.count') do
       post :create, :job => { :title => 'Post title',
                               :body => 'Lorem ipsum..' }
@@ -52,8 +62,8 @@ class JobsControllerTest < ActionController::TestCase
 
   test "should update job2" do
     login_as :eugene
-    put :update, id: @job2.to_param, job2: { :title => 'New Title' }
-    #assert_redirected_to job_path(assigns(:job))
+    put :update, id: @job2.to_param, job: { :title => 'New Title' }
+    assert_redirected_to job_path(assigns(:job))
   end
 
   test "should destroy job" do
@@ -65,6 +75,18 @@ class JobsControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_redirected_to jobs_path
     assert_raise(ActiveRecord::RecordNotFound) { Job.find(@job.to_param) }
+  end
+
+  test "should destroy job2" do
+    login_as(:eugene)
+    assert_nothing_raised { Job.find(@job2.to_param) }
+    #puts "##################### " + @job2.to_param
+    assert_difference('Job.count', -1) do
+      delete :destroy, :id => @job2.to_param
+    end
+    assert_response :redirect
+    assert_redirected_to jobs_path
+    assert_raise(ActiveRecord::RecordNotFound) { Job.find(@job2.to_param) }
   end
 end
 

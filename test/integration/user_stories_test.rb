@@ -23,7 +23,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_template 'index'
   end
 
-  test "should login create article and logout" do
+  test "should login create a job and logout" do
 # Login
     get login_path
     assert_response :success
@@ -36,7 +36,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_template 'index'
     assert session[:user_id]
 
-# Create New Article
+# Create a New Job
     get new_job_path
     assert_response :success
     assert_template 'new'
@@ -57,10 +57,21 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_template 'index'
   end
 
-  test "creating an article" do
+  test "creating a job" do
     lauren = registered_user
     lauren.logs_in 'lauren@example.com', 'secret'
     lauren.creates_job :title => 'Integration tests', :body => 'Lorem Ipsum...'
+    lauren.logs_out
+  end
+
+  test "multiple users creating a job" do
+    eugene = registered_user
+    lauren = registered_user
+    eugene.logs_in 'eugene@example.com', 'secret'
+    lauren.logs_in 'lauren@example.com', 'secret'
+    eugene.creates_job :title => 'Integration Tests', :body => 'Lorem Ipsum...'
+    lauren.creates_job :title => 'Open Session', :body => 'Lorem Ipsum...'
+    eugene.logs_out
     lauren.logs_out
   end
 
