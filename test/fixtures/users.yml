@@ -6,4 +6,10 @@ lauren:
   email: 'lauren@example.com'
   hashed_password: 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4' # => secret
   auth_token: '330436437'
-  id: '0'
+  id: 0
+
+eugene:
+  email: 'eugene@example.com'
+  hashed_password: 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4' # => secret
+  id: 1
+

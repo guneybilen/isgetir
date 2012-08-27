@@ -7,5 +7,13 @@ makinist:
   user_id: users(:lauren).id
   published_at: <%= Time.now %>
 
+terzi:
+  title: "Terzi"
+  location: "Edirne"
+  body: "is ariyorum"
+  user_id: 1 # boyle olunca islemiyor: users(:eugene).id
+  published_at: <%= Time.now %>
+
+
 
 

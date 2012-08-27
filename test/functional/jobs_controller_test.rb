@@ -3,6 +3,7 @@ require 'test_helper'
 class JobsControllerTest < ActionController::TestCase
   setup do
     @job = jobs(:makinist)
+    @job2 = jobs :terzi
   end
 
   test "should get index" do
@@ -49,6 +50,12 @@ class JobsControllerTest < ActionController::TestCase
     assert_redirected_to job_path(assigns(:job))
   end
 
+  test "should update job2" do
+    login_as :eugene
+    put :update, id: @job2.to_param, job2: { :title => 'New Title' }
+    #assert_redirected_to job_path(assigns(:job))
+  end
+
   test "should destroy job" do
     login_as(:lauren)
     assert_nothing_raised { Job.find(@job.to_param) }
@@ -59,5 +66,5 @@ class JobsControllerTest < ActionController::TestCase
     assert_redirected_to jobs_path
     assert_raise(ActiveRecord::RecordNotFound) { Job.find(@job.to_param) }
   end
-
 end
+
