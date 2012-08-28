@@ -2,11 +2,11 @@
 # Notice: yml file'da ilk satirdan sonraki takiben satirda
 # tab yada iki space olmali
 
-# auth_token vermek zorundasin aksi takdirde
-# browser user'i hatirlamiyor ve jobs_controller_test.rb'de
-# login_as (login_as test_helper'da) methodu kullandiktan hemen sonra browser
-# unutuyor user'i. See application_controller.rb current_user
-# method for auth_token usage.
+# asagidaki her bir user icin (lauren, eugene, vs.)  kendin aklindan rasgele
+# bir auth_token vermek zorundasin aksi takdirde browser user'i hatirlamiyor
+# ve jobs_controller_test.rb'de login_as (login_as defined in test/test_helper.rb)
+# methodu kullandiktan hemen sonra browser unutuyor user'i.
+# See application_controller.rb current_user method for auth_token usage.
 
 # jobs_controller.rb'de
 #                       before_filter :authenticate, :except => [:index, :show, :notify_friend]
@@ -17,17 +17,19 @@
 # See application_controller.rb for details.
 
 # See also sessions_controller.rb to see how auth_token is used for
-# keeping the session using auth_token
+# keeping the session using auth_token.
 
 lauren:
   email: 'lauren@example.com'
   hashed_password: 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4' # => secret
-  auth_token: '330436437'
-  id: 0
+  auth_token: '329'
+#  id: 0     boyle id vermek rails 1 gibi eski versyonlarda varmis.
+#            simdi otomatik olarak testing framework tarafindan id veriliyormus.
 
 eugene:
   email: 'eugene@example.com'
   hashed_password: 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4' # => secret
   auth_token: '330'
-  id: 1
+#  id: 1     boyle id vermek rails 1 gibi eski versyonlarda varmis.
+#            simdi otomatik olarak testing framework tarafindan id veriliyormus.
 

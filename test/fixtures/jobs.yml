@@ -1,17 +1,46 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
+
+# bu web site'da: http://guides.rubyonrails.org/testing.html
+# bu heading altinda: 2.3.5 Hashes with Special Powers
+# diyor ki:
+          # this will return the Hash for the fixture named david
+          # users(:david)
+
+          # this will return the property for david called id
+          # users(:david).id
+
+# ama asagida
+# makinist icin user: users(:lauren).id veya user_id: users(:lauren).id
+# terzi icin user: users(:eugene).id veya user_id: users(:eugene).id verdigimde
+# su sekilde bir suru hata veriyor:
+                                  # ERROR (0:00:01.681) test_should_update_job
+                                  # Couldn't find Job with id=983115896 [WHERE "jobs"."user_id" = 330436437]
+
+# ( bu arada su aciklamayi yapayim:
+# jobs_controller_test.rb'de update ve destroy gibi methodlarda burdaki
+# makinist job i lauren'e hardwired ve terzi job'i eugene'e hardwired
+# ondan dolayi user key value'sini the other way around olarak switch edersen su sekilde error aliyorsun:
+                                  # ERROR (0:00:01.621) test_should_update_job
+                                  # Couldn't find Job with id=983115896 [WHERE "jobs"."user_id" = 330436437]
+# )
+
+# asagida user key'i bir foreign key from users table. Notice user_id olarak KULLANMIYORSUN.
+# user_id foreign key'i asagidaki gibi kullanmayi railscasts'den ogrendim.
+# video adi: 081-fixtures-in-rails-2-0
+
 makinist:
   title: "Makinist"
   location: "Manisa"
   body: "is ariyorum"
-  user_id: users(:lauren).id
+  user: lauren
   published_at: <%= Time.now %>
 
 terzi:
   title: "Terzi"
   location: "Edirne"
   body: "is ariyorum"
-  user_id: 1 # boyle olunca islemiyor: users(:eugene).id
+  user: eugene
   published_at: <%= Time.now %>
 
 
