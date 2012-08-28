@@ -13,9 +13,17 @@ $(document).ready(function() {
    // $('div.index').hide();
    // $('div.index').fadeIn('slow');
 
+     locale = $("div.set_locale").text();
+
     $('a.show').click(function() {
         $link = $(this);
-        $link.text('Showing...')
+
+    if (locale == "tr"){
+        $link.text("Gösteriyor...") }
+
+    if (locale == "en"){
+        $link.text("Showing...") }
+
     });
 
     $("div.references").hide();
@@ -37,7 +45,7 @@ $(document).ready(function() {
     //var n = $("h1.listing_jobs").outerWidth;
     var p = $("div.menu a");
     p.slideUp('slow', function() {
-        p.css("color", "red");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
+        p.css("color", "#0066cc");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
     })
     .slideDown('slow');
 

@@ -17,13 +17,13 @@ table td{
     font-family: courier;
     font-size: .90em;
     padding-top: 20px;
-    padding-left: 15px;
+    padding-left: 5px;
     text-align: left;
 }
 
 hr {
-    background-color: gray;
-    height: 10px;
+    background-color: #0066cc;
+    height: 5px;
     border: 0px;
 }
 
@@ -47,6 +47,7 @@ hr {
 
 .menu {
     float: right;
+    /* .menu font color is set in application.js */
 }
 
 #log_in {

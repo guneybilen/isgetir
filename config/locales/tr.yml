@@ -1,0 +1,67 @@
+
+tr:
+
+  Title: "Başlık"
+
+  h1:
+    listing_jobs: "Aranan İşler"
+
+  time_ago_in_words: önce
+
+  continued: " ...(devamı var)"
+
+  menu:
+    new_job: "Yeni İş Ekle"
+    edit_password: "Şifreni Değiştir"
+    logout: "Sistemden Çık"
+    create_user: Kayıt OL
+    login: Sisteme Giriş Yap
+
+  jobmenu:
+    show: "Göster"
+    edit: "Düzenle"
+    destroy: "Sil"
+    showing: Gösteriyor...
+
+  jobs:
+    index:
+      table:
+        title: "Başlık"
+        category: "Kategori"
+        location: "Yer"
+        body: "Konu"
+        created_at: "İlan Tarihi"
+
+  datetime:
+    distance_in_words:
+      less_than_x_seconds: "%{count} saniyeden daha"
+      x_seconds: "%{count} saniye"
+      half_a_minute: "yarım dakika"
+      less_than_x_minutes: "%{count} dakikadan daha"
+      x_minutes: "%{count} dakika"
+      x_hours: "%{count} saat"
+      about_x_hours: "saat cıvarı"
+      x_days:  "%{count}  gün"
+      about_x_months: "%{count} ay cıvarı"
+      x_months: "%{count} ay"
+      about_x_years: "%{count} yıl cıvarı"
+      almost_x_years: "%{count} yıl"
+      over_x_years: "yıldan fazla"
+
+
+  activerecord:
+    models:
+      job:
+        attributes:
+          title: "Başlık"
+          body: "Konu"
+
+  activerecord:
+    errors:
+      models:
+        job:
+          attributes:
+            title:
+              blank: "Başlık olması zorunludur"
+            body:
+              blank: "Konu olması zorunludur"
