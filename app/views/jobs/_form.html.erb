@@ -1,26 +1,33 @@
 <%= form_for @job do |f| %>
   <% if @job.errors.any? %>
     <div class="errorExplanation">
-      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this skill from being saved:</h2>
-
-      <ul>
-      <% @job.errors.full_messages.each do |msg| %>
-        <li><b><%= msg %></b></li>
-      <% end %>
-      </ul>
+      <h2><%= pluralize(@job.errors.count, t("jobs.form_partial.plurilazie.error"),
+                                        t("jobs.form_partial.plurilazie.error")) %>!
+        <br /><br />
+        <%= t('jobs.form_partial.error_explanation')%>:</h2>
+        <ul>
+           <% @job.errors.full_messages.each do |msg| %>
+             <li>
+               <b>
+                 <%= msg %>
+               </b>
+             </li>
+          <%end %>
+        </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label t('jobs.index.table.title') %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
+    <%= f.label t('jobs.index.table.location') %><br />
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <h2>References</h2>
+    <br />
+    <h2><%= t('general.references') %></h2>
     <%= f.fields_for :references do |builder| %>
        <%= render 'reference', :f => builder %>
     <% end %>
@@ -28,14 +35,14 @@
 
    <div class="field1">
      <br /><br /><br />
-     <%= f.label "Categories" %><br />
+     <%= f.label t('jobs.index.table.category') %><br />
      <%= select("job", "category_id", Category.all.sort.collect {|p| [ p.name, p.id ] },
                 {:include_blank => 'None'}, {:class => "select_box"}) %>
    </div>
 
    <div class="field1">
      <br /><br /><br />
-     <%= f.label :body %><br />
+     <%= f.label t('jobs.index.table.body') %><br />
      <%= f.text_area :body %>
    </div>
 <!--
@@ -49,7 +56,7 @@
   </div>
 -->
   <div class="field1 actions">
-    <%= submit_or_cancel(f) %>
+    <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp; <%= link_to t('general.link_to.cancel') %>
   </div>
 <% end %>
 

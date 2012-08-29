@@ -1,14 +1,14 @@
 <div class="field2">
-  <%= f.label :name, "Name" %><br />
+  <%= f.label t('general.reference_info.name') %><br />
   <%= f.text_field :name %><br />
-  <%= f.label :lastname, "Last Name" %><br />
+  <%= f.label t('general.reference_info.last_name') %><br />
   <%= f.text_field :lastname %><br />
-  <%= f.label :phone, "Phone" %><br />
+  <%= f.label t('general.reference_info.phone') %><br />
   <%= f.text_field :phone %><br />
-  <%= f.label :cell, "Cell" %><br />
+  <%= f.label t('general.reference_info.cell') %><br />
   <%= f.text_field :cell %><br />
-  <%= f.label :email, "E-mail" %><br />
+  <%= f.label t('general.reference_info.email') %><br />
   <%= f.text_field :email %><br />
   <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove Reference" %>
+  <%= f.label :_destroy, t('general.reference_info.reference_destroy') %>
 </div>

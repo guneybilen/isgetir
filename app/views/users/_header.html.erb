@@ -2,12 +2,12 @@
   <h1>isgetir.com</h1>
   <div class="menu">
     <% if logged_in? %>
-        <%= link_to t("menu.new_job"), new_job_path %> |
-        <%= link_to t("menu.edit_password"), edit_user_path(current_user) %> |
-        <%= link_to t("menu.logout"), logout_path %>
+        <%= link_to t("general.menu.new_job"), new_job_path %> |
+        <%= link_to t("general.menu.edit_password"), edit_user_path(current_user) %> |
+        <%= link_to t("general.menu.logout"), logout_path %>
     <% else %>
-        <%= link_to t("menu.create_user"), new_user_path %>
-        <%= link_to t("menu.login"), login_path %>
+        <%= link_to t("general.menu.create_user"), new_user_path %>
+        <%= link_to t("general.menu.login"), login_path %>
     <% end %>
   </div>
 </div>

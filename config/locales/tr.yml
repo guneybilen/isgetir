@@ -1,67 +1,104 @@
 
 tr:
 
-  Title: "Başlık"
+  application:
+    access_denied:
+      log_in_to_continue: Lutfen devam edebilmek icin sisteme giriş yapınız
 
-  h1:
-    listing_jobs: "Aranan İşler"
+  general:
+    h1:
+      listing_jobs: Aranan İşler
+      new_job: Yeni İş
 
-  time_ago_in_words: önce
+    menu:
+      new_job: Yeni İş Ekle
+      edit_password: Şifreni Değiştir
+      logout: Sistemden Çık
+      create_user: Kayıt OL
+      login: Sisteme Giriş Yap
 
-  continued: " ...(devamı var)"
+    jobmenu:
+      time_ago_in_words: önce
+      continued:  ...(devamı var)
+      show: Göster
+      edit: Düzenle
+      destroy: Sil
+      showing: Gösteriyor...
 
-  menu:
-    new_job: "Yeni İş Ekle"
-    edit_password: "Şifreni Değiştir"
-    logout: "Sistemden Çık"
-    create_user: Kayıt OL
-    login: Sisteme Giriş Yap
+    link_to:
+      cancel: İptal Et
+      back: Geri
 
-  jobmenu:
-    show: "Göster"
-    edit: "Düzenle"
-    destroy: "Sil"
-    showing: Gösteriyor...
+    reference_info:
+      name: İsim
+      last_name: Soyad
+      phone: Telefon
+      cell: Cep Telefonu
+      email: Email
+      reference_destroy: Referansı Sil
+
+    submit: Gönder
+    or: Veya
+    references: Referanslar
+
+
 
   jobs:
     index:
       table:
-        title: "Başlık"
-        category: "Kategori"
-        location: "Yer"
-        body: "Konu"
-        created_at: "İlan Tarihi"
+        title: Başlık
+        category: Kategori
+        location: Yer
+        body: Konu
+        created_at: İlan Tarihi
+
+
+    show:
+      link_to:
+        email_a_friend: Arkadaşa Email At
+        new_comment: Yeni Yorum Ekle
+        jobs_list: İşler Sayfası
+
+    form_partial:
+      error_explanation: Şu eksikleri giderin
+      plurilazie:
+        error: Problem Var
+
+    job_partial:
+      h3: İş
+
+      link_to:
+        read_reference: Referans Oku
 
   datetime:
     distance_in_words:
       less_than_x_seconds: "%{count} saniyeden daha"
       x_seconds: "%{count} saniye"
-      half_a_minute: "yarım dakika"
+      half_a_minute: yarım dakika
       less_than_x_minutes: "%{count} dakikadan daha"
       x_minutes: "%{count} dakika"
       x_hours: "%{count} saat"
-      about_x_hours: "saat cıvarı"
+      about_x_hours: saat cıvarı
       x_days:  "%{count}  gün"
       about_x_months: "%{count} ay cıvarı"
       x_months: "%{count} ay"
       about_x_years: "%{count} yıl cıvarı"
       almost_x_years: "%{count} yıl"
-      over_x_years: "yıldan fazla"
+      over_x_years: yıldan fazla
 
 
   activerecord:
     models:
+      job: İş
+    attributes:
       job:
-        attributes:
-          title: "Başlık"
-          body: "Konu"
-
-  activerecord:
+        title: Başlık
+        body: Konu
     errors:
       models:
         job:
           attributes:
             title:
-              blank: "Başlık olması zorunludur"
+              blank: olması zorunludur
             body:
-              blank: "Konu olması zorunludur"
+              blank: olması zorunludur

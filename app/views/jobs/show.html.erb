@@ -1,6 +1,6 @@
 <%= render @job %>
 
-<%= link_to 'Email a friend', '#',
+<%= link_to t('jobs.show.link_to.email_a_friend'), '#',
 :onclick => "$('#notify_friend_form').slideDown()" %>
 <%= render 'notify_friend' %>
 
@@ -8,11 +8,11 @@
 <div id="comments">
 <%= render @job.comments %>
 </div>
-<%= link_to "new comment", new_job_comment_path(@job, :format => :js),
+<%= link_to t('jobs.show.link_to.new_comment'), new_job_comment_path(@job, :format => :js),
 :remote => true, :id => 'new_comment_link' %>
 
  <!--render :file => 'comments/new' %>-->
 
-<%= link_to 'Jobs List', jobs_path %>
+<%= link_to t('jobs.show.link_to.jobs_list'), jobs_path %>
 
 <br /><br /><br />

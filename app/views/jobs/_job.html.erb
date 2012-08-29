@@ -1,41 +1,41 @@
 <%= div_for job do %>
-    <h3>Job</h3>
-    <b><%= label_tag 'Title: '%></b><%= job.title %>
+    <h3><%= t('jobs.job_partial.h3') %></h3>
+    <b><%= label_tag t('jobs.index.table.title') %></b>&nbsp;<%= job.title %>
     <br />
-    <b><%= label_tag 'Job: ' %></b><%= simple_format job.body %>
+    <b><%= label_tag t('jobs.index.table.body') %></b>&nbsp;<%= simple_format job.body %>
     <br />
-    <b><%= label_tag 'Location: ' %></b><%= job.location %>
+    <b><%= label_tag t('jobs.index.table.location') %></b>&nbsp;<%= job.location %>
     <br />
-    <b><%= label_tag 'Created at: ' %></b><%= job.created_at.to_date %>
+    <b><%= label_tag t('jobs.index.table.category') %></b>&nbsp;<%= @category %>
     <br />
-    <b><%= label_tag 'Category: ' %></b><%= @category %>
+    <b><%= label_tag t('jobs.index.table.created_at') %></b>&nbsp;<%= job.created_at.to_date %>
     <br />
 
     <span class='actions'>
       <% if job.owned_by? current_user %>
         <span class='actions'>
-            <%= link_to "Edit", edit_job_path(job) %>
-            <%= link_to "Delete", job, :confirm => "Are you sure?", :method => :delete %>
+            <%= link_to t('general.jobmenu.edit'), edit_job_path(job) %>
+            <%= link_to t('general.jobmenu.destroy'), job, :confirm => "Are you sure?", :method => :delete %>
         </span>
       <% end %>
     </span>
 
     <br /><br /><br />
-    <%= link_to "Read References", '#', {:class => "link_references"} %>
+    <%= link_to t('jobs.job_partial.link_to.read_reference'), '#', {:class => "link_references"} %>
     <div class="references">
         <% for reference in job.references  %>
-            <li><b>Name:</b><%=reference.name  %></li>
-            <li><b>Last Name:</b><%=reference.lastname  %></li>
-            <li><b>Phone:</b><%=reference.phone  %></li>
-            <li><b>Cell:</b><%=reference.cell  %></li>
-            <li><b>E-Mail:</b><%=reference.email  %></li>
+            <li><b><%= t('general.reference_info.name') %>:</b><%=reference.name  %></li>
+            <li><b><%= t('general.reference_info.last_name') %>:</b><%=reference.lastname  %></li>
+            <li><b><%= t('general.reference_info.phone') %>:</b><%=reference.phone  %></li>
+            <li><b><%= t('general.reference_info.cell') %>:</b><%=reference.cell  %></li>
+            <li><b><%= t('general.reference_info.email') %>:</b><%=reference.email  %></li>
         <% end %>
     </div>
     <span class='actions'>
       <% if job.owned_by? current_user %>
         <span class='actions for_black_font_link'>
-            <%= link_to "Edit", edit_job_path(job)%>
-            <%= link_to "Delete", job, :confirm => "Are you sure?", :method => :delete %>
+            <%= link_to t('general.jobmenu.edit'), edit_job_path(job)%>
+            <%= link_to t('general.jobmenu.destroy'), job, :confirm => "Are you sure?", :method => :delete %>
         </span>
       <% end %>
     </span>
