@@ -13,6 +13,10 @@
 
 <div id="main">
 
+  <div id='notice'>
+    <%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+  </div>
+
   <%= content_tag :p, notice, :class => 'notice' if notice.present? %>
   <%= content_tag :p, alert, :class => 'alert' if alert.present? %>
 

@@ -1,2 +1,5 @@
+$("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+$("#notice").css("color", "red");
 $('#comments').append("<%= escape_javascript(render(@comment)) %>");
 $('#new_comment')[0].reset();
+$("html").scrollTop(0);

@@ -1,3 +1,14 @@
 $("<%= escape_javascript render(:file => 'comments/new.html.erb') %>").insertAfter('#comments');
 $('#new_comment').slideDown();
 $('#new_comment_link').hide();
+
+
+// asagidaki code surdan alindi:
+// http://blog.freelancer-id.com/2009/03/26/scroll-window-smoothly-in-jquery/
+$('html').animate({
+scrollTop: $("#new_comment").offset().top
+}, 2000);
+
+//.offset() = Get the current coordinates of the first element
+//in the set of matched elements, relative to the document.
+// api.jquery.com 'dan

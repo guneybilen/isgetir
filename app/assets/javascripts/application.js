@@ -9,6 +9,7 @@
 //= require_tree .
 
 
+
 $(document).ready(function() {
    // $('div.index').hide();
    // $('div.index').fadeIn('slow');

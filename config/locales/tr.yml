@@ -1,9 +1,17 @@
 
 tr:
 
-  application:
+  application_controller:
     access_denied:
       log_in_to_continue: Lutfen devam edebilmek icin sisteme giriş yapınız
+
+  comments_controller:
+    notice:
+      thanks_for_comment: Yorumunuz için teşekkürler
+      comment_deleted: Yorum silindi
+    alert:
+      unable_to_add_comment: Yorumunuzu ekliyemiyoruz
+      deleting_other_users_comments: Diğer kullanıcıların yorumlarını silemezsiniz
 
   general:
     h1:
@@ -87,12 +95,25 @@ tr:
       over_x_years: yıldan fazla
 
 
+#  support: array: words_connector: " " last_word_connector: " "  bu translation
+#  comment ekle fail oldugunda views/comments/fail_createe.js.erb'deki
+#  alert("<%= @comment.errors.full_messages.to_sentence %>");
+#  alert box erorrleri duzgun gostersin diye
+  support:
+    array:
+#     "\n" calismiyor sadece single quote ile olunca yani '\n' olunca calisiyor.
+      words_connector: '\n'
+      last_word_connector: '\n'
+
   activerecord:
     models:
       job: İş
     attributes:
       job:
         title: Başlık
+        body: Konu
+      comment:
+        name: İsim
         body: Konu
     errors:
       models:
@@ -102,3 +123,13 @@ tr:
               blank: olması zorunludur
             body:
               blank: olması zorunludur
+        comment:
+          attributes:
+            name:
+              blank: olması zorunludur
+            body:
+              blank: olması zorunludur
+            email:
+              blank: olması zorunludur
+
+
