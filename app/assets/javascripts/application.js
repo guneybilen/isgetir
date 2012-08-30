@@ -14,6 +14,18 @@ $(document).ready(function() {
    // $('div.index').hide();
    // $('div.index').fadeIn('slow');
 
+    $('#new_comment_link').click ( function() {
+        $('#new_comment_link').hide();
+    });
+
+    // for dynamically added content you must use live method for click event
+    // Internet den ogrendim.
+    $('#new_comment_cancel').live('click', function() {
+        $('#new_comment').slideUp();
+        $('#new_comment_link').show();
+        $("html").scrollTop(0);
+    });
+
      locale = $("div.set_locale").text();
 
     $('a.show').click(function() {

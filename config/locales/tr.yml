@@ -37,14 +37,13 @@ tr:
       cancel: İptal Et
       back: Geri
 
-    reference_info:
-      name: İsim
-      last_name: Soyad
-      phone: Telefon
-      cell: Cep Telefonu
-      email: Email
-      reference_destroy: Referansı Sil
-
+    name: İsim
+    last_name: Soyad
+    phone: Telefon
+    cell: Cep Telefonu
+    email: Email
+    reference_destroy: Referansı Sil
+    body: Konu
     submit: Gönder
     or: Veya
     references: Referanslar
