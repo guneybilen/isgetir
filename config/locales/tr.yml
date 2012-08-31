@@ -9,7 +9,7 @@ tr:
     create:
       success: İş başarıyla eklendi
     update:
-      success: İş başarıyla düzenlendi
+      success: İş başarıyla güncellendi
     notify_friend:
       success: Mesaj başarıyla arkadaşınıza gönderildi
 
@@ -52,12 +52,14 @@ tr:
       edit_password: Şifreni Değiştir
       logout: Sistemden Çık
       create_user: Kayıt OL
-      login: Sisteme Giriş Yap
+      login: Giriş Yap
 
     link_to:
       cancel: İptal Et
       back: Geri
       show: Göster
+      root_path: İşler Ana Sayfa
+      forgot_password: Şifremi Unuttum
 
     name: İsim
     your_name: İsminiz
@@ -75,15 +77,23 @@ tr:
     password_cannot_be_blank: Şifre kutusu boş olamaz
     time_ago_in_words: önce
     continued:  ...(devamı var)
-#    show: Göster
     edit: Düzenle
-#    destroy: Sil
     delete: Sil
     showing: Gösteriyor...
     sure: Emin misiniz?
     reference_not_given: Referans verilmemiş
     send: Gönder
     editing_job: İş Düzenleme
+    job_page: İş Sayfası
+    comments: Yorumlar
+    invalid_form: Hatalı Form
+    password: Şifre
+    password_confirmation: Aynı Şifreyi Tekrar Girin
+    update_password: Şifreyi Güncelle
+    your_email_address: Email Adresiniz
+    reset_password: Şifre Sıfırla
+    login: Giriş Yap
+    remember_me: Beni Hatırla
 
 
 

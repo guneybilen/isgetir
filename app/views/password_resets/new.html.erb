@@ -1,12 +1,14 @@
 
 <%= form_tag password_resets_path, :method => :post, :id => "password_reset",:style => 'display:none' do %>
   <div class="field">
-    <%= label_tag "Your email address:" %>
+    <%= label_tag t('general.your_email_address') %>:
     <br />
     <%= text_field_tag :email, params[:email] %>
   </div>
-  <div class="actions"><%= submit_tag "Reset Password" %>
-   or <%= link_to "Cancel", '#' , :onclick => "$('#password_reset').slideUp()" %>
+  <div class="actions"><%= submit_tag t('general.reset_password') %>
+  <%= t('general.or') %>
+  <%= link_to t('general.link_to.cancel'), '#' ,
+                  :id => "cancel_password_reset"%>
   </div>
 <% end %>
 

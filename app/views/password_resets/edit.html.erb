@@ -2,7 +2,7 @@
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
   <% if @user.errors.any? %>
     <div class="errorExplanation">
-      <h2>Form is invalid</h2>
+      <h2><%= t('general.invalid_form') %></h2>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -11,15 +11,17 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label t('general.password') %>
     <br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %>
+    <%= f.label t('general.password_confirmation') %>
     <br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit "Update Password" %></div>
+  <div class="actions">
+    <%= f.submit t('general.update_password') %>
+  </div>
 <% end %>
 

@@ -26,6 +26,15 @@ $(document).ready(function() {
         $("html").scrollTop(0);
     });
 
+    $("#forgot_my_password").click ( function () {
+        $('#password_reset').slideDown();
+    });
+
+    $("#cancel_password_reset").click ( function () {
+        $('#password_reset').slideUp();
+    });
+
+
      locale = $("div.set_locale").text();
 
     $('a.show').click(function() {

@@ -1,25 +1,25 @@
 <h1>Login</h1>
 <%= form_tag session_path do %>
     <div class="field">
-      <%= label_tag :email %><br />
+      <%= label_tag t('general.email') %><br />
       <%= text_field_tag :email %>
     </div>
     <div class="field">
-      <%= label_tag :password %><br />
+      <%= label_tag t('general.password') %><br />
       <%= password_field_tag :password %>
     </div>
     <div class="actions">
-      <%= submit_tag 'Login' %>
-      <%= link_to "Cancel", root_path %>
+      <%= submit_tag t('general.login') %>
+      <%= link_to t('general.link_to.cancel'), root_path %>
     </div>
     <div class="field">
         <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-        <%= label_tag :remember_me %>
+        <%= label_tag t('general.remember_me') %>
     </div>
 <% end %>
 <div class="forgotten_password">
-      <%= link_to "Forgot my password", '#',
-                  :onclick => "$('#password_reset').slideDown()" %>
+      <%= link_to t('general.link_to.forgot_password'), '#',
+                  :id => "forgot_my_password" %>
       <br /><br />
       <%= render :file => 'password_resets/new'%>
 </div>
