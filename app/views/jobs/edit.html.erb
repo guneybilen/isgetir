@@ -1,10 +1,10 @@
-<h1>Editing job</h1>
+<h1><%= t('general.editing_job') %></h1>
 
 <%= render 'form' %>
 
 <div class="field1">
-<%= link_to 'Show', @job %> |
-<%= link_to 'Back', jobs_path %>
+<%= link_to t('general.link_to.show'), @job %> |
+<%= link_to t('general.link_to.back'), jobs_path %>
 
 
 

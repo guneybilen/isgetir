@@ -7,7 +7,7 @@
     <br />
     <% if @job.owned_by? current_user %>
         <span class='actions'>
-            <%= link_to 'Delete', [@job, comment], :confirm => 'Are you sure?',
+            <%= link_to t('general.delete'), [@job, comment], :confirm => t('general.sure'),
                                         :method => :delete, :remote => true %>
         </span>
     <% end  %>

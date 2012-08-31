@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to jobs_path, :notice => 'User successfully added'
+      session[:user_id] = @user.auth_token
+      redirect_to jobs_path, :notice => t('users_controller.create.success')
     else
       render :action => 'new'
     end
@@ -20,10 +20,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if params[:user][:password].blank?
-      @user.errors.add(:password, ' cannot be blank')
+      @user.errors.add('', t('general.password_cannot_be_blank'))
       render :action => 'edit'
     elsif @user.update_attributes(params[:user])
-      redirect_to jobs_path, :notice => 'Updated user information successfully'
+      redirect_to jobs_path, :notice => t('users_controller.update.success')
     else
       render :action => 'edit'
     end

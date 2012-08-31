@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
       else
         session[:user_id] = user.auth_token
       end
-      redirect_to root_path, :notice => "Logged in successfully"
+      redirect_to root_path, :notice => t('sessions_controller.create.success')
     else
-      flash.now[:alert] = "Invalid login/password combination"
+      flash.now[:alert] = t('sessions_controller.create.failure')
       render :action => 'new'
     end
   end
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     cookies.delete(:auth_token)
     reset_session
-    redirect_to root_path, :notice => "You successfully logged out"
+    redirect_to root_path, :notice => t('sessions_controller.destroy.success')
   end
 end
