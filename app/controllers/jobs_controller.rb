@@ -16,7 +16,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     if Category.where("id= ?", @job.category_id).first.nil?
-      @category = 'Category is not specified'
+      @category = t('general.category_is_not_specified')
     else
       @category = Category.where("id= ?", @job.category_id).first.name
     end
@@ -64,7 +64,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to @job, notice: t('jobs_controller.create.success') }
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html do
@@ -118,6 +118,6 @@ class JobsController < ApplicationController
   def notify_friend
     @job = Job.find(params[:id])
     Notifier.email_friend(@job, params[:name], params[:email]).deliver
-    redirect_to @job, :notice => "Successfully sent a message to your friend"
+    redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
   end
 end

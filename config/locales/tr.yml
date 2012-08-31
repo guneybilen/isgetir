@@ -5,6 +5,14 @@ tr:
     access_denied:
       log_in_to_continue: Lutfen devam edebilmek icin sisteme giriş yapınız
 
+  jobs_controller:
+    create:
+      success: İş başarıyla eklendi
+    update:
+      success: İş başarıyla düzenlendi
+    notify_friend:
+      success: Mesaj başarıyla arkadaşınıza gönderildi
+
   comments_controller:
     notice:
       thanks_for_comment: Yorumunuz için teşekkürler
@@ -12,6 +20,14 @@ tr:
     alert:
       unable_to_add_comment: Yorumunuzu ekliyemiyoruz
       deleting_other_users_comments: Diğer kullanıcıların yorumlarını silemezsiniz
+
+  password_resets_controller:
+    create:
+      failure: O email ile bir kullanıcı bulunamadı
+      success: Şifrenizi sıfırlamak icin email gönderildi
+    update:
+      password_expired: Şifrenizi sıfırlamak icin gönderilen email zaman aşımına uğradi
+      success: Şifrenizi sıfırlandı
 
   general:
     h1:
@@ -47,6 +63,8 @@ tr:
     submit: Gönder
     or: Veya
     references: Referanslar
+    category_is_not_specified: Kategori belirlenmemiş
+    password_cannot_be_blank: Şifre kutusu boş olamaz
 
 
 

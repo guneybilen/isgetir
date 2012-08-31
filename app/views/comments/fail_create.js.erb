@@ -1,4 +1,4 @@
 $("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
-$("#notice").css("color", "red");
-$("html").scrollTop(0);
+$('html').animate({scrollTop:0}, 'slow');
+//$("html").scrollTop(0);
 alert("<%= @comment.errors.full_messages.to_sentence %>");
