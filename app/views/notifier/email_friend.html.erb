@@ -1,11 +1,11 @@
 <html>
 <body>
 <p>
-One of your friends, <%= @sender_name %>,
-thinks you like this job.
+<%= t('notifier.email_friend.one_of_your_friend') %>, <%= @sender_name %>,
+<%= t('notifier.email_friend.you_might_like_this') %>.
 </p>
 <p>
-Come check all the information about <strong><%= @job.title %></strong> at
+<strong><%= @job.title %></strong>
 <%= job_url @job, :host => 'www.isgetir.com' %>
 </p>
 </body>

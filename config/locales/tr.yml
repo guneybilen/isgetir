@@ -96,6 +96,23 @@ tr:
     remember_me: Beni Hatırla
 
 
+  notifier:
+    comment_added:
+      comment_added: Biri sizin işinize yorum ekledi
+      read_it_at: Yorumu okumak için tıklayın
+    email_friend:
+      one_of_your_friend: Bir arkadaşınız
+      you_might_like_this: sizin bunu beğenebileceğinizi düsünüyor
+    job_added:
+      job_added_with_this_title: Şu başlıkla bir is eklendi
+      job_body: Konu
+      posted_user_email_address: Kullanıcı email adresi
+      to_read_the_posted_job: İşi okumak için tıklayın
+    password_reset:
+      to_reset_your_password: Şifrenizi sıfırlamak için asağıdaki linke tıklayın
+      to_ignore_reset: Şifrenizi değistirmek istemiyorsanız bu emaili dikkate almayın
+    user_added:
+      new_user_added: Şu email adres ile veritabanına yeni bir kullanıcı eklendi.
 
   jobs:
     index:

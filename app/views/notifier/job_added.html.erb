@@ -1,13 +1,13 @@
 <html>
 <body>
 <p>
-A new job has been added with the title <i><%= @job.title %></i>.
+<%= t('notifier.job_added.job_added_with_this_title') %>: <i><%= @job.title %></i>.
 <br /><br />
-The body is: "<%= @job.body %>"
+<%= t('notifier.job_added.job_body') %>: "<%= @job.body %>"
 <br /><br />
-The user email is: <%= @job.user.email %>
+<%= t('notifier.job_added.posted_user_email_address') %>: <%= @job.user.email %>
 <br /><br />
-Go read the job at: <%= link_to @job.title, job_url(@job, :host => 'www.isgetir.com') %>
+<%= t('notifier.job_added.to_read_the_posted_job') %> <%= link_to @job.title, job_url(@job, :host => 'www.isgetir.com') %>
 </p>
 </body>
 </html>
