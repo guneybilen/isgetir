@@ -1,10 +1,10 @@
 <%= form_tag(notify_friend_job_path(@job), :id => 'notify_friend_form',:style => 'display:none') do %>
     <div class="field">
-      <%= label_tag :name, t('general.your_name') %><br />
+      <%= label_tag :name, t('general.your_name') %>:<br />
       <%= text_field_tag :name %>
     </div>
     <div class="field">
-      <%= label_tag :email, t('general.friends_email_address') %><br />
+      <%= label_tag :email, t('general.friends_email_address') %>:<br />
       <%= text_field_tag :email %>
     </div>
     <div class="actions">

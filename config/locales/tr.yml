@@ -156,8 +156,8 @@ tr:
       over_x_years: yıldan fazla
 
 
-#  support: array: words_connector: " " last_word_connector: " "  bu translation
-#  comment ekle fail oldugunda views/comments/fail_createe.js.erb'deki
+#  support: array: words_connector: " ve " last_word_connector: " "  bu translation
+#  comment ekle fail oldugunda views/comments/fail_create.js.erb'deki
 #  alert("<%= @comment.errors.full_messages.to_sentence %>");
 #  alert box erorrleri duzgun gostersin diye
   support:

@@ -1,6 +1,237 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  h1:
-    listing_jobs: "Searched Jobs"
+
+  application_controller:
+    access_denied:
+      log_in_to_continue: Please logn in to continue
+
+  jobs_controller:
+    create:
+      success: Job has been added
+    update:
+      success: Job has been updated
+    notify_friend:
+      success: Message has been sent to your friend
+
+  comments_controller:
+    notice:
+      thanks_for_comment: Thanks for your comment
+      comment_deleted: Comment deleted
+    alert:
+      unable_to_add_comment: We are not able to add your comment
+      deleting_other_users_comments: You cannot delete other user's comments
+
+  password_resets_controller:
+    create:
+      failure: No user has been found with that email address
+      success: An email is sent to your email address to reset your password
+    update:
+      password_expired: The email sent in order to reset your password is expired
+      success: Your password has been reset
+
+  sessions_controller:
+    create:
+      success: You successfully logged in
+      failure: Invalid user name and/or password
+    destroy:
+      success: You successfully logged out
+
+  users_controller:
+    create:
+      success: User has been added
+    update:
+      success: User has been updated
+
+  general:
+    h1:
+      listing_jobs: Listing Searched Jobs
+      new_job: New Job
+
+    menu:
+      new_job: Add New Job
+      edit_password: Edit Password
+      logout: Logout
+      create_user: Create User
+      login: Login
+
+    link_to:
+      cancel: Cancel
+      back: Back
+      show: Show
+      root_path: Jobs Main Page
+      forgot_password: Forgot Password
+
+    name: Name
+    your_name: Your Name
+    friends_email_address: Your Friend's Email Address
+    last_name: Last Name
+    phone: Phone
+    cell: Cell Phone
+    email: Email
+    reference_destroy: Delete Reference
+    body: Body
+    submit: Submit
+    or: Or
+    references: References
+    category_is_not_specified: Categoy is not specified
+    password_cannot_be_blank: Password cannot be blank
+    time_ago_in_words: ago
+    continued:  ...(continued)
+    edit: Edit
+    delete: Delete
+    showing: Showing...
+    sure: Are you sure?
+    reference_not_given: Reference not specified
+    send: Send
+    editing_job: Editing Job
+    job_page: Job Page
+    comments: Comments
+    invalid_form: Invalid Form
+    password: Password
+    password_confirmation: Password Confirmation
+    update_password: Update Password
+    your_email_address: Your Email Address
+    reset_password: Reset Password
+    login: Login
+    remember_me: Remember me
+    pluralize:
+        error: There is a problem
+    error_explanation: Please correct the following problem(s)
+
+  notifier:
+    comment_added:
+      comment_added: Somebody added a comment to your job posting
+      read_it_at: In order to read the comment please follow the link
+    email_friend:
+      one_of_your_friend: One of your friends
+      you_might_like_this: thought you might like this
+    job_added:
+      job_added_with_this_title: A job has been added with this title
+      job_body: Job Body
+      posted_user_email_address: User's email address
+      to_read_the_posted_job: In order to read the job please follow the link
+    password_reset:
+      to_reset_your_password: In order to reset your password please follow the link
+      to_ignore_reset: Please ignore this email if you want your password to stay the same
+    user_added:
+      new_user_added: A user has been added with the following email address
+
+  jobs:
+    index:
+      table:
+        title: Title
+        category: Category
+        location: Location
+        body: Body
+        created_at: Created at
+
+    show:
+      link_to:
+        email_a_friend: Email a Friend
+        new_comment: Add New Comment
+        jobs_list: Jobs Main Page
+
+
+    job_partial:
+      h3: Job
+
+      link_to:
+        read_reference: Read Reference
+
+  datetime:
+    distance_in_words:
+      less_than_x_seconds: "less than %{count} seconds"
+
+      x_seconds:
+        one: "%{count} second"
+        other: "%{count} seconds"
+
+      half_a_minute: half a minute
+
+      less_than_x_minutes:
+        one: "less than %{count} minute"
+        other: "less than %{count} minutes"
+
+      x_minutes:
+        one: "%{count} minute"
+        other: "%{count} minutes"
+
+      x_hours:
+        one: "%{count} hour"
+        other: "%{count} hours"
+
+      about_x_hours:
+        one: "around %{count} hour"
+        other: "around %{count} hour(s)"
+
+      x_days:
+        one: "%{count} day"
+        other: "%{count} days"
+
+      about_x_months:
+        one: "about %{count} month"
+        other: "about %{count} months"
+
+      x_months:
+        one: "%{count} month"
+        other: "%{count} months"
+
+      about_x_years:
+        one: "about %{count} year"
+        other: "about %{count} years"
+
+      almost_x_years:
+        one: "almost %{count} year"
+        other: "almost %{count} years"
+
+      over_x_years:
+        one: "more than %{count} year"
+        other: "more than %{count} years"
+
+
+#  support: array: words_connector: " ve " last_word_connector: " "  bu translation
+#  comment ekle fail oldugunda views/comments/fail_create.js.erb'deki
+#  alert("<%= @comment.errors.full_messages.to_sentence %>");
+#  alert box erorrleri duzgun gostersin diye
+  support:
+    array:
+#     "\n" calismiyor sadece single quote ile olunca yani '\n' olunca calisiyor.
+      words_connector: '\n'
+      last_word_connector: '\n'
+
+  activerecord:
+    models:
+      job: Job
+    attributes:
+      job:
+        title: Title
+        body: Body
+      comment:
+        name: Name
+        body: Body
+      user:
+        password: Password
+        one: ''   # one ve other password ile ayni izzada olmaz ise "...can not be used with :count => 1" hatasi veriyor
+        other: '' # buna gerek yok "%{count} şifreler"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: Password confirmation has to be the same
+        job:
+          attributes:
+            title:
+              blank: must be added
+            body:
+              blank: must be added
+        comment:
+          attributes:
+            name:
+              blank: must be added
+            body:
+              blank: must be added
+            email:
+              blank: must be added
+
+
