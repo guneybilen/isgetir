@@ -1,10 +1,12 @@
 <%= form_for @job do |f| %>
   <% if @job.errors.any? %>
     <div class="errorExplanation">
-      <h2><%= pluralize(@job.errors.count, t("jobs.form_partial.plurilazie.error"),
-                                        t("jobs.form_partial.plurilazie.error")) %>!
+      <h2>
+        <%= pluralize(@job.errors.count, t("general.pluralize.error"),
+                                        t("general.pluralize.error")) %>!
         <br /><br />
-        <%= t('jobs.form_partial.error_explanation')%>:</h2>
+        <%= t('general.error_explanation')%>:
+      </h2>
         <ul>
            <% @job.errors.full_messages.each do |msg| %>
              <li>

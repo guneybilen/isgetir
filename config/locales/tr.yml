@@ -94,7 +94,9 @@ tr:
     reset_password: Şifre Sıfırla
     login: Giriş Yap
     remember_me: Beni Hatırla
-
+    pluralize:
+        error: Problem Var
+    error_explanation: Şu eksikleri giderin
 
   notifier:
     comment_added:
@@ -130,10 +132,6 @@ tr:
         new_comment: Yeni Yorum Ekle
         jobs_list: İşler Sayfası
 
-    form_partial:
-      error_explanation: Şu eksikleri giderin
-      plurilazie:
-        error: Problem Var
 
     job_partial:
       h3: İş
@@ -178,8 +176,16 @@ tr:
       comment:
         name: İsim
         body: Konu
+      user:
+        password: Şifre
+        one: ''   # one ve other password ile ayni izzada olmaz ise "...can not be used with :count => 1" hatasi veriyor
+        other: '' # buna gerek yok "%{count} şifreler"
     errors:
       models:
+        user:
+          attributes:
+            password:
+              confirmation: onay kutusunada aynı şifreyi girmeniz lazım
         job:
           attributes:
             title:

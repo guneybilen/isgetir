@@ -11,12 +11,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label t('general.password') %>
+    <%= f.label t('general.password') %>:
     <br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label t('general.password_confirmation') %>
+    <%= t('general.password_confirmation') %>: <!-- burda burda f.label kullanmiyorum cunku
+     messes up the capitalization it gives output as: Aynı Şifreyi tekrar girin:  -->
     <br />
     <%= f.password_field :password_confirmation %>
   </div>
