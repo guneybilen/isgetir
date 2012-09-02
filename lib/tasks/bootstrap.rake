@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 
 namespace :bootstrap do
   desc "Create the Categories"

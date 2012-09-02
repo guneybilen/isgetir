@@ -1,5 +1,11 @@
 class JobsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show, :notify_friend]
+  before_filter :authenticate, :except => [:index, :show, :notify_friend, :search]
+
+  def search
+    @jobs = Job.search(params[:keyword])
+    render :action => 'index'
+  end
+
   # GET /jobs
   # GET /jobs.json
   def index

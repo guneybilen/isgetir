@@ -99,7 +99,22 @@ div.errorExplanation {
 }
 
 span.main_title{
-    margin-top: 150px;
     font-size: 32px;
     font-weight: bold;
 }
+
+#search_form {
+    position: absolute;
+    right: 10px;
+}
+
+/*#link_to_below_search{*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+/*}*/
+
+
+
+
+
+

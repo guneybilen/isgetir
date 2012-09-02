@@ -11,6 +11,8 @@ class Job < ActiveRecord::Base
   has_many :references, :dependent => :destroy
   accepts_nested_attributes_for :references, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 
+  simple_search :title, :body, :location
+
   scope :created, where("jobs.created_at IS NOT NULL")
   scope :recent, lambda { created.where("jobs.created_at > ?", 1.week.ago.to_date)}
   scope :where_title, lambda { |term| where("jobs.title LIKE ?", "%#{term}%") }

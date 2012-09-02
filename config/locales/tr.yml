@@ -94,6 +94,7 @@ tr:
     reset_password: Şifre Sıfırla
     login: Giriş Yap
     remember_me: Beni Hatırla
+    search: Ara
     pluralize:
         error: Problem Var
     error_explanation: Şu eksikleri giderin

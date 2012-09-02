@@ -1,0 +1,6 @@
+<%= form_tag search_jobs_path, :method => :get , :id => "search_form" do %>
+    <p>
+      <%= text_field_tag :keyword, params[:keyword] %>
+      <%= submit_tag t('general.search') %>
+    </p>
+<% end %>

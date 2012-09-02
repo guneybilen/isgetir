@@ -94,6 +94,7 @@ en:
     reset_password: Reset Password
     login: Login
     remember_me: Remember me
+    search: Search
     pluralize:
         error: There is a problem
     error_explanation: Please correct the following problem(s)
