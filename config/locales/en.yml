@@ -162,7 +162,7 @@ en:
 
       about_x_hours:
         one: "around %{count} hour"
-        other: "around %{count} hour(s)"
+        other: "around %{count} hours"
 
       x_days:
         one: "%{count} day"

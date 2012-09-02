@@ -6,4 +6,12 @@ module ApplicationHelper
         link_to(name, root_path, :class => "for_black_font_link")
         #link_to(name, 'javascript:history.go(-1);', :class => 'cancel')
   end
+
+  def language_selector
+    if I18n.locale == :en
+      link_to image_tag("Turkey.png", :id => "turkish_flag"), url_for(:locale => 'tr')
+    else
+      link_to image_tag("United_Kingdom.png", :id => "english_flag"), url_for(:locale => 'en')
+    end
+  end
 end

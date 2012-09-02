@@ -147,11 +147,11 @@ tr:
       less_than_x_minutes: "%{count} dakikadan daha"
       x_minutes: "%{count} dakika"
       x_hours: "%{count} saat"
-      about_x_hours: saat cıvarı
+      about_x_hours: saat civarı
       x_days:  "%{count}  gün"
-      about_x_months: "%{count} ay cıvarı"
+      about_x_months: "%{count} ay civarı"
       x_months: "%{count} ay"
-      about_x_years: "%{count} yıl cıvarı"
+      about_x_years: "%{count} yıl civarı"
       almost_x_years: "%{count} yıl"
       over_x_years: yıldan fazla
 

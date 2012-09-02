@@ -79,3 +79,27 @@ a:active{
 div.errorExplanation {
     color: red;
 }
+
+#collection_select {
+    width: 230px;
+}
+
+#turkish_flag {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+}
+
+#english_flag {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+}
+
+span.main_title{
+    margin-top: 150px;
+    font-size: 32px;
+    font-weight: bold;
+}
