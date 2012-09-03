@@ -98,23 +98,32 @@ div.errorExplanation {
     right: 10px;
 }
 
-span.main_title{
+div.main_title{
+    display: block;
     font-size: 32px;
     font-weight: bold;
+    clear: right;
 }
 
 #search_form {
-    position: absolute;
-    right: 10px;
-}
-
-/*#link_to_below_search{*/
     /*position: absolute;*/
     /*right: 10px;*/
-/*}*/
+float: right;
+}
+
+#link_to_below_search{
+    /*position: absolute;*/
+    /*right: 10px;*/
+  clear: right;
+  float: right;
+}
 
 
+div.index{
+    float: left;
+}
 
-
-
+#listing_jobs_line{
+    clear: right;
+}
 

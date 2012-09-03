@@ -1,9 +1,28 @@
 class JobsController < ApplicationController
   before_filter :authenticate, :except => [:index, :show, :notify_friend, :search]
 
+  #respond_to :html, :js
+  # autocomplete :name
+
+
   def search
-    @jobs = Job.search(params[:keyword])
-    render :action => 'index'
+    @jobse = Job.search(params[:keyword])
+    puts @jobse.map{|p| [p.title, p.body, p.location]}.flatten.to_a
+    #@jobs = ['ankara','izmir']
+    #@jobs = @jobs.map{|p| p.title}.sort
+    #@jobs2  = @jobs.map{|p| p.location}.sort
+    #@jobs3 = @jobs.map{|p| p.body}.sort
+    #@jobs = @jobs1 + @jobs2 + @jobs3
+    #@jobs = @jobs.compact.collect {|i| i.to_s}.sort.uniq
+
+    #     # burda sanirim index action'i invoke et DEGIL de
+      # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
+
+    respond_to do |format|
+      #format.html {render :action => 'index'}
+      format.js
+      format.json { render json: @jobs}
+    end
   end
 
   # GET /jobs

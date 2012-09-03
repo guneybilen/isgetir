@@ -4,11 +4,16 @@ Isgetir::Application.routes.draw do
   root :to => 'jobs#index'
 
   #match 'jobs/new' => 'jobs#new'
+
+  match 'jobs/search' => 'jobs#search'
+
   resources :jobs do
+
     member do
       post :notify_friend
     end
     collection do
+      #get 'autocomplete'
       get :search
     end
     resources :comments

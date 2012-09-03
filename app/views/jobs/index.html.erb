@@ -1,5 +1,10 @@
+<div id = "for_ajax">
+<br /><br />
+<div class="main_title">isgetir.com</div>
+
+<br /><br />
 <div class = 'index'>
-<%= render "users/header" %>
+
 
 <%= image_tag "chef.jpg", :size => "75x75", :alt => "Resim" %>
 <%= image_tag "girl.jpg", :size => "75x75", :alt => "Resim" %>
@@ -7,14 +12,18 @@
 <%= image_tag "man.jpg", :size => "75x75", :alt => "Resim" %>
 <%= image_tag "group.jpg", :size => "75x75", :alt => "Resim" %>
 
-
-<h1 class="listing_jobs" style="text-align: center;"><%= t('general.h1.listing_jobs') %></h1>
 </div>
+
+<%= render "users/header" %>
+
+<div id = "listing_jobs_line">
+<h1 class="listing_jobs" style="text-align: center;"><%= t('general.h1.listing_jobs') %></h1>
+
 
 <hr>
 
 <!--<div id="jobs">
-<%= render @jobs %>
+render @jobs
 </div>-->
 
 <table align="center">
@@ -54,3 +63,5 @@
 
 <hr>
 
+</div>
+</div>

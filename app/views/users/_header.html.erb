@@ -1,6 +1,5 @@
 <div id="header">
-  <br /><br />
-  <span class="main_title">isgetir.com</span>
+
   <%= language_selector %>
   <br /><br />
   <div class="menu">
@@ -15,6 +14,9 @@
   </div>
 </div>
   <br /><br />
-  <%= render 'jobs/search' %>
-  <br />
+
   <%= link_to t('general.link_to.root_path'), root_path, :id => 'link_to_below_search' %>
+  <br />
+  <%= render 'jobs/search' %>
+
+

@@ -11,8 +11,63 @@
 
 
 $(document).ready(function() {
+
+//document.getElementById("#search_form_text_field").focus();
+
    // $('div.index').hide();
    // $('div.index').fadeIn('slow');
+
+
+    $('#search_form')[0].reset();
+
+
+    $('#search_form_text_field').focusout(function() {
+//        alert('hello')
+        document.getElementById('search_form_text_field').focusin();
+    });
+
+//    $("#search_form_text_field").autocomplete({
+//    source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"]
+//}   );
+
+    $("#search_form_text_field").autocomplete
+    (
+        {
+            source: 'jobs/search',
+            dataType: "js",
+            minLength: 2,
+            cache: false,
+            select: function(event, ui) {
+                   alert(ui);
+               }
+
+
+
+
+        }
+    );
+
+//    $('#search_form_text_field').live('input', function() {
+//            var params = {};
+//            params[this.name] = this.value;
+//            $.get('jobs/search', params);
+//           $('search_form_text_field').focusin();
+//        });
+
+
+
+//    $.ajax(
+//        {
+//            url: "jobs/search.js.erb",
+//            type: 'get',
+//            dataType: "script",
+//            success: alert('hello')
+//        }
+//    );
+//    $('#search_form').bind('ajax:success', '', function(request) {
+//        alert("I got: " + request.responseText);
+//    });
+
 
     $('#new_comment_link').click ( function() {
         $('#new_comment_link').hide();

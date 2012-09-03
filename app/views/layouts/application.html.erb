@@ -6,8 +6,15 @@
   <%= stylesheet_link_tag "default" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript" language="JavaScript">
+    function setFocus(){
+      document.getElementById('search_form_text_field').focus();
+    }
+   </script>
+
 </head>
-<body>
+<body onload="setFocus()">
 
 <div class="set_locale" style="display: none;"><%= I18n.locale %></div>
 
