@@ -6,8 +6,12 @@ class JobsController < ApplicationController
 
 
   def search
-    @jobse = Job.search(params[:keyword])
-    puts @jobse.map{|p| [p.title, p.body, p.location]}.flatten.to_a
+    @jobs = Job.search(params[:keyword])
+    j= @jobs.map{|p| [p.title, p.body, p.location]}.flatten.reject(&:nil?).reject(&:blank?).map(&:capitalize)
+
+    puts j.sort.uniq
+    #@jobs = j.sort.uniq
+    @jobs = @jobs.to_a
     #@jobs = ['ankara','izmir']
     #@jobs = @jobs.map{|p| p.title}.sort
     #@jobs2  = @jobs.map{|p| p.location}.sort
@@ -18,11 +22,11 @@ class JobsController < ApplicationController
     #     # burda sanirim index action'i invoke et DEGIL de
       # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
 
-    respond_to do |format|
-      #format.html {render :action => 'index'}
-      format.js
-      format.json { render json: @jobs}
-    end
+    #respond_to do |format|
+    #  format.html {render :action => 'index'}
+    #  format.js
+    #  format.json { render json: @jobs}
+    #end
   end
 
   # GET /jobs
