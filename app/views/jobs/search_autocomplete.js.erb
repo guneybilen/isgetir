@@ -33,24 +33,24 @@
 //
 //                  })},
             dataType: "json",
-            minLength: 0,
+            minLength: 2,
             delay: 700,
             highlight: true,
             max: 5,
             cache: false,
             select: function(event, ui) {
-                   alert(ui);
-               }
+//                   alert(ui.item.value);
+//            $.get('jobs/search', $.trim(ui.item.value));  //calismiyor
+               $('#search_form_submit').click();
+            }
+
 
 
 
 
         }
     );
-//}
-//
-//    var inp = $("#search_form_text_field").val();
-//    alert(inp);
+
 
 
 

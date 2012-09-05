@@ -20,8 +20,9 @@ class JobsController < ApplicationController
     @jobs = @jobs.map{|p| [p.title, p.body, p.location]}.flatten
                                                         .reject(&:nil?)
                                                         .reject(&:blank?)
-                                                        .map(&:capitalize)
                                                         .uniq
+                                                        #.map(&:capitalize)
+
 
     respond_to do |format|
       #format.html {render :nothing => true} #:action => 'index'}
