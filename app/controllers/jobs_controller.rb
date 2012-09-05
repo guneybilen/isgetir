@@ -1,32 +1,33 @@
 class JobsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show, :notify_friend, :search]
+  before_filter :authenticate, :except => [:index, :show, :notify_friend, :search, :search_autocomplete]
 
   #respond_to :html, :js
-  # autocomplete :name
 
 
   def search
     @jobs = Job.search(params[:keyword])
-    j= @jobs.map{|p| [p.title, p.body, p.location]}.flatten.reject(&:nil?).reject(&:blank?).map(&:capitalize)
 
-    puts j.sort.uniq
-    #@jobs = j.sort.uniq
-    @jobs = @jobs.to_a
-    #@jobs = ['ankara','izmir']
-    #@jobs = @jobs.map{|p| p.title}.sort
-    #@jobs2  = @jobs.map{|p| p.location}.sort
-    #@jobs3 = @jobs.map{|p| p.body}.sort
-    #@jobs = @jobs1 + @jobs2 + @jobs3
-    #@jobs = @jobs.compact.collect {|i| i.to_s}.sort.uniq
-
-    #     # burda sanirim index action'i invoke et DEGIL de
+    respond_to do |format|
+      format.html {render :action => 'index'}     # burda sanirim index action'i invoke et DEGIL de
       # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
+      format.js
+      format.json { render json: @jobs}
+    end
+  end
 
-    #respond_to do |format|
-    #  format.html {render :action => 'index'}
-    #  format.js
-    #  format.json { render json: @jobs}
-    #end
+  def search_autocomplete
+    @jobs = Job.search(params[:keyword])
+    @jobs = @jobs.map{|p| [p.title, p.body, p.location]}.flatten
+                                                        .reject(&:nil?)
+                                                        .reject(&:blank?)
+                                                        .map(&:capitalize)
+                                                        .uniq
+
+    respond_to do |format|
+      #format.html {render :nothing => true} #:action => 'index'}
+      format.js
+      format.json { render json: @jobs}  #autocomplete icin format.json { render json: @jobs} gerekiyor
+    end
   end
 
   # GET /jobs

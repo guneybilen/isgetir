@@ -1,0 +1,59 @@
+//alert("<%= @jobs %>");
+  var myArray= "<%= @jobs %>"
+  myArray=myArray.replace(/&quot;/gi,"");
+  myArray=myArray.replace(/\[/gi,"");
+  myArray=myArray.replace(/\]/gi,"");
+  myArray=myArray.split(',');
+//myArray = $.makeArray(myArray); #not needed
+//alert(myArray);
+
+
+
+//if ( $("#search_form_text_field").val().length > 0 )
+//{
+
+    $("#search_form_text_field").autocomplete
+    (
+        {
+            source: function(request, response) {
+                   var results = $.ui.autocomplete.filter(myArray, request.term);
+
+
+                   response(results.slice(0, 10));
+            },
+//                 $.ajax(
+//                  {
+//                  url: "jobs/search_autocomplete",
+//                  data: request,
+//                  dataType: "json",
+//                  type: "GET",
+//                  success: function(data){
+//                      response(data);
+//                  }
+//
+//                  })},
+            dataType: "json",
+            minLength: 0,
+            delay: 700,
+            highlight: true,
+            max: 5,
+            cache: false,
+            select: function(event, ui) {
+                   alert(ui);
+               }
+
+
+
+
+        }
+    );
+//}
+//
+//    var inp = $("#search_form_text_field").val();
+//    alert(inp);
+
+
+
+
+
+
