@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale
 
+  helper_method :search_autocomplete
+
   protected
   # Set the locale from parameters
   def set_locale

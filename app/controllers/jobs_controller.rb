@@ -8,7 +8,7 @@ class JobsController < ApplicationController
     @jobs = Job.search(params[:keyword])
 
     respond_to do |format|
-      format.html {render :action => 'index'}     # burda sanirim index action'i invoke et DEGIL de
+      #format.html {render :action => 'search_autocomplete'}     # burda sanirim index action'i invoke et DEGIL de
       # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
       format.js
       format.json { render json: @jobs}
@@ -25,7 +25,7 @@ class JobsController < ApplicationController
 
 
     respond_to do |format|
-      #format.html {render :nothing => true} #:action => 'index'}
+      #format.html {render :action => 'index'}
       format.js
       format.json { render json: @jobs}  #autocomplete icin format.json { render json: @jobs} gerekiyor
     end

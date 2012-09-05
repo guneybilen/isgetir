@@ -39,10 +39,14 @@
             max: 5,
             cache: false,
             select: function(event, ui) {
-//                   alert(ui.item.value);
-//            $.get('jobs/search', $.trim(ui.item.value));  //calismiyor
-               $('#search_form_submit').click();
-            }
+                 $('search_form_text_field').val($.trim(ui.item.value));
+     alert(ui.item.value);
+            $.get('jobs/search', $.trim(ui.item.value));  //calismiyor
+//
+//              $('#search_form_submit').click();
+
+//
+             }
 
 
 

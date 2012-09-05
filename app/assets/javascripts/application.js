@@ -22,9 +22,12 @@ $(document).ready(function() {
 
     var request = $.ajax({
         url: "jobs/search_autocomplete",
-        type: "GET"});
+        type: "GET"
+    });
 
-
+//     request.success(function(){
+//        alert('guney');
+//    });
 
 //    $('#search_form_text_field').live('input', function() {
 //            var params = {};
