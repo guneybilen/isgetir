@@ -33,7 +33,16 @@
             },
             dataType: "json",
             // minLength: 1 demekle 1 characterden sonra aramaya basla demek oluyor
-            minLength: 1,
+            // minLength: 1,  //minLength dogru durust calismiyor
+
+             // custom minLength
+             // kaynak:https://github.com/crowdint/rails3-jquery-autocomplete/issues/67
+             search: function() {
+             var term = this.value ;
+                if ( term.length < 1 ) {
+                return false;
+                }
+            },
             delay: 400,
             highlight: true,
             max: 5,

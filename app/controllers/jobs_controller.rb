@@ -23,7 +23,7 @@ class JobsController < ApplicationController
   end
 
   def search_autocomplete
-    if (params[:keyword].length > 0)
+    if (params[:keyword].length > 1)
       @jobs = Job.search(params[:keyword])
       @jobs = @jobs.map{|p| [p.title, p.location]}.flatten.reject(&:nil?).reject(&:blank?).uniq.map(&:capitalize)
             #.sort_by{|p| p.length}
