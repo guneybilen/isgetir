@@ -1,12 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_locale, :set_charset
+  before_filter :set_locale #, :set_charset
 
   #helper_method :search_autocomplete
+
+=begin
+  set_charset method'a ihtiyacim var mi bilmiyorum
+  su adresten aldim: http://www.ruby-forum.com/topic/103419
 
   def set_charset
     headers["Content-Type"] = "text/html; charset=utf-8"
   end
+=end
 
   protected
   # Set the locale from parameters
