@@ -21,7 +21,7 @@
 
 
 <hr>
-              <%= render 'jobs/search' %>
+<%= render 'jobs/search' %>
 <!--<div id="jobs">
 render @jobs
 </div>-->
@@ -38,7 +38,7 @@ render @jobs
     <th></th>
   </tr>
 
-
+<% if !@jobs.blank? %>
 <% @jobs.each do |job| %>
   <tr>
     <td><%= job.title %></td>
@@ -56,6 +56,7 @@ render @jobs
         <td><%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %></td>
     <% end %>
   </tr>
+<% end %>
 <% end %>
 </table>
 

@@ -5,29 +5,35 @@ class JobsController < ApplicationController
 
 
   def search
-    @jobs = Job.search(params[:keyword])
+    if (params[:keyword].blank?)
+      @jobs = ""
+      return
+    else
+      @jobs = Job.search(params[:keyword])
 
-    respond_to do |format|
-      #format.html {render :action => 'search_autocomplete'}     # burda sanirim index action'i invoke et DEGIL de
-      # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
-      format.js
-      format.json { render json: @jobs}
+      respond_to do |format|
+        #format.html {render :action => 'search_autocomplete'}     # burda sanirim index action'i invoke et DEGIL de
+        # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
+        format.js
+        format.json { render json: @jobs}
+      end
     end
   end
 
   def search_autocomplete
-    @jobs = Job.search(params[:keyword])
-    @jobs = @jobs.map{|p| [p.title, p.body, p.location]}.flatten
-                                                        .reject(&:nil?)
-                                                        .reject(&:blank?)
-                                                        .uniq
-                                                        #.map(&:capitalize)
+    if (params[:keyword].length > 1)
+      @jobs = Job.search(params[:keyword])
+      @jobs = @jobs.map{|p| [p.title, p.location]}.flatten.reject(&:nil?).reject(&:blank?).uniq.map(&:capitalize)
+            #.sort_by{|p| p.length}
 
+      #@jobs = @jobs..map{|p| p.strip}
+      #@jobs = ["Ankara", "Erzurum"]
 
-    respond_to do |format|
-      #format.html {render :action => 'index'}
-      format.js
-      format.json { render json: @jobs}  #autocomplete icin format.json { render json: @jobs} gerekiyor
+      respond_to do |format|
+        #format.html {render :action => 'index'}
+        format.js
+        format.json { render json: @jobs}  #autocomplete icin format.json { render json: @jobs} gerekiyor
+      end
     end
   end
 

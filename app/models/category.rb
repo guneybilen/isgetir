@@ -4,4 +4,5 @@ class Category < ActiveRecord::Base
 
   attr_accessor :category_name
 
+  #simple_search :category, :isim
 end

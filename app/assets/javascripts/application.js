@@ -9,7 +9,6 @@
 //= require_tree .
 
 
-
 $(document).ready(function() {
 
 //document.getElementById("#search_form_text_field").focus(); //calismiyor
@@ -17,37 +16,35 @@ $(document).ready(function() {
     // $('div.index').hide();
     // $('div.index').fadeIn('slow');
 
+//  DIKKAT! $('#search_form')[0].reset(); breaks almost everything on this file.
+//  $('#search_form')[0].reset();
 
-    $('#search_form')[0].reset();
+    $('#search_form_text_field').val('');
 
-    var request = $.ajax({
-        url: "jobs/search_autocomplete",
-        type: "GET"
-    });
-
+//    var request = $.ajax({
+//        url: "jobs/search_autocomplete",
+//        type: "GET"
+//    });
 //     request.success(function(){
 //        alert('guney');
 //    });
 
-//    $('#search_form_text_field').live('input', function() {
-//            var params = {};
-//            params[this.name] = this.value;
-//            $.get('jobs/search', params);
-//           $('search_form_text_field').focusin();
-//        });
+    $('#search_form_text_field').live('input', function() {
+        var params = {};
+        params[this.name] = this.value;
+        $.get('jobs/search_autocomplete', params);
+    });
 
 
     $('#new_comment_link').click ( function() {
+        alert('guney');
         $('#new_comment_link').hide();
     });
 
 // for dynamically added content you must use live method for click event
 // Internet den ogrendim.
-    $('#new_comment_cancel').live('click', function() {
-        $('#new_comment').slideUp();
-        $('#new_comment_link').show();
-        $("html").scrollTop(0);
-    });
+
+
 
     $("#forgot_my_password").click ( function () {
         $('#password_reset').slideDown();
@@ -94,20 +91,8 @@ $(document).ready(function() {
     })
         .slideDown('slow');
 
-//p.hide();
-//p.css({position: 'relative'}).fadeIn('slow').animate({left: m - n}, 'slow');
-//p.animate({left: m - n}, 'slow');
-
-    /*$("h1.listing_jobs")
-     .css({position: 'relative'})
-     .fadeTo('fast', 0.5)
-     .animate({left: m - n}, 'slow')
-     .fadeTo('slow', 1.0);*/
-
-
-
-
 });
+
 
 
 

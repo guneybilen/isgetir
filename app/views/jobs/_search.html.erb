@@ -1,7 +1,8 @@
 <%= form_tag(search_jobs_path, :method => :get , :id => "search_form", :remote => true) do %>
     <p>
-      <%= text_field_tag :keyword, params[:keyword], :id => "search_form_text_field" %>
       <%= submit_tag t('general.search'), :id => "search_form_submit" %>
+      <br /><br />
+      <%= text_field_tag :keyword, params[:keyword], :id => "search_form_text_field" %>
     </p>
 <% end %>
 

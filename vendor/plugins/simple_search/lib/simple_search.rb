@@ -14,7 +14,7 @@ module SearchPlugin
       self.searchable_fields.each do |field|
         conditions << "#{self.table_name}.#{field.to_s} LIKE '%#{value}%'"
       end
-      return self.where(conditions.join(' OR ')).limit(5)
+      return self.where(conditions.join(' OR '))
     end
   end
 end# SimpleSearch

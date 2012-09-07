@@ -8,7 +8,9 @@ p{
     font-size: 1em;
     font-family: arial;
 }
-
+table{
+    margin-top: -30px;
+}
 th{
     text-align: left;
     padding: 5px;
@@ -105,10 +107,18 @@ div.main_title{
     clear: right;
 }
 
-#search_form {
+#search_form_submit {
     /*position: absolute;*/
-    /*right: 10px;*/
-float: right;
+   margin-top: -10px;
+   margin-left: -10px;
+   float: right;
+
+}
+#search_form_text_field {
+    /*position: absolute;*/
+   margin-top: -10px;
+   margin-left: -50px;
+   float: right;
 }
 
 #link_to_below_search{
@@ -127,18 +137,5 @@ div.index{
     clear: right;
 }
 
-.ui-autocomplete {
-		max-height: 100px;
-		overflow-y: auto;
-		/* prevent horizontal scrollbar */
-		overflow-x: hidden;
-		/* add padding to account for vertical scrollbar */
-		padding-right: 20px;
-	}
-	/* IE 6 doesn't support max-height
-	 * we use height instead, but this forces the menu to always be this tall
-	 */
-*html .ui-autocomplete {
-		height: 100px;
-	}
+
 

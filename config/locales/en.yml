@@ -98,6 +98,7 @@ en:
     pluralize:
         error: There is a problem
     error_explanation: Please correct the following problem(s)
+    please_select: Please select...
 
   notifier:
     comment_added:
@@ -207,6 +208,7 @@ en:
       job:
         title: Title
         body: Body
+        category_id: Kategori
       comment:
         name: Name
         body: Body
@@ -226,6 +228,8 @@ en:
               blank: must be added
             body:
               blank: must be added
+            category_id:
+              blank: must be selected
         comment:
           attributes:
             name:

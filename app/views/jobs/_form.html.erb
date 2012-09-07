@@ -42,7 +42,7 @@
                 <!--{:include_blank => 'None'}, {:class => "select_box"}) %>-->
      <!--collection_select(:person, :city_id, City.all, :id, :name) -->
      <%= f.collection_select(:category_id, Category.order(:name), :id, :name,
-                             {:prompt => 'Please select... '}, {:id => 'collection_select',:size => 3}) %>
+                             {:prompt => t('general.please_select')}, {:id => 'collection_select',:size => 3}) %>
    </div>
 
    <div class="field1">

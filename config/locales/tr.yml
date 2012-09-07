@@ -98,6 +98,7 @@ tr:
     pluralize:
         error: Problem Var
     error_explanation: Şu eksikleri giderin
+    please_select: Lütfen seçiniz...
 
   notifier:
     comment_added:
@@ -174,6 +175,7 @@ tr:
       job:
         title: Başlık
         body: Konu
+        category_id: Kategori
       comment:
         name: İsim
         body: Konu
@@ -193,6 +195,8 @@ tr:
               blank: olması zorunludur
             body:
               blank: olması zorunludur
+            category_id:
+              blank: seçilmesi zorunludur
         comment:
           attributes:
             name:
@@ -201,5 +205,3 @@ tr:
               blank: olması zorunludur
             email:
               blank: olması zorunludur
-
-

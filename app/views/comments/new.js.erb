@@ -11,6 +11,15 @@ scrollTop: $("#new_comment").offset().top
      duration: 1000
 }, 2000);
 
+
+
+$('#new_comment_cancel').live('click', function() {
+
+    $('#new_comment').slideUp();
+    $('#new_comment_link').show();
+    $("html").scrollTop(0);
+});
+
 // .offset() = Get the current coordinates of the first element
 // in the set of matched elements, relative to the document.
 // api.jquery.com 'dan
