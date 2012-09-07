@@ -98,7 +98,8 @@ en:
     pluralize:
         error: There is a problem
     error_explanation: Please correct the following problem(s)
-    please_select: Please select...
+    other: Other
+#    please_select: Please select...
 
   notifier:
     comment_added:

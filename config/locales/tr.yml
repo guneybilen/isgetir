@@ -98,7 +98,8 @@ tr:
     pluralize:
         error: Problem Var
     error_explanation: Şu eksikleri giderin
-    please_select: Lütfen seçiniz...
+    other: Diğer
+#    please_select: Lütfen seçiniz...
 
   notifier:
     comment_added:

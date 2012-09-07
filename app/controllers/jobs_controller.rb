@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class JobsController < ApplicationController
   before_filter :authenticate, :except => [:index, :show, :notify_friend, :search, :search_autocomplete]
 
@@ -52,7 +54,9 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
-    if Category.where("id= ?", @job.category_id).first.nil?
+    if (Category.where("id = ?", @job.category_id).first.nil? ||
+        Category.where("id = ?", @job.category_id).map{|p| p.isim} == ["Diğer"] ||
+        Category.where("id = ?", @job.category_id).map{|p| p.isim} == ["Other"])
       @category = t('general.category_is_not_specified')
     else
       @category = Category.where("id= ?", @job.category_id).first.name

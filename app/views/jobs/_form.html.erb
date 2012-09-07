@@ -41,9 +41,15 @@
       <!--select("job", "category_id", Category.all.sort.collect {|p| [ p.name, p.id ] },-->
                 <!--{:include_blank => 'None'}, {:class => "select_box"}) %>-->
      <!--collection_select(:person, :city_id, City.all, :id, :name) -->
-     <%= f.collection_select(:category_id, Category.order(:name), :id, :name,
-                             {:prompt => t('general.please_select')}, {:id => 'collection_select',:size => 3}) %>
-   </div>
+     <% if I18n.locale == :en %>
+
+        <%= f.collection_select(:category_id, Category.order(:name), :id, :name,
+                             {:prompt => t('general.other')}, {:id => 'collection_select',:size => 7}) %>
+     <% elsif I18n.locale == :tr  %>
+         <%= f.collection_select(:category_id, Category.order(:id), :id, :isim,
+                                      {:prompt => t('general.other')}, {:id => 'collection_select',:size => 7}) %>
+     <% end %>
+  </div>
 
    <div class="field1">
      <br /><br /><br />

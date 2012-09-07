@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :body, :presence => true
-  validates :category_id, :presence => true
+  #validates :category_id, :presence => true
 
   belongs_to :user
   #has_many :job_categories
