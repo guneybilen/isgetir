@@ -8,6 +8,12 @@ tmp/
 # git rm .idea/workspace.xml
 # ondan sonra git .idea folderi track etmeyi birakiyor.
 
+#asagidakilarin hangisi ise yarar bilmiyorum
 a/less.exe.stackdump
 b/less.exe.stackdump
 
+/less.exe.stackdump
+/less.exe.stackdump
+
+less.exe.stackdump
+less.exe.stackdump

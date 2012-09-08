@@ -1,64 +1,61 @@
 
 
-  var myArray= "<%=  @jobs %>";
+var myArray= "<%=  @jobs %>";
 
-  myArray=myArray.replace(/&quot;/gi,"");
-  myArray=myArray.replace(/\./gi,"");
-  myArray=myArray.replace(/\[/gi,"");
-  myArray=myArray.replace(/\]/gi,"");
-  myArray=myArray.replace(/,\s+/gi,",");
-  myArray=myArray.split(',');
+myArray=myArray.replace(/&quot;/gi,"");
+myArray=myArray.replace(/\./gi,"");
+myArray=myArray.replace(/\[/gi,"");
+myArray=myArray.replace(/\]/gi,"");
+myArray=myArray.replace(/,\s+/gi,",");
+myArray=myArray.split(',');
 //myArray = myArray.slice(0);
 //myArray = $.makeArray(myArray); //not needed
 //alert(myArray);
 
+$("#search_form_text_field").autocomplete
+        (
+                {
+                    source: function(request, response) {
+                        var results = $.ui.autocomplete.filter(myArray, request.term);
 
-//$.each(myArray, function(key, value)
-//{
-//  value = value.replace("Ankara","xx");
-//    alert(value);
-//}
-//);
+                        response(results.slice(0, 10));
+                    },
+                    dataType: "json",
+                    // minLength: 1 demekle 1 characterden sonra aramaya basla demek oluyor
+//                  minLength: 0,  //minLength dogru durust calismiyor
+//
+                    // custom minLength
+                    // kaynak:https://github.com/crowdint/rails3-jquery-autocomplete/issues/67
 
-//if ( $("#search_form_text_field").val().length > 0 )
-//{
-
-    $("#search_form_text_field").autocomplete
-    (
-        {
-            source: function(request, response) {
-                   var results = $.ui.autocomplete.filter(myArray, request.term);
-
-                   response(results.slice(0, 10));
-            },
-            dataType: "json",
-            // minLength: 1 demekle 1 characterden sonra aramaya basla demek oluyor
-            // minLength: 1,  //minLength dogru durust calismiyor
-
-             // custom minLength
-             // kaynak:https://github.com/crowdint/rails3-jquery-autocomplete/issues/67
-             search: function() {
-             var term = this.value ;
-                if ( term.length < 1 ) {
-                return false;
-                }
-            },
-            delay: 400,
-            highlight: true,
-            max: 5,
-            cache: false,
-//            focus: function(event,ui){
+                    search: function() {
+                        var term = this.value;
+//                 alert(term);
+//                 if(term.length == 0) {
+//                 alert('guney')
+//                    $('#search_form_text_field').autocomplete('close');
+//
+//                 }
+                        if ( term.length < 1 ) {
+                            return false;
+                        }
+                    }
+                    ,
+                    delay: 400,
+                    highlight: true,
+                    max: 5,
+                    cache: false
+//                    ,
+//                  focus: function(event,ui){
 //
 //            }
 //              ,
-            select: function(event, ui) {
+//                    select: function(event, ui) {
 //
-//              $('#search_form_submit').click();
+//
+//                    }
 
-             }
-
-        }
-    );
+                }
+        );
 
 
 
