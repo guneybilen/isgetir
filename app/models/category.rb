@@ -1,7 +1,17 @@
 
 class Category < ActiveRecord::Base
   has_many :jobs
-  #default_scope order('categories.name')
+  #scope  :order, lambda { |order|
+  #  {
+  #    :order => case order
+  #    when "name"  "name asc"
+  #    when "isim"  "isim asc"
+  #    end
+  #  }
+  #}
+
+  #scope :isim, order("isim asc")
+  #scope :name, order("name asc")
 
   attr_accessor :category_name
 

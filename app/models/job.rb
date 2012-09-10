@@ -1,5 +1,5 @@
 class Job < ActiveRecord::Base
-  default_scope :order => 'created_at DESC'
+  #default_scope :order => 'created_at DESC'
 
   validates :title, :presence => true
   validates :body, :presence => true
@@ -17,8 +17,19 @@ class Job < ActiveRecord::Base
   scope :created, where("jobs.created_at IS NOT NULL")
   scope :recent, lambda { created.where("jobs.created_at > ?", 1.week.ago.to_date)}
   scope :where_title, lambda { |term| where("jobs.title LIKE ?", "%#{term}%") }
+  scope :cat_by_name, joins(:category).order('categories.name')
+  scope :cat_by_isim, joins(:category).order('categories.isim')
 
-
+  # Asagidaki category_by_name ve category_by_isim methodlari yerine :cat_by_name ve :cat_by_id scopelarini kullandim
+  # Asagidaki iki method "undefined method 'sub' for ActiveRecord::Relation" hatasini veriyor
+  # Hatanin sebebini anladim sanirim: method adlari onune self koymayi unutmusum
+  #def self.category_by_name
+  #  Job.joins(:category).order('categories.name')
+  #end
+  #
+  #def self.category_by_isim
+  #  Job.joins(:category).order('categories.isim')
+  #end
 
   def long_title
     "#{title} - #{published_at}"

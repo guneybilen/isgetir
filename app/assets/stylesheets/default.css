@@ -66,11 +66,11 @@ a:hover{
     background-color:#add8e6;
 }
 a:link {
-    color:black;
+    color:blue;
 }
 
 a:visited{
-    color:gray;
+    color:blue;
 }
 
 a:active{
@@ -139,3 +139,16 @@ div.index{
 
 
 
+th .current {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc {
+  background-image: url(up_arrow.png);
+}
+
+th .desc {
+  background-image: url(down_arrow.png);
+}

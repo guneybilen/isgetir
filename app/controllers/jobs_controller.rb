@@ -5,6 +5,8 @@ class JobsController < ApplicationController
 
   #respond_to :html, :js
 
+  helper_method :sort_column, :sort_direction
+
 
   def search
     if (params[:keyword].blank?)
@@ -42,7 +44,13 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    if sort_column == "category_id" && params[:locale] == :en
+      @jobs = Job.cat_by_name
+    elsif sort_column == "category_id" && params[:locale] == :tr
+      @jobs = Job.cat_by_isim
+    else
+      @jobs = Job.order(sort_column + " " + sort_direction)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -160,5 +168,16 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     Notifier.email_friend(@job, params[:name], params[:email]).deliver
     redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
+  end
+
+
+  private
+
+  def sort_column
+    Job.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
