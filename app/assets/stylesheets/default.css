@@ -153,3 +153,7 @@ th .asc {
 th .desc {
   background-image: url(down_arrow.png);
 }
+
+#select_box {
+    width: 150px;
+}

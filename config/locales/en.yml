@@ -99,6 +99,7 @@ en:
         error: There is a problem
     error_explanation: Please correct the following problem(s)
     other: Other
+    none: None
 #    please_select: Please select...
 
   notifier:

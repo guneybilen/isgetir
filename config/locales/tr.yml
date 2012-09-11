@@ -99,6 +99,7 @@ tr:
         error: Problem Var
     error_explanation: Şu eksikleri giderin
     other: Diğer
+    none: Hiçbiri
 #    please_select: Lütfen seçiniz...
 
   notifier:

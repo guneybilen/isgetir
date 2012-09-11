@@ -31,6 +31,11 @@ class Job < ActiveRecord::Base
   #  Job.joins(:category).order('categories.isim')
   #end
 
+
+  def self.search_by_category(cat_id)
+    return Job.where("category_id = ?", cat_id).to_a
+  end
+
   def long_title
     "#{title} - #{published_at}"
   end
@@ -39,6 +44,6 @@ class Job < ActiveRecord::Base
     return false unless owner.is_a? User
     # user is defined in sessions_controller
     user == owner
-
   end
+
 end

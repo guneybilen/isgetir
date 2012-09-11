@@ -19,6 +19,14 @@ $(document).ready(function() {
 //  DIKKAT! $('#search_form')[0].reset(); breaks almost everything on this file.
 //  $('#search_form')[0].reset();
 
+    $('#select_box').live ('change', function() {
+        var params ={};
+        params = $(this).children(":selected").attr("value");
+        $.get('jobs/search_by_category', params);
+//      alert(params);
+//        location.reload();
+    });
+
     $('#search_form_text_field').val('');
 
 //    var request = $.ajax({

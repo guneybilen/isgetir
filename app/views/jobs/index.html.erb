@@ -25,8 +25,26 @@
 <!--<div id="jobs">
 render @jobs
 </div>-->
-
+  <% if I18n.locale == :en  %>
+      <%= select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
+                {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) %>
+  <% elsif I18n.locale == :tr %>
+      <%= select("job", "category_id", Category.order(:isim).collect {|p| [ p.isim, p.id ] },
+                {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"} ) %>
+  <% end  %>
 <table align="center">
+  <% if @jobs.blank?  %>
+    <tr>
+    <th><%= t('jobs.index.table.title') %></th>
+    <th><%= t('jobs.index.table.category') %></th>
+    <th><%= t('jobs.index.table.location') %></th>
+    <th><%= t('jobs.index.table.body') %></th>
+    <th><%= t('jobs.index.table.created_at') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ <% else  %>
   <tr>
     <th><%= sortable 'title', t('jobs.index.table.title') %></th>
     <th><%= sortable 'category_id', t('jobs.index.table.category') %></th>
@@ -37,18 +55,23 @@ render @jobs
     <th></th>
     <th></th>
   </tr>
-
+  <% end  %>
 <% if !@jobs.blank? %>
 <% @jobs.each do |job| %>
   <tr>
     <td><%= job.title %></td>
     <% if !job.category.nil? %>
-        <td><%= job.category.name %></td>
+        <% if I18n.locale == :en %>
+          <td><%= job.category.name %></td>
+        <% elsif I18n.locale == :tr %>
+          <td><%= job.category.isim %></td>
+        <% end %>
     <% else %>
         <td> other </td>
     <% end %>
+
     <td><%= job.location %></td>
-    <td><%= truncate(job.body, :length => 30, :omission => t('general.continued') ) %></td>
+    <td><%= truncate(job.body, :length => 20, :omission => t('general.continued') ) %></td>
     <td><%= time_ago_in_words(job.created_at.to_date) %> <%= t('general.time_ago_in_words') %></td>
     <td><%= link_to t('general.link_to.show'), job, {:class => "show"} %></td>
     <% if job.owned_by? current_user  %>

@@ -1,12 +1,29 @@
 # encoding: utf-8
 
 class JobsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show, :notify_friend, :search, :search_autocomplete]
+  before_filter :authenticate, :except => [:index, :show, :notify_friend, :search, :search_autocomplete, :search_by_category]
 
   #respond_to :html, :js
 
   helper_method :sort_column, :sort_direction
 
+  def search_by_category
+    @jobs = Job.search_by_category(params.to_a[0][0])
+
+    #puts "**************************************************************************** #{@jobs.inspect}"
+
+    respond_to do |format|
+      format.js
+    end
+
+    #render :index do |page|
+    #  page.replace_html 'guney'
+    #  page.replace_html 'songs',   :partial => 'songs',   :object => songs
+    #end
+    #render :action => "index"
+    #render :js => "alert(@jobs)"
+
+  end
 
   def search
     if (params[:keyword].blank?)

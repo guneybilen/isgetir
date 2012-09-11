@@ -7,6 +7,7 @@ Isgetir::Application.routes.draw do
 
   match 'jobs/search' => 'jobs#search'
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
+  match 'jobs/search_by_category' => 'jobs#search_by_category'
 
   resources :jobs do
 
