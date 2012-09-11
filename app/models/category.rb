@@ -1,7 +1,7 @@
 
 class Category < ActiveRecord::Base
   has_many :jobs
-  #scope  :order, lambda { |order|
+  #scope  :order, lambda { |order|    ise yaramiyor
   #  {
   #    :order => case order
   #    when "name"  "name asc"
