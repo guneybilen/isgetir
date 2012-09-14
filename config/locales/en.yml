@@ -230,6 +230,7 @@ en:
               blank: must be added
             body:
               blank: must be added
+              too_long: " too long. It must have at most %{count} words"
             category_id:
               blank: must be selected
         comment:

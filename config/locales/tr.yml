@@ -197,6 +197,7 @@ tr:
               blank: olması zorunludur
             body:
               blank: olması zorunludur
+              too_long: " çok uzun. En fazla %{count} kelime olabilir"
             category_id:
               blank: seçilmesi zorunludur
         comment:
@@ -207,3 +208,5 @@ tr:
               blank: olması zorunludur
             email:
               blank: olması zorunludur
+
+
