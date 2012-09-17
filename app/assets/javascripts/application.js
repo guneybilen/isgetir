@@ -19,6 +19,58 @@ $(document).ready(function() {
 //  DIKKAT! $('#search_form')[0].reset(); breaks almost everything on this file.
 //  $('#search_form')[0].reset();
 
+//    document.getElementById("#jobs_search_input").onkeydown= function() {
+//       $.get($("#jobs_search").attr("action"), $("#jobs_search").serialize(), null, "script");
+//       return false;
+//    };
+//    $("#jobs_search input").keyup(function() {
+//
+//    });
+
+/*
+      $(".jobs th a, .pagination a").live("click", function(e) {
+
+         var v=this.href;
+
+        $.ajax
+        ({
+            url: this.href,
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(result){
+               // alert(result);
+//                var obj = $.parseJSON(result);
+//                $.each(obj, function(idx, val) {
+                    $('body').load(v, result);
+//                });
+
+//                 $("body").replaceWith(result);
+            }
+        });
+          e.preventDefault()
+
+
+      });*/
+    $(".jobs th a, .pagination a").live("click", function(e) {
+        var str = getUrlParams(this.href);
+        $.getScript("/tabler/?" + str);
+        return false;
+  });
+
+    function getUrlParams(href) {
+        var params = (href.split('?')[1] || '');
+        return params;
+    };
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     $('#select_box').live ('change', function() {
         var params ={};
         params = $(this).children(":selected").attr("value");

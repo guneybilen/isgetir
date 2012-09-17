@@ -10,6 +10,7 @@ gem 'sqlite3', :group => [:development, :test]
 gem 'pg', :group => [:production]
 gem 'thin', :group => [:production]
 gem 'eventmachine', '~> 1.0.0.beta.4.1'
+gem 'will_paginate', '3.0.pre2'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,17 +1,29 @@
 # encoding: utf-8
 
+
+# require 'will_paginate/array'  # Internetden okumustum ama require 'will_paginate/array' e gerek kalmadi
+
 class JobsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show, :notify_friend, :search, :search_autocomplete, :search_by_category]
+  before_filter :authenticate,
+                :except => [:index, :show, :notify_friend, :search, :search_autocomplete, :search_by_category, :tabler]
 
   #respond_to :html, :js
 
   helper_method :sort_column, :sort_direction
 
+  def tabler
+    #@jobs = Job.all.paginate(:per_page =>1, :page => params[:page])
+    #
+    #render 'jobs/index'
+
+    redirect_to root_path
+  end
+
   def search_by_category
     @jobs = Job.search_by_category(params.to_a[0][0])
 
     #puts "**************************************************************************** #{@jobs.inspect}"
-
+    @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
     respond_to do |format|
       format.js
     end
@@ -27,13 +39,13 @@ class JobsController < ApplicationController
 
   def search
     if (params[:keyword].blank?)
-      @jobs = ""
+      @jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
       return
     else
-      @jobs = Job.search(params[:keyword])
+      @jobs = Job.search(params[:keyword]).paginate(:per_page => 1, :page => params[:page])
 
       respond_to do |format|
-        #format.html {render :action => 'search_autocomplete'}     # burda sanirim index action'i invoke et DEGIL de
+        #format.html {redirect_to @jobs_path}     # burda sanirim index action'i invoke et DEGIL de
         # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
         format.js
         format.json { render json: @jobs}
@@ -61,12 +73,13 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
+    puts "*************************************************************************************************"
     if sort_column == "category_id" && params[:locale] == :en
-      @jobs = Job.cat_by_name
+      @jobs = Job.cat_by_name.paginate(:per_page => 1, :page => params[:page])
     elsif sort_column == "category_id" && params[:locale] == :tr
-      @jobs = Job.cat_by_isim
+      @jobs = Job.cat_by_isim.paginate(:per_page => 1, :page => params[:page])
     else
-      @jobs = Job.order(sort_column + " " + sort_direction)
+      @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 1, :page => params[:page])
     end
 
     respond_to do |format|
