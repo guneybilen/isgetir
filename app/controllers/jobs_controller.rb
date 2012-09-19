@@ -78,7 +78,8 @@ class JobsController < ApplicationController
       @jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
       return
     else
-      @jobs = Job.search(params[:keyword]).paginate(:per_page => 1, :page => params[:page])
+      @jobs = Job.search(params[:keyword]).order(sort_column + " " + sort_direction)
+        .paginate(:per_page => 1, :page => params[:page])
 
       respond_to do |format|
         #format.html {redirect_to @jobs_path}     # burda sanirim index action'i invoke et DEGIL de

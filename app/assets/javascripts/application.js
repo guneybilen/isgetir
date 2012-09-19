@@ -52,6 +52,12 @@ $(document).ready(function() {
 
 
       });*/
+
+    var clicked = false;
+    $('#search_form_submit').live('clicked', function(){
+        clicked = true;
+    });
+
     $(".jobs th a, #for_all_listing a").live("click", function(e) {
         var str = {};
         str = getUrlParams(this.href);
@@ -60,6 +66,14 @@ $(document).ready(function() {
 
             $.getScript('/for_select_box/?' + i + '&' + str);
             return false;
+        }
+
+
+        if(clicked){
+//         clicked = false;
+         var url = getUrlParams(this.href);
+         $.getScript('jobs/search/?' +  url);
+         return false;
         }
         $.getScript("/ajaxing/?" + str);
         return false;
