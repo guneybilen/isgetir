@@ -55,6 +55,12 @@ $(document).ready(function() {
     $(".jobs th a, #for_all_listing a").live("click", function(e) {
         var str = {};
         str = getUrlParams(this.href);
+        var i = $('#select_box').children(":selected").attr("value");
+        if(i>0) {
+
+            $.getScript('/for_select_box/?' + i + '&' + str);
+            return false;
+        }
         $.getScript("/ajaxing/?" + str);
         return false;
   });
@@ -74,7 +80,8 @@ $(document).ready(function() {
      $('#for_select_box_listing a').live ('click', function() {
         var params ={};
          var url = getUrlParams(this.href);
-         alert(url);
+//         alert(url);
+
         params = $('#select_box').children(":selected").attr("value");
         $.getScript('/for_select_box/?' + params + '&' + url);
         return false;

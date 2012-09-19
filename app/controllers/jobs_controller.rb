@@ -14,8 +14,14 @@ class JobsController < ApplicationController
 
   def for_select_box
 
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    @jobs = Job.where("category_id = ? ", params.to_a[0][0]).paginate(:per_page => 1, :page => params[:page])
+    if !(params[:sort].blank?)
+      @jobs = Job.where("category_id = ? ", params.to_a[0][0]).order(sort_column + " " + sort_direction)
+      .paginate(:per_page => 1, :page => params[:page])
+
+    else
+      #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+      @jobs = Job.where("category_id = ? ", params.to_a[0][0]).paginate(:per_page => 1, :page => params[:page])
+    end
 
     respond_to do |format|
       format.js

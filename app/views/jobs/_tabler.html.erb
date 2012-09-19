@@ -16,7 +16,7 @@
         <% else  %>
             <tr class='jobs'>
               <th><%= sortable 'title', t('jobs.index.table.title') %></th>
-              <th><%= sortable 'category_id', t('jobs.index.table.category') %></th>
+              <th id='remove_category_anchor'><%= sortable 'category_id', t('jobs.index.table.category') %></th>
               <th><%= sortable 'location', t('jobs.index.table.location') %></th>
               <th><%= sortable 'body', t('jobs.index.table.body') %></th>
               <th><%= sortable 'created_at', t('jobs.index.table.created_at') %></th>
