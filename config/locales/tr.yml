@@ -101,6 +101,11 @@ tr:
     other: Diğer
     none: Hiçbiri
 #    please_select: Lütfen seçiniz...
+    main_list: Ana Liste
+
+  will_paginate:
+    previous: Önceki
+    next: Sonraki
 
   notifier:
     comment_added:

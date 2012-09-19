@@ -169,3 +169,11 @@ th .desc {
 #for_all_listing{
     display: none;
 }
+
+#for_autocomplete_listing{
+    display: none;
+}
+
+#main_list_link{
+    float: right;
+}

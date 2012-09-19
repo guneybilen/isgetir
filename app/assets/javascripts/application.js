@@ -80,36 +80,41 @@ $(document).ready(function() {
      $('#for_select_box_listing a').live ('click', function() {
         var params ={};
          var url = getUrlParams(this.href);
-//         alert(url);
 
         params = $('#select_box').children(":selected").attr("value");
         $.getScript('/for_select_box/?' + params + '&' + url);
         return false;
-//      alert(params);
-//        location.reload();
+//      location.reload();
     });
 
 
 
+     $('#for_autocomplete_listing a').live ('click', function() {
+        var params ={};
+         var url = getUrlParams(this.href);
+        $.getScript('jobs/search/?' + params + '&' + url);
+        return false;
+    });
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $('#main_list_link').live('click', function(){
+       $.getScript('/ajaxing');
+       return false;
+    });
 
     $('#select_box').live ('change', function() {
         var params ={};
         params = $(this).children(":selected").attr("value");
+        if(params==0) {
+
+            $.getScript('/ajaxing');
+            return false;
+        }
         $.get('jobs/search_by_category', params);
 //      location.reload();
     });
 
     $('#search_form_text_field').val('');
-
-//    var request = $.ajax({
-//        url: "jobs/search_autocomplete",
-//        type: "GET"
-//    });
-//     request.success(function(){
-//        alert('guney');
-//    });
 
     $('#search_form_text_field').live('input', function() {
         var params = {};

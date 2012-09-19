@@ -24,5 +24,11 @@ def sortable(column, title = nil)
   link_to title, params.merge(:sort => column, :direction => direction, :page=>nil), {:class => css_class}
 end
 
+# enable i18n in will_paginate
+include WillPaginate::ViewHelpers
 
+  def will_paginate_with_i18n(collection = nil, options = {})
+    will_paginate collection, options.merge(:previous_label => t('will_paginate.previous'),
+                                            :next_label => t('will_paginate.next'))
+  end
 end
