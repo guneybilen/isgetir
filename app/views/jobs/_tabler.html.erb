@@ -1,4 +1,6 @@
 
+
+
       <table align="center">
         <% if @jobs.blank?  %>
             <tr class="jobs">
@@ -46,11 +48,14 @@
                       <td><%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %></td>
                   <% end %>
                 </tr>
+
             <% end %>
         <% end %>
 
       </table>
 
     <br />
-    <%= will_paginate @jobs %>
+    <!-- will_paginate(@jobs, :params => { :controller => "jobs", :action => "search_by_category" })-->
+      <%= will_paginate(@jobs, :id => 'for_all_listing') %>
+      <%= will_paginate(@jobs, :id => 'for_select_box_listing') %>
     <br />

@@ -5,18 +5,43 @@
 
 class JobsController < ApplicationController
   before_filter :authenticate,
-                :except => [:index, :show, :notify_friend, :search, :search_autocomplete, :search_by_category, :tabler]
+                :except => [:index, :show, :notify_friend, :search,
+                            :search_autocomplete, :search_by_category, :ajaxing, :for_select_box]
 
   #respond_to :html, :js
 
   helper_method :sort_column, :sort_direction
 
-  def tabler
-    #@jobs = Job.all.paginate(:per_page =>1, :page => params[:page])
-    #
-    #render 'jobs/index'
+  def for_select_box
 
-    redirect_to root_path
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    @jobs = Job.where("category_id = ? ", params.to_a[0][0]).paginate(:per_page => 1, :page => params[:page])
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def ajaxing
+
+=begin
+    if sort_column == "category_id" && params[:locale] == :en
+      @jobs = Job.cat_by_name.paginate(:per_page => 1, :page => params[:page])
+    elsif sort_column == "category_id" && params[:locale] == :tr
+      @jobs = Job.cat_by_isim.paginate(:per_page => 1, :page => params[:page])
+    else
+      @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 1, :page => params[:page])
+    end
+=end
+
+    sorting # defined in the application controller
+
+    respond_to do |format|
+      #format.html # index.html.erb
+      format.js  # burda ajaxing.js.erb invoke edilsin istiyorum
+      #format.json { render json: @jobs }
+    end
   end
 
   def search_by_category
@@ -24,7 +49,12 @@ class JobsController < ApplicationController
 
     #puts "**************************************************************************** #{@jobs.inspect}"
     @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
+
+
+
     respond_to do |format|
+      format.html if (params[:page].to_i > 1)
+
       format.js
     end
 
@@ -73,7 +103,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    puts "*************************************************************************************************"
+=begin
     if sort_column == "category_id" && params[:locale] == :en
       @jobs = Job.cat_by_name.paginate(:per_page => 1, :page => params[:page])
     elsif sort_column == "category_id" && params[:locale] == :tr
@@ -81,6 +111,9 @@ class JobsController < ApplicationController
     else
       @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 1, :page => params[:page])
     end
+=end
+
+    sorting # defined in the application controller
 
     respond_to do |format|
       format.html # index.html.erb
@@ -96,8 +129,10 @@ class JobsController < ApplicationController
         Category.where("id = ?", @job.category_id).map{|p| p.isim} == ["Diğer"] ||
         Category.where("id = ?", @job.category_id).map{|p| p.isim} == ["Other"])
       @category = t('general.category_is_not_specified')
-    else
+    elsif I18n.locale == :en
       @category = Category.where("id= ?", @job.category_id).first.name
+    elsif I18n.locale == :tr
+      @category = Category.where("id= ?", @job.category_id).first.isim
     end
 
     respond_to do |format|

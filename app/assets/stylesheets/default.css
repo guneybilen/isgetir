@@ -161,3 +161,11 @@ th .desc {
 .pagination {
     text-align:center;
 }
+
+#for_select_box_listing{
+    display: none;
+}
+
+#for_all_listing{
+    display: none;
+}

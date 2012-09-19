@@ -52,19 +52,35 @@ $(document).ready(function() {
 
 
       });*/
-    $(".jobs th a, .pagination a").live("click", function(e) {
-        var str = getUrlParams(this.href);
-        $.getScript("/tabler/?" + str);
+    $(".jobs th a, #for_all_listing a").live("click", function(e) {
+        var str = {};
+        str = getUrlParams(this.href);
+        $.getScript("/ajaxing/?" + str);
         return false;
   });
 
     function getUrlParams(href) {
         var params = (href.split('?')[1] || '');
         return params;
-    };
+    }
 
 
+    $('#for_all_listing').show();
 
+//    var foo = document.getElementById('select_box');
+//    if (foo.selectedIndex !=null)
+//    alert('hello');
+
+     $('#for_select_box_listing a').live ('click', function() {
+        var params ={};
+         var url = getUrlParams(this.href);
+         alert(url);
+        params = $('#select_box').children(":selected").attr("value");
+        $.getScript('/for_select_box/?' + params + '&' + url);
+        return false;
+//      alert(params);
+//        location.reload();
+    });
 
 
 
@@ -75,8 +91,7 @@ $(document).ready(function() {
         var params ={};
         params = $(this).children(":selected").attr("value");
         $.get('jobs/search_by_category', params);
-//      alert(params);
-//        location.reload();
+//      location.reload();
     });
 
     $('#search_form_text_field').val('');

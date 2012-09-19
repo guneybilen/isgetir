@@ -14,6 +14,17 @@ class ApplicationController < ActionController::Base
 =end
 
   protected
+
+  def sorting
+    if sort_column == "category_id" && params[:locale] == :en
+      @jobs = Job.cat_by_name.paginate(:per_page => 1, :page => params[:page])
+    elsif sort_column == "category_id" && params[:locale] == :tr
+      @jobs = Job.cat_by_isim.paginate(:per_page => 1, :page => params[:page])
+    else
+      @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 1, :page => params[:page])
+    end
+
+  end
   # Set the locale from parameters
   def set_locale
     I18n.locale = params[:locale] unless params[:locale].blank?

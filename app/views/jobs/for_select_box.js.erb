@@ -1,0 +1,7 @@
+$("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index.html.erb")) %>");
+
+//var j = document.getElementById('select_box');
+//        alert(j.selectedIndex)
+$('#for_all_listing').hide();
+var cat_id = "<%= params.to_a[0][0] %>";
+$('#select_box').val(cat_id);
