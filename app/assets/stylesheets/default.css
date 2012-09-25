@@ -1,12 +1,26 @@
 
 
+/*#for_ajax, #main, #footer {
+  width: 800px;
+  margin: 0, auto;
+}*/
+
+/*#for_ajax {
+  font-family:"Myriad Web Pro",Helvetica,Arial,sans-serif;
+  letter-spacing: 1px;
+  border-bottom: 5px solid #333333;
+  color:#333333;
+  padding: 45px 0;
+  height: 35px;
+}*/
+
 body{
     background-color: #add8e6;
     font-size: 1em;
+    font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 }
 p{
     font-size: 1em;
-    font-family: arial;
 }
 table{
     margin-top: -30px;
@@ -15,6 +29,7 @@ th{
     text-align: left;
     padding: 5px;
     font-weight:normal;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
 table td{
     font-family: courier;
@@ -27,7 +42,8 @@ table td{
 hr {
     background-color: #0066cc;
     height: 5px;
-    border: 0px;
+    border: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .field1{
