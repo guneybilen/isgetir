@@ -22,6 +22,14 @@ end
 
 gem 'jquery-rails'
 
+=begin
+  ***************************************************************************
+  Check rspec-rails in :development version, check rspec version in :testing,
+  and check webrat version in :testing for Rails 3.1 synch and if their
+  combination version fit for each other
+  ***************************************************************************
+=end
+
 group :development, :test do
   gem 'rspec-rails'," ~> 2.6.1"
 # version 2.6.1 koymadin mi rake db:migrate
@@ -38,7 +46,8 @@ end
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-  # Pretty printed test output
+  gem 'rspec'
+  gem 'webrat'
   gem 'minitest'
   gem 'turn', :require => false
 end

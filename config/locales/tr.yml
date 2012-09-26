@@ -102,6 +102,7 @@ tr:
     none: Hiçbiri
 #    please_select: Lütfen seçiniz...
     main_list: Ana Liste
+    sort_by: Biriyle Sırala
 
   will_paginate:
     previous: Önceki

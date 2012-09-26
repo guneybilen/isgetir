@@ -1,64 +1,65 @@
 
 
+<div class='sort_by'>
+  <%= t('general.sort_by') %>
+  <% if @jobs.blank?  %>
 
-      <table align="center">
-        <% if @jobs.blank?  %>
-            <tr class="jobs">
-              <th><%= t('jobs.index.table.title') %></th>
-              <th><%= t('jobs.index.table.category') %></th>
-              <th><%= t('jobs.index.table.location') %></th>
-              <th><%= t('jobs.index.table.body') %></th>
-              <th><%= t('jobs.index.table.created_at') %></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-        <% else  %>
-            <tr class='jobs'>
-              <th><%= sortable 'title', t('jobs.index.table.title') %></th>
-              <th id='remove_category_anchor'><%= sortable 'category_id', t('jobs.index.table.category') %></th>
-              <th><%= sortable 'location', t('jobs.index.table.location') %></th>
-              <th><%= sortable 'body', t('jobs.index.table.body') %></th>
-              <th><%= sortable 'created_at', t('jobs.index.table.created_at') %></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-        <% end  %>
-        <% if !@jobs.blank? %>
-            <% @jobs.each do |job| %>
-                <tr>
-                  <td><%= job.title %></td>
-                  <% if !job.category.nil? %>
-                      <% if I18n.locale == :en %>
-                          <td><%= job.category.name %></td>
-                      <% elsif I18n.locale == :tr %>
-                          <td><%= job.category.isim %></td>
-                      <% end %>
-                  <% else %>
-                      <td> other </td>
-                  <% end %>
+      <%= t('jobs.index.table.title') %>
+      <%= t('jobs.index.table.category') %>
+      <%= t('jobs.index.table.location') %>
+      <%= t('jobs.index.table.body') %>
+      <%= t('jobs.index.table.created_at') %>
 
-                  <td><%= job.location %></td>
-                  <td><%= truncate(job.body, :length => 20, :omission => t('general.continued') ) %></td>
-                  <td><%= time_ago_in_words(job.created_at.to_date) %> <%= t('general.time_ago_in_words') %></td>
-                  <td><%= link_to t('general.link_to.show'), job, {:class => "show"} %></td>
-                  <% if job.owned_by? current_user  %>
-                      <td><%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %></td>
-                      <td><%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %></td>
-                  <% end %>
 
-                </tr>
 
-            <% end %>
-        <% end %>
+  <% else  %>
 
-      </table>
+      <!--sortable methoda gonderilen :class gereksiz ama sonra lazim olabilir diye silmiyorum.-->
+      <span class="sort_by_links">
+        <%= sortable('title', t('jobs.index.table.title'), :class=>"sort_by_links") %>
+        <span id='remove_category_anchor'><%= sortable 'category_id', t('jobs.index.table.category', :class=>"sort_by_links") %></span>
+        <%= sortable 'location', t('jobs.index.table.location', :class=>"sort_by_links" ) %>
+        <%= sortable 'body', t('jobs.index.table.body', :class=>"sort_by_links") %>
+        <%= sortable 'created_at', t('jobs.index.table.created_at', :class=>"sort_by_links") %>
+      </span>
+  <% end  %>
+</div>
 
-    <br />
-    <!-- will_paginate(@jobs, :params => { :controller => "jobs", :action => "search_by_category" })-->
-      <%= will_paginate_with_i18n(@jobs, :id => 'for_all_listing') %>
-      <%= will_paginate_with_i18n(@jobs, :id => 'for_select_box_listing') %>
-      <%= will_paginate_with_i18n(@jobs, :id => 'for_autocomplete_listing') %>
+<div class="list">
+  <% if !@jobs.blank? %>
+      <% @jobs.each do |job| %>
 
-    <br />
+          <%= job.title %>
+          <% if !job.category.nil? %>
+              <% if I18n.locale == :en %>
+                  <%= job.category.name %>
+              <% elsif I18n.locale == :tr %>
+                  <%= job.category.isim %>
+              <% end %>
+          <% else %>
+              other
+          <% end %>
+
+          <%= job.location %>
+          <%= truncate(job.body, :length => 40, :separator => ' ', :omission => t('general.continued') ) %>
+          <%= time_ago_in_words(job.created_at.to_date) %> <%= t('general.time_ago_in_words') %>
+          <%= link_to t('general.link_to.show'), job, {:class => "show"} %>
+          <% if job.owned_by? current_user  %>
+              <%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %>
+              <%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %>
+          <% end %>
+
+
+
+      <% end %>
+  <% end %>
+
+</div>
+
+<br />
+<!-- will_paginate(@jobs, :params => { :controller => "jobs", :action => "search_by_category" })-->
+<%= will_paginate_with_i18n(@jobs, :id => 'for_all_listing') %>
+<%= will_paginate_with_i18n(@jobs, :id => 'for_select_box_listing') %>
+<%= will_paginate_with_i18n(@jobs, :id => 'for_autocomplete_listing') %>
+
+<br />

@@ -53,13 +53,13 @@ class JobsController < ApplicationController
   def search_by_category
     @jobs = Job.search_by_category(params.to_a[0][0])
 
-    #puts "**************************************************************************** #{@jobs.inspect}"
+    puts "**********             #{params.to_a}       *********************************** #{@jobs.inspect}"
     @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
 
 
 
     respond_to do |format|
-      format.html if (params[:page].to_i > 1)
+    #  format.html if (params[:page].to_i > 1)
 
       format.js
     end

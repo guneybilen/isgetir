@@ -58,7 +58,7 @@ $(document).ready(function() {
         clicked = true;
     });
 
-    $(".jobs th a, #for_all_listing a").live("click", function(e) {
+    $(".sort_by a, #for_all_listing a").live("click", function(e) {
         var str = {};
         str = getUrlParams(this.href);
         var i = $('#select_box').children(":selected").attr("value");
@@ -188,9 +188,10 @@ $(document).ready(function() {
 //var n = $("h1.listing_jobs").outerWidth;
     var p = $("div.menu a");
     p.slideUp('slow', function() {
-        p.css("color", "#0066cc");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
+        p.css("color", "#D95E16");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
     })
         .slideDown('slow');
+
 
 });
 

@@ -1,6 +1,6 @@
 <div id = "for_ajax">
   <br />
-  <div class="main_title">isgetir.com</div>
+  <div class="main_title"><%= link_to 'isgetir.com', root_path %></div>
 
   <br /><br />
   <div class = 'index'>
@@ -17,33 +17,30 @@
   <%= render "users/header" %>
 
   <div id = "listing_jobs_line">
-    <h1 class="listing_jobs" style="text-align: center;"><%= t('general.h1.listing_jobs') %></h1>
-
-
-    <hr>
-    <%= link_to t('general.main_list'), root_path, :id => 'main_list_link' %>
-    <br/>
-    <%= render 'jobs/search' %>
-    <!--<div id="jobs">
-    render @jobs
-    </div>-->
-    <% if I18n.locale == :en  %>
-        <%= select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
-                   {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) %>
-    <% elsif I18n.locale == :tr %>
-        <%= select("job", "category_id", Category.order(:isim).collect {|p| [ p.isim, p.id ] },
-                   {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"} ) %>
-    <% end  %>
-
-    <div id="main_table"><%= render 'jobs/tabler' %></div>
-    <hr>
-
-    <!--< if !params[:keyword].blank? %>-->
-    <!--< puts "888888888888888888888888888888888888888888888888888888888888888" %>-->
-    <!--< search_autocomplete %>-->
-    <!--< end %>-->
-
-    <!-- debug assigns -->
+    <h1 class="listing_jobs"><%= t('general.h1.listing_jobs') %></h1>
 
   </div>
+
+
+  <%= render 'jobs/search' %>
+  <%= link_to t('general.main_list'), root_path, :id => 'main_list_link' %>
+
+  <!-- if I18n.locale == :en  %> burdan jobs/search'e kaldirildi
+   < select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
+              {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) %>
+< elsif I18n.locale == :tr %>
+   < select("job", "category_id", Category.order(:isim).collect {|p| [ p.isim, p.id ] },
+              {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"} ) %>
+< end  -->
+
+  <div id="main_table"><%= render 'jobs/tabler' %></div>
+
+  <!--< if !params[:keyword].blank? %>-->
+  <!--< puts "888888888888888888888888888888888888888888888888888888888888888" %>-->
+  <!--< search_autocomplete %>-->
+  <!--< end %>-->
+
+  <!-- debug assigns -->
+
+
 </div>

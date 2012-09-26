@@ -1,49 +1,47 @@
 
 
-/*#for_ajax, #main, #footer {
-  width: 800px;
-  margin: 0, auto;
-}*/
+/*
+css rule yaratirken element icin specific - tam to the point - olmazsan
+ise yaramiyor. Ornek:
 
-/*#for_ajax {
-  font-family:"Myriad Web Pro",Helvetica,Arial,sans-serif;
-  letter-spacing: 1px;
-  border-bottom: 5px solid #333333;
-  color:#333333;
-  padding: 45px 0;
-  height: 35px;
-}*/
+div
+  div
+    a
+
+div div a{}
+
+*/
+
+* {
+  margin: 0 auto;
+}
 
 body{
-    background-color: #add8e6;
+    background-color: #fff;
     font-size: 1em;
     font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    width: 800px;
 }
 p{
     font-size: 1em;
 }
-table{
-    margin-top: -30px;
-}
-th{
-    text-align: left;
-    padding: 5px;
-    font-weight:normal;
-    font-family: Georgia, "Times New Roman", Times, serif;
-}
-table td{
-    font-family: courier;
-    font-size: .90em;
-    padding-top: 20px;
-    padding-left: 5px;
-    text-align: left;
+.sort_by{
+    float: left;
+    clear: both;
+    margin-top: 40px;
 }
 
-hr {
-    background-color: #0066cc;
-    height: 5px;
-    border: 0;
-    font-family: Georgia, "Times New Roman", Times, serif;
+.sort_by .sort_by_links a{
+    color:#D95E16;
+}
+
+.list{
+    float:left;
+    margin-top: 40px;
+}
+
+.list a{
+    color:#D95E16;
 }
 
 .field1{
@@ -79,19 +77,15 @@ hr {
 	text-align: center;
 }
 
-a:hover{
-    background-color:#add8e6;
-}
-a:link {
-    color:blue;
-}
-
-a:visited{
-    color:blue;
+a {
+  color:#D95E16;
+  padding:0 2px;
+  text-decoration:none;
 }
 
-a:active{
-    color:#add8e6;
+a:hover {
+  background-color: #ffffff;
+  text-decoration: underline;
 }
 
 
@@ -106,37 +100,23 @@ div.errorExplanation {
 #turkish_flag {
     width: 30px;
     height: 30px;
-    position: absolute;
-    right: 10px;
+    float: right;
 }
 
 #english_flag {
     width: 30px;
     height: 30px;
-    position: absolute;
-    right: 10px;
+    float: right;
 }
 
-div.main_title{
+div.main_title a{
     display: block;
     font-size: 32px;
     font-weight: bold;
     clear: right;
+    color: #000000;
 }
 
-#search_form_submit {
-    /*position: absolute;*/
-   margin-top: -10px;
-   margin-left: -10px;
-   float: right;
-
-}
-#search_form_text_field {
-    /*position: absolute;*/
-   margin-top: -10px;
-   margin-left: -50px;
-   float: right;
-}
 
 #link_to_below_search{
     /*position: absolute;*/
@@ -152,21 +132,29 @@ div.index{
 
 #listing_jobs_line{
     clear: right;
+    margin-bottom: 25px;
+    border-bottom: 5px solid #333333;
+}
+
+.listing_jobs{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
 
-th .current {
+.current {
   padding-right: 20px;
   background-repeat: no-repeat;
   background-position: right center;
 }
 
-th .asc {
+.asc {
   background-image: url(up_arrow.png);
 }
 
-th .desc {
+.desc {
   background-image: url(down_arrow.png);
 }
 
@@ -175,8 +163,15 @@ th .desc {
 }
 
 .pagination {
-    text-align:center;
+    margin-top: 50px;
+    clear: both;
+    float: left;
 }
+
+.pagination a{
+    color:#D95E16;
+}
+
 
 #for_select_box_listing{
     display: none;
@@ -190,6 +185,20 @@ th .desc {
     display: none;
 }
 
+#select_box{
+    float: left;
+}
+
 #main_list_link{
+    float: right;
+    color:#D95E16;
+    margin-right: 10px;
+}
+
+#search_form_submit{
+    float: right;
+}
+
+#search_form_text_field{
     float: right;
 }
