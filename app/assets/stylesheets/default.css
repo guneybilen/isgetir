@@ -31,8 +31,35 @@ p{
     margin-top: 40px;
 }
 
-.sort_by .sort_by_links a{
+/*.sort_by .sort_by_links a{
     color:#D95E16;
+}
+
+.sort_by .sort_by_links a:hover{
+    background-color:#FF813C;
+    color:#FFFFFF;
+    text-decoration: underline;
+}*/
+
+.menu a{
+    color:#D95E16;
+}
+#header div.menu a:hover{
+    background-color: #FF813C;
+    color:#FFFFFF;
+    text-decoration: underline;
+}
+
+#main_list_link{
+    color:#D95E16;
+    float: right;
+    margin-right: 10px;
+}
+
+#main_list_link:hover{
+    background-color: #FF813C;
+    color:#FFFFFF;
+    text-decoration: underline;
 }
 
 .list{
@@ -79,12 +106,13 @@ p{
 
 a {
   color:#D95E16;
-  padding:0 2px;
-  text-decoration:none;
+  /*padding:0 2px;*/
+  text-decoration: none;
 }
 
 a:hover {
-  background-color: #ffffff;
+  background-color:#FF813C;
+  color:#FFFFFF;
   text-decoration: underline;
 }
 
@@ -110,13 +138,16 @@ div.errorExplanation {
 }
 
 div.main_title a{
-    display: block;
+    /*display: block;*/
     font-size: 32px;
     font-weight: bold;
     clear: right;
     color: #000000;
 }
 
+div.main_title a:hover{
+    background-color: white;
+}
 
 #link_to_below_search{
     /*position: absolute;*/
@@ -128,6 +159,7 @@ div.main_title a{
 
 div.index{
     float: left;
+    margin-top: -20px;
 }
 
 #listing_jobs_line{
@@ -172,6 +204,15 @@ div.index{
     color:#D95E16;
 }
 
+.pagination .current{
+    margin-right: -15px;
+}
+
+.pagination a:hover {
+  background-color:#FF813C;
+  color:#FFFFFF;
+  text-decoration: underline;
+}
 
 #for_select_box_listing{
     display: none;
@@ -189,16 +230,26 @@ div.index{
     float: left;
 }
 
-#main_list_link{
-    float: right;
-    color:#D95E16;
-    margin-right: 10px;
-}
-
 #search_form_submit{
     float: right;
 }
 
 #search_form_text_field{
     float: right;
+}
+
+.job {
+    margin-top: 50px;
+}
+
+.vr
+{
+    float: left;
+    margin-top: 0;
+    margin-left: -100px;
+    margin-right: 50px;
+}
+
+.sign_in {
+    margin-top: 50px;
 }

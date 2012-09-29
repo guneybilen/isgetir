@@ -138,7 +138,6 @@ $(document).ready(function() {
 
 
     $('#new_comment_link').click ( function() {
-        alert('guney');
         $('#new_comment_link').hide();
     });
 
@@ -187,11 +186,25 @@ $(document).ready(function() {
 //var m = $("hr").outerWidth;
 //var n = $("h1.listing_jobs").outerWidth;
     var p = $("div.menu a");
-    p.slideUp('slow', function() {
-        p.css("color", "#D95E16");  // p.css({}) yerine this.css({}) yaparsan calismiyor.
-    })
-        .slideDown('slow');
+    p.slideUp('slow').slideDown('slow');
 
+
+    $("#show_link_to_email_friend").live('click', function() {
+        $('#notify_friend_form').slideDown()
+    });
+
+/*    var anc=$(a);
+    anc.css({'color': '#D95E16', 'backgroundColor' : 'white'});
+
+     $('div.menu a').hover(function ()
+     {
+        $(this).css(
+        {
+            'color' : '#FFFFFF',
+            'background-color' : '#FF813C',
+            'textDecoration' : 'underline'
+        });
+     });*/
 
 });
 

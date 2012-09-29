@@ -1,17 +1,27 @@
+<div class='vr'><%= image_tag 'column.png', :size => '100x500' %></div>
+
 <%= render @job %>
 
 <%= link_to t('jobs.show.link_to.email_a_friend'), '#',
-:onclick => "$('#notify_friend_form').slideDown()" %>
-<%= render 'notify_friend' %>
+        :id => "show_link_to_email_friend" %>
+<br />
 
-<h3><%= t('general.comments') %></h3>
+<%= render 'notify_friend' %>
+<br />
+
+<h3>
+  <%= t('general.comments') %>
+</h3>
+
 <div id="comments">
-<%= render @job.comments %>
+    <%= render @job.comments %>
 </div>
+
+<br />
+
 <%= link_to t('jobs.show.link_to.new_comment'), new_job_comment_path(@job, :format => :js),
 :remote => true, :id => 'new_comment_link' %>
 
- <!--render :file => 'comments/new' %>-->
 
 <%= link_to t('jobs.show.link_to.jobs_list'), jobs_path %>
 

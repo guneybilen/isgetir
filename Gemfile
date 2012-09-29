@@ -10,7 +10,7 @@ gem 'sqlite3', :group => [:development, :test]
 gem 'pg', :group => [:production]
 gem 'thin', :group => [:production]
 gem 'eventmachine', '~> 1.0.0.beta.4.1'
-gem 'will_paginate', '3.0.pre2'
+gem 'will_paginate', "~> 3.0.2"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,11 +23,29 @@ end
 gem 'jquery-rails'
 
 =begin
+
   ***************************************************************************
-  Check rspec-rails in :development version, check rspec version in :testing,
-  and check webrat version in :testing for Rails 3.1 synch and if their
-  combination version fit for each other
+   ERROR OCCURRED FOR RSPEC:
+   You have already activated rspec-core 2.1.1, but your Gemfile requires rspec-core 2.6.0.
+   Using bundle exec may solve this. (Gem::LoadError)
+   Benim anladigim kadariyla: This happens when there is a match conflict between gems in your system
+   and the one in your Rails app.
+
+   "The easiest way to avoid this kind of boring stuff is to isolate your gems by creating gemsets.
+   I use RVM for this purpose."
+   http://stackoverflow.com/questions/7918804/how-do-i-keep-all-gems-in-gemfile-compatible-after-an-update
   ***************************************************************************
+   WARNING OCCURRED FOR RSPEC
+   Rspec with rails 3.1 gives DEPRECATION WARNING ActiveRecord::Associations::AssociationCollection is deprecated...
+   "I had the same problem and fixed it by upgrading to the latest version of will_paginate.
+   So, change this: gem 'will_paginate', '3.0.pre2'
+
+   to this: gem "will_paginate", "~> 3.0.2"
+
+   Save your Gemfile then do bundle install."
+   http://stackoverflow.com/questions/7553929/rspec-with-rails-3-1-gives-deprecation-warning-activerecordassociationsassoc
+   ****************************************************************************
+
 =end
 
 group :development, :test do
@@ -46,7 +64,6 @@ end
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-  gem 'rspec'
   gem 'webrat'
   gem 'minitest'
   gem 'turn', :require => false
