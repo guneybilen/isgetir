@@ -103,6 +103,9 @@ en:
 #    please_select: Please select...
     main_list: Main List
     sort_by: Sort By
+    said: said
+    comment: Comment
+    change_password: Change Password
 
   will_paginate:
     previous: Previous

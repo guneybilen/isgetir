@@ -50,9 +50,9 @@ tr:
     menu:
       new_job: Yeni İş Ekle
       edit_password: Şifreni Değiştir
-      logout: Sistemden Çık
+      logout: Çıkış
       create_user: Kayıt OL
-      login: Giriş Yap
+      login: Giriş
 
     link_to:
       cancel: İptal Et
@@ -92,17 +92,20 @@ tr:
     update_password: Şifreyi Güncelle
     your_email_address: Email Adresiniz
     reset_password: Şifre Sıfırla
-    login: Giriş Yap
+    login: Giriş
     remember_me: Beni Hatırla
     search: Ara
     pluralize:
-        error: Problem Var
-    error_explanation: Şu eksikleri giderin
+        error: Problem var
+    error_explanation: şu eksikleri giderin
     other: Diğer
     none: Hiçbiri
 #    please_select: Lütfen seçiniz...
     main_list: Ana Liste
     sort_by: Biriyle Sırala
+    said: şöyle söyledi
+    comment: Yorum
+    change_password: Şifre Değiştir
 
   will_paginate:
     previous: Önceki
@@ -186,7 +189,7 @@ tr:
         category_id: Kategori
       comment:
         name: İsim
-        body: Konu
+        body: Yorum
       user:
         password: Şifre
         one: ''   # one ve other password ile ayni izzada olmaz ise "...can not be used with :count => 1" hatasi veriyor

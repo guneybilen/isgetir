@@ -41,6 +41,12 @@ p{
     text-decoration: underline;
 }*/
 
+.menu {
+    float: right;
+    margin-top:-20px;
+    /* .menu font color is set in application.js */
+}
+
 .menu a{
     color:#D95E16;
 }
@@ -64,7 +70,7 @@ p{
 
 .list{
     float:left;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .list a{
@@ -83,15 +89,11 @@ p{
 #notice, #alert{
     font-size: 20px;
     color: red;
+    margin-bottom: -10px;
 }
 
 .select_box {
     width: 240px;
-}
-
-.menu {
-    float: right;
-    /* .menu font color is set in application.js */
 }
 
 #log_in {
@@ -129,12 +131,14 @@ div.errorExplanation {
     width: 30px;
     height: 30px;
     float: right;
+    margin-top: -20px;
 }
 
 #english_flag {
     width: 30px;
     height: 30px;
     float: right;
+    margin-top: -20px;
 }
 
 div.main_title a{
@@ -246,10 +250,28 @@ div.index{
 {
     float: left;
     margin-top: 0;
-    margin-left: -100px;
+    margin-left: -150px;
     margin-right: 50px;
 }
 
 .sign_in {
+    margin-top: 50px;
+}
+
+.padlock{
+    margin-top: 50px;
+    margin-left: -150px;
+    float: left;
+    margin-right: 50px;
+
+}
+
+.konu{
+    word-wrap: break-word;
+    margin-left: 0;
+    width: 500px;
+}
+
+.change_password{
     margin-top: 50px;
 }

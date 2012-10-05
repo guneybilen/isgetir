@@ -28,7 +28,7 @@
 <div class="list">
   <% if !@jobs.blank? %>
       <% @jobs.each do |job| %>
-
+          <br />
           <%= job.title %>
           <% if !job.category.nil? %>
               <% if I18n.locale == :en %>
@@ -41,8 +41,9 @@
           <% end %>
 
           <%= job.location %>
-          <%= truncate(job.body, :length => 40, :separator => ' ', :omission => t('general.continued') ) %>
-          <%= time_ago_in_words(job.created_at.to_date) %> <%= t('general.time_ago_in_words') %>
+          <%= truncate(job.body, :length => 60, :separator => ' ', :omission => t('general.continued') ) %>
+          <%= time_ago_in_words(job.created_at.localtime.to_date) %> <%= t('general.time_ago_in_words') %>
+          <br />
           <%= link_to t('general.link_to.show'), job, {:class => "show"} %>
           <% if job.owned_by? current_user  %>
               <%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %>

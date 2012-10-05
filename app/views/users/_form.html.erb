@@ -13,6 +13,9 @@
           </ul>
         </div>
     <% end %>
+    <br />
+    <h3><%= t('general.change_password') %></h3>
+    <br />
     <div class="field">
       <%= f.label t('general.email') %>:<br />
       <%= f.text_field :email %>
@@ -25,8 +28,10 @@
         <%= t('general.password_confirmation') %>:<br />
       <%= f.password_field :password_confirmation %>
     </div>
+    <br />
     <div class="actions">
       <%= f.submit t('general.submit') %>
+      &nbsp;<%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), jobs_path %>
     </div>
 <% end %>

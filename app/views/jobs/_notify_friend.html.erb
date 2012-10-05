@@ -7,8 +7,9 @@
       <%= label_tag :email, t('general.friends_email_address') %>:<br />
       <%= text_field_tag :email %>
     </div>
+    <br />
     <div class="actions">
-      <%= submit_tag t('general.send') %> or
+      <%= submit_tag t('general.send') %> &nbsp; <%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), '#', :onclick => "$('#notify_friend_form').slideUp()" %>
     </div>
 <% end %>

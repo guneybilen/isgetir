@@ -4,7 +4,7 @@
 
 <%= link_to t('jobs.show.link_to.email_a_friend'), '#',
         :id => "show_link_to_email_friend" %>
-<br />
+<br /> <br />
 
 <%= render 'notify_friend' %>
 <br />
@@ -22,6 +22,7 @@
 <%= link_to t('jobs.show.link_to.new_comment'), new_job_comment_path(@job, :format => :js),
 :remote => true, :id => 'new_comment_link' %>
 
+<br /><br />
 
 <%= link_to t('jobs.show.link_to.jobs_list'), jobs_path %>
 

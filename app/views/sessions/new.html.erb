@@ -1,5 +1,7 @@
+<div class="padlock"><%= image_tag 'padlock.jpg', :size => '100x100' %></div>
 <div class="sign_in">
-<h3><%= t('general.menu.login') %></h3>
+<h3><%= t('general.login') %></h3>
+<br />
 <%= form_tag session_path do %>
     <div class="field">
       <%= label_tag t('general.email') %>:<br />
@@ -10,14 +12,17 @@
       <%= password_field_tag :password %>
     </div>
     <div class="actions">
-      <%= submit_tag t('general.login') %>
+      <br />
+      <%= submit_tag t('general.login') %> &nbsp; <%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), root_path %>
     </div>
+    <br />
     <div class="field">
         <%= check_box_tag :remember_me, 1, params[:remember_me] %>
         <%= label_tag t('general.remember_me') %>
     </div>
 <% end %>
+    <br />
 <div class="forgotten_password">
       <%= link_to t('general.link_to.forgot_password'), '#',
                   :id => "forgot_my_password" %>
