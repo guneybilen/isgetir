@@ -186,12 +186,22 @@ $(document).ready(function() {
 //var m = $("hr").outerWidth;
 //var n = $("h1.listing_jobs").outerWidth;
     var p = $("div.menu a");
-    p.slideUp('slow').slideDown('slow');
+    p.slideUp('slow').slideDown('slow')
 
+    var title = $(".main_title a")
+       title.hide('explode', 1500).show("explode", { pieces: 16 }, 1000);;
 
     $("#show_link_to_email_friend").live('click', function() {
         $('#notify_friend_form').slideDown()
     });
+
+    var login = $(".sign_in .actions .login_submit")
+
+    login.click( function() {
+        this.text("Merci");
+        this.attr("disabled", true);
+    });
+
 
 /*    var anc=$(a);
     anc.css({'color': '#D95E16', 'backgroundColor' : 'white'});

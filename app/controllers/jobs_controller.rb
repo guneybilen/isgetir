@@ -1,7 +1,16 @@
 # encoding: utf-8
 
 
-# require 'will_paginate/array'  # Internetden okumustum ama require 'will_paginate/array' e gerek kalmadi
+require 'will_paginate/array'
+
+# https://github.com/mislav/will_paginate/issues/163
+# The Array#paginate method still exists, too, but is not loaded by default.
+# If you need to paginate static arrays, first require it in your code:
+# require 'will_paginate/array'
+
+# for the following error that happened to me:
+# NoMethodError (undefined method `paginate' for []:Array):
+# app/controllers/jobs_controller.rb:57:in `search_by_category'
 
 class JobsController < ApplicationController
   before_filter :authenticate,
@@ -53,7 +62,7 @@ class JobsController < ApplicationController
   def search_by_category
     @jobs = Job.search_by_category(params.to_a[0][0])
 
-    puts "**********             #{params.to_a}       *********************************** #{@jobs.inspect}"
+    #puts "**********             #{params.to_a}       *********************************** #{@jobs.inspect}"
     @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
 
 
