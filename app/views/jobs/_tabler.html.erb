@@ -1,7 +1,7 @@
 
 
 <div class='sort_by'>
-  <%= t('general.sort_by') %>
+  <%= t('general.sort_by') %>:
   <% if @jobs.blank?  %>
 
       <%= t('jobs.index.table.title') %>
@@ -15,12 +15,19 @@
   <% else  %>
 
       <!--sortable methoda gonderilen :class gereksiz ama sonra lazim olabilir diye silmiyorum.-->
+      <!--sortable application_helper'da defined-->
+      <!-- asagida sortable function call'dan sonra gelen parantez son derece onemli; o parantez
+           olmazsa kod I18n'nin t methodunu invoke etmiyor column basliklari sirf ingilizce output oluyor. -->
       <span class="sort_by_links">
+        <span id='remove_category_anchor'><%= sortable('category_id', t('jobs.index.table.category'), :class=>"sort_by_links") %></span>
+        &nbsp;
         <%= sortable('title', t('jobs.index.table.title'), :class=>"sort_by_links") %>
-        <span id='remove_category_anchor'><%= sortable 'category_id', t('jobs.index.table.category', :class=>"sort_by_links") %></span>
-        <%= sortable 'location', t('jobs.index.table.location', :class=>"sort_by_links" ) %>
-        <%= sortable 'body', t('jobs.index.table.body', :class=>"sort_by_links") %>
-        <%= sortable 'created_at', t('jobs.index.table.created_at', :class=>"sort_by_links") %>
+        &nbsp;
+        <%= sortable('location', t('jobs.index.table.location'), :class=>"sort_by_links" ) %>
+        &nbsp;
+        <%= sortable('body', t('jobs.index.table.body'), :class=>"sort_by_links") %>
+        &nbsp;
+        <%= sortable('created_at', t('jobs.index.table.created_at'), :class=>"sort_by_links") %>
       </span>
   <% end  %>
 </div>
@@ -29,7 +36,7 @@
   <% if !@jobs.blank? %>
       <% @jobs.each do |job| %>
           <br />
-          <%= job.title %>
+
           <% if !job.category.nil? %>
               <% if I18n.locale == :en %>
                   <%= job.category.name %>
@@ -39,6 +46,7 @@
           <% else %>
               other
           <% end %>
+          <%= job.title %>
 
           <%= job.location %>
           <%= truncate(job.body, :length => 60, :separator => ' ', :omission => t('general.continued') ) %>
