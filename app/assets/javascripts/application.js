@@ -112,8 +112,22 @@ $(document).ready(function() {
 
 
     $('#main_list_link').live('click', function(){
-       $.getScript('/ajaxing');
-       return false;
+       $.ajax(
+       {
+        url: '/ajaxing',
+        dataType: "script",
+        beforeSend: function(){
+          $(".spinner").showLoading();
+          $("#main_list_link").remove();
+        },
+        success: function(){
+          $(".spinner").hideLoading();
+        }
+        });
+
+//       $.getScript('/ajaxing', function(){
+//        });
+        return false;
     });
 
     $('#select_box').live ('change', function() {
@@ -195,12 +209,21 @@ $(document).ready(function() {
         $('#notify_friend_form').slideDown()
     });
 
-    var login = $(".sign_in .actions .login_submit")
+    var login = $("input:submit");
 
-    login.click( function() {
-        this.text("Merci");
-        this.attr("disabled", true);
+
+    login.live ('click',  function() {
+        login.val("Merci");
+        login.attr("disabled", true);
     });
+
+
+/*    var pr = $("input.password_reset");
+
+    pr.live ('click',  function() {
+        pr.val("Merci");
+        pr.attr("disabled", true);
+    });*/
 
 
 /*    var anc=$(a);

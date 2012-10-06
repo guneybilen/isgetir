@@ -23,8 +23,9 @@
 
 
   <%= render 'jobs/search' %>
-  <%= link_to t('general.main_list'), root_path, :id => 'main_list_link' %>
-
+  <div class="spinner">
+    <%= link_to t('general.main_list'), root_path, :id => 'main_list_link' %>
+  </div>
   <!-- if I18n.locale == :en  %> burdan jobs/search'e kaldirildi
    < select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
               {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) %>

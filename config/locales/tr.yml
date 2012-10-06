@@ -97,7 +97,8 @@ tr:
     search: Ara
     pluralize:
         error: Problem var
-    error_explanation: şu eksikleri giderin
+    error_explanations: şu eksikleri giderin
+    error_explanation: şu eksiği giderin
     other: Diğer
     none: Hiçbiri
 #    please_select: Lütfen seçiniz...

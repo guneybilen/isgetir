@@ -11,7 +11,10 @@
 
   <script type="text/javascript" language="JavaScript">
       function setFocus(){
-          document.getElementById('search_form_text_field').focus();
+          if (document.getElementById('search_form_text_field'))
+          {
+            document.getElementById('search_form_text_field').focus();
+          }
       }
   </script>
 

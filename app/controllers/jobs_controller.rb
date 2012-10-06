@@ -49,7 +49,6 @@ class JobsController < ApplicationController
       @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 1, :page => params[:page])
     end
 =end
-
     sorting # defined in the application controller
 
     respond_to do |format|

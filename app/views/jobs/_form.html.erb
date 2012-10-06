@@ -1,12 +1,19 @@
+<div class = "new_job_form">
 <%= form_for @job do |f| %>
   <% if @job.errors.any? %>
     <div class="errorExplanation">
       <h2>
         <%= pluralize(@job.errors.count, t("general.pluralize.error"),
                                         t("general.pluralize.error")) %>!
-        <br /><br />
-        <%= t('general.error_explanation')%>:
+        <br />
+        <% if @job.errors.count > 1 %>
+            <%= t('general.error_explanations')%>:
+        <% else %>
+            <%= t('general.error_explanation')%>:
+        <% end %>
       </h2>
+      <% css_class_title = @job.errors.include?(:title) ? "highlight_error_class_title" : "no_problem_class" %>
+      <% css_class_body = @job.errors.include?(:body) ? "highlight_error_class_body" : "no_problem_class" %>
         <ul>
            <% @job.errors.full_messages.each do |msg| %>
              <li>
@@ -20,7 +27,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label t('jobs.index.table.title') %><br />
+    <%= f.label t('jobs.index.table.title'), :class => css_class_title %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -53,7 +60,7 @@
 
    <div class="field1">
      <br /><br /><br />
-     <%= f.label t('jobs.index.table.body') %><br />
+     <%= f.label t('jobs.index.table.body'), :class => css_class_body %><br />
      <%= f.text_area :body %>
    </div>
 <!--
@@ -67,9 +74,9 @@
   </div>
 -->
   <div class="field1 actions">
+     <br />
     <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp;
     <%= link_to t('general.link_to.cancel'), @job %>
   </div>
 <% end %>
-
-
+</div>

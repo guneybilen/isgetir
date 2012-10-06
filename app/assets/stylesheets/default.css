@@ -89,8 +89,8 @@ p{
 #notice, #alert{
     font-size: 20px;
     color: red;
-    margin-bottom: -10px;
-    margin-top: 10px;
+    margin-bottom: -20px;
+    margin-top: 20px;
 }
 
 .select_box {
@@ -236,11 +236,14 @@ div.index{
 }
 
 #search_form_submit{
+    margin-top: -2px;
     float: right;
 }
 
 #search_form_text_field{
     float: right;
+    width: 175px;
+    margin-right: 4px;
 }
 
 .job {
@@ -275,4 +278,30 @@ div.index{
 
 .change_password{
     margin-top: 50px;
+}
+
+.new_job_form{
+    margin-top: 20px;
+}
+
+h1.new_job_h1{
+    margin-top: 50px;
+}
+
+.errorExplanation{
+    margin-bottom: 50px;
+}
+
+.highlight_error_class_title, .highlight_error_class_body{
+    color: red;
+}
+
+.no_problem_class{
+    color: black;
+}
+
+.spinner{
+    float: right;
+    margin-right: 10px;
+    margin-top: 0px;
 }

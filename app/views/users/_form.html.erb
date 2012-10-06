@@ -4,7 +4,11 @@
           <h2>
             <%= pluralize(@user.errors.count,
                             t("general.pluralize.error"), t("general.pluralize.error")) %>
-            <%= t('general.error_explanation')%>:
+            <% if @user.errors.count > 1 %>
+                <%= t('general.error_explanations')%>:
+            <% else %>
+                <%= t('general.error_explanation')%>:
+            <% end %>
           </h2>
           <ul>
             <% @user.errors.full_messages.each do |msg| %>
@@ -13,7 +17,6 @@
           </ul>
         </div>
     <% end %>
-    <br />
     <h3><%= t('general.change_password') %></h3>
     <br />
     <div class="field">

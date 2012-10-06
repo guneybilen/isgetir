@@ -5,8 +5,11 @@
     <br />
     <%= text_field_tag :email, params[:email] %>
   </div>
-  <div class="actions"><%= submit_tag t('general.reset_password') %>
+  <br />
+  <div class="actions"><%= submit_tag t('general.reset_password'), :class => "password_reset" %>
+  &nbsp;
   <%= t('general.or') %>
+  &nbsp;
   <%= link_to t('general.link_to.cancel'), '#' ,
                   :id => "cancel_password_reset"%>
   </div>
