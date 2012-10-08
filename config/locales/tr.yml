@@ -24,10 +24,10 @@ tr:
   password_resets_controller:
     create:
       failure: O email ile bir kullanıcı bulunamadı
-      success: Şifrenizi sıfırlamak icin email gönderildi
+      success: Şifrenizi değiştirmek icin email gönderildi
     update:
-      password_expired: Şifrenizi sıfırlamak icin gönderilen email zaman aşımına uğradi
-      success: Şifrenizi sıfırlandı
+      password_expired: Şifrenizi değiştirmek icin gönderilen email zaman aşımına uğradi
+      success: Şifrenizi güncellendi
 
   sessions_controller:
     create:
@@ -45,6 +45,8 @@ tr:
   general:
     h1:
       listing_jobs: Aranan İşler
+
+    h2:
       new_job: Yeni İş
 
     menu:
@@ -125,7 +127,7 @@ tr:
       posted_user_email_address: Kullanıcı email adresi
       to_read_the_posted_job: İşi okumak için tıklayın
     password_reset:
-      to_reset_your_password: Şifrenizi sıfırlamak için asağıdaki linke tıklayın
+      to_reset_your_password: Şifrenizi değiştirmek için asağıdaki linke tıklayın
       to_ignore_reset: Şifrenizi değistirmek istemiyorsanız bu emaili dikkate almayın
     user_added:
       new_user_added: Şu email adres ile veritabanına yeni bir kullanıcı eklendi.

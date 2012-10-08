@@ -10,6 +10,9 @@ scrollTop: $("#new_comment").offset().top
 },{
      duration: 1000
 }, 2000);
+// .offset() = Get the current coordinates of the first element
+// in the set of matched elements, relative to the document.
+// api.jquery.com 'dan
 
 
 
@@ -20,6 +23,10 @@ $('#new_comment_cancel').live('click', function() {
     $("html").scrollTop(0);
 });
 
-// .offset() = Get the current coordinates of the first element
-// in the set of matched elements, relative to the document.
-// api.jquery.com 'dan
+var batin = $("input:submit");
+batin.button();
+
+batin.live ('click',  function() {
+    batin.val("Merci");
+    batin.attr("disabled", true);
+});

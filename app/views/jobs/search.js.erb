@@ -1,4 +1,11 @@
 $("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index.html.erb")) %>");
 $('#for_autocomplete_listing').show();
+var batin = $("input:submit");
+batin.button();
+
+batin.live ('click',  function() {
+    batin.val("Merci");
+    batin.attr("disabled", true);
+});
 //params = $('#select_box').children(":selected").attr("value");
 

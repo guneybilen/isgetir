@@ -45,6 +45,8 @@ en:
   general:
     h1:
       listing_jobs: Listing Searched Jobs
+
+    h2:
       new_job: New Job
 
     menu:

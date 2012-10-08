@@ -9,9 +9,13 @@
 <%= render 'notify_friend' %>
 <br />
 
-<h3>
+
+
+<h2>
   <%= t('general.comments') %>
-</h3>
+</h2>
+
+
 
 <div id="comments">
     <%= render @job.comments %>
@@ -19,6 +23,7 @@
 
 <br />
 
+<!-- asagida :format => :js i cikarsanda program aynen calisiyor -->
 <%= link_to t('jobs.show.link_to.new_comment'), new_job_comment_path(@job, :format => :js),
 :remote => true, :id => 'new_comment_link' %>
 

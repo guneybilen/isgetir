@@ -1,8 +1,13 @@
-
+<div class="change_password_after_email">
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
   <% if @user.errors.any? %>
     <div class="errorExplanation">
       <h2><%= t('general.invalid_form') %></h2>
+         <% if @user.errors.count > 1 %>
+                <%= t('general.error_explanations')%>:
+         <% else %>
+                <%= t('general.error_explanation')%>:
+         <% end %>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -10,6 +15,13 @@
       </ul>
     </div>
   <% end %>
+
+
+
+  <h2 class="password_reset_h1"><%= t('general.change_password') %></h2>
+
+  <br />
+
   <div class="field">
     <%= f.label t('general.password') %>:
     <br />
@@ -21,8 +33,10 @@
     <br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <br />
   <div class="actions">
-    <%= f.submit t('general.update_password') %>
+    <%= f.submit t('general.update_password'), :class => "password_reset_submit" %>
   </div>
 <% end %>
+</div>
 

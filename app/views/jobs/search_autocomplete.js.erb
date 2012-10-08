@@ -1,4 +1,12 @@
 
+var batin = $("input:submit");
+batin.button();
+
+batin.live ('click',  function() {
+    batin.val("Merci");
+    batin.attr("disabled", true);
+});
+
 
 var myArray= "<%=  @jobs %>";
 

@@ -36,7 +36,10 @@
   </div>
   <div class="field">
     <br />
-    <h2><%= t('general.references') %></h2>
+
+
+    <h3><%= t('general.references') %></h3>
+
     <%= f.fields_for :references do |builder| %>
        <%= render 'reference', :f => builder %>
     <% end %>
@@ -44,7 +47,7 @@
 
    <div class="field1">
      <br /><br /><br />
-     <%= f.label t('jobs.index.table.category') %><br />
+     <%= f.label t('jobs.index.table.category')%><br />
       <!--select("job", "category_id", Category.all.sort.collect {|p| [ p.name, p.id ] },-->
                 <!--{:include_blank => 'None'}, {:class => "select_box"}) %>-->
      <!--collection_select(:person, :city_id, City.all, :id, :name) -->

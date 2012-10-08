@@ -2,3 +2,9 @@ $("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :l
 $('html').animate({scrollTop:0}, 'slow');
 //$("html").scrollTop(0);
 alert("<%= @comment.errors.full_messages.to_sentence %>");
+
+var batin = $("input:submit");
+batin.button();
+batin.val("<%= t('general.send') %>");
+batin.attr("disabled", false);
+// batin.attr("disabled", false);'de enabled true olmuyor

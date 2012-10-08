@@ -5,6 +5,13 @@ $('#for_all_listing').hide();
 $('#for_select_box_listing').show();
 $('#remove_category_anchor a').replaceWith("<%= t('jobs.index.table.category') %>");
 
+var batin = $("input:submit");
+batin.button();
+
+batin.live ('click',  function() {
+    batin.val("Merci");
+    batin.attr("disabled", true);
+});
 /*
     $(".jobs th a").live("click", function(e) {
         var str = {};

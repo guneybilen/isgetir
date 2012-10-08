@@ -59,7 +59,7 @@ p{
 #main_list_link{
     color:#D95E16;
     float: right;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 #main_list_link:hover{
@@ -147,7 +147,7 @@ div.main_title a{
     font-size: 32px;
     font-weight: bold;
     clear: right;
-    color: #000000;
+    color: #2e6e9e;
 }
 
 div.main_title a:hover{
@@ -170,10 +170,11 @@ div.index{
 #listing_jobs_line{
     clear: right;
     margin-bottom: 25px;
-    border-bottom: 5px solid #333333;
+    border-bottom: 5px solid #dfeffc;
 }
 
 .listing_jobs{
+    color: #2e6e9e;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -236,14 +237,18 @@ div.index{
 }
 
 #search_form_submit{
-    margin-top: -2px;
+    height: 40px;
+    width: 60px;
+    padding: 0 0 5px;
     float: right;
+    margin-left: 5px;
+    margin-top: -10px;
 }
 
 #search_form_text_field{
     float: right;
     width: 175px;
-    margin-right: 4px;
+    margin-right: 5px;
 }
 
 .job {
@@ -284,10 +289,14 @@ div.index{
     margin-top: 20px;
 }
 
-h1.new_job_h1{
+h2.new_job_h2{
     margin-top: 50px;
+    color: #2e6e9e;
 }
 
+h2{
+    color:#2e6e9e;
+}
 .errorExplanation{
     margin-bottom: 50px;
 }
@@ -302,6 +311,23 @@ h1.new_job_h1{
 
 .spinner{
     float: right;
-    margin-right: 10px;
-    margin-top: 0px;
+    margin-right: 5px;
+    margin-top: 0;
+}
+
+input[type="submit"] {
+    height: 50px;
+    width: 100px;
+}
+
+div.actions .password_reset, div.actions .password_reset_submit{
+    width: 175px;
+}
+
+.change_password_after_email{
+    margin-top: 100px;
+}
+
+.comment{
+    margin-top: 25px;
 }

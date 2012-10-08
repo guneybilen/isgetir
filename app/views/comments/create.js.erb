@@ -2,5 +2,9 @@ $("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :l
 $('#comments').append("<%= escape_javascript(render(@comment)) %>");
 $('#new_comment')[0].reset();
 $('html').animate({scrollTop:0}, 'slow');
+var batin = $("input:submit");
+batin.button();
+batin.val("<%= t('general.send') %>");
+batin.attr("disabled", false);
 
 //$("html").scrollTop(0);

@@ -83,7 +83,9 @@ class JobsController < ApplicationController
 
   def search
     if (params[:keyword].blank?)
-      @jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
+      #@jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
+      @jobs = Job.order(sort_column + " " + sort_direction)
+          .paginate(:per_page => 2, :page => params[:page])
       return
     else
       @jobs = Job.search(params[:keyword]).order(sort_column + " " + sort_direction)

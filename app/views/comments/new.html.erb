@@ -1,3 +1,4 @@
+<br />
 <%= form_for([@job, @job.comments.new], :remote => true,
              :html => {:style => 'display: none;'}) do |f| %>
     <div class="field">
@@ -17,6 +18,7 @@
       <%= f.text_area :body %>
     </div>
     <div class="actions">
+      <br />
       <%= f.submit t('general.submit') %> &nbsp;<%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), '#',
                   :id => "new_comment_cancel" %>

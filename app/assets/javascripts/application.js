@@ -54,9 +54,12 @@ $(document).ready(function() {
       });*/
 
     var clicked = false;
-    $('#search_form_submit').live('clicked', function(){
+    $('#search_form_submit').live('click', function(){
         clicked = true;
     });
+
+
+    $("#search_form_submit").removeAttr("disabled");
 
     $(".sort_by a, #for_all_listing a").live("click", function(e) {
         var str = {};
@@ -200,22 +203,23 @@ $(document).ready(function() {
 //var m = $("hr").outerWidth;
 //var n = $("h1.listing_jobs").outerWidth;
     var p = $("div.menu a");
-    p.slideUp('slow').slideDown('slow')
+    p.slideUp('slow').slideDown('slow');
 
-    var title = $(".main_title a")
-       title.hide('explode', 1500).show("explode", { pieces: 16 }, 1000);;
+//    var title = $(".main_title a");
+//       title.hide('explode', 1500).show("explode", { pieces: 16 }, 1000);
 
     $("#show_link_to_email_friend").live('click', function() {
         $('#notify_friend_form').slideDown()
     });
 
-    var login = $("input:submit");
+    var batin = $("input:submit");
+    batin.button();
 
-
-    login.live ('click',  function() {
-        login.val("Merci");
-        login.attr("disabled", true);
+    batin.live ('click',  function() {
+        batin.val("Merci");
+        batin.attr("disabled", true);
     });
+
 
 
 /*    var pr = $("input.password_reset");
