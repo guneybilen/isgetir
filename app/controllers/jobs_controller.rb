@@ -15,41 +15,25 @@ require 'will_paginate/array'
 class JobsController < ApplicationController
   before_filter :authenticate,
                 :except => [:index, :show, :notify_friend, :search,
-                            :search_autocomplete, :search_by_category, :ajaxing, :for_select_box]
+                            :search_autocomplete, :ajaxing]
 
   #respond_to :html, :js
 
   helper_method :sort_column, :sort_direction
 
-  def for_select_box
-
-    if !(params[:sort].blank?)
-      @jobs = Job.where("category_id = ? ", params.to_a[0][0]).order(sort_column + " " + sort_direction)
-      .paginate(:per_page => 1, :page => params[:page])
-
-    else
-      #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-      @jobs = Job.where("category_id = ? ", params.to_a[0][0]).paginate(:per_page => 1, :page => params[:page])
-    end
-
-    respond_to do |format|
-      format.js
-    end
-
-  end
 
   def ajaxing
 
-=begin
-    if sort_column == "category_id" && params[:locale] == :en
-      @jobs = Job.cat_by_name.paginate(:per_page => 1, :page => params[:page])
-    elsif sort_column == "category_id" && params[:locale] == :tr
-      @jobs = Job.cat_by_isim.paginate(:per_page => 1, :page => params[:page])
+    if (params[:job][:category_id] == '')
+      sorting
     else
-      @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 1, :page => params[:page])
+
+      @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
+      #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
+      @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
+
     end
-=end
-    sorting # defined in the application controller
+
 
     respond_to do |format|
       #format.html # index.html.erb
@@ -58,28 +42,6 @@ class JobsController < ApplicationController
     end
   end
 
-  def search_by_category
-    @jobs = Job.search_by_category(params.to_a[0][0])
-
-    #puts "**********             #{params.to_a}       *********************************** #{@jobs.inspect}"
-    @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
-
-
-
-    respond_to do |format|
-    #  format.html if (params[:page].to_i > 1)
-
-      format.js
-    end
-
-    #render :index do |page|
-    #  page.replace_html 'guney'
-    #  page.replace_html 'songs',   :partial => 'songs',   :object => songs
-    #end
-    #render :action => "index"
-    #render :js => "alert(@jobs)"
-
-  end
 
   def search
     if (params[:keyword].blank?)
@@ -90,13 +52,14 @@ class JobsController < ApplicationController
     else
       @jobs = Job.search(params[:keyword]).order(sort_column + " " + sort_direction)
         .paginate(:per_page => 1, :page => params[:page])
+    end
 
       respond_to do |format|
         #format.html {redirect_to @jobs_path}     # burda sanirim index action'i invoke et DEGIL de
         # index action'in view template'i olan views/index.html.erb yi render et demek oluyor
         format.js
         format.json { render json: @jobs}
-      end
+
     end
   end
 
@@ -252,7 +215,6 @@ class JobsController < ApplicationController
     redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
   end
 
-
   private
 
   def sort_column
@@ -262,4 +224,5 @@ class JobsController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
+
 end

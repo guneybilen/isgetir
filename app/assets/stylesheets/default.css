@@ -31,10 +31,12 @@ p{
     margin-top: 40px;
 }
 
-/*.sort_by .sort_by_links a{
-    color:#D95E16;
+.sort_by_links_span a{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
+/*
 .sort_by .sort_by_links a:hover{
     background-color:#FF813C;
     color:#FFFFFF;
@@ -220,15 +222,15 @@ div.index{
   text-decoration: underline;
 }
 
-#for_select_box_listing{
+.for_select_box_listing{
     display: none;
 }
 
-#for_all_listing{
+.for_all_listing{
     display: none;
 }
 
-#for_autocomplete_listing{
+.for_autocomplete_listing{
     display: none;
 }
 
@@ -243,6 +245,16 @@ div.index{
     float: right;
     margin-left: 5px;
     margin-top: -10px;
+}
+
+.search_by_category .search_by_category_submit{
+    height: 40px;
+    width: 60px;
+    float: left;
+    padding: 0 0 5px;
+    margin-left: 5px;
+    margin-top: -10px;
+
 }
 
 #search_form_text_field{

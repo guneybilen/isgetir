@@ -1,10 +1,20 @@
-<% if I18n.locale == :en  %>
+<%= form_tag(ajaxing_path, :method => :get , :class => "search_by_category", :remote => true) do %>
+    <% if I18n.locale == :en  %>
         <%= select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
                    {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) %>
+        <%= hidden_field_tag :direction, params[:direction] %>
+        <%= hidden_field_tag :sort, params[:sort] %>
     <% elsif I18n.locale == :tr %>
         <%= select("job", "category_id", Category.order(:isim).collect {|p| [ p.isim, p.id ] },
-                   {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"} ) %>
-<% end  %>
+                   {:include_blank => t('general.none'), :remote=>true },
+                   {:id => "select_box"}) %>
+        <%= hidden_field_tag :direction, params[:direction] %>
+        <%= hidden_field_tag :sort, params[:sort] %>
+        <%= submit_tag t('general.search'), :class => "search_by_category_submit" %>
+    <% end  %>
+ <% end %>
+
+
 
 <%= form_tag(search_jobs_path, :method => :get , :id => "search_form", :remote => true) do %>
 

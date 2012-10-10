@@ -1,13 +1,25 @@
 $("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index.html.erb")) %>");
-$('#for_select_box_listing').hide();
-$('#for_all_listing').show();
+//$('.for_select_box_listing').hide();
+$('.for_all_listing').show();
+
+var cat_id = "<%= params[:job][:category_id] %>";
+$('#select_box').val(cat_id);
+if(cat_id > 0){
+$('#remove_category_anchor a').hide();
+$('.for_after_category_removed').css('marginLeft', '-3px');
+}
+
+if(cat_id == 0 || cat_id == undefined){
+$('#remove_category_anchor a').show();
+}
+
 var batin = $("input:submit");
 batin.button();
 
 batin.live ('click',  function() {
-    batin.val("Merci");
     batin.attr("disabled", true);
 });
 
+//alert($('#remove_category_anchor a').find(":hidden"));
 
 

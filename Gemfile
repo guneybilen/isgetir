@@ -49,7 +49,7 @@ gem 'jquery-rails'
 =end
 
 group :development, :test do
-  gem 'rspec-rails'," ~> 2.6.1"
+  gem 'rspec-rails' #," ~> 2.6.1"
 # version 2.6.1 koymadin mi rake db:migrate
 # rspec yuzunden su hatayi veriyor: "undefined method `prerequisites' for nil:NilClass"
 end

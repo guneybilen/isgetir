@@ -35,7 +35,7 @@ class Job < ActiveRecord::Base
 
   def self.search_by_category(cat_id)
     #paginate :per_page => 1, :page => page, :conditions => ['category_id = ?', "#{cat_id}"]
-    return Job.where("category_id = ?", cat_id).to_a
+    return Job.where("category_id = ?", cat_id)
   end
 
   def long_title

@@ -9,6 +9,23 @@
 //= require_tree .
 
 
+function url_parameters(str) {
+    var ary = [];
+    ary = str.split("&");
+//                                    alert(ary[0]);
+    var pattern = /^_=\d+/;
+//                                     alert(ary[0].match(pattern));
+    if (ary[0].match(pattern) != null) {
+        delete ary[0];
+//                                     alert(ary);
+    }
+    ary = ary.toString();
+    ary = ary.replace(/^,/, "");
+    ary = ary.replace(/,\s*/gi, "&");
+    alert(ary);
+    document.location.hash = "ajaxing?" + str;
+}
+
 $(document).ready(function() {
 
 //document.getElementById("#search_form_text_field").focus(); //calismiyor
@@ -53,32 +70,59 @@ $(document).ready(function() {
 
       });*/
 
-    var clicked = false;
-    $('#search_form_submit').live('click', function(){
-        clicked = true;
-    });
 
+/*     $('.for_select_box_listing a').live ('click', function() {
+        var params ={};
+         var url = getUrlParams(this.href);
+
+        params = $('#select_box').children(":selected").attr("value");
+        $.getScript('/ajaxing/?' + params + '&' + url);
+        return false;
+//      location.reload();
+    });*/
+
+    /*    var pr = $("input.password_reset");
+
+    pr.live ('click',  function() {
+        pr.val("Merci");
+        pr.attr("disabled", true);
+    });*/
+
+
+/*    var anc=$(a);
+    anc.css({'color': '#D95E16', 'backgroundColor' : 'white'});
+
+     $('div.menu a').hover(function ()
+     {
+        $(this).css(
+        {
+            'color' : '#FFFFFF',
+            'background-color' : '#FF813C',
+            'textDecoration' : 'underline'
+        });
+     });*/
+
+
+    $("#select_box").val(0);
 
     $("#search_form_submit").removeAttr("disabled");
 
-    $(".sort_by a, #for_all_listing a").live("click", function(e) {
+//    var loc = window.location;
+//    alert(loc);
+
+
+    $(".sort_by a, .for_all_listing a").live("click", function(e) {
         var str = {};
         str = getUrlParams(this.href);
         var i = $('#select_box').children(":selected").attr("value");
         if(i>0) {
-
-            $.getScript('/for_select_box/?' + i + '&' + str);
+            $('#remove_category_anchor a').hide();
+            $.getScript('/ajaxing/?' + i + '&' + str);
             return false;
         }
 
-
-        if(clicked){
-//         clicked = false;
-         var url = getUrlParams(this.href);
-         $.getScript('jobs/search/?' +  url);
-         return false;
-        }
-        $.getScript("/ajaxing/?" + str);
+        $.getScript("jobs/search/?" + str);
+//        url_parameters(str);
         return false;
   });
 
@@ -88,28 +132,12 @@ $(document).ready(function() {
     }
 
 
-    $('#for_all_listing').show();
+    $('.for_all_listing').show();
 
-//    var foo = document.getElementById('select_box');
-//    if (foo.selectedIndex !=null)
-//    alert('hello');
 
-     $('#for_select_box_listing a').live ('click', function() {
-        var params ={};
+     $('.for_autocomplete_listing a').live ('click', function() {
          var url = getUrlParams(this.href);
-
-        params = $('#select_box').children(":selected").attr("value");
-        $.getScript('/for_select_box/?' + params + '&' + url);
-        return false;
-//      location.reload();
-    });
-
-
-
-     $('#for_autocomplete_listing a').live ('click', function() {
-        var params ={};
-         var url = getUrlParams(this.href);
-        $.getScript('jobs/search/?' + params + '&' + url);
+        $.getScript('jobs/search/?' + url);
         return false;
     });
 
@@ -117,33 +145,21 @@ $(document).ready(function() {
     $('#main_list_link').live('click', function(){
        $.ajax(
        {
-        url: '/ajaxing',
-        dataType: "script",
+        url: '/jobs/search',
+//        dataType: "html",
         beforeSend: function(){
           $(".spinner").showLoading();
-          $("#main_list_link").remove();
+          $("#main_list_link").hide();
         },
         success: function(){
           $(".spinner").hideLoading();
+          $(".spinner #main_list_link").show();
         }
         });
 
-//       $.getScript('/ajaxing', function(){
-//        });
         return false;
     });
 
-    $('#select_box').live ('change', function() {
-        var params ={};
-        params = $(this).children(":selected").attr("value");
-        if(params==0) {
-
-            $.getScript('/ajaxing');
-            return false;
-        }
-        $.get('jobs/search_by_category', params);
-//      location.reload();
-    });
 
     $('#search_form_text_field').val('');
 
@@ -216,32 +232,8 @@ $(document).ready(function() {
     batin.button();
 
     batin.live ('click',  function() {
-        batin.val("Merci");
         batin.attr("disabled", true);
     });
-
-
-
-/*    var pr = $("input.password_reset");
-
-    pr.live ('click',  function() {
-        pr.val("Merci");
-        pr.attr("disabled", true);
-    });*/
-
-
-/*    var anc=$(a);
-    anc.css({'color': '#D95E16', 'backgroundColor' : 'white'});
-
-     $('div.menu a').hover(function ()
-     {
-        $(this).css(
-        {
-            'color' : '#FFFFFF',
-            'background-color' : '#FF813C',
-            'textDecoration' : 'underline'
-        });
-     });*/
 
 });
 

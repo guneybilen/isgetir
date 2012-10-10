@@ -1,4 +1,4 @@
-module SearchPlugin
+ module SearchPlugin
 
   module SimpleSearch
     def simple_search(*fields)
