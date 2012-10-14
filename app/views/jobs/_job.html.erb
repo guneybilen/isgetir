@@ -13,7 +13,7 @@
     <br />
     <b><%= label_tag t('jobs.index.table.category') %></b>:&nbsp;<%= @category %>
     <br />
-    <b><%= label_tag t('jobs.index.table.created_at') %></b>:&nbsp;<%= time_ago_in_words(job.created_at.localtime.to_date) %>
+    <b><%= label_tag t('jobs.index.table.created_at') %></b>:&nbsp;<%= time_ago_in_words(job.created_at) %>
     <%= t('general.time_ago_in_words') %>
     <br />
 

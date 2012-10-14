@@ -14,7 +14,21 @@ class ApplicationController < ActionController::Base
 =end
 
 
+
   protected
+
+  def time_later
+    @time_later = Time.now
+    if ((session[:time_now] + 100000000) >= @time_later)
+      @time_too_fast = t('general.too_fast')
+    end
+  end
+
+  def hidden_field
+    if (params[:hidden] != 10)
+      @hidden = t('general.hidden_text_field_change')
+    end
+  end
 
   def sorting
     if sort_column == "category_id" && params[:locale] == :en

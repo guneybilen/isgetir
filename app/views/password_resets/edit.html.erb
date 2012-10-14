@@ -2,7 +2,9 @@
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
   <% if @user.errors.any? %>
     <div class="errorExplanation">
-      <h2><%= t('general.invalid_form') %></h2>
+      <h3>
+        <%= t('general.invalid_form') %>
+      </h3>
          <% if @user.errors.count > 1 %>
                 <%= t('general.error_explanations')%>:
          <% else %>

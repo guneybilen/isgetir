@@ -95,6 +95,13 @@ p{
     margin-top: 20px;
 }
 
+.time_too_fast{
+    font-size: 20px;
+    color: red;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 .select_box {
     width: 240px;
 }

@@ -109,6 +109,9 @@ en:
     said: said
     comment: Comment
     change_password: Change Password
+    new_user: New User
+    too_fast: Error code 888 - too fast
+    hidden_text_field_change: Error code 999 - hidden error
 
   will_paginate:
     previous: Previous

@@ -109,6 +109,9 @@ tr:
     said: şöyle söyledi
     comment: Yorum
     change_password: Şifre Değiştir
+    new_user: Yeni Kullanıcı
+    too_fast: Hata Kodu 888 - çok hızlı
+    hidden_text_field_change: Hata Kodu 999 - gizli hata
 
   will_paginate:
     previous: Önceki
@@ -163,7 +166,9 @@ tr:
       less_than_x_minutes: "%{count} dakikadan daha"
       x_minutes: "%{count} dakika"
       x_hours: "%{count} saat"
-      about_x_hours: saat civarı
+      about_x_hours:
+        one: "1 saat civarı"
+        other: "%{count} saat civarı"
       x_days:  "%{count}  gün"
       about_x_months: "%{count} ay civarı"
       x_months: "%{count} ay"

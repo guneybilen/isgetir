@@ -1,5 +1,12 @@
 <div class='vr'><%= image_tag 'column.png', :size => '100x500' %></div>
 
+<%= params[:notice] if !params[notice].nil? %>
+
+<div class = "time_too_fast">
+<%= @time_too_fast.nil? ? '' : @time_too_fast%>
+<%= @hidden.nil? ? '' : @hidden %>
+</div>
+
 <%= render @job %>
 
 <%= link_to t('jobs.show.link_to.email_a_friend'), '#',

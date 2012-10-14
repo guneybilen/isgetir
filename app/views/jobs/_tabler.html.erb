@@ -48,7 +48,7 @@
 
           <%= job.location %>
           <%= truncate(job.body, :length => 60, :separator => ' ', :omission => t('general.continued') ) %>
-          <%= time_ago_in_words(job.created_at.localtime.to_date) %> <%= t('general.time_ago_in_words') %>
+          <%= time_ago_in_words(job.created_at) %> <%= t('general.time_ago_in_words') %>
           <br />
           <%= link_to t('general.link_to.show'), job, {:class => "show"} %>
           <% if job.owned_by? current_user  %>

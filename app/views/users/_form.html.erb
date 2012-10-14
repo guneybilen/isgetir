@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div class="errorExplanation">
-          <h2>
+          <h3>
             <%= pluralize(@user.errors.count,
                             t("general.pluralize.error"), t("general.pluralize.error")) %>
             <% if @user.errors.count > 1 %>
@@ -9,7 +9,7 @@
             <% else %>
                 <%= t('general.error_explanation')%>:
             <% end %>
-          </h2>
+          </h3>
           <ul>
             <% @user.errors.full_messages.each do |msg| %>
                 <li><b><%= msg %></b></li>

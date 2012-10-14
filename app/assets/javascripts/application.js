@@ -221,10 +221,13 @@ $(document).ready(function() {
     var p = $("div.menu a");
     p.slideUp('slow').slideDown('slow');
 
-//    var title = $(".main_title a");
-//       title.hide('explode', 1500).show("explode", { pieces: 16 }, 1000);
+   var nfn = $('.notify_friend_name');
+   var nfe = $('.notify_friend_email');
 
     $("#show_link_to_email_friend").live('click', function() {
+        nfn.val('');
+        nfe.val('');
+
         $('#notify_friend_form').slideDown()
     });
 
@@ -233,6 +236,41 @@ $(document).ready(function() {
 
     batin.live ('click',  function() {
         batin.attr("disabled", true);
+    });
+
+
+   $('.notify_friend_submit').attr('disabled', false);
+
+   var reg = new RegExp(/^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/);
+
+//    alert(reg.test('guneybilen@yahoo.com'));
+
+
+    $('.notify_friend_submit').live('click', function() {
+       if (nfn.val().length == 0){
+
+         if (locale == "tr"){
+            alert("Lütfen isim giriniz"); }
+
+         if (locale == "en"){
+            alert("Please input name"); }
+
+           window.location.reload();
+           return;
+       }
+
+       if (nfe.val().length ==0 || !reg.test(nfe.val())) {
+
+         if (locale == "tr"){
+            alert("Lütfen geçerli bir email adresi giriniz"); }
+
+         if (locale == "en"){
+            alert("Please input a valid email address"); }
+
+           nfe.val('');
+           history.go(0);
+
+       }
     });
 
 });

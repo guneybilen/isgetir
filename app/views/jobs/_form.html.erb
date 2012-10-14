@@ -1,8 +1,16 @@
+
+
+<div class = "time_too_fast">
+<%= @time_too_fast.nil? ? '' : @time_too_fast%>
+<%= @hidden.nil? ? '' : @hidden %>
+</div>
+
+
 <div class = "new_job_form">
 <%= form_for @job do |f| %>
   <% if @job.errors.any? %>
     <div class="errorExplanation">
-      <h2>
+      <h3>
         <%= pluralize(@job.errors.count, t("general.pluralize.error"),
                                         t("general.pluralize.error")) %>!
         <br />
@@ -11,7 +19,7 @@
         <% else %>
             <%= t('general.error_explanation')%>:
         <% end %>
-      </h2>
+      </h3>
       <% css_class_title = @job.errors.include?(:title) ? "highlight_error_class_title" : "no_problem_class" %>
       <% css_class_body = @job.errors.include?(:body) ? "highlight_error_class_body" : "no_problem_class" %>
         <ul>
@@ -81,5 +89,6 @@
     <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp;
     <%= link_to t('general.link_to.cancel'), @job %>
   </div>
+    <%= hidden_field_tag(:hidden, '10') %>
 <% end %>
 </div>

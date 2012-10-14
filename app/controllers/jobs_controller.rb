@@ -125,6 +125,9 @@ class JobsController < ApplicationController
   # GET /jobs/new.json
   def new
     @job = Job.new
+
+    session[:time_now] = Time.now
+
     2.times do
       @job.references.build
     end
@@ -156,29 +159,42 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.new(params[:job])
 
+    time_later # defined in application controller
+
     respond_to do |format|
-      if @job.save
+      if !@job.valid?
+           @hidden = nil
+           @time_too_fast = nil
+           format.html do
+        2.times do
+          @job.references.build
+          end
+
+          render action: "new"
+        end
+
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+
+      if (!@hidden.nil? && !@time_too_fast.nil?) && @job.save
         format.html { redirect_to @job, notice: t('jobs_controller.create.success') }
         format.json { render json: @job, status: :created, location: @job }
       else
+
         format.html do
           2.times do
             @job.references.build
-          end
+            end
 
-=begin
-             @job.references.each do |d|
-               unless d.name.blank? then @job.references.build end
-             end
-=end
-
-          #2.times {}
           render action: "new"
         end
+
         format.json { render json: @job.errors, status: :unprocessable_entity }
+
       end
     end
   end
+
 
   # PUT /jobs/1
   # PUT /jobs/1.json
@@ -211,8 +227,18 @@ class JobsController < ApplicationController
 
   def notify_friend
     @job = Job.find(params[:id])
-    Notifier.email_friend(@job, params[:name], params[:email]).deliver
-    redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
+
+    #if (!@hidden.nil? && !@time_too_fast.nil?)
+    if (!params[:name].blank? && !params[:email].blank?)
+      Notifier.email_friend(@job, params[:name], params[:email]).deliver
+      redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
+    else
+      params[:notice] = "Missing Information"
+      render 'show'
+    end
+
+    #end
+
   end
 
   private
