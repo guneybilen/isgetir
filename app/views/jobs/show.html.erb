@@ -2,10 +2,6 @@
 
 <%= params[:notice] if !params[notice].nil? %>
 
-<div class = "time_too_fast">
-<%= @time_too_fast.nil? ? '' : @time_too_fast%>
-<%= @hidden.nil? ? '' : @hidden %>
-</div>
 
 <%= render @job %>
 
@@ -35,6 +31,12 @@
 :remote => true, :id => 'new_comment_link' %>
 
 <br /><br />
+
+
+
+<%= hidden_field_tag(:hidden, '', :class => "hidden_field_tag") %>
+
+
 
 <%= link_to t('jobs.show.link_to.jobs_list'), jobs_path %>
 

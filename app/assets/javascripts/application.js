@@ -105,7 +105,7 @@ $(document).ready(function() {
 
     $("#select_box").val(0);
 
-    $("#search_form_submit").removeAttr("disabled");
+//    $("#search_form_submit").removeAttr("disabled");
 
 //    var loc = window.location;
 //    alert(loc);
@@ -163,7 +163,7 @@ $(document).ready(function() {
 
     $('#search_form_text_field').val('');
 
-    $('#search_form_text_field').live('input', function() {
+    $('#search_form_text_field').on('input', function() {
         var params = {};
         params[this.name] = this.value;
         $.get('jobs/search_autocomplete', params);
@@ -234,19 +234,28 @@ $(document).ready(function() {
     var batin = $("input:submit");
     batin.button();
 
-    batin.live ('click',  function() {
+    // batin.live yerine batin.on kullandiginda show page'deki
+    // .notify_friend_submit button'a errorleri check ederken bir kere click ettikten sonra
+    // bir daha calismiyor
+    batin.live('click',  function() {
         batin.attr("disabled", true);
     });
 
 
-   $('.notify_friend_submit').attr('disabled', false);
+   $('.notify_friend_submit').button('enable');
 
    var reg = new RegExp(/^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/);
 
 //    alert(reg.test('guneybilen@yahoo.com'));
 
+    var taym1 = new Date();
+    taym1 = taym1.getTime();
 
-    $('.notify_friend_submit').live('click', function() {
+    $('.notify_friend_submit').click( function(e) {
+
+       var taym2 = new Date();
+       taym2 = taym2.getTime();
+
        if (nfn.val().length == 0){
 
          if (locale == "tr"){
@@ -255,8 +264,7 @@ $(document).ready(function() {
          if (locale == "en"){
             alert("Please input name"); }
 
-           window.location.reload();
-           return;
+           return false;
        }
 
        if (nfe.val().length ==0 || !reg.test(nfe.val())) {
@@ -267,11 +275,42 @@ $(document).ready(function() {
          if (locale == "en"){
             alert("Please input a valid email address"); }
 
-           nfe.val('');
-           history.go(0);
-
+           return false;
        }
+         var req = requirements(taym2);
+         if (!req){return false;}
+
     });
+
+//    $('.comment_submit').live('click', function(){
+//        var taym3 = new Date();
+//        taym3 = taym3.getTime();
+//        var req = requirements(taym3);
+//        if(!req){
+//            $('.comment_submit').button('enable');
+//            return false;
+//        }
+//    });
+
+
+function requirements(taym){
+       if($('.hidden_field_tag').val() !=''){
+         alert("Code 999");
+         nfn.val('');
+         nfe.val('');
+         return false;
+       }
+
+
+       if(taym1+10>taym){
+         alert('Code 888');
+         nfn.val('');
+         nfe.val('');
+         return false;
+       }
+
+       return true;
+}
 
 });
 

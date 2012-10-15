@@ -1,12 +1,4 @@
 
-var batin = $("input:submit");
-batin.button();
-
-batin.live ('click',  function() {
-    batin.attr("disabled", true);
-});
-
-
 var myArray= "<%=  @jobs %>";
 
 myArray=myArray.replace(/&quot;/gi,"");

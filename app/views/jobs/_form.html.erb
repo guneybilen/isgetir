@@ -89,6 +89,6 @@
     <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp;
     <%= link_to t('general.link_to.cancel'), @job %>
   </div>
-    <%= hidden_field_tag(:hidden, '10') %>
+    <%= hidden_field_tag(:hidden, '', :class => "hidden_field_tag") %>
 <% end %>
 </div>

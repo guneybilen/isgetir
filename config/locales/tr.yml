@@ -111,7 +111,7 @@ tr:
     change_password: Şifre Değiştir
     new_user: Yeni Kullanıcı
     too_fast: Hata Kodu 888 - çok hızlı
-    hidden_text_field_change: Hata Kodu 999 - gizli hata
+    hidden_text_field_change: Hata Kodu 999 - gizli data hatası
 
   will_paginate:
     previous: Önceki

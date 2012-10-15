@@ -29,3 +29,32 @@ batin.button();
 batin.live ('click',  function() {
     batin.attr("disabled", true);
 });
+
+
+ var taym1 = new Date();
+ taym1 = taym1.getTime();
+
+  $('.comment_submit').live('click', function(){
+        var taym3 = new Date();
+        taym3 = taym3.getTime();
+        var req = requirements(taym3);
+        if(!req){
+            $('.comment_submit').button('enable');
+            return false;
+        }
+    });
+
+function requirements(taym){
+       if($('.hidden_field_tag').val() !=''){
+         alert("Code 999");
+         return false;
+       }
+
+
+       if(taym1+10>taym){
+         alert('Code 888');
+         return false;
+       }
+
+       return true;
+}

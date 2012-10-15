@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def hidden_field
-    if (params[:hidden] != 10)
+    if (params[:hidden] != '')
       @hidden = t('general.hidden_text_field_change')
     end
   end

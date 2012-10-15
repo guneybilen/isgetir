@@ -228,8 +228,8 @@ class JobsController < ApplicationController
   def notify_friend
     @job = Job.find(params[:id])
 
-    #if (!@hidden.nil? && !@time_too_fast.nil?)
-    if (!params[:name].blank? && !params[:email].blank?)
+    if (!@hidden.nil? && !@time_too_fast.nil?)
+    #if (!params[:name].blank? && !params[:email].blank?)
       Notifier.email_friend(@job, params[:name], params[:email]).deliver
       redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
     else
