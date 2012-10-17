@@ -4,7 +4,28 @@ class CommentsController < ApplicationController
 
 
   def create
+    @time_too_fast = ''
+    time_later
+    hidden_field
+
     @comment = @job.comments.new(params[:comment])
+
+    #puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #{@time_too_fast}"
+
+    if(!@time_too_fast.blank?)
+      flash.now[:notice] = t('general.too_fast')
+       respond_to do |format|
+        format.js { render 'fail_create.js.erb' and return false}
+      end
+    end
+
+    if (!@hidden.blank?)
+      flash.now[:notice] = t('general.hidden_text_field_change')
+      respond_to do |format|
+        format.js { render 'fail_create.js.erb' and return false}
+      end
+    end
+
     if @comment.save
       flash.now[:notice] = t('comments_controller.notice.thanks_for_comment')
       respond_to do |format|

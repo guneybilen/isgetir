@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def time_later
     @time_later = Time.now
-    if ((session[:time_now] + 100000000) >= @time_later)
+    if ((session[:time_now] + 5) >= @time_later)
       @time_too_fast = t('general.too_fast')
     end
   end

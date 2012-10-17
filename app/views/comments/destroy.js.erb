@@ -1,6 +1,6 @@
-$("#<%= dom_id(@comment) %>").remove()
+$("#<%= dom_id(@comment) %>").remove();
 $("#notice")
   .html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
-$('html').animate({scrollTop:0}, 'slow');
+//$('html').animate({scrollTop:0}, 'slow');
 
 //$("html").scrollTop(0);

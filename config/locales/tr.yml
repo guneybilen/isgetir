@@ -112,6 +112,13 @@ tr:
     new_user: Yeni Kullanıcı
     too_fast: Hata Kodu 888 - çok hızlı
     hidden_text_field_change: Hata Kodu 999 - gizli data hatası
+    captcha: Aşağıdaki kodu kutuya girin
+    interesting_job: İlginç iş
+    new_comment_for: Şu başlık için yeni bir yorum
+    new_user_with: Şu email adresi ile yeni bir kullanıcı eklendi
+    user_added_a_new_job: kullanıcısı yeni bir iş ekledi
+    password_reset: Şifre Degiştir
+    notify_friend_missing_information: Adınızı veya ilgili email adresini girmediniz
 
   will_paginate:
     previous: Önceki
@@ -184,6 +191,7 @@ tr:
   support:
     array:
 #     "\n" calismiyor sadece single quote ile olunca yani '\n' olunca calisiyor.
+      two_words_connector: '\n'
       words_connector: '\n'
       last_word_connector: '\n'
 

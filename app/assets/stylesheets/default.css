@@ -95,11 +95,11 @@ p{
     margin-top: 20px;
 }
 
-.time_too_fast{
+.captcha_alternatives {
     font-size: 20px;
     color: red;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .select_box {

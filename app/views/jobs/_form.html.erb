@@ -1,6 +1,6 @@
 
 
-<div class = "time_too_fast">
+<div class = "captcha_alternatives">
 <%= @time_too_fast.nil? ? '' : @time_too_fast%>
 <%= @hidden.nil? ? '' : @hidden %>
 </div>
@@ -89,6 +89,10 @@
     <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp;
     <%= link_to t('general.link_to.cancel'), @job %>
   </div>
+
+    <!-- hidden field is for captcha alternative to check whether '' is changed
+           by bots. Check is made in the application controller hidden_field method
+    -->
     <%= hidden_field_tag(:hidden, '', :class => "hidden_field_tag") %>
 <% end %>
 </div>

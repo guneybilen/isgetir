@@ -31,15 +31,31 @@ batin.live ('click',  function() {
 });
 
 
+ /*locale = $("div.set_locale").text();
+
  var taym1 = new Date();
  taym1 = taym1.getTime();
 
   $('.comment_submit').live('click', function(){
+        var comment_submit = $(this);
         var taym3 = new Date();
         taym3 = taym3.getTime();
         var req = requirements(taym3);
         if(!req){
-            $('.comment_submit').button('enable');
+            comment_submit.button('enable');
+            return false;
+        }
+
+        if($('.comment_captcha_answer').val() != $('.comment_captcha_question').text()){
+            if (locale == "tr"){
+                alert("Lütfen kodu kutuya giriniz"); }
+
+            if (locale == "en"){
+                alert("Please enter the code in the textbox"); }
+
+            $('.comment_captcha_question').animate({'backgroundColor' : "blue", "color" : "white"}, 5000);
+            $('.comment_captcha_question').animate({'backgroundColor' : "white", "color" : "red"}, 5000);
+            comment_submit.button('enable');
             return false;
         }
     });
@@ -58,3 +74,18 @@ function requirements(taym){
 
        return true;
 }
+   var captcha = randomString();
+    $('.comment_captcha_question').text(captcha);
+    $('.comment_captcha_question').css({'color': 'red'});
+
+function randomString() {
+ var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+ var string_length = 5;
+ var randomstring = '';
+ for (var i=0; i<string_length; i++) {
+  var rnum = Math.floor(Math.random() * chars.length);
+  randomstring += chars.substring(rnum,rnum+1);
+ }
+
+    return randomstring;
+}*/

@@ -6,7 +6,7 @@
 </p>
 <p>
 <strong><%= @job.title %></strong>
-<%= job_url @job, :host => 'www.isgetir.com' %>
+  <%= link_to job_url(@job, :host => 'www.isgetir.com'), job_url(@job, :host => 'www.isgetir.com') %>
 </p>
 </body>
 </html>

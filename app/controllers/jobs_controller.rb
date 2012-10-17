@@ -104,6 +104,8 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    session[:time_now] = Time.now
+
     @job = Job.find(params[:id])
     if (Category.where("id = ?", @job.category_id).first.nil? ||
         Category.where("id = ?", @job.category_id).map{|p| p.isim} == ["Diğer"] ||
@@ -159,7 +161,10 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.new(params[:job])
 
+    @time_too_fast = ''
+
     time_later # defined in application controller
+    hidden_field  # defined in application controller
 
     respond_to do |format|
       if !@job.valid?
@@ -176,7 +181,7 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
 
-      if (!@hidden.nil? && !@time_too_fast.nil?) && @job.save
+      if (@hidden.blank? && @time_too_fast.blank?) && @job.save
         format.html { redirect_to @job, notice: t('jobs_controller.create.success') }
         format.json { render json: @job, status: :created, location: @job }
       else
@@ -228,16 +233,22 @@ class JobsController < ApplicationController
   def notify_friend
     @job = Job.find(params[:id])
 
-    if (!@hidden.nil? && !@time_too_fast.nil?)
-    #if (!params[:name].blank? && !params[:email].blank?)
+    @time_too_fast = ''
+    time_later    # defined in application controller
+    hidden_field  # defined in application controller
+
+    if (params[:name].blank? || params[:email].blank?)
+      params[:notice] = t('general.notify_friend_missing_information')
+      render 'show' and return
+    end
+
+    if (@hidden.blank? && @time_too_fast.blank?)
       Notifier.email_friend(@job, params[:name], params[:email]).deliver
       redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
     else
-      params[:notice] = "Missing Information"
+      #params[:notice] = "Missing $$$$$$$$$$$$$$$$$$$$$ #{@hidden} #{@time_too_fast} $$$$$$$$$$$$ Information"
       render 'show'
     end
-
-    #end
 
   end
 

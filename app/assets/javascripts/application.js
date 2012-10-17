@@ -28,87 +28,7 @@ function url_parameters(str) {
 
 $(document).ready(function() {
 
-//document.getElementById("#search_form_text_field").focus(); //calismiyor
-
-    // $('div.index').hide();
-    // $('div.index').fadeIn('slow');
-
-//  DIKKAT! $('#search_form')[0].reset(); breaks almost everything on this file.
-//  $('#search_form')[0].reset();
-
-//    document.getElementById("#jobs_search_input").onkeydown= function() {
-//       $.get($("#jobs_search").attr("action"), $("#jobs_search").serialize(), null, "script");
-//       return false;
-//    };
-//    $("#jobs_search input").keyup(function() {
-//
-//    });
-
-/*
-      $(".jobs th a, .pagination a").live("click", function(e) {
-
-         var v=this.href;
-
-        $.ajax
-        ({
-            url: this.href,
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(result){
-               // alert(result);
-//                var obj = $.parseJSON(result);
-//                $.each(obj, function(idx, val) {
-                    $('body').load(v, result);
-//                });
-
-//                 $("body").replaceWith(result);
-            }
-        });
-          e.preventDefault()
-
-
-      });*/
-
-
-/*     $('.for_select_box_listing a').live ('click', function() {
-        var params ={};
-         var url = getUrlParams(this.href);
-
-        params = $('#select_box').children(":selected").attr("value");
-        $.getScript('/ajaxing/?' + params + '&' + url);
-        return false;
-//      location.reload();
-    });*/
-
-    /*    var pr = $("input.password_reset");
-
-    pr.live ('click',  function() {
-        pr.val("Merci");
-        pr.attr("disabled", true);
-    });*/
-
-
-/*    var anc=$(a);
-    anc.css({'color': '#D95E16', 'backgroundColor' : 'white'});
-
-     $('div.menu a').hover(function ()
-     {
-        $(this).css(
-        {
-            'color' : '#FFFFFF',
-            'background-color' : '#FF813C',
-            'textDecoration' : 'underline'
-        });
-     });*/
-
-
     $("#select_box").val(0);
-
-//    $("#search_form_submit").removeAttr("disabled");
-
-//    var loc = window.location;
-//    alert(loc);
 
 
     $(".sort_by a, .for_all_listing a").live("click", function(e) {
@@ -124,7 +44,7 @@ $(document).ready(function() {
         $.getScript("jobs/search/?" + str);
 //        url_parameters(str);
         return false;
-  });
+    });
 
     function getUrlParams(href) {
         var params = (href.split('?')[1] || '');
@@ -135,27 +55,27 @@ $(document).ready(function() {
     $('.for_all_listing').show();
 
 
-     $('.for_autocomplete_listing a').live ('click', function() {
-         var url = getUrlParams(this.href);
+    $('.for_autocomplete_listing a').live ('click', function() {
+        var url = getUrlParams(this.href);
         $.getScript('jobs/search/?' + url);
         return false;
     });
 
 
     $('#main_list_link').live('click', function(){
-       $.ajax(
-       {
-        url: '/jobs/search',
+        $.ajax(
+            {
+                url: '/jobs/search',
 //        dataType: "html",
-        beforeSend: function(){
-          $(".spinner").showLoading();
-          $("#main_list_link").hide();
-        },
-        success: function(){
-          $(".spinner").hideLoading();
-          $(".spinner #main_list_link").show();
-        }
-        });
+                beforeSend: function(){
+                    $(".spinner").showLoading();
+                    $("#main_list_link").hide();
+                },
+                success: function(){
+                    $(".spinner").hideLoading();
+                    $(".spinner #main_list_link").show();
+                }
+            });
 
         return false;
     });
@@ -221,8 +141,8 @@ $(document).ready(function() {
     var p = $("div.menu a");
     p.slideUp('slow').slideDown('slow');
 
-   var nfn = $('.notify_friend_name');
-   var nfe = $('.notify_friend_email');
+    var nfn = $('.notify_friend_name');
+    var nfe = $('.notify_friend_email');
 
     $("#show_link_to_email_friend").live('click', function() {
         nfn.val('');
@@ -242,75 +162,99 @@ $(document).ready(function() {
     });
 
 
-   $('.notify_friend_submit').button('enable');
+    $('.notify_friend_submit').button('enable');
 
-   var reg = new RegExp(/^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/);
+    var reg = new RegExp(/^([\w]+)(.[\w]+)*@([\w]+)(.[\w]{2,3}){1,2}$/);
 
 //    alert(reg.test('guneybilen@yahoo.com'));
 
     var taym1 = new Date();
     taym1 = taym1.getTime();
 
+
     $('.notify_friend_submit').click( function(e) {
 
-       var taym2 = new Date();
-       taym2 = taym2.getTime();
+        var taym2 = new Date();
+        taym2 = taym2.getTime();
 
-       if (nfn.val().length == 0){
+        if (nfn.val().length == 0){
 
-         if (locale == "tr"){
-            alert("Lütfen isim giriniz"); }
+            if (locale == "tr"){
+                alert("Lütfen isim giriniz"); }
 
-         if (locale == "en"){
-            alert("Please input name"); }
+            if (locale == "en"){
+                alert("Please input name"); }
 
-           return false;
-       }
+            return false;
+        }
 
-       if (nfe.val().length ==0 || !reg.test(nfe.val())) {
+        if (nfe.val().length ==0 || !reg.test(nfe.val())) {
 
-         if (locale == "tr"){
-            alert("Lütfen geçerli bir email adresi giriniz"); }
+            if (locale == "tr"){
+                alert("Lütfen geçerli bir email adresi giriniz"); }
 
-         if (locale == "en"){
-            alert("Please input a valid email address"); }
+            if (locale == "en"){
+                alert("Please input a valid email address"); }
 
-           return false;
-       }
-         var req = requirements(taym2);
-         if (!req){return false;}
+            return false;
+        }
 
-    });
+//        var req = requirements(taym2);
 
-//    $('.comment_submit').live('click', function(){
-//        var taym3 = new Date();
-//        taym3 = taym3.getTime();
-//        var req = requirements(taym3);
-//        if(!req){
-//            $('.comment_submit').button('enable');
+//        if (!req){return false;}
+
+
+//        if($('.notify_friend_captcha_answer').val() != $('.notify_friend_captcha_question').text()){
+//            if (locale == "tr"){
+//                alert("Lütfen kodu kutuya giriniz"); }
+//
+//            if (locale == "en"){
+//                alert("Please enter the code in the textbox"); }
+//
+//            $('.notify_friend_captcha_question').animate({'backgroundColor' : "blue", "color" : "white"}, 5000);
+//            $('.notify_friend_captcha_question').animate({'backgroundColor' : "white", "color" : "red"}, 5000);
 //            return false;
 //        }
-//    });
+    });
 
 
-function requirements(taym){
-       if($('.hidden_field_tag').val() !=''){
-         alert("Code 999");
-         nfn.val('');
-         nfe.val('');
-         return false;
-       }
+/*
+    function requirements(taym){
+        if($('.hidden_field_tag').val() !=''){
+            alert("Code 999");
+            nfn.val('');
+            nfe.val('');
+            return false;
+        }
 
 
-       if(taym1+10>taym){
-         alert('Code 888');
-         nfn.val('');
-         nfe.val('');
-         return false;
-       }
+        if(taym1+10>taym){
+            alert('Code 888');
+            nfn.val('');
+            nfe.val('');
+            return false;
+        }
 
-       return true;
-}
+        return true;
+    }
+*/
+
+//    var captcha = randomString();
+//    $('.notify_friend_captcha_question').text(captcha);
+//    $('.notify_friend_captcha_question').css({'color': 'red'});
+//    alert(randomString());
+
+/*    function randomString() {
+        var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+        var string_length = 5;
+        var randomstring = '';
+        for (var i=0; i<string_length; i++) {
+            var rnum = Math.floor(Math.random() * chars.length);
+            randomstring += chars.substring(rnum,rnum+1);
+        }
+
+        return randomstring;
+    }*/
 
 });
 

@@ -1,7 +1,19 @@
 <div class='vr'><%= image_tag 'column.png', :size => '100x500' %></div>
 
-<%= params[:notice] if !params[notice].nil? %>
 
+
+<div class = "captcha_alternatives">
+<%= @time_too_fast.nil? ? '' : @time_too_fast%>
+<%= @hidden.nil? ? '' : @hidden %>
+</div>
+
+
+
+
+<div id='notice'>
+ <%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+ <%= params[:notice] if !params[:notice].nil? %>
+</div>
 
 <%= render @job %>
 
@@ -9,7 +21,7 @@
         :id => "show_link_to_email_friend" %>
 <br /> <br />
 
-<%= render 'notify_friend' %>
+<%= render 'jobs/notify_friend' %>
 <br />
 
 
@@ -39,5 +51,7 @@
 
 
 <%= link_to t('jobs.show.link_to.jobs_list'), jobs_path %>
+
+
 
 <br /><br /><br />

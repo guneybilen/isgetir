@@ -112,6 +112,13 @@ en:
     new_user: New User
     too_fast: Error code 888 - too fast
     hidden_text_field_change: Error code 999 - hidden error
+    captcha: Please enter the code in the textbox
+    interesting_job: Interesting Job
+    new_comment_for: A comment added for the following title
+    new_user_with: A user added with the following email address
+    user_added_a_new_job: user added a new job
+    password_reset: Password Reset
+    notify_friend_missing_information: Your name or related email address missing
 
   will_paginate:
     previous: Previous
@@ -215,6 +222,7 @@ en:
   support:
     array:
 #     "\n" calismiyor sadece single quote ile olunca yani '\n' olunca calisiyor.
+      two_words_connector: '\n'
       words_connector: '\n'
       last_word_connector: '\n'
 

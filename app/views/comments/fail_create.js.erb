@@ -1,7 +1,16 @@
 $("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
 $('html').animate({scrollTop:0}, 'slow');
 //$("html").scrollTop(0);
-alert("<%= @comment.errors.full_messages.to_sentence %>");
+
+var check = "<%= @comment.errors.full_messages.to_sentence == '' %>"
+
+// asagidaki if de check yerine "< !@comment.errors.full_messages.to_sentence == '' >"
+// kullandin mi ise yaramiyor alert her sartta pop up ediyor
+
+if (check=='false'){
+ alert("<%= @comment.errors.full_messages.to_sentence %>");
+}
+
 
 var batin = $("input:submit");
 batin.button();
