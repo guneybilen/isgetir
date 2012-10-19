@@ -30,7 +30,7 @@ class JobsController < ApplicationController
 
       @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
       #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
-      @jobs = @jobs.paginate(:per_page => 1, :page => params[:page])
+      @jobs = @jobs.paginate(:per_page => 2, :page => params[:page])
 
     end
 

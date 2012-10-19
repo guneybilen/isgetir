@@ -1,3 +1,4 @@
+=begin
 require "spec_helper"
 
 describe Notifier do
@@ -16,3 +17,4 @@ describe Notifier do
   end
 
 end
+=end

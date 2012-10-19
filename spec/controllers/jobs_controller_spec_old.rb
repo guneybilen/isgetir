@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe JobsController do
@@ -125,3 +126,4 @@ describe JobsController do
   end
 
 end
+=end

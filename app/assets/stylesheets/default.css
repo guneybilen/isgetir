@@ -20,7 +20,7 @@ body{
     background-color: #fff;
     font-size: 1em;
     font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-    width: 800px;
+    width: 900px;
 }
 p{
     font-size: 1em;
@@ -31,10 +31,10 @@ p{
     margin-top: 40px;
 }
 
-.sort_by_links_span a{
+/*.sort_by_links_tr a{
     margin-left: 5px;
     margin-right: 5px;
-}
+}*/
 
 /*
 .sort_by .sort_by_links a:hover{
@@ -45,7 +45,7 @@ p{
 
 .menu {
     float: right;
-    margin-top:-20px;
+    margin-top: -30px;
     /* .menu font color is set in application.js */
 }
 
@@ -70,11 +70,6 @@ p{
     text-decoration: underline;
 }
 
-.list{
-    float:left;
-    margin-top: 20px;
-}
-
 .list a{
     color:#D95E16;
 }
@@ -92,7 +87,7 @@ p{
     font-size: 20px;
     color: red;
     margin-bottom: -20px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .captcha_alternatives {
@@ -314,6 +309,7 @@ h2.new_job_h2{
 }
 
 h2{
+    margin-top: 50px;
     color:#2e6e9e;
 }
 .errorExplanation{
@@ -349,4 +345,28 @@ div.actions .password_reset, div.actions .password_reset_submit{
 
 .comment{
     margin-top: 25px;
+}
+
+table{
+    text-align: left;
+    width: 900px;
+    margin-top: 10px;
+}
+
+/*td{
+    white-space: nowrap;
+}*/
+
+tr.alt td {
+    background: blue;
+}
+
+tr.over td {
+    background: yellow;
+}
+
+a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
 }

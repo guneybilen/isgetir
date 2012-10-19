@@ -1,7 +1,7 @@
 
-
+ <table class="stripeMe">
 <div class='sort_by'>
-  <%= t('general.sort_by') %>:
+  <!-- t('general.sort_by') -->
   <% if @jobs.blank?  %>
 
       <%= t('jobs.index.table.category') %>
@@ -18,23 +18,34 @@
       <!--sortable application_helper'da defined-->
       <!-- asagida sortable function call'dan sonra gelen parantez son derece onemli; o parantez
            olmazsa kod I18n'nin t methodunu invoke etmiyor column basliklari sirf ingilizce output oluyor. -->
-      <span class="sort_by_links_span">
-        <span id='remove_category_anchor'><%= sortable('category_id', t('jobs.index.table.category'), :class=>"sort_by_links") %></span>
-          <span class="for_after_category_removed">
-            <%= sortable('title', t('jobs.index.table.title'), :class=>"sort_by_links") %>
-            <%= sortable('location', t('jobs.index.table.location'), :class=>"sort_by_links" ) %>
-            <%= sortable('body', t('jobs.index.table.body'), :class=>"sort_by_links") %>
-            <%= sortable('created_at', t('jobs.index.table.created_at'), :class=>"sort_by_links") %>
-          </span>
-      </span>
+
+
+      <tr class="sort_by_links_tr">
+          <th id='remove_category_anchor'><%= sortable('category_id', t('jobs.index.table.category'), :class=>"sort_by_links") %>
+          </th>
+
+
+           <th class="for_after_category_removed"><%= sortable('title', t('jobs.index.table.title'), :class=>"sort_by_links") %>
+           </th>
+
+           <th class="for_after_category_removed"><%= sortable('location', t('jobs.index.table.location'), :class=>"sort_by_links" ) %>
+           </th>
+
+           <th class="for_after_category_removed"><%= sortable('body', t('jobs.index.table.body'), :class=>"sort_by_links") %>
+           </th>
+
+           <th class="for_after_category_removed"><%= sortable('created_at', t('jobs.index.table.created_at'), :class=>"sort_by_links") %>
+           </th>
+
+      </tr>
   <% end  %>
 </div>
 
-<div class="list">
   <% if !@jobs.blank? %>
       <% @jobs.each do |job| %>
           <br />
-
+          <tr>
+          <td>
           <% if !job.category.nil? %>
               <% if I18n.locale == :en %>
                   <%= job.category.name %>
@@ -44,24 +55,32 @@
           <% else %>
               ---
           <% end %>
-          <%= job.title %>
+          </td>
 
-          <%= job.location %>
-          <%= truncate(job.body, :length => 60, :separator => ' ', :omission => t('general.continued') ) %>
-          <%= time_ago_in_words(job.created_at) %> <%= t('general.time_ago_in_words') %>
-          <br />
+          <td><%= job.title %></td>
+          <td><%= job.location %></td>
+          <td><%= truncate(job.body, :length => 60, :separator => ' ', :omission => t('general.continued') ) %></td>
+          <td><%= time_ago_in_words(job.created_at) %> <%= t('general.time_ago_in_words') %></td>
+
+          </tr>
+          <tr>
+
+          <td>
           <%= link_to t('general.link_to.show'), job, {:class => "show"} %>
-          <% if job.owned_by? current_user  %>
-              <%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %>
+          </td>
+
+          <td><% if job.owned_by? current_user  %></td>
+          <td><%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %></td>
+          <td>
               <%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %>
-          <% end %>
-
-
-
+            </td>
+            <% end %>
+            </tr>
       <% end %>
   <% end %>
 
-</div>
+   </table>
+
 
 <br />
 <!-- will_paginate(@jobs, :params => { :controller => "jobs", :action => "search_by_category" })-->

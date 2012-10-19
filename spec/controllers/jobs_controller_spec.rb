@@ -21,7 +21,9 @@ describe JobsController do
 
     it "should be have the right title" do
       get 'index'
-      response.should have_selector('title', :content => @title + '  | Ana Liste')
+      response.should have_selector('title', :content => @title + ' | Ana Liste')
+      # | isaretinin saginda ve solunda exactly 1 space olmali as in
+      # application_helper's title method otherwise the example ends up as failure
     end
 
 =begin

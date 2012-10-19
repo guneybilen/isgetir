@@ -54,7 +54,7 @@ tr:
       edit_password: Şifreni Değiştir
       logout: Çıkış
       create_user: Kayıt OL
-      login: Giriş
+      login: Üye Girişi
 
     link_to:
       cancel: İptal Et
@@ -94,7 +94,7 @@ tr:
     update_password: Şifreyi Güncelle
     your_email_address: Email Adresiniz
     reset_password: Şifre Sıfırla
-    login: Giriş
+    login: Üye Girişi
     remember_me: Beni Hatırla
     search: Ara
     pluralize:
@@ -210,12 +210,18 @@ tr:
         password: Şifre
         one: ''   # one ve other password ile ayni izzada olmaz ise "...can not be used with :count => 1" hatasi veriyor
         other: '' # buna gerek yok "%{count} şifreler"
+        email: ''
     errors:
       models:
         user:
           attributes:
             password:
               confirmation: onay kutusunada aynı şifreyi girmeniz lazım
+              too_short: çok kısa
+              blank: girilmemiş
+            email:
+              taken: Girdiğiniz email adresi ile sistemde bir kullanıcı var
+
         job:
           attributes:
             title:

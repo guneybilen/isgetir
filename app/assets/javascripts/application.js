@@ -83,7 +83,7 @@ $(document).ready(function() {
 
     $('#search_form_text_field').val('');
 
-    $('#search_form_text_field').on('input', function() {
+    $('#search_form_text_field').live('input', function() {
         var params = {};
         params[this.name] = this.value;
         $.get('jobs/search_autocomplete', params);

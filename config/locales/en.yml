@@ -241,12 +241,17 @@ en:
         password: Password
         one: ''   # one ve other password ile ayni izzada olmaz ise "...can not be used with :count => 1" hatasi veriyor
         other: '' # buna gerek yok "%{count} şifreler"
+        email: ''
     errors:
       models:
         user:
           attributes:
             password:
               confirmation: Password confirmation has to be the same
+              too_short: very short
+              blank: not entered
+            email:
+              taken: There is already a user with the entered email address
         job:
           attributes:
             title:

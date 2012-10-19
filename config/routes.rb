@@ -7,7 +7,9 @@ Isgetir::Application.routes.draw do
 
   match 'jobs/search' => 'jobs#search'
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
-  match '/ajaxing' => 'jobs#ajaxing', :as => 'ajaxing'
+  match '/ajaxing' => 'jobs#ajaxing', :as => 'ajaxing' # according to
+  # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
+  # ve bende denedim dogruymus.
 
   resources :jobs do
 
@@ -20,14 +22,20 @@ Isgetir::Application.routes.draw do
     end
     resources :comments
   end
+
   resources :users
 
   resource :session
 
   resources :password_resets
 
-  match '/login' => "sessions#new", :as => "login"
-  match '/logout' => "sessions#destroy", :as => "logout"
+  match '/login' => "sessions#new", :as => "login" # according to
+  # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
+  # ve bende denedim dogruymus.
+  match '/logout' => "sessions#destroy", :as => "logout" # according to
+  # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
+  # ve bende denedim dogruymus.
+
 
 
   # The priority is based upon order of creation:
