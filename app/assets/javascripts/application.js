@@ -31,7 +31,7 @@ $(document).ready(function() {
     $("#select_box").val(0);
 
 
-    $(".sort_by a, .for_all_listing a").live("click", function(e) {
+    $(".sort_by_links_tr a, .for_all_listing a").live("click", function(e) {
         var str = {};
         str = getUrlParams(this.href);
         var i = $('#select_box').children(":selected").attr("value");
@@ -255,6 +255,17 @@ $(document).ready(function() {
 
         return randomstring;
     }*/
+
+/*    $(".stripeMe tr").mouseover(function(){
+        $(this).addClass('over');
+    });
+
+      $(".stripeMe tr").mouseout(function(){
+        $(this).removeClass('over');
+    });*/
+
+    $(".stripeMe tr:even").addClass("alt");
+
 
 });
 

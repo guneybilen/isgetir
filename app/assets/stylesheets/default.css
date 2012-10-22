@@ -351,6 +351,8 @@ table{
     text-align: left;
     width: 900px;
     margin-top: 10px;
+    border-collapse: collapse;
+
 }
 
 /*td{
@@ -358,12 +360,35 @@ table{
 }*/
 
 tr.alt td {
-    background: blue;
+    background: #dfeffc;
 }
 
-tr.over td {
-    background: yellow;
+.kategori{
+    width: 100px;
 }
+
+.location, .title{
+    width: 85px;
+}
+
+.show{
+    text-align: center;
+    width: 100px;
+}
+
+.member_specific_edit{
+    text-align: center;
+    width: 90px;
+}
+
+.member_specific_delete{
+    text-align: center;
+    width: 30px;
+}
+
+/*tr.over td {
+    background: yellow;
+}*/
 
 a.disabled {
   opacity: 0.5;

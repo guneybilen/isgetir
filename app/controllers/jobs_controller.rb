@@ -51,7 +51,7 @@ class JobsController < ApplicationController
       return
     else
       @jobs = Job.search(params[:keyword]).order(sort_column + " " + sort_direction)
-        .paginate(:per_page => 1, :page => params[:page])
+        .paginate(:per_page => 2, :page => params[:page])
     end
 
       respond_to do |format|

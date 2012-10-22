@@ -78,7 +78,7 @@ en:
     category_is_not_specified: Categoy is not specified
     password_cannot_be_blank: Password cannot be blank
     time_ago_in_words: ago
-    continued:  ...(continued)
+    continued:  ...
     edit: Edit
     delete: Delete
     showing: Showing...

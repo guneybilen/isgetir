@@ -78,7 +78,7 @@ tr:
     category_is_not_specified: Kategori belirlenmemiş
     password_cannot_be_blank: Şifre kutusu boş olamaz
     time_ago_in_words: önce
-    continued:  ...(devamı var)
+    continued:  ...
     edit: Düzenle
     delete: Sil
     showing: Gösteriyor...

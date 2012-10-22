@@ -21,14 +21,14 @@
 
 
       <tr class="sort_by_links_tr">
-          <th id='remove_category_anchor'><%= sortable('category_id', t('jobs.index.table.category'), :class=>"sort_by_links") %>
+          <th id='remove_category_anchor' class='kategori'><%= sortable('category_id', t('jobs.index.table.category'), :class=>"sort_by_links") %>
           </th>
 
 
-           <th class="for_after_category_removed"><%= sortable('title', t('jobs.index.table.title'), :class=>"sort_by_links") %>
+           <th class="for_after_category_removed title"><%= sortable('title', t('jobs.index.table.title'), :class=>"sort_by_links") %>
            </th>
 
-           <th class="for_after_category_removed"><%= sortable('location', t('jobs.index.table.location'), :class=>"sort_by_links" ) %>
+           <th class="for_after_category_removed location"><%= sortable('location', t('jobs.index.table.location'), :class=>"sort_by_links" ) %>
            </th>
 
            <th class="for_after_category_removed"><%= sortable('body', t('jobs.index.table.body'), :class=>"sort_by_links") %>
@@ -57,21 +57,18 @@
           <% end %>
           </td>
 
-          <td><%= job.title %></td>
-          <td><%= job.location %></td>
+          <td><%= truncate(job.title, :length => 10, :omission => t('general.continued')) %></td>
+          <td><%= truncate(job.location, :length => 10, :omission => t('general.continued')) %></td>
           <td><%= truncate(job.body, :length => 60, :separator => ' ', :omission => t('general.continued') ) %></td>
           <td><%= time_ago_in_words(job.created_at) %> <%= t('general.time_ago_in_words') %></td>
-
-          </tr>
-          <tr>
 
           <td>
           <%= link_to t('general.link_to.show'), job, {:class => "show"} %>
           </td>
 
-          <td><% if job.owned_by? current_user  %></td>
-          <td><%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %></td>
-          <td>
+          <% if job.owned_by? current_user  %>
+          <td class="member_specific_edit"><%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %></td>
+          <td class="member_specific_delete">
               <%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %>
             </td>
             <% end %>
