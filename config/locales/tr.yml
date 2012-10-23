@@ -167,10 +167,10 @@ tr:
 
   datetime:
     distance_in_words:
-      less_than_x_seconds: "%{count} saniyeden daha"
+      less_than_x_seconds: "%{count} saniyeden"
       x_seconds: "%{count} saniye"
       half_a_minute: yarım dakika
-      less_than_x_minutes: "%{count} dakikadan daha"
+      less_than_x_minutes: "%{count} dakikadan"
       x_minutes: "%{count} dakika"
       x_hours: "%{count} saat"
       about_x_hours:
