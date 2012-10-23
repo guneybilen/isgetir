@@ -11,6 +11,7 @@ gem 'pg', :group => [:production]
 gem 'thin', :group => [:production]
 gem 'eventmachine', '~> 1.0.0.beta.4.1'
 gem 'will_paginate', "~> 3.0.2"
+gem "meta_on_rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
