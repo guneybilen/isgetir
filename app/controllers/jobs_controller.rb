@@ -30,7 +30,7 @@ class JobsController < ApplicationController
 
       @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
       #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
-      @jobs = @jobs.paginate(:per_page => 2, :page => params[:page])
+      @jobs = @jobs.paginate(:per_page => 20, :page => params[:page])
 
     end
 
@@ -47,11 +47,11 @@ class JobsController < ApplicationController
     if (params[:keyword].blank?)
       #@jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
       @jobs = Job.order(sort_column + " " + sort_direction)
-          .paginate(:per_page => 2, :page => params[:page])
+          .paginate(:per_page => 20, :page => params[:page])
       return
     else
       @jobs = Job.search(params[:keyword]).order(sort_column + " " + sort_direction)
-        .paginate(:per_page => 2, :page => params[:page])
+        .paginate(:per_page => 20, :page => params[:page])
     end
 
       respond_to do |format|
@@ -182,7 +182,8 @@ class JobsController < ApplicationController
       end
 
       if (@hidden.blank? && @time_too_fast.blank?) && @job.save
-        format.html { redirect_to @job, notice: t('jobs_controller.create.success') }
+        flash[:notice] = t('jobs_controller.create.success')
+        format.html { redirect_to @job}
         format.json { render json: @job, status: :created, location: @job }
       else
 
@@ -208,7 +209,8 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to @job, notice: t('jobs_controller.update.success') }
+        flash[:notice] = t('jobs_controller.update.success')
+        format.html { redirect_to @job}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -238,13 +240,14 @@ class JobsController < ApplicationController
     hidden_field  # defined in application controller
 
     if (params[:name].blank? || params[:email].blank?)
-      params[:notice] = t('general.notify_friend_missing_information')
+      flash[:notice] = t('general.notify_friend_missing_information')
       render 'show' and return
     end
 
     if (@hidden.blank? && @time_too_fast.blank?)
       Notifier.email_friend(@job, params[:name], params[:email]).deliver
-      redirect_to @job, :notice => t('jobs_controller.notify_friend.success')
+      flash[:notice] = t('jobs_controller.notify_friend.success')
+      redirect_to @job
     else
       #params[:notice] = "Missing $$$$$$$$$$$$$$$$$$$$$ #{@hidden} #{@time_too_fast} $$$$$$$$$$$$ Information"
       render 'show'

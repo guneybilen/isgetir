@@ -152,6 +152,7 @@ div.main_title a{
     font-weight: bold;
     clear: right;
     color: #2e6e9e;
+    box-shadow: 10px -5px 5px #888888;
 }
 
 div.main_title a:hover{

@@ -32,11 +32,11 @@ class ApplicationController < ActionController::Base
 
   def sorting
     if sort_column == "category_id" && params[:locale] == :en
-      @jobs = Job.cat_by_name.paginate(:per_page => 2, :page => params[:page])
+      @jobs = Job.cat_by_name.paginate(:per_page => 20, :page => params[:page])
     elsif sort_column == "category_id" && params[:locale] == :tr
-      @jobs = Job.cat_by_isim.paginate(:per_page => 2, :page => params[:page])
+      @jobs = Job.cat_by_isim.paginate(:per_page => 20, :page => params[:page])
     else
-      @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 2, :page => params[:page])
+      @jobs = Job.order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     end
 
   end
