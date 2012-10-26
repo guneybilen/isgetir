@@ -1,4 +1,7 @@
 class Job < ActiveRecord::Base
+
+  attr_accessible :title, :body, :location, :category_id
+
   #default_scope :order => 'created_at DESC'
 
   validates :title, :presence => true

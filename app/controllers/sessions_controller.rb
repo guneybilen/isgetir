@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+ class SessionsController < ApplicationController
   #force_ssl
 
   def create
@@ -18,6 +18,10 @@ class SessionsController < ApplicationController
   def destroy
     cookies.delete(:auth_token)
     reset_session
+    Session.check_date
+    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$#{user.auth_token}"
+    #ssn = Session.find_by_session_id(session[:user_id])
+    #ssn.destroy
     redirect_to root_path, :notice => t('sessions_controller.destroy.success')
   end
 end

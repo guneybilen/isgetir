@@ -1,5 +1,7 @@
 
 class Category < ActiveRecord::Base
+  attr_accessible  # none icin hicbir symbol vermesen yetiyor
+
   has_many :jobs
   #scope  :order, lambda { |order|    ise yaramiyor
   #  {

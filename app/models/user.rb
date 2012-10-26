@@ -1,6 +1,8 @@
 require "digest"
 
 class User < ActiveRecord::Base
+
+  attr_accessible :email, :password
   attr_accessor :password
 
   before_create { generate_token(:auth_token) }
