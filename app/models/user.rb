@@ -2,8 +2,8 @@ require "digest"
 
 class User < ActiveRecord::Base
 
-  attr_accessible :email, :password
-  attr_accessor :password
+  attr_accessible :email, :password, :password_confirmation
+  attr_accessor :password, :password_confirmation
 
   before_create { generate_token(:auth_token) }
 
@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
             :format => { :with => /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
 
   validates :password, :confirmation => true,
+            :length => { :within => 4..20 },
+            :presence => true,
+            :if => :password_required?
+
+   validates :password_confirmation,
             :length => { :within => 4..20 },
             :presence => true,
             :if => :password_required?
