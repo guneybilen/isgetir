@@ -18,9 +18,9 @@ div div a{}
 
 body{
     background-color: #fff;
-    font-size: 1em;
-    font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-    width: 900px;
+    font-size: 1.1em;
+    font-family: "Courier New";  /* "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;*/
+    width: 1000px;
 }
 p{
     font-size: 1em;
@@ -32,9 +32,9 @@ p{
 }
 
 /*.sort_by_links_tr a{
-    margin-left: 5px;
-    margin-right: 5px;
+    text-align: left;
 }*/
+
 
 /*
 .sort_by .sort_by_links a:hover{
@@ -45,7 +45,7 @@ p{
 
 .menu {
     float: right;
-    margin-top: -30px;
+    margin-top: 10px;
     /* .menu font color is set in application.js */
 }
 
@@ -152,7 +152,7 @@ div.main_title a{
     font-weight: bold;
     clear: right;
     color: #2e6e9e;
-    box-shadow: 10px -5px 5px #888888;
+    box-shadow: 15px -5px 5px #888888;
 }
 
 div.main_title a:hover{
@@ -348,12 +348,16 @@ div.actions .password_reset, div.actions .password_reset_submit{
     margin-top: 25px;
 }
 
-table{
+table, th,td{
+    /*border: 5px solid black;*/
+    position: relative;
     text-align: left;
-    width: 900px;
-    margin-top: 10px;
-    border-collapse: collapse;
+}
 
+table{
+    top: -35px;
+    width: 1000px;
+    border-collapse: collapse;
 }
 
 /*td{
@@ -372,17 +376,24 @@ tr.alt td {
     width: 85px;
 }
 
+.date{
+    white-space: nowrap;
+    width: 250px;
+}
 .show{
+    font-size: 0.8em;
     text-align: center;
-    width: 100px;
+    width: 80px;
 }
 
 .member_specific_edit{
+    font-size: 0.8em;
     text-align: center;
     width: 90px;
 }
 
 .member_specific_delete{
+    font-size: 0.8em;
     text-align: center;
     width: 30px;
 }

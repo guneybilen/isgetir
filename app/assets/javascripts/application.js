@@ -28,7 +28,9 @@ function url_parameters(str) {
 
 $(document).ready(function() {
 
-    $("#select_box").val(0);
+//    $("#select_box").val(0);  // bu IE9'da calismiyor
+
+    $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
 
 
     $(".sort_by_links_tr a, .for_all_listing a").live("click", function(e) {
