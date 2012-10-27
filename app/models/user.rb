@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   #has_many :replies, :through => :skills, :source => :comments
 
 
-  validates :email, :uniqueness => true,
+  validates :email, :uniqueness => {:case_sensitive => false},
             :length => { :within => 5..50 },
             :format => { :with => /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
 
