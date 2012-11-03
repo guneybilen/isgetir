@@ -4,6 +4,7 @@ log/*.log
 tmp/
 .sass-cache/
 .idea/*
+.iml
 # .idea/* yaptiktan sonra afer a commit yani after a clean state do:
 # git rm .idea/workspace.xml
 # ondan sonra git .idea folderi track etmeyi birakiyor.
