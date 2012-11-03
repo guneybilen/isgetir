@@ -67,9 +67,12 @@ describe User do
       @user = User.create!(@attr)
     end
 
-    it "should have an encrypted password attribute" do
+    it "should have an hashed_password attribute" do
       @user.should respond_to(:hashed_password)
     end
 
+    it "should set the hashed_password" do
+      @user.hashed_password.should_not be_blank
+    end
   end
 end
