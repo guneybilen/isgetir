@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 describe JobsController do
   render_views
 
@@ -40,5 +41,40 @@ describe JobsController do
     end
 
 =end
+
+  describe "GET 'show'" do
+    #let(:user) { Factory(:user1) }
+
+    before :each do
+      @job = Factory(:job1)
+    end
+
+
+    it "should be successful" do
+      get 'show', :id => @job
+      response.should be_success
+    end
+
+    it "should find the right user" do
+      get 'show', :id => @job
+      assigns(:job).should == @job
+    end
+
+    it "should have h2 tag" do
+      get :show, :id => @job
+      response.should have_selector('h2', :content => I18n.t('general.comments'))
+    end
+
+    it "should have the div with class 'vr''" do
+      get :show, :id => @job
+      response.should have_selector('div', :class => 'vr')
+    end
+
+    it "should have an image" do
+      get :show, :id => @job
+      response.should have_selector('div>img')
+    end
+
+  end
 
 end

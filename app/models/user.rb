@@ -23,11 +23,14 @@ class User < ActiveRecord::Base
             :if => :password_required?
 
    validates :password_confirmation,
-            :length => { :within => 4..20 },
+            :length => { :within => 5..20 },
             :presence => true,
             :if => :password_required?
 
-  before_save :encrypt_new_password
+  #before_save :encrypt_new_password
+
+  before_save :encrypt_password  # added
+
   def self.authenticate(email, password)
     user = find_by_email(email)
     return user if user && user.authenticated?(password)
@@ -49,16 +52,28 @@ class User < ActiveRecord::Base
   end
 
   protected
-  def encrypt_new_password
-    return if password.blank?
+  # def encrypt_new_password
+  def encrypt_password
+    #return if password.blank?
+    self.salt = make_salt if new_record? # added line
     self.hashed_password = encrypt(password)
   end
+
+  # encrypt method added
+  def encrypt(string)
+    secure_hash("#{salt}--#{string}")
+  end
+
+  def make_salt
+    secure_hash("#{Time.now.utc}--#{password}")
+  end
+
   def password_required?
     hashed_password.blank? || password.present?
   end
-  def encrypt(string)
-    Digest::SHA1.hexdigest(string)
+
+  #def encrypt(string)
+  def secure_hash(string)
+    Digest::SHA2.hexdigest(string)
   end
-
-
 end
