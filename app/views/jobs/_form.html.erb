@@ -7,7 +7,7 @@
 
 
 <div class = "new_job_form">
-<%= form_for @job do |f| %>
+<%= form_for(@job, :builder => TidyFormBuilder) do |f| %>
   <% if @job.errors.any? %>
     <div class="errorExplanation">
       <h3>
@@ -35,12 +35,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label t('jobs.index.table.title'), :class => css_class_title %><br />
-    <%= f.text_field :title %>
+    <!-- = f.label t('jobs.index.table.title'), :class => css_class_title %><br / -->
+    <%= f.text_field :title, {:i18n => t('jobs.index.table.title'), :required => true, :tooltip => t('general.class_required'), :class => css_class_title } %>
   </div>
   <div class="field">
-    <%= f.label t('jobs.index.table.location') %><br />
-    <%= f.text_field :location %>
+    <!-- f.label t('jobs.index.table.location') %><br / -->
+    <%= f.text_field :location, {:i18n => t('jobs.index.table.location')}  %>
   </div>
   <div class="field">
     <br />
@@ -71,8 +71,8 @@
 
    <div class="field1">
      <br /><br /><br />
-     <%= f.label t('jobs.index.table.body'), :class => css_class_body %><br />
-     <%= f.text_area :body %>
+     <!-- f.label t('jobs.index.table.body'), :class => css_class_body %><br />  -->
+     <%= f.text_area :body, {:i18n => t('jobs.index.table.body'), :required => true, :tooltip => t('general.class_required'), :class => css_class_body } %>
    </div>
 <!--
   <div class="field">

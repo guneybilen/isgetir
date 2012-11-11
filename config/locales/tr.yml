@@ -119,6 +119,7 @@ tr:
     user_added_a_new_job: kullanıcısı yeni bir iş ekledi
     password_reset: Şifre Degiştir
     notify_friend_missing_information: Adınızı veya ilgili email adresini girmediniz
+    class_required: Bu alanın doldurulması zorunludur
 
   will_paginate:
     previous: Önceki

@@ -119,6 +119,7 @@ en:
     user_added_a_new_job: user added a new job
     password_reset: Password Reset
     notify_friend_missing_information: Your name or related email address missing
+    class_required: Field must be filled
 
   will_paginate:
     previous: Previous

@@ -201,6 +201,7 @@ $(document).ready(function() {
             return false;
         }
 
+
 //        var req = requirements(taym2);
 
 //        if (!req){return false;}

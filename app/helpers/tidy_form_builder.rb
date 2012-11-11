@@ -1,0 +1,92 @@
+class TidyFormBuilder < ActionView::Helpers::FormBuilder
+
+  # To save repeating ourselves in many contexts, we can create
+  # our own helper for picking countries.
+
+  # We might want to write:
+  # <div class="field">
+  # 	<p>
+  # 	<%= f.label :country %><br />
+  #    <%= f.country_select :country %>
+  #  </p>
+  # </div>
+  #
+  # our country_select just calls the default select helper with the
+  # choices already filled in
+  #def country_select(method, options={}, html_options={})
+  #  select(method, [['Canada', 'Canada'],
+  #                   ['Mexico', 'Mexico'],
+  #                   ['United Kingdom', 'UK'],
+  #                   ['United States of America', 'USA']],
+  #                options, html_options)
+  #end
+
+
+   # To change the way Rails normally behaves, we need a
+   # little knowledge about how the form helpers are usually called.
+   # We can get this from the Rails API documentation.
+
+   # Most of the helpers have a similar signature
+
+   def text_field(method, options={})
+     # Helpers just return text to be included in the output
+     # Here we create our label, and add it onto the front
+     # of the superclass (ie. the default helper) output
+     label = label_for(method, options) + super(method, options)
+   end
+
+   def text_area(method, options={})
+     label_for(method, options) + super(method, options)
+   end
+
+   def password_field(method, options={})
+     label_for(method, options) + super(method, options)
+   end
+
+   #def file_field(method, options={})
+   #  label_for(method, options) + super(method, options)
+   #end
+
+   # Other helpers are slightly more complex
+
+   #def date_select(method, options = {}, html_options = {})
+   # label_for(method, options) + super(method, options, html_options)
+   #end
+   #
+   #def datetime_select(method, options = {}, html_options = {})
+   # label_for(method, options) + super(method, options, html_options)
+   #end
+   #
+   #def select(method, choices, options = {}, html_options = {})
+   #  label_for(method, options) + super(method, choices, options, html_options)
+   #end
+   #
+   #def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
+   #  label_for(method, options) + super(method, options, checked_value, unchecked_value)
+   #end
+
+   private
+
+   def label_for(method, options={})
+
+     # if statement is for stopping the extra br tag addition on failure of the form submission
+     if options[:class] == "highlight_error_class_title" || options[:class] == "highlight_error_class_body"
+        lbl = label((options.delete(:label)|| method), options[:i18n], {:class => options[:class]})
+     else
+        lbl = (label((options.delete(:label)|| method), options[:i18n], {:class => options[:class]}))
+        br_req = true
+     end
+
+     if options[:required]
+        lbl = lbl.safe_concat(" <span class='required_mark' title='" + options[:tooltip] + "'>*</span>")
+     else
+        lbl = lbl
+     end
+
+     if br_req
+       lbl.safe_concat("<br />")
+     else
+       lbl
+     end
+  end
+end

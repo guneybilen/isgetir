@@ -1,15 +1,15 @@
 
 <div class="field2">
-  <%= f.label t('general.name') %><br />
-  <%= f.text_field :name %><br />
-  <%= f.label t('general.last_name') %><br />
-  <%= f.text_field :lastname %><br />
-  <%= f.label t('general.phone') %><br />
-  <%= f.text_field :phone %><br />
-  <%= f.label t('general.cell') %><br />
-  <%= f.text_field :cell %><br />
-  <%= f.label t('general.email') %><br />
-  <%= f.text_field :email %><br />
+  <!-- f.label t('general.name') <br /> -->
+  <%= f.text_field :name, {:i18n => t('general.name')}%><br />
+  <!-- f.label t('general.last_name') %><br /> -->
+  <%= f.text_field :lastname, {:i18n => t('general.last_name')} %><br />
+  <!-- f.label t('general.phone') %><br /> -->
+  <%= f.text_field :phone, {:i18n => t('general.phone')} %><br />
+  <!-- f.label t('general.cell') %><br /> -->
+  <%= f.text_field :cell, {:i18n => t('general.cell')} %><br />
+  <!-- f.label t('general.email') %><br />  -->
+  <%= f.text_field :email, {:i18n => t('general.email')} %><br />
   <%= f.check_box :_destroy %>
   <%= f.label :_destroy, t('general.reference_destroy') %>
 </div>

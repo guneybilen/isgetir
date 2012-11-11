@@ -19,16 +19,19 @@
         </div>
     <% end %>
     <div class="field">
-      <%= f.label t('general.email') %>:<br />
-      <%= f.text_field :email %>
+      <!-- f.label t('general.email') %>:<br />  -->
+      <%= f.text_field :email, {:i18n => t('general.email'),
+                                :required => true, :tooltip => t('general.class_required') } %>
     </div>
     <div class="field">
-      <%= f.label t('general.password') %>:<br />
-      <%= f.password_field :password %>
+      <!-- f.label t('general.password') %>:<br />  -->
+      <%= f.password_field :password, {:i18n => t('general.password'),
+                                :required => true, :tooltip => t('general.class_required') } %>
     </div>
     <div class="field">
-        <%= t('general.password_confirmation') %>:<br />
-      <%= f.password_field :password_confirmation %>
+        <!-- t('general.password_confirmation') %>:<br /> -->
+      <%= f.password_field :password_confirmation, {:i18n => t('general.password_confirmation'),
+                                :required => true, :tooltip => t('general.class_required') } %>
     </div>
     <br />
 

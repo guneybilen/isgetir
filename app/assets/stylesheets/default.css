@@ -407,3 +407,8 @@ a.disabled {
   pointer-events: none;
   cursor: default;
 }
+
+.required_mark{
+  margin-left: -5px;
+  color: red;
+}
