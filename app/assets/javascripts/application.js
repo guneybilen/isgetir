@@ -155,6 +155,7 @@ $(document).ready(function() {
 
     var batin = $("input:submit");
     batin.button();
+    batin.attr("disabled", false);
 
     // batin.live yerine batin.on kullandiginda show page'deki
     // .notify_friend_submit button'a errorleri check ederken bir kere click ettikten sonra

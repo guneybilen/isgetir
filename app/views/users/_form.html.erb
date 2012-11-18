@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :builder => TidyFormBuilder ) do |f| %>
     <% if @user.errors.any? %>
         <br />
         <div class="errorExplanation">

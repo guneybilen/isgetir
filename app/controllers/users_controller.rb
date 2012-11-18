@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
   def create
 
-    @time_too_fast = ''
+  if !Rails.env.test?
+   @time_too_fast = ''
 
     time_later # defined in application controller
     hidden_field  # defined in application controller
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
       @user = User.new
       render :action => 'new' and return
     end
+  end
 
     @user = User.new(params[:user])
 

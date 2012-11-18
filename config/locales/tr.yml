@@ -212,6 +212,7 @@ tr:
         one: ''   # one ve other password ile ayni izzada olmaz ise "...can not be used with :count => 1" hatasi veriyor
         other: '' # buna gerek yok "%{count} şifreler"
         email: ''
+        password_confirmation: ''
     errors:
       models:
         user:
@@ -220,8 +221,13 @@ tr:
               confirmation: onay kutusunada aynı şifreyi girmeniz lazım
               too_short: çok kısa
               blank: girilmemiş
+            password_confirmation:
+              too_short: Şifre ikinci kutusundaki veri çok kısa
+              blank: Şifre ikinci kutusu boş
             email:
               taken: Girdiğiniz email adresi ile sistemde bir kullanıcı var
+              too_short: Email adresi çok kısa
+              invalid: Email adresi geçersiz
 
         job:
           attributes:

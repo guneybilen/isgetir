@@ -251,8 +251,13 @@ en:
               confirmation: Password confirmation has to be the same
               too_short: very short
               blank: not entered
+            password_confirmation:
+              too_short: Password confirmation is too short
+              blank: Password confirmation is blank
             email:
               taken: There is already a user with the entered email address
+              too_short: Email address is too short
+              invalid: Email address is invalid
         job:
           attributes:
             title:
