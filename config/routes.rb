@@ -25,7 +25,7 @@ Isgetir::Application.routes.draw do
 
   resources :users
 
-  resource :session
+  resource :session, :only => [:new, :create, :destroy] # , :only => [:new, :create, :destroy] added after reading rails by example
 
   resources :password_resets
 

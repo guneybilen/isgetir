@@ -14,7 +14,18 @@ class ApplicationController < ActionController::Base
 =end
 
 
+=begin
 
+  # By default all helpers are available in the views but to include *_helper methods
+  # in the controllers you need to explicitly specify them as in here:
+  include ApplicationHelper
+  include CommentsHelper
+  include JobsHelper
+  include PasswordResetsHelper
+  include SessionsHelper
+  include UsersHelper
+
+=end
   protected
 
   def time_later
@@ -61,6 +72,7 @@ class ApplicationController < ActionController::Base
 
 # Make current_user available in templates as a helper
   helper_method :current_user
+
 # Filter method to enforce a login requirement
 # Apply as a before_filter on any controller you want to protect
   def authenticate
@@ -72,6 +84,7 @@ class ApplicationController < ActionController::Base
   end
 # Make logged_in? available in templates as a helper
   helper_method :logged_in?
+
   def access_denied
     redirect_to login_path, :notice => t('application_controller.access_denied.log_in_to_continue') and return false
   end

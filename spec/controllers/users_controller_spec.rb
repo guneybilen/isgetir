@@ -77,6 +77,11 @@ describe UsersController do
         flash[:notice].should == I18n.t('users_controller.create.success')
       end
 
+      it "should sign the user in" do
+        post :create, :user => @attr
+        controller.should be_logged_in
+      end
+
     end
 
   end
