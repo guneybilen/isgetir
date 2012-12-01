@@ -3,9 +3,20 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
+require File.dirname(__FILE__) + "/factories"
+#require "webrat"
+#require 'webrat/core/matchers'
+
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+#include Webrat::Methods
+
+#Webrat.configure do |config|
+#  	config.mode = :rack
+#end
 
 RSpec.configure do |config|
   # == Mock Framework
@@ -24,5 +35,21 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  #config.include Webrat::HaveTagMatcher
+
+
+
+def test_sign_in(user)
+          @attr = {:email => user.email, :password => user.password}
+          #begin
+            #user = Factory(:user2)
+            controller.send(:log_in, user.email, user.password)
+            #puts controller.send(:current_user).nil?
+          #rescue ActiveRecord::RecordInvalid => invalid
+          #  puts invalid.record.errors.full_messages
+          #end
+          response.should be_success
+end
 
 end

@@ -6,6 +6,18 @@ Factory.define :user1, :class=> User do |user|
   user.password_confirmation 'foobar'
 end
 
+Factory.define :user2, :class=> User do |user|
+  user.email  "bilen@bilen.com"
+  user.password 'foobar'
+   user.password_confirmation 'foobar'
+end
+
+Factory.define :user3, :class => User do |f|
+  f.sequence(:email) { |n| "foo#{n}@example.com" }
+  f.password "foobar"
+  f.password_confirmation { |u| u.password }
+end
+
 Factory.define :job1, :class => Job do |job|
   job.title  'mimar'
   job.body 'is ariyorum'

@@ -63,7 +63,7 @@ describe "Users" do
           #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           #!!!                                                                                   !!!
           #!!!   Notice burda: click_link I18n.t('general.menu.logout') yani                  !!!
-          #!!!   click_link olmasi lazim NOT click_button degil benim kodumda                    !!!
+          #!!!   click_link olmasi lazim NOT click_button benim kodumda                          !!!
           #!!!                                                                                   !!!
           #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -72,6 +72,9 @@ describe "Users" do
           response.should have_selector("div#notice", :content => I18n.t('sessions_controller.destroy.success'))
       end
     end
-  end
+ end
 end
+
+
+
 

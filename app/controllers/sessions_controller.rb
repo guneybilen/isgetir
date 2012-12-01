@@ -1,8 +1,15 @@
  class SessionsController < ApplicationController
   #force_ssl
 
+   #def initialize(params={})
+   #  @email = params[:email]
+   #  @password = params[:password]
+   #end
+
   def create
+    #puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#{params[:email]}"
     if user = User.authenticate(params[:email], params[:password])
+    #if user = User.authenticate(@email, @password)
       if params[:remember_me]
         cookies.permanent[:auth_token] = user.auth_token
       else
@@ -24,4 +31,5 @@
     #ssn.destroy
     redirect_to root_path, :notice => t('sessions_controller.destroy.success')
   end
+
 end

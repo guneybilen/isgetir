@@ -43,11 +43,17 @@ describe SessionsController do
     describe "with valid email and password" do
 
       before :each do
-        @user = Factory(:user1)
+
+        #begin
+        #@user = Factory(:user3)
+        #   rescue => invalid
+        #    puts invalid.errors.full_messages
+        #  end
         # @attr = {:email => @user.email, :password => @user.password}
         # burda  @attr kullandin mi ve asagida :session => @attr yaptin mi test hata veriyor.
         #  :session => @attr yerine post :create, :email => @user.email, :password => @user.password
         #  yaptin mi sessions_controller'daki Session#create'deki User.authenticate calisiyor ve hata vermiyor.
+      @user = Factory(:user3)
       end
 
       it "should redirect to the root_path" do
@@ -84,7 +90,4 @@ describe SessionsController do
     end
 
   end
-
-
-
 end

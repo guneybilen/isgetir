@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106123822) do
+ActiveRecord::Schema.define(:version => 20121128122328) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20121106123822) do
     t.datetime "updated_at"
   end
 
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
   create_table "references", :force => true do |t|
     t.integer  "job_id"
     t.string   "name"
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20121106123822) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "references", ["job_id"], :name => "index_references_on_job_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
