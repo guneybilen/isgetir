@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   #force_ssl
   before_filter :authenticate, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
 
   def new
     session[:time_now] = Time.now
@@ -38,10 +39,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    #@user = current_user  # correct_user takes care of this line
   end
   def update
-    @user = current_user
+    #@user = current_user  # correct_user takes care of this line
     if params[:user][:password].blank?
       @user.errors.add('', t('general.password_cannot_be_blank'))
       render :action => 'edit'
@@ -50,5 +51,11 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  private
+  def correct_user
+    @user = User.find_by_id(params[:id])   # find_by_id returns nil if user with the id not found v.s. find which returns an exception
+    redirect_to(root_path) unless !@user.nil? && current_user == @user
   end
 end

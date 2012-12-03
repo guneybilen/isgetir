@@ -44,7 +44,7 @@ def test_sign_in(user)
           @attr = {:email => user.email, :password => user.password}
           #begin
             #user = Factory(:user2)
-            controller.send(:log_in, user.email, user.password)
+          controller.send(:log_in, user.email, user.password)
             #puts controller.send(:current_user).nil?
           #rescue ActiveRecord::RecordInvalid => invalid
           #  puts invalid.record.errors.full_messages

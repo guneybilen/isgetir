@@ -1,10 +1,9 @@
  class SessionsController < ApplicationController
   #force_ssl
 
-   #def initialize(params={})
-   #  @email = params[:email]
-   #  @password = params[:password]
-   #end
+   # include SessionsHelper
+
+   #before_filter  :store_location
 
   def create
     #puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#{params[:email]}"
@@ -15,7 +14,10 @@
       else
         session[:user_id] = user.auth_token
       end
-      redirect_to root_path, :notice => t('sessions_controller.create.success')
+      flash[:notice] = t('sessions_controller.create.success')
+      # puts "############################################# #{session[:return_to]}"
+      redirect_back_or jobs_path
+      #redirect_to jobs_path
     else
       flash.now[:alert] = t('sessions_controller.create.failure')
       render :action => 'new'

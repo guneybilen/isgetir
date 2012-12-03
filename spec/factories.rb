@@ -9,7 +9,7 @@ end
 Factory.define :user2, :class=> User do |user|
   user.email  "bilen@bilen.com"
   user.password 'foobar'
-   user.password_confirmation 'foobar'
+  user.password_confirmation 'foobar'
 end
 
 Factory.define :user3, :class => User do |f|

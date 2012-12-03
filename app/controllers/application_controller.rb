@@ -26,6 +26,9 @@ class ApplicationController < ActionController::Base
   include UsersHelper
 
 =end
+
+  include SessionsHelper
+
   protected
 
   def time_later
@@ -86,13 +89,14 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def access_denied
+    store_location
     redirect_to login_path, :notice => t('application_controller.access_denied.log_in_to_continue') and return false
   end
 
-    def log_in (email, password)
-     user = User.authenticate(email, password)
-     #cookies.permanent[:auth_token] = user.auth_token    bu yontemle sign in olmuyor
-     session[:user_id] = user.auth_token
-    end
+  def log_in (email, password)
+   user = User.authenticate(email, password)
+   #cookies.permanent[:auth_token] = user.auth_token    bu yontemle sign in olmuyor
+   session[:user_id] = user.auth_token
+  end
 
 end

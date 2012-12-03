@@ -60,8 +60,8 @@ describe SessionsController do
         post :create, :email => @user.email, :password => @user.password
         #current_url.should == root_url  not an rspec convention as much as I learned
         puts response.body
-        response.should redirect_to(root_path)
-        response.header["Location"].should eq("http://test.host/")
+        response.should redirect_to(jobs_path)
+        response.header["Location"].should eq("http://test.host/jobs")
         puts "\nresponse header is: " + response.header.to_s
         puts "\n#{@attr.to_s}"
         puts "\n#{assigns(:session).nil?}" # true veriyor cunku session model diye bir sey yok sanirim
