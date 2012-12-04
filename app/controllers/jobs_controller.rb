@@ -118,7 +118,7 @@ class JobsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # index.html.erb
       format.json { render json: @job }
     end
   end

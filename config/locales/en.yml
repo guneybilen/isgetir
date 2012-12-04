@@ -120,6 +120,9 @@ en:
     password_reset: Password Reset
     notify_friend_missing_information: Your name or related email address missing
     class_required: Field must be filled
+    users: Users
+    remove: Remove
+    permanent: These items will be removed permanently. Are you sure?
 
   will_paginate:
     previous: Previous

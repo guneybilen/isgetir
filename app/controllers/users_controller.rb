@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #force_ssl
-  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:index, :edit, :update]
   before_filter :correct_user, :only => [:edit, :update]
 
   def new
@@ -53,9 +53,32 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+
+    if self.is_admin?
+      @user = User.all
+    else
+      redirect_to root_path
+    end
+
+  end
+
+  def destroy
+    @user = User.find(params[:users])
+    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
+    User.destroy(@user)
+    @user = User.all
+
+    respond_to do |format|
+      format.js  # burda destroy.js.erb invoke edilsin istiyorum
+    end
+  end
+
   private
   def correct_user
     @user = User.find_by_id(params[:id])   # find_by_id returns nil if user with the id not found v.s. find which returns an exception
     redirect_to(root_path) unless !@user.nil? && current_user == @user
   end
+
+
 end

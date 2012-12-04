@@ -24,3 +24,10 @@ Factory.define :job1, :class => Job do |job|
   job.location 'izmir'
   #job.association :user1
 end
+
+Factory.define :user4, :class=> User do |user|
+  user.email  "bilen@bilen.com"
+  user.password 'foobar'
+  user.password_confirmation 'foobar'
+  user.is_admin 't'
+end

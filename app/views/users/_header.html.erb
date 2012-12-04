@@ -11,6 +11,9 @@
         <%= link_to t("general.menu.create_user"), new_user_path %> |
         <%= link_to t("general.menu.login"), login_path %>
     <% end %>
+    <% if logged_in? && !is_admin?.nil? %>
+      | <%= link_to t('general.users'), users_path %>
+    <% end %>
   </div>
 </div>
   <br /><br />

@@ -271,8 +271,68 @@ $(document).ready(function() {
     $(".stripeMe tr:even").addClass("alt");
 
 
+    $('input:checkbox').prop("checked", false);
+
+//    $('.check_box').each( function(){
+//        $(this).attr('checked', false)
+//    });
+
+    $('.confirm_button').click(function(){
+        var attr = $('.delete_form_tag').serialize();
+        if (locale == 'tr')
+        {open1(attr);}
+        if (locale == 'en')
+        {open2(attr);}
+
+        return false;
+    })
+
 });
 
+function open1(attr){
+  $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height: 250,
+            modal: true,
+            buttons: {
+                "Sil": function() {
+                    $.ajax({
+                        url: 'users/destroy',
+                        type: 'DELETE',
+                        data: attr,
+//                        success: function(result) {}
+                    })
+                    $( this ).dialog( "close" );
+                },
+                "İptal": function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
 
+}
+
+function open2(){
+  $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height: 250,
+            modal: true,
+            buttons: {
+                "Delete": function() {
+                    $.ajax({
+                        url: 'users/destroy',
+                        type: 'DELETE',
+                        data: attr //,
+//                        success: function(result) {}
+                    })
+                    $( this ).dialog( "close" );
+                },
+                "Cancel": function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+
+}
 
 

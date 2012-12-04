@@ -207,5 +207,66 @@ describe UsersController do
       end
     end
   end
+
+  describe "GET 'index'" do
+    describe "for non-signed-in users" do
+      it "should deny access" do
+        get :index
+        response.should redirect_to(login_path)
+        flash[:notice].should == I18n.t('application_controller.access_denied.log_in_to_continue')
+      end
+    end
+
+    it "should show the index to the admin" do
+      @admin=Factory(:user4)
+      test_sign_in(@admin)
+      get :index
+      response.should render_template('users')
+
+=begin
+
+      response.should render_template('/users')  oldumu but hatayi veriyor:
+
+      1) UsersController GET 'index' should show the index to the admin
+     Failure/Error: response.should render_template('/users/index')
+       expecting <"/users/index"> but rendering with <"users/index, layouts/_flash, layouts/application">
+     # ./spec/controllers/users_controller_spec.rb:224:in `block (3 levels) in <top (required)>'
+=end
+
+
+    end
+
+=begin
+    describe "for signed-in users" do
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        second = Factory(:user, :email => "another@example.com")
+        third = Factory(:user, :email => "another@example.net")
+        @users = [@user, second, third]
+      end
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+      it "should have the right title" do
+        get :index
+        response.should have_selector("title", :content => "All users")
+      end
+      it "should have an element for each user" do
+        get :index
+        @users.each do |user|
+          response.should have_selector("li", :content => user.name)
+        end
+      end
+  end
+=end
+    it "should have the right title" do
+      @admin=Factory(:user4)
+      test_sign_in(@admin)
+      get :index
+      response.should have_selector("title", :content => "isgetir.com")
+    end
+  end
 end
+
 

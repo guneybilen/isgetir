@@ -120,6 +120,9 @@ tr:
     password_reset: Şifre Degiştir
     notify_friend_missing_information: Adınızı veya ilgili email adresini girmediniz
     class_required: Bu alanın doldurulması zorunludur
+    users: Üyeler
+    remove: Yok Et
+    permanent: Bunlar geri getirelemez şekilde silinicaktir. Emin misiniz?
 
   will_paginate:
     previous: Önceki
