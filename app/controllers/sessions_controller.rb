@@ -8,6 +8,7 @@
   def create
     #puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#{params[:email]}"
     if user = User.authenticate(params[:email], params[:password])
+    admin = Admin.authenticate(params[:email], params[:password])
     #if user = User.authenticate(@email, @password)
       if params[:remember_me]
         cookies.permanent[:auth_token] = user.auth_token
@@ -16,6 +17,7 @@
       end
       flash[:notice] = t('sessions_controller.create.success')
       # puts "############################################# #{session[:return_to]}"
+      if admin then redirect_to users_path and return false end
       redirect_back_or jobs_path
       #redirect_to jobs_path
     else

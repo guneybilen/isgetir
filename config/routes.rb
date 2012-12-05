@@ -11,6 +11,8 @@ Isgetir::Application.routes.draw do
   # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
 
+  resource :admin
+
   resources :jobs do
 
     member do
@@ -24,6 +26,8 @@ Isgetir::Application.routes.draw do
   end
 
   resources :users
+
+  match 'admin' => 'admin#show', :as => 'admin'
 
   match 'users/destroy' => "users#destroy"
 
