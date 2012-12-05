@@ -202,7 +202,7 @@ div.index{
 }
 
 #select_box {
-    width: 150px;
+    width: 200px;
 }
 
 .pagination {
@@ -333,7 +333,7 @@ h2{
 
 input[type="submit"] {
     height: 50px;
-    width: 100px;
+    width: 150px;
 }
 
 div.actions .password_reset, div.actions .password_reset_submit{
@@ -415,4 +415,13 @@ a.disabled {
 
 .users{
     margin-top: 50px;
+}
+
+.admin_page{
+    margin-top: 50px;
+}
+
+
+.password_field{
+    clear: both;
 }

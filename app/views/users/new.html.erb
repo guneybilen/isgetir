@@ -10,3 +10,10 @@
 <br />
 <%= link_to t('general.link_to.back'), root_path %>
 
+<br />
+<br />
+<br />
+
+<% if is_admin? %>
+<%= link_to t('general.admin'), user_admin_path %>
+<% end %>

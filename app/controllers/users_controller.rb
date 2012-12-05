@@ -31,6 +31,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
+      if is_admin?
+        flash[:notice] = t('users_controller.create.success')
+        redirect_to new_user_path and return false end
       session[:user_id] = @user.auth_token
       redirect_to jobs_path, :notice => t('users_controller.create.success')
     else
@@ -41,6 +44,40 @@ class UsersController < ApplicationController
   def edit
     #@user = current_user  # correct_user takes care of this line
   end
+
+  def admin_edit_user
+     if is_admin?
+      render 'admin_edit_user'
+    end
+  end
+
+  def admin_change_password
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    user = {:id => params[:user][:id], :password=>params[:password],
+            :password_confirmation=>params[:password_confirmation]}
+    @user = User.find_by_id(params[:user][:id])
+
+    if @user.nil?
+      flash[:notice] = t('general.choose')
+      redirect_to admin_edit_user_path and return false
+    end
+
+    if params[:password].blank?
+      @user.errors.add('', t('general.password_cannot_be_blank'))
+      render 'admin_edit_user'
+    end
+
+    if params[:password] != params[:password_confirmation]
+      @user.errors.add('', t('activerecord.errors.models.user.attributes.password.confirmation'))
+      render 'admin_edit_user'
+    elsif @user.update_attributes(user)
+      redirect_to user_admin_path, :notice => t('users_controller.update.success')
+    else
+      render 'admin_edit_user'
+    end
+
+  end
+
   def update
     #@user = current_user  # correct_user takes care of this line
     if params[:user][:password].blank?
@@ -72,6 +109,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js  # burda destroy.js.erb invoke edilsin istiyorum
     end
+  end
+
+  def admin
   end
 
   private

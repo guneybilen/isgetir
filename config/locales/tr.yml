@@ -123,6 +123,8 @@ tr:
     users: Üyeler
     remove: Yok Et
     permanent: Bunlar geri getirelemez şekilde silinicaktir. Emin misiniz?
+    admin: Üye Yönetimi
+    choose: Lütfen listeden bir email seçiniz
 
   will_paginate:
     previous: Önceki

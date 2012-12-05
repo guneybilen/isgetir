@@ -17,7 +17,7 @@
       end
       flash[:notice] = t('sessions_controller.create.success')
       # puts "############################################# #{session[:return_to]}"
-      if admin then redirect_to users_path and return false end
+      if admin then redirect_to user_admin_path and return false end
       redirect_back_or jobs_path
       #redirect_to jobs_path
     else

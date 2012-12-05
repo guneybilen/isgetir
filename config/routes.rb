@@ -8,10 +8,8 @@ Isgetir::Application.routes.draw do
   match 'jobs/search' => 'jobs#search'
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
   match '/ajaxing' => 'jobs#ajaxing', :as => 'ajaxing' # according to
-  # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
+  # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
-
-  resource :admin
 
   resources :jobs do
 
@@ -25,9 +23,14 @@ Isgetir::Application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  # Notice match 'users/admin'... resources :users'dan once gelmeliymis
+  match 'users/admin' => 'users#admin', :as => 'user_admin'
 
-  match 'admin' => 'admin#show', :as => 'admin'
+  match 'users/admin_edit_user' => "users#admin_edit_user", :as => 'admin_edit_user'
+
+  match 'users/admin_change_password' => 'users#admin_change_password', :as => 'admin_change_password'
+
+  resources :users
 
   match 'users/destroy' => "users#destroy"
 

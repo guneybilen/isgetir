@@ -123,6 +123,8 @@ en:
     users: Users
     remove: Remove
     permanent: These items will be removed permanently. Are you sure?
+    admin: Member Administration
+    choose: Please select an email from the list
 
   will_paginate:
     previous: Previous

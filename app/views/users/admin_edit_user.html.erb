@@ -1,0 +1,47 @@
+
+<div class="change_password">
+
+  <% if !@user.nil? %>
+
+     <% if @user.errors.any? %>
+        <br />
+        <div class="errorExplanation">
+          <h3>
+            <%= pluralize(@user.errors.count,
+                            t("general.pluralize.error"), t("general.pluralize.error")) %>
+            <% if @user.errors.count > 1 %>
+                <%= t('general.error_explanations')%>:
+            <% else %>
+                <%= t('general.error_explanation')%>:
+            <% end %>
+          </h3>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><b><%= msg %></b></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+
+  <%= form_tag({:controller => 'users', :action => 'admin_change_password'}, :method => :put) do %>
+    <%= select("user", "id", User.order(:email).collect {|p| [ p.email, p.id ] },
+              {:include_blank => t('general.none')}, {:id => "select_box"}) %>
+    <br /><br />
+    <div class="password_field">
+      <%= password_field_tag :password %>
+    </div>
+    <br />
+    <div class="password_field">
+      <%= password_field_tag :password_confirmation %>
+    </div>
+  <br />
+  <%= submit_tag t('general.change_password') %>
+      <% end  %>
+      <br /> <br />
+  <%= link_to t('general.main_list'),root_path, { :class=>"root"} %>
+</div>
+
+<br />
+<br />
+<%= link_to t('general.admin'), user_admin_path %>
