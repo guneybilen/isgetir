@@ -1,31 +1,20 @@
 
 <div class="users">
 
-  <%= form_tag({:controller => 'users', :action => 'destroy'}, :method => :delete, :class => 'delete_form_tag') do %>
-  <% @user.each do |user| %>
+   <% @user.each do |user| %>
       <% unless current_user.email == user.email %>
           <ul>
             <li>
               <%= user.email %>
-              <%= check_box_tag "users[]", user.id, false %>
             </li>
           </ul>
       <% end %>
   <% end  %>
   <br />
-  <%= submit_tag t('general.remove'), :class => "confirm_button"%> <!-- :confirm => t('general.sure') -->
   <br /> <br />
-  <% end %>
   <%= link_to t('general.main_list'),root_path, { :class=>"root"} %>
 </div>
 
-<div id="dialog-confirm" title="<%= t('general.delete') %>" style="display: none">
-  <p>
-      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0">
-      </span>
-    <%= t('general.permanent') %>
-  </p>
-</div>
 
 <br />
 <br />

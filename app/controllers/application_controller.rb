@@ -100,7 +100,11 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-    current_user.is_admin
+    if !current_user.nil?
+      current_user.is_admin
+    else
+      false
+    end
   end
   helper_method :is_admin?
 

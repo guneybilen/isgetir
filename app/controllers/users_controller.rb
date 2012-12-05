@@ -114,6 +114,14 @@ class UsersController < ApplicationController
   def admin
   end
 
+  def admin_delete
+    if self.is_admin?
+      @user = User.all
+    else
+      redirect_to root_path
+    end
+  end
+
   private
   def correct_user
     @user = User.find_by_id(params[:id])   # find_by_id returns nil if user with the id not found v.s. find which returns an exception

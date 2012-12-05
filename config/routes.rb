@@ -23,6 +23,8 @@ Isgetir::Application.routes.draw do
     resources :comments
   end
 
+  match 'users/admin_delete' => 'users#admin_delete', :as => 'admin_delete'
+
   # Notice match 'users/admin'... resources :users'dan once gelmeliymis
   match 'users/admin' => 'users#admin', :as => 'user_admin'
 

@@ -236,35 +236,28 @@ describe UsersController do
 
     end
 
-=begin
-    describe "for signed-in users" do
-      before(:each) do
-        @user = test_sign_in(Factory(:user))
-        second = Factory(:user, :email => "another@example.com")
-        third = Factory(:user, :email => "another@example.net")
-        @users = [@user, second, third]
-      end
-      it "should be successful" do
-        get :index
-        response.should be_success
-      end
-      it "should have the right title" do
-        get :index
-        response.should have_selector("title", :content => "All users")
-      end
-      it "should have an element for each user" do
-        get :index
-        @users.each do |user|
-          response.should have_selector("li", :content => user.name)
-        end
-      end
-  end
-=end
     it "should have the right title" do
       @admin=Factory(:user4)
       test_sign_in(@admin)
       get :index
       response.should have_selector("title", :content => "isgetir.com")
+    end
+
+    it "should have an element for each user" do
+      first = Factory(:user1)
+      second = Factory(:user2)
+      third = Factory(:user3)
+      @users = [first, second, third]
+      begin
+        @admin=Factory(:user4)
+      rescue ActiveRecord::RecordInvalid => invalid
+        puts invalid.record.errors.full_messages
+      end
+      test_sign_in(@admin)
+      get :index
+      @users.each do |user|
+        response.should have_selector("li", :content => user.email)
+      end
     end
   end
 end

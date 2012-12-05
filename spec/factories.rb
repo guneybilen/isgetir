@@ -26,7 +26,7 @@ Factory.define :job1, :class => Job do |job|
 end
 
 Factory.define :user4, :class=> User do |user|
-  user.email  "bilen@bilen.com"
+  user.email  "guneybilen@bilen.com"
   user.password 'foobar'
   user.password_confirmation 'foobar'
   user.is_admin 't'
