@@ -25,8 +25,13 @@
     <% end %>
 
   <%= form_tag({:controller => 'users', :action => 'admin_change_password'}, :method => :put) do %>
-    <%= select("user", "id", User.order(:email).collect {|p| [ p.email, p.id ] },
-              {:include_blank => t('general.none')}, {:id => "select_box"}) %>
+
+    <%= collection_select(:User, :id, User.order(:email), :id, :email,
+                             {:prompt => t('general.other')}, {:id => 'collection_select',:size => 10}) %>
+
+    <!-- select("user", "id", User.order(:email).collect {|p| [ p.email, p.id ] },
+              {:include_blank => t('general.none')}, {:id => "select_box"}) -->
+
     <br /><br />
     <div class="password_field">
       <%= password_field_tag :password %>

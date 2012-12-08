@@ -209,6 +209,24 @@ describe UsersController do
   end
 
   describe "GET 'index'" do
+
+    before :each do
+      first = Factory(:user1)
+      second = Factory(:user2)
+      third = Factory(:user3)
+      @users = [first, second, third]
+
+      begin
+        @admin=Factory(:user4)
+      rescue ActiveRecord::RecordInvalid => invalid
+        puts invalid.record.errors.full_messages
+      end
+
+      20.times do
+        @users << Factory(:user1, :email => Factory.next(:email))
+      end
+    end
+
     describe "for non-signed-in users" do
       it "should deny access" do
         get :index
@@ -218,7 +236,7 @@ describe UsersController do
     end
 
     it "should show the index to the admin" do
-      @admin=Factory(:user4)
+      #@admin=Factory(:user4)
       test_sign_in(@admin)
       get :index
       response.should render_template('users')
@@ -237,29 +255,75 @@ describe UsersController do
     end
 
     it "should have the right title" do
-      @admin=Factory(:user4)
+      #@admin=Factory(:user4)
       test_sign_in(@admin)
       get :index
       response.should have_selector("title", :content => "isgetir.com")
     end
 
     it "should have an element for each user" do
-      first = Factory(:user1)
-      second = Factory(:user2)
-      third = Factory(:user3)
-      @users = [first, second, third]
-      begin
-        @admin=Factory(:user4)
-      rescue ActiveRecord::RecordInvalid => invalid
-        puts invalid.record.errors.full_messages
-      end
+      #first = Factory(:user1)
+      #second = Factory(:user2)
+      #third = Factory(:user3)
+      #@users = [first, second, third]
+      #begin
+      #  @admin=Factory(:user4)
+      #rescue ActiveRecord::RecordInvalid => invalid
+      #  puts invalid.record.errors.full_messages
+      #end
       test_sign_in(@admin)
+      #p @users
       get :index
+      #p response.body
       @users.each do |user|
         response.should have_selector("li", :content => user.email)
       end
     end
+
+    it "should paginate users" do
+      test_sign_in(@admin)
+      get :index
+      response.should have_selector("a.root")
+    end
+
+  end
+
+  describe "DELETE 'destroy'" do
+    before(:each) do
+      @user = Factory(:user1)
+    end
+    describe "as a non-signed-in user" do
+      it "should deny access" do
+        delete :destroy, :id => @user
+        response.should redirect_to(login_path)
+      end
+    end
+=begin
+    describe "as a non-admin user" do
+      it "should protect the page" do
+        test_sign_in(@user)
+        delete :destroy, :id => @user
+        response.should redirect_to(root_path)
+      end
+    end
+    describe "as an admin user" do
+      before(:each) do
+        admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(admin)
+      end
+      it "should destroy the user" do
+        lambda do
+          delete :destroy, :id => @user
+        end.should change(User, :count).by(-1)
+      end
+      it "should redirect to the users page" do
+        delete :destroy, :id => @user
+        response.should redirect_to(users_path)
+      end
+    end
+=end
   end
 end
+
 
 

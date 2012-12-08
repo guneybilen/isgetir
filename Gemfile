@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -61,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails' #," ~> 2.6.1"
 # version 2.6.1 koymadin mi rake db:migrate
 # rspec yuzunden su hatayi veriyor: "undefined method `prerequisites' for nil:NilClass"
+  gem 'faker'
 end
 
 # Use unicorn as the web server

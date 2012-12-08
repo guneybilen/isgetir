@@ -5,6 +5,7 @@ Isgetir::Application.routes.draw do
 
   #match 'jobs/new' => 'jobs#new'
 
+
   match 'jobs/search' => 'jobs#search'
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
   match '/ajaxing' => 'jobs#ajaxing', :as => 'ajaxing' # according to

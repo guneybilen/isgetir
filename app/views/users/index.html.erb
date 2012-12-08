@@ -1,17 +1,23 @@
 
 <div class="users">
 
-   <% @user.each do |user| %>
-      <% unless current_user.email == user.email %>
+
+  <%= render @user, :user => @user %>
+
+<!--   < @user.each do |user| %>
+      < unless current_user.email == user.email %>
           <ul>
             <li>
-              <%= user.email %>
+              < user.email %>
             </li>
           </ul>
-      <% end %>
-  <% end  %>
+      < end %>
+  < end  %> -->
+
+  <%= will_paginate_with_i18n(@user) %>
+
   <br />
-  <br /> <br />
+  <br /> <br /><br /> <br />
   <%= link_to t('general.main_list'),root_path, { :class=>"root"} %>
 </div>
 

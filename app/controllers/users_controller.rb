@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class UsersController < ApplicationController
   #force_ssl
   before_filter :authenticate, :only => [:index, :edit, :update]
@@ -53,9 +55,9 @@ class UsersController < ApplicationController
 
   def admin_change_password
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    user = {:id => params[:user][:id], :password=>params[:password],
+    user = {:id => params[:User][:id], :password=>params[:password],
             :password_confirmation=>params[:password_confirmation]}
-    @user = User.find_by_id(params[:user][:id])
+    @user = User.find_by_id(params[:User][:id])
 
     if @user.nil?
       flash[:notice] = t('general.choose')
@@ -93,7 +95,7 @@ class UsersController < ApplicationController
   def index
 
     if self.is_admin?
-      @user = User.all
+      @user = User.paginate(:page => params[:page])
     else
       redirect_to root_path
     end
@@ -102,13 +104,33 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:users])
-    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
     User.destroy(@user)
-    @user = User.all
+    if (params[:page].blank?)
+      @user = User.paginate(:page => 1)
+    elsif
+      @user = User.paginate(:page => params[:page])
+      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+      #render :js => "alert('Hello Rails');"
+    else
 
-    respond_to do |format|
-      format.js  # burda destroy.js.erb invoke edilsin istiyorum
+    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
+
+      #respond_to do |format|
+      #  format.js  # burda destroy.js.erb invoke edilsin istiyorum
+      #end
     end
+  end
+
+  def show
+
+  if (params[:page].nil?)
+    @user = User.paginate(:page => 1)
+  else
+    @user = User.paginate(:page => params[:page])
+  end
+
+  render 'admin_delete'
+
   end
 
   def admin
@@ -116,7 +138,7 @@ class UsersController < ApplicationController
 
   def admin_delete
     if self.is_admin?
-      @user = User.all
+      @user = User.paginate(:page => params[:page])
     else
       redirect_to root_path
     end

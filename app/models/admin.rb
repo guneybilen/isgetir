@@ -26,8 +26,8 @@ class Admin < ActiveRecord::Base
     before_save :encrypt_password
 
     def self.authenticate(email, password)
-      user = User.find_by_email(email)
-      return user if user && user.authenticated?(password)
+      admin_user = Admin.find_by_email(email)
+      return admin_user if admin_user && admin_user.authenticated?(password)
     end
     def authenticated?(password)
       self.hashed_password == encrypt(password)

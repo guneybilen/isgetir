@@ -290,6 +290,7 @@ $(document).ready(function() {
 });
 
 function open1(attr){
+//     alert(attr)
   $( "#dialog-confirm" ).dialog({
             resizable: false,
             height: 250,
@@ -297,7 +298,7 @@ function open1(attr){
             buttons: {
                 "Sil": function() {
                     $.ajax({
-                        url: 'users/destroy',
+                        url: '/users/destroy',
                         type: 'DELETE',
                         data: attr,
 //                        success: function(result) {}

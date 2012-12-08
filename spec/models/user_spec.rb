@@ -102,5 +102,18 @@ describe User do
       end
     end
 
+     it "should respond to is_admin db attribute in User model" do
+       @user.should respond_to(:is_admin)
+     end
+
+    it "should not be an admin by default" do
+       @user.should_not be_is_admin
+    end
+
+     it "should be convertible to an admin" do
+       @user.toggle!(:is_admin)
+       @user.should be_is_admin
+    end
+
   end
 end

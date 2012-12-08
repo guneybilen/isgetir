@@ -40,6 +40,7 @@ end
 include WillPaginate::ViewHelpers
 
   def will_paginate_with_i18n(collection = nil, options = {})
+    p  collection
     will_paginate collection, options.merge(:previous_label => t('will_paginate.previous'),
                                             :next_label => t('will_paginate.next'))
   end

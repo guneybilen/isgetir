@@ -31,3 +31,7 @@ Factory.define :user4, :class=> User do |user|
   user.password_confirmation 'foobar'
   user.is_admin 't'
 end
+
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end

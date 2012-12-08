@@ -425,3 +425,7 @@ a.disabled {
 .password_field{
     clear: both;
 }
+
+.pagination{
+    margin-bottom: 25px;
+}
