@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   #force_ssl
   before_filter :authenticate, :only => [:index, :edit, :update]
   before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user, :only => [:destroy]
 
   def new
     session[:time_now] = Time.now
@@ -103,21 +104,27 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:users])
-    User.destroy(@user)
-    if (params[:page].blank?)
-      @user = User.paginate(:page => 1)
-    elsif
-      @user = User.paginate(:page => params[:page])
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-      #render :js => "alert('Hello Rails');"
-    else
+    if !current_user.nil? && current_user.is_admin?
+      #p params
+      @user = User.find(params[:users])
+      User.destroy(@user)
+      if (params[:page].blank?)
+        @user = User.paginate(:page => 1)
+      else
+        @user = User.paginate(:page => params[:page])
+        #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+        #render :js => "alert('Hello Rails');"
+      end
 
-    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
 
-      #respond_to do |format|
-      #  format.js  # burda destroy.js.erb invoke edilsin istiyorum
+      #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
+
+        respond_to do |format|
+          format.js  # burda destroy.js.erb invoke edilsin istiyorum
+        end
       #end
+    else
+      redirect_to root_path
     end
   end
 
@@ -150,5 +157,11 @@ class UsersController < ApplicationController
     redirect_to(root_path) unless !@user.nil? && current_user == @user
   end
 
-
+  def admin_user
+    if !current_user.nil?
+    redirect_to(root_path) unless current_user.is_admin?
+    else
+      false
+    end
+  end
 end

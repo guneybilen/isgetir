@@ -290,40 +290,50 @@ describe UsersController do
 
   describe "DELETE 'destroy'" do
     before(:each) do
+      @non_admin = Factory(:user2)
+      test_sign_in(@non_admin)
       @user = Factory(:user1)
     end
-    describe "as a non-signed-in user" do
-      it "should deny access" do
-        delete :destroy, :id => @user
-        response.should redirect_to(login_path)
-      end
-    end
-=begin
     describe "as a non-admin user" do
-      it "should protect the page" do
-        test_sign_in(@user)
-        delete :destroy, :id => @user
+      it "should deny access" do
+        delete :destroy, :users => @user
         response.should redirect_to(root_path)
       end
     end
-    describe "as an admin user" do
-      before(:each) do
-        admin = Factory(:user, :email => "admin@example.com", :admin => true)
-        test_sign_in(admin)
-      end
-      it "should destroy the user" do
-        lambda do
-          delete :destroy, :id => @user
-        end.should change(User, :count).by(-1)
-      end
-      it "should redirect to the users page" do
-        delete :destroy, :id => @user
-        response.should redirect_to(users_path)
-      end
+  end
+
+  describe "as a non-signed-in user" do
+    it "should deny access" do
+      delete :destroy, :users => @user
+      response.should redirect_to(root_path)
+    end
+  end
+
+  describe "as an admin user" do
+    before(:each) do
+      admin = Factory(:user2, :email => "admin@example.com", :is_admin => true)
+      test_sign_in(admin)
+      @user = Factory(:user1)
+    end
+
+    it "should destroy the user" do
+      lambda do
+        delete :destroy, :users => @user
+      end.should change(User, :count).by(-1)
+    end
+
+=begin
+    Users controllerdaki destroy action renders js ama rspec ile js testing nasil
+    oluyor bilmiyorum ondan dolayi asagidaki testi yapamiyorum.
+    it "should redirect to the users page" do
+      delete :destroy, :users => @user
+      p response.body
+      response.should render_template...
     end
 =end
   end
 end
+
 
 
 
