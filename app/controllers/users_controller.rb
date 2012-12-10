@@ -136,14 +136,14 @@ class UsersController < ApplicationController
     @user = User.paginate(:page => params[:page])
   end
 
-  render 'admin_delete'
+  render 'admin_manage'
 
   end
 
   def admin
   end
 
-  def admin_delete
+  def admin_manage
     if self.is_admin?
       @user = User.paginate(:page => params[:page])
     else
