@@ -429,3 +429,17 @@ a.disabled {
 .pagination{
     margin-bottom: 25px;
 }
+
+#main_table{
+    margin-top: 100px;
+}
+
+.back_link_in_admin_update_user{
+    float: left;
+    /*margin-top: 500px;*/
+    /*margin-left: 200px;*/
+}
+
+.user_email_link_in_admin_manage{
+    color: blue;
+}

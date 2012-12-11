@@ -24,6 +24,10 @@ Isgetir::Application.routes.draw do
     resources :comments
   end
 
+  match 'users/admin_updated_user' => 'users#admin_updated_user', :as => 'admin_updated_user'
+
+  match 'users/admin_update_user_interface' => 'users#admin_update_user_interface', :as => 'admin_update_user_interface'
+
   match 'users/admin_manage' => 'users#admin_manage', :as => 'admin_manage'
 
   # Notice match 'users/admin'... resources :users'dan once gelmeliymis

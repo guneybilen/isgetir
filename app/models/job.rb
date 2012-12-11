@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
 
-  attr_accessible :title, :body, :location, :category_id
+  # attr_accessible'da :references_attributes olmadan references table'a veri eklemiyor
+  attr_accessible :title, :body, :location, :category_id, :references_attributes
 
   #default_scope :order => 'created_at DESC'
 

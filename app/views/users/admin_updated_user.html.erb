@@ -1,0 +1,64 @@
+<% @job = Array(@job) %>
+
+<% @job.each  do |job| %>
+
+<%= div_for job do %>
+
+
+    <h2><%= t('jobs.job_partial.h3') %></h2>
+
+
+    <br />
+    <b><%= label_tag t('jobs.index.table.title') %></b>:&nbsp;<%= job.title %>
+    <br />
+    <b><%= label_tag t('jobs.index.table.body') %></b>:&nbsp;<%= simple_format job.body, :class => 'konu' %>
+    <br />
+    <b><%= label_tag t('jobs.index.table.location') %></b>:&nbsp;<%= job.location %>
+    <br />
+    <b><%= label_tag t('jobs.index.table.category') %></b>:&nbsp;<%= @category %>
+    <br />
+    <b><%= label_tag t('jobs.index.table.created_at') %></b>:&nbsp;<%= time_ago_in_words(job.created_at) %>
+    <%= t('general.time_ago_in_words') %>
+    <br />
+
+    <span class='actions'>
+      <% if job.owned_by? current_user %>
+        <span class='actions'>
+          <%= link_to t('general.edit'), edit_job_path(job) %>
+          &nbsp;
+          <%= link_to t('general.delete'), job, :confirm => t('general.sure'), :method => :delete %>
+        </span>
+      <% end %>
+    </span>
+
+    <br /><br />
+    <% if job.references.blank? %>
+        <%= t('general.reference_not_given') %>
+    <% else  %>
+        <%= link_to t('jobs.job_partial.link_to.read_reference'), '#', {:class => "link_references"} %>
+
+        <div class="references">
+          <br />
+          <% for reference in job.references  %>
+              <li><b><%= t('general.name') %>:</b> <%=reference.name  %></li>
+              <li><b><%= t('general.last_name') %>:</b> <%=reference.lastname  %></li>
+              <li><b><%= t('general.phone') %>:</b> <%=reference.phone  %></li>
+              <li><b><%= t('general.cell') %>:</b> <%=reference.cell  %></li>
+              <li><b><%= t('general.email') %>:</b> <%=reference.email  %></li>
+              <br />
+          <% end %>
+        </div>
+    <% end %>
+
+<!--    <span class='actions'>
+      < if job.owned_by? current_user %>
+        <span class='actions'>
+         <br />   < link_to t('general.edit'), edit_job_path(job)%>
+        </span>
+      < end %>
+    </span> -->
+
+    <br/><br/>
+<% end %>
+
+<% end %>

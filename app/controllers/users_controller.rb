@@ -93,6 +93,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin_update_user_interface
+    #puts "_______________________________________________________ #{params}"
+    @user = User.find_by_id(params[:user])
+    #p @user
+    @jobs = @user.jobs
+  end
+
+  def admin_updated_user
+
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #{params}"
+
+    @user = User.find_by_id(params[:id])
+    @job = @user.jobs.find_by_id(params[:job_id])
+
+
+
+    respond_to do |format|
+      if @job.update_attributes(params[:job])
+        flash[:notice] = t('jobs_controller.update.success')
+        format.html
+        format.json { head :ok }
+      else
+        format.html { render action: 'admin_update_user_interface' }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def index
 
     if self.is_admin?
@@ -144,11 +173,22 @@ class UsersController < ApplicationController
   end
 
   def admin_manage
+    #puts "_______________________________________________________ #{params}"
     if self.is_admin?
       @user = User.paginate(:page => params[:page])
     else
       redirect_to root_path
     end
+
+    @admin_type = params[:admin]
+
+    #respond_to do |format|
+    #  format.html {
+        render 'admin_manage'
+      #}
+      #format.js
+    #end
+
   end
 
   private

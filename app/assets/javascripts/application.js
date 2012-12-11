@@ -287,6 +287,30 @@ $(document).ready(function() {
         return false;
     })
 
+
+    $('.manage').click(function(){
+
+        window.location.href = '/users/admin_manage?admin=manage';
+//        $.ajax({
+//            url: '/users/admin_manage',
+//            type: 'GET',
+//            data: {admin:'manage'},
+//            dataType: "script"
+//          success: function(result) {}
+//        });
+//         $.getScript('/users/admin_manage/?' + 'admin=manage');
+        return false;
+
+    });
+
+//    $('input:submit').val('save');
+
+     $('.delete').click(function(){
+
+        window.location.href = '/users/admin_manage?admin=delete';
+
+        return false;
+     });
 });
 
 function open1(attr){
@@ -300,7 +324,7 @@ function open1(attr){
                     $.ajax({
                         url: '/users/destroy',
                         type: 'DELETE',
-                        data: attr,
+                        data: attr
 //                        success: function(result) {}
                     })
                     $( this ).dialog( "close" );

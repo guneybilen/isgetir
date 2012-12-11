@@ -1,0 +1,25 @@
+
+$("#main").html("<%= escape_javascript(render(:file => "users/admin_update.html.erb")) %>");
+var admin_type = "<%= @admin_type %>"
+
+var batin = $("input:submit");
+batin.button();
+
+$(".confirm_button").prop('value', "Edit")
+
+batin.on ('click',  function() {
+    batin.attr("disabled", true);
+});
+
+var params = $('.delete_form_tag').serialize();
+
+$('.confirm_button').live('click', function() {
+     $.ajax({
+            url: '/users/admin_update_user',
+            type: 'POST',
+            data: {admin:'manage'},
+            dataType: "script"
+//          success: function(result) {}
+        });
+    return false
+})

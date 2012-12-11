@@ -42,5 +42,5 @@ namespace :bootstrap do
 
   desc "Run all bootstrapping tasks"
   task :all => [:default_categories]
-  # to tun all tasks: rake bootstrap:all
+  # to run all tasks: rake bootstrap:all
 end

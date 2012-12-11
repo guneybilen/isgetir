@@ -1,6 +1,8 @@
 
 <div class="users">
 
+<% if @admin_type == 'delete' %>
+
   <%= form_tag({:controller => 'users', :action => 'destroy'}, :method => :delete, :class => 'delete_form_tag') do %>
     <% @user.each do |user| %>
         <% unless current_user.email == user.email %>
@@ -17,6 +19,18 @@
     <%= hidden_field_tag :page, params[:page] %>
     <br /> <br />
   <% end %>
+
+<% else %>
+
+  <% @user.each do |user| %>
+    <ul>
+      <li>
+        <%= link_to user.email, admin_update_user_interface_path(:user => user.id),
+                                            {:class => "user_email_link_in_admin_manage"}%>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
 
   <br /> <br />
   <%= will_paginate_with_i18n(@user) %>

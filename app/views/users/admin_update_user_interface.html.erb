@@ -1,0 +1,106 @@
+
+<b><%= @user.email %></b>
+
+<br />
+<br />
+
+<% @jobs.each do |job| %>
+<div class = "update_job_form">
+<%= form_for(job, :url => {:controller => :users, :action => :admin_updated_user}, :builder => TidyFormBuilder) do |f| %>
+  <%= hidden_field_tag :id, @user.id %>
+  <%= hidden_field_tag :job_id, job.id %>
+  <% if job.errors.any? %>
+    <div class="errorExplanation">
+      <h3>
+        <%= pluralize(job.errors.count, t("general.pluralize.error"),
+                                        t("general.pluralize.error")) %>!
+        <br />
+        <% if job.errors.count > 1 %>
+            <%= t('general.error_explanations')%>:
+        <% else %>
+            <%= t('general.error_explanation')%>:
+        <% end %>
+      </h3>
+      <% css_class_title = job.errors.include?(:title) ? "highlight_error_class_title" : "no_problem_class" %>
+      <% css_class_body = job.errors.include?(:body) ? "highlight_error_class_body" : "no_problem_class" %>
+        <ul>
+           <% job.errors.full_messages.each do |msg| %>
+             <li>
+               <b>
+                 <%= msg %>
+               </b>
+             </li>
+          <%end %>
+        </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <!-- = f.label t('jobs.index.table.title'), :class => css_class_title %><br / -->
+    <%= f.text_field :title, {:i18n => t('jobs.index.table.title'), :required => true, :tooltip => t('general.class_required'), :class => css_class_title } %>
+  </div>
+  <div class="field">
+    <!-- f.label t('jobs.index.table.location') %><br / -->
+    <%= f.text_field :location, {:i18n => t('jobs.index.table.location')}  %>
+  </div>
+  <div class="field">
+    <br />
+
+
+    <h3><%= t('general.references') %></h3>
+
+    <%= f.fields_for :references do |builder| %>
+       <%= render 'jobs/reference', :f => builder %>
+    <% end %>
+  </div>
+
+   <div class="field1">
+     <br /><br /><br />
+     <%= f.label t('jobs.index.table.category')%><br />
+      <!--select("job", "category_id", Category.all.sort.collect {|p| [ p.name, p.id ] },-->
+                <!--{:include_blank => 'None'}, {:class => "select_box"}) %>-->
+     <!--collection_select(:person, :city_id, City.all, :id, :name) -->
+     <% if I18n.locale == :en %>
+
+        <%= f.collection_select(:category_id, Category.order(:name), :id, :name,
+                             {:prompt => t('general.other')}, {:id => 'collection_select',:size => 7}) %>
+     <% elsif I18n.locale == :tr  %>
+         <%= f.collection_select(:category_id, Category.order(:id), :id, :isim,
+                                      {:prompt => t('general.other')}, {:id => 'collection_select',:size => 7}) %>
+     <% end %>
+  </div>
+
+   <div class="field1">
+     <br /><br /><br />
+     <!-- f.label t('jobs.index.table.body'), :class => css_class_body %><br />  -->
+     <%= f.text_area :body, {:i18n => t('jobs.index.table.body'), :required => true, :tooltip => t('general.class_required'), :class => css_class_body } %>
+   </div>
+<!--
+  <div class="field">
+    f.label l(:published_at) %><br />
+    f.datetime_select l(:published_at) %>
+  </div>
+  <div class="field">
+    f.label :created_at %><br />
+     f.datetime_select :created_at %>
+  </div>
+-->
+  <div class="field1 actions">
+    <br />
+    <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp;
+    <%= link_to t('general.link_to.cancel'), user_admin_path %>
+    <br /><br />
+    <%= link_to t('general.link_to.back'), admin_manage_path(:admin=>"manage"), :class => "back_link_in_admin_update_user" %>
+  </div>
+
+    <!-- hidden field is for captcha alternative to check whether '' is changed
+           by bots. Check is made in the application controller hidden_field method
+    -->
+    <%= hidden_field_tag(:hidden, '', :class => "hidden_field_tag") %>
+    <%= hidden_field_tag :admin, params[:admin] %>
+
+<% end %>
+</div>
+<% end %>
+<br /><br />
+
