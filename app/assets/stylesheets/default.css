@@ -74,6 +74,11 @@ p{
     color:#D95E16;
 }
 
+.field{
+    clear: left;
+    float: left;
+}
+
 .field1{
     clear: left;
     float: left;
@@ -442,4 +447,14 @@ a.disabled {
 
 .user_email_link_in_admin_manage{
     color: blue;
+}
+
+.update_job_form{
+    clear: right;
+}
+
+.links_in_admin_update_user_interface{
+    clear: left;
+    float: left;
+    margin-top: 50px;
 }

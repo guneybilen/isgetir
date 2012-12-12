@@ -311,6 +311,12 @@ $(document).ready(function() {
 
         return false;
      });
+
+    var user_parameter = $('.user_in_admin_updated_user').val();
+
+    $('.back_link_in_admin_updated_user_interface').click( function(){
+        window.location.href = '/users/admin_update_user_interface?user=' + user_parameter
+    })
 });
 
 function open1(attr){

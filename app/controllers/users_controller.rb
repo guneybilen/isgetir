@@ -102,9 +102,9 @@ class UsersController < ApplicationController
 
   def admin_updated_user
 
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #{params}"
+    #puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #{params}"
 
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_id(params[:user_id])
     @job = @user.jobs.find_by_id(params[:job_id])
 
 

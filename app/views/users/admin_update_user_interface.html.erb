@@ -4,10 +4,14 @@
 <br />
 <br />
 
+<% job_count = @jobs.count %>
+
+
 <% @jobs.each do |job| %>
 <div class = "update_job_form">
-<%= form_for(job, :url => {:controller => :users, :action => :admin_updated_user}, :builder => TidyFormBuilder) do |f| %>
-  <%= hidden_field_tag :id, @user.id %>
+
+<%= form_for job, :url => {:controller => :users, :action => :admin_updated_user}, :builder => TidyFormBuilder do |f| %>
+  <%= hidden_field_tag :user_id, @user.id %>
   <%= hidden_field_tag :job_id, job.id %>
   <% if job.errors.any? %>
     <div class="errorExplanation">
@@ -36,6 +40,10 @@
   <% end %>
 
   <div class="field">
+    <br />
+    <b><%= t('jobs.job_partial.h3') %> #<%= job_count %></b>
+    <br />
+    <br />
     <!-- = f.label t('jobs.index.table.title'), :class => css_class_title %><br / -->
     <%= f.text_field :title, {:i18n => t('jobs.index.table.title'), :required => true, :tooltip => t('general.class_required'), :class => css_class_title } %>
   </div>
@@ -43,18 +51,27 @@
     <!-- f.label t('jobs.index.table.location') %><br / -->
     <%= f.text_field :location, {:i18n => t('jobs.index.table.location')}  %>
   </div>
-  <div class="field">
+
+   <div class="field">
     <br />
+    <% if job.references.count == 1 %>
+        <h3><%= t('general.reference') %></h3>
+    <% else %>
+        <h3><%= t('general.references') %></h3>
+    <% end %>
 
+    <% if job.references.blank? %>
+        <%= t('general.reference_not_given') %>
+    <% else  %>
+        <h3><%= t('general.references') %></h3>
 
-    <h3><%= t('general.references') %></h3>
-
-    <%= f.fields_for :references do |builder| %>
-       <%= render 'jobs/reference', :f => builder %>
+        <%= f.fields_for :references do |builder| %>
+            <%= render 'jobs/reference', :f => builder %>
+        <% end %>
     <% end %>
   </div>
 
-   <div class="field1">
+  <div class="field1">
      <br /><br /><br />
      <%= f.label t('jobs.index.table.category')%><br />
       <!--select("job", "category_id", Category.all.sort.collect {|p| [ p.name, p.id ] },-->
@@ -85,13 +102,12 @@
      f.datetime_select :created_at %>
   </div>
 -->
-  <div class="field1 actions">
-    <br />
-    <%= f.submit t('general.submit') %> &nbsp; <%= t('general.or') %> &nbsp;
-    <%= link_to t('general.link_to.cancel'), user_admin_path %>
-    <br /><br />
-    <%= link_to t('general.link_to.back'), admin_manage_path(:admin=>"manage"), :class => "back_link_in_admin_update_user" %>
-  </div>
+    <div class="field1 actions">
+        <br />
+        <%= submit_tag t('general.submit'), :class => "submit_in_update_user_interface" %> <!-- &nbsp; < t('general.or') %> &nbsp;  -->
+        <br />
+        <br />
+    </div>
 
     <!-- hidden field is for captcha alternative to check whether '' is changed
            by bots. Check is made in the application controller hidden_field method
@@ -101,6 +117,12 @@
 
 <% end %>
 </div>
+<% job_count = job_count -1 %>
 <% end %>
-<br /><br />
+
+<div class = "links_in_admin_update_user_interface">
+   <%= link_to t('general.link_to.admin'), user_admin_path %>
+   <br /><br />
+   <%= link_to t('general.link_to.manage'), admin_manage_path(:admin=>"manage"), :class => "back_link_in_admin_update_user" %>
+</div>
 

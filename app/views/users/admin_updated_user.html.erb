@@ -2,6 +2,8 @@
 
 <% @job.each  do |job| %>
 
+<%= hidden_field_tag :user, @user.id, :class => "user_in_admin_updated_user" %>
+
 <%= div_for job do %>
 
 
@@ -62,3 +64,8 @@
 <% end %>
 
 <% end %>
+
+<%= link_to t('general.link_to.admin'), user_admin_path %> &nbsp;| &nbsp;
+<%= link_to t('general.link_to.back'), '#', :class => "back_link_in_admin_updated_user_interface" %>
+<br /><br />
+<%= link_to t('general.link_to.manage'), admin_manage_path(:admin=>"manage"), :class => "back_link_in_admin_update_user" %>
