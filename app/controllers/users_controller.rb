@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     if @user.nil?
       flash[:notice] = t('general.choose')
-      redirect_to admin_edit_user_path and return false
+      redirect_to admin_edit_user_users_path and return false
     end
 
     if params[:password].blank?
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
       @user.errors.add('', t('activerecord.errors.models.user.attributes.password.confirmation'))
       render 'admin_edit_user'
     elsif @user.update_attributes(user)
-      redirect_to user_admin_path, :notice => t('users_controller.update.success')
+      redirect_to admin_users_path, :notice => t('users_controller.update.success')
     else
       render 'admin_edit_user'
     end
@@ -133,26 +133,30 @@ class UsersController < ApplicationController
   end
 
   def destroy
+     @admin_type1 = params[:id]
+     @admin_type2 = params[:admin]
     if !current_user.nil? && current_user.is_admin?
       #p params
       @user = User.find(params[:users])
       User.destroy(@user)
       if (params[:page].blank?)
         @user = User.paginate(:page => 1)
+        #@page = 1
       else
+        #@page = params[:page]
         @user = User.paginate(:page => params[:page])
         #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
         #render :js => "alert('Hello Rails');"
       end
 
-
+      #redirect_to(admin_manage_users_path, :admin => "delete", :page => @page) and return false
       #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
 
         respond_to do |format|
           format.js  # burda destroy.js.erb invoke edilsin istiyorum
         end
       #end
-    else
+     else
       redirect_to root_path
     end
   end
@@ -180,7 +184,8 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
 
-    @admin_type = params[:admin]
+     @admin_type1 = params[:id]
+     @admin_type2 = params[:admin]
 
     #respond_to do |format|
     #  format.html {

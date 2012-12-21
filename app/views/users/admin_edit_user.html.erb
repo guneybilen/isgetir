@@ -34,10 +34,12 @@
 
     <br /><br />
     <div class="password_field">
+      <b><%= label_tag :password, t('general.password') %></b> <br />
       <%= password_field_tag :password %>
     </div>
     <br />
     <div class="password_field">
+      <b><%= label_tag :password_confirmation, t('general.password_confirmation') %></b> <br />
       <%= password_field_tag :password_confirmation %>
     </div>
   <br />
@@ -49,4 +51,4 @@
 
 <br />
 <br />
-<%= link_to t('general.admin'), user_admin_path %>
+<%= link_to t('general.admin'), admin_users_path %>

@@ -27,7 +27,18 @@ class ApplicationController < ActionController::Base
 
 =end
 
+
   include SessionsHelper
+
+  if Rails.env.production?
+    rescue_from Exception, :with => :server_error
+    def server_error(exception)
+      @error = "ERROR"
+      puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #{@error}"
+      ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
+
+    end
+  end
 
   protected
 

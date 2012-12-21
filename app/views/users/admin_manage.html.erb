@@ -1,7 +1,7 @@
 
 <div class="users">
 
-<% if @admin_type == 'delete' %>
+<% if @admin_type1 == 'destroy' || @admin_type2 ='delete' %>
 
   <%= form_tag({:controller => 'users', :action => 'destroy'}, :method => :delete, :class => 'delete_form_tag') do %>
     <% @user.each do |user| %>
@@ -25,7 +25,7 @@
   <% @user.each do |user| %>
     <ul>
       <li>
-        <%= link_to user.email, admin_update_user_interface_path(:user => user.id),
+        <%= link_to user.email, admin_update_user_interface_users_path(:user => user.id),
                                             {:class => "user_email_link_in_admin_manage"}%>
       </li>
     </ul>
@@ -36,6 +36,11 @@
   <%= will_paginate_with_i18n(@user) %>
   <br /> <br /><br /> <br /><br /> <br />
   <%= link_to t('general.main_list'),root_path, { :class=>"root"} %>
+  <br />
+  <br />
+  <br />
+  <br />
+  <%= link_to t('general.link_to.admin'), admin_users_path %>
 </div>
 
 <div id="dialog-confirm" title="<%= t('general.delete') %>" style="display: none">
@@ -46,6 +51,3 @@
   </p>
 </div>
 
-<br />
-<br />
-<%= link_to t('general.link_to.admin'), user_admin_path %>

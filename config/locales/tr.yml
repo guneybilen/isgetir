@@ -125,7 +125,7 @@ tr:
     class_required: Bu alanın doldurulması zorunludur
     users: Üyeler
     remove: Yok Et
-    permanent: Bunlar geri getirelemez şekilde silinicaktir. Emin misiniz?
+    permanent: Bunlar geri getirelemez şekilde silinicektir. Emin misiniz?
     admin: Üye Yönetimi
     choose: Lütfen listeden bir email seçiniz
 

@@ -72,6 +72,10 @@ Isgetir::Application.configure do
 
   #restart server after modifying this file
 
+  config.middleware.use ExceptionNotifier,
+      :email_prefix => "[ERROR] ",
+      :sender_address => %{"Exception Notifier" <admin@isgetir.com>},
+      :exception_recipients => %w{guneybilen@yahoo.com}
 
 
 

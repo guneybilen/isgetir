@@ -458,3 +458,11 @@ a.disabled {
     float: left;
     margin-top: 50px;
 }
+
+.submit_actions{
+    clear: both;
+}
+
+.fields_in_sessions_new{
+    margin-top: 0px;
+}

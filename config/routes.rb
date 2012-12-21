@@ -24,6 +24,8 @@ Isgetir::Application.routes.draw do
     resources :comments
   end
 
+=begin
+
   match 'users/admin_updated_user' => 'users#admin_updated_user', :as => 'admin_updated_user'
 
   match 'users/admin_update_user_interface' => 'users#admin_update_user_interface', :as => 'admin_update_user_interface'
@@ -38,6 +40,21 @@ Isgetir::Application.routes.draw do
   match 'users/admin_change_password' => 'users#admin_change_password', :as => 'admin_change_password'
 
   resources :users
+=end
+
+  #match '/users/admin_manage:admin' => redirect('/jobs#index')   bu rule calismiyor.
+
+  resources :users do
+    collection do
+      put :admin_updated_user
+      get :admin_update_user_interface
+      get :admin_manage
+      get :admin
+      get :admin_edit_user
+      put :admin_change_password
+    end
+  end
+
 
   match 'users/destroy' => "users#destroy"
 

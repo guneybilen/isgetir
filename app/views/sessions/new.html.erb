@@ -3,15 +3,15 @@
 <h2 class="login_h2"><%= t('general.login') %></h2>
 <br />
 <%= form_tag session_path do %>
-    <div class="field">
+    <div class="fields_in_sessions_new">
       <%= label_tag t('general.email') %>:<br />
       <%= text_field_tag :email %>
     </div>
-    <div class="field">
+    <div class="fields_in_sessions_new">
       <%= label_tag t('general.password') %>:<br />
       <%= password_field_tag :password %>
     </div>
-    <div class="actions">
+    <div class="submit_actions">
       <br />
       <%= submit_tag t('general.login'), :class => "login_submit" %> &nbsp; <%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), root_path %>
