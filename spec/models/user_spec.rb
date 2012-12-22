@@ -114,6 +114,29 @@ describe User do
        @user.toggle!(:is_admin)
        @user.should be_is_admin
     end
+  end
 
+  describe "jobs associations" do
+    before :each do
+      @user = User.create(@attr)
+      @mp1 = Factory(:job, :user => @user, :created_at => 1.day.ago)
+      @mp2 = Factory(:job, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have a jobs attribute" do
+      @user.should respond_to(:jobs)
+    end
+
+    it "should have the right jobs in the right order" do
+      @user.jobs.should == [@mp2, @mp1]
+    end
+
+    it "should destroy associated jobs" do
+      @user.destroy
+
+      [@mp1, @mp2].each do |job|
+        Job.find_by_id(job.id).user_id.should be_nil
+      end
+    end
   end
 end

@@ -35,3 +35,10 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
+
+Factory.define :job, :class => Job do |job|
+  job.title "title"
+  job.body 'body'
+  job.location 'location'
+  job.association :user # bu user user_spec'de set ediliyor
+end

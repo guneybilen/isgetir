@@ -159,6 +159,10 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    if current_user.nil?
+       redirect_to login_path and return false
+    end
+
     @job = current_user.jobs.new(params[:job])
 
     @time_too_fast = ''
@@ -222,6 +226,10 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+     if current_user.nil?
+       redirect_to login_path and return false
+     end
+
     @job = current_user.jobs.find(params[:id])
 
     @job.destroy

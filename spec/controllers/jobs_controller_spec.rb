@@ -10,22 +10,22 @@ describe JobsController do
   end
 
   describe "GET 'index'"
-    it "should be successful" do
-      get 'index'
-      response.should be_success
-    end
+  it "should be successful" do
+    get 'index'
+    response.should be_success
+  end
 
-    it "should be have the right title" do
-      get 'index'
-      response.should have_selector('title', :content => @title)
-    end
+  it "should be have the right title" do
+    get 'index'
+    response.should have_selector('title', :content => @title)
+  end
 
-    it "should be have the right title" do
-      get 'index'
-      response.should have_selector('title', :content => @title + ' | Ana Liste')
-      # | isaretinin saginda ve solunda exactly 1 space olmali as in
-      # application_helper's title method otherwise the example ends up as failure
-    end
+  it "should be have the right title" do
+    get 'index'
+    response.should have_selector('title', :content => @title + ' | Ana Liste')
+    # | isaretinin saginda ve solunda exactly 1 space olmali as in
+    # application_helper's title method otherwise the example ends up as failure
+  end
 
 =begin
    describe "GET 'new'"
@@ -46,7 +46,8 @@ describe JobsController do
     #let(:user) { Factory(:user1) }
 
     before :each do
-      @job = Factory(:job1)
+      @user = Factory(:user1)
+      @job = Factory(:job, :user=>@user)
     end
 
 
@@ -75,6 +76,14 @@ describe JobsController do
       response.should have_selector('div>img')
     end
 
+    it "should deny access to 'create'" do
+      post :create
+      response.should redirect_to(login_path)
+    end
+    it "should deny access to 'destroy'" do
+      delete :destroy, :id => 1
+      response.should redirect_to(login_path)
+    end
   end
 
 end

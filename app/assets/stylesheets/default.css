@@ -28,7 +28,7 @@ p{
 .sort_by{
     float: left;
     clear: both;
-    margin-top: 40px;
+    margin-top: 0px;
 }
 
 /*.sort_by_links_tr a{
@@ -436,7 +436,7 @@ a.disabled {
 }
 
 #main_table{
-    margin-top: 100px;
+    margin-top: -300px;
 }
 
 .back_link_in_admin_update_user{
