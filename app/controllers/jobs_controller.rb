@@ -165,9 +165,10 @@ class JobsController < ApplicationController
 
     @job = current_user.jobs.new(params[:job])
 
+
     @time_too_fast = ''
 
-    time_later # defined in application controller
+    #time_later # defined in application controller
     hidden_field  # defined in application controller
 
     respond_to do |format|
@@ -185,7 +186,11 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
 
-      if (@hidden.blank? && @time_too_fast.blank?) && @job.save
+      #puts @job.valid?
+      #p @hidden
+
+      if ((@hidden.blank? || @hidden.nil?) && @time_too_fast.blank?) && @job.save
+        #p @job
         flash[:notice] = t('jobs_controller.create.success')
         format.html { redirect_to @job}
         format.json { render json: @job, status: :created, location: @job }
@@ -230,7 +235,15 @@ class JobsController < ApplicationController
        redirect_to login_path and return false
      end
 
+     #p current_user
+     #p current_user.jobs
+
+    if current_user.jobs.empty?
+      redirect_to root_path and return false
+    end
+
     @job = current_user.jobs.find(params[:id])
+
 
     @job.destroy
 

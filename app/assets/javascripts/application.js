@@ -138,6 +138,7 @@ $(document).ready(function() {
     });
 
 
+
 //var m = $("hr").outerWidth;
 //var n = $("h1.listing_jobs").outerWidth;
     var p = $("div.menu a");
@@ -156,13 +157,22 @@ $(document).ready(function() {
     var batin = $("input:submit");
     batin.button();
     batin.attr("disabled", false);
+//    alert('guny') ;
 
     // batin.live yerine batin.on kullandiginda show page'deki
     // .notify_friend_submit button'a errorleri check ederken bir kere click ettikten sonra
     // bir daha calismiyor
-    batin.live('click',  function() {
+    batin.live ('click',  function() {
         batin.attr("disabled", true);
+         var title= $('#job_title').val() == '';
+         var body = $('#job_body').val() == '';
+
+//        js_build class jobs/_form.html.erb'deki submit button
+         if (title || body){
+             $('.js_build').attr('disabled', false)
+         }
     });
+
 
 
     $('.notify_friend_submit').button('enable');

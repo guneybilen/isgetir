@@ -266,3 +266,53 @@ REQUESTING PAGE: GET /users/2/edit with {} and HTTP headers {}
 REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"/users/2/edit"}
 REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"foo1@example.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
 REQUESTING PAGE: GET http://www.example.com/users/2/edit with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /users/1/edit with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/login with {} and HTTP headers {"HTTP_REFERER"=>"/users/1/edit"}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"foo1@example.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/login"}
+REQUESTING PAGE: GET http://www.example.com/users/1/edit with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: GET /users/new with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"email"=>"", "password"=>"", "password_confirmation"=>""}, "hidden"=>"", "commit"=>"Gönder"} and HTTP headers {"HTTP_REFERER"=>"/users/new"}
+REQUESTING PAGE: GET /users/new with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"email"=>"user@example.com", "password"=>"foobar", "password_confirmation"=>"foobar"}, "hidden"=>"", "commit"=>"Gönder"} and HTTP headers {"HTTP_REFERER"=>"/users/new"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"", "password"=>"", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /logout with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/logout"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /jobs/new with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /jobs/new with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: POST /jobs with {"utf8"=>"✓", "job"=>{"title"=>"", "location"=>"", "references_attributes"=>{"0"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}, "1"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}}, "category_id"=>"", "body"=>""}, "commit"=>"Gönder", "hidden"=>""} and HTTP headers {"HTTP_REFERER"=>"/jobs/new"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /jobs/new with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: POST /jobs with {"utf8"=>"✓", "job"=>{"title"=>"", "location"=>"", "references_attributes"=>{"0"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}, "1"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}}, "category_id"=>"", "body"=>""}, "commit"=>"Gönder", "hidden"=>""} and HTTP headers {"HTTP_REFERER"=>"/jobs/new"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /jobs/new with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: POST /jobs with {"utf8"=>"✓", "job"=>{"title"=>"", "location"=>"", "references_attributes"=>{"0"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}, "1"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}}, "category_id"=>"", "body"=>""}, "commit"=>"Gönder", "hidden"=>""} and HTTP headers {"HTTP_REFERER"=>"/jobs/new"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"utf8"=>"✓", "email"=>"guney@guney.com", "password"=>"foobar", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}
+REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/session"}
+REQUESTING PAGE: GET /jobs/new with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
+REQUESTING PAGE: POST /jobs with {"utf8"=>"✓", "job"=>{"title"=>"Lorem ipsum", "location"=>"", "references_attributes"=>{"0"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}, "1"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}}, "category_id"=>"", "body"=>"Lorem ipsum dolor sit amet"}, "commit"=>"Gönder", "hidden"=>""} and HTTP headers {"HTTP_REFERER"=>"/jobs/new"}
+REQUESTING PAGE: GET http://www.example.com/jobs/1 with {} and HTTP headers {"HTTP_REFERER"=>"/jobs"}

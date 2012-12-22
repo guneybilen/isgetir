@@ -85,5 +85,72 @@ describe JobsController do
       response.should redirect_to(login_path)
     end
   end
+  describe "POST 'create'" do
+    before(:each) do
+      @user = test_sign_in(Factory(:user1))
+    end
 
+    describe "failure" do
+      before(:each) do
+        @attr = { :body => "" }
+      end
+      it "should not create a job" do
+
+        lambda do
+          post :create, :job => @attr
+        end.should_not change(Job, :count)
+      end
+      it "should render the new page" do
+        post :create, :job => @attr
+        response.should render_template('jobs/new')
+      end
+
+      describe "success" do
+        before(:each) do
+          @attr = { :title => "Lorem ipsum", :body => "Lorem ipsum" }
+        end
+        it "should create a job" do
+          lambda do
+            post :create, :job => @attr
+          end.should change(Job, :count).by(1)
+        end
+        it "should redirect to the job page" do
+          post :create, :job => @attr
+          response.should redirect_to(assigns[:job])
+        end
+        it "should have a flash message" do
+          post :create, :job => @attr
+          flash[:notice].should == I18n.t('jobs_controller.create.success')
+        end
+      end
+    end
+  end
+
+  describe "DELETE 'destroy'" do
+    describe "for an unauthorized user" do
+      before(:each) do
+        @user = Factory(:user1)
+        wrong_user = Factory(:user1, :email => Factory.next(:email))
+        test_sign_in(wrong_user)
+        @job = Factory(:job, :user => @user)
+      end
+      it "should deny access" do
+        delete :destroy, :id => @job
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "for an authorized user" do
+      before(:each) do
+        @user = Factory(:user1)
+        test_sign_in(@user)
+        @job = Factory(:job, :user => @user)
+      end
+      it "should destroy the job" do
+        lambda do
+          delete :destroy, :id => @job
+        end.should change(Job, :count).by(-1)
+      end
+    end
+  end
 end
