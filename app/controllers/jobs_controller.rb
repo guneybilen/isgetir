@@ -117,9 +117,18 @@ class JobsController < ApplicationController
       @category = Category.where("id= ?", @job.category_id).first.isim
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @job }
+    if request.xhr?
+      render 'show_ajax', :layout => false
+      #respond_to do |format|
+      #  format.js
+      #end
+
+    else
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @job }
+      end
     end
   end
 

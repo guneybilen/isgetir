@@ -326,7 +326,37 @@ $(document).ready(function() {
 
     $('.back_link_in_admin_updated_user_interface').click( function(){
         window.location.href = '/users/admin_update_user_interface?user=' + user_parameter
-    })
+    });
+
+    $(".show").tooltip({
+    bodyHandler: function(){
+
+        var url = $(this).attr("href");
+        var tip;
+
+        if (locale == "tr"){
+            tip = $("<span/>").html("yüklüyor...");
+        }
+
+        if (locale == "en"){
+            tip = $("<span/>").html("loaading...");
+        }
+
+
+        $.ajax({
+            url: url,
+            success: function(html){
+                tip.html(html);
+            }
+        });
+
+        return tip;
+    },
+    showURL: false,
+    track: true,
+    delay: 0,
+    extraClass:"show_ajax matwork"     // right is a css class
+});
 });
 
 function open1(attr){

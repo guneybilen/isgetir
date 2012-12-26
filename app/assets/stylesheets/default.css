@@ -388,7 +388,7 @@ tr.alt td {
 .show{
     font-size: 0.8em;
     text-align: center;
-    width: 80px;
+    width: 50px;
 }
 
 .member_specific_edit{
@@ -465,4 +465,19 @@ a.disabled {
 
 .fields_in_sessions_new{
     margin-top: 0px;
+}
+
+.matwork{
+    margin-top: 0px;
+    margin-right: 2px;
+    width: 10%;
+    float: left;
+    vertical-align: middle;
+}
+
+.show_ajax{
+    /*white-space: normal;*/
+    /*text-align: left;*/
+    width: 35%;
+    float: left;
 }
