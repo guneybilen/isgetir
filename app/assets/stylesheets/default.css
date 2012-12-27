@@ -436,7 +436,8 @@ a.disabled {
 }
 
 #main_table{
-    margin-top: -300px;
+    margin-top: 100px;
+    clear: both;
 }
 
 .back_link_in_admin_update_user{
@@ -478,6 +479,6 @@ a.disabled {
 .show_ajax{
     /*white-space: normal;*/
     /*text-align: left;*/
-    width: 35%;
+    width: 50%;
     float: left;
 }
