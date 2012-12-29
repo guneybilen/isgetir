@@ -62,7 +62,7 @@
           <td><%= time_ago_in_words(job.created_at) %> <%= t('general.time_ago_in_words') %></td>
 
           <td>
-          <%= link_to t('general.link_to.show'), job, {:class => "show"} %>
+          <%= link_to t('general.link_to.show'), job, {:title => "", :class => "show"} %>
           </td>
 
           <% if job.owned_by? current_user  %>

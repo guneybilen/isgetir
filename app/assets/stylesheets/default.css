@@ -470,15 +470,15 @@ a.disabled {
 
 .matwork{
     margin-top: 0px;
-    margin-right: 2px;
+    margin-right: 5px;
     width: 10%;
     float: left;
     vertical-align: middle;
 }
 
-.show_ajax{
+.contained_text{
     /*white-space: normal;*/
     /*text-align: left;*/
     width: 50%;
-    float: left;
+    /*float: left;*/
 }

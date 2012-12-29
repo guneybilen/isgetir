@@ -1,7 +1,13 @@
 
-<%= image_tag "men_at_work_image.jpeg", :size => "25x25", :alt => "Picture Men At Work", :class=>"matwork" %>
-<p class="show_ajax">
-  <%= word_wrap(@job.body, :line_width => 250) %>
-  <!-- word_wrap calismiyor -->
+    <!-- image_tag "men_at_work_image.jpeg",
+                  :size => "25x25",
+                  :alt => "Picture Men At Work",
+                  :class=>"matwork" -->
+
+    <%= @job.body %>
+
+<!-- p class="show_ajax"  >
+  < word_wrap(@job.body, :line_width => 250) >
+  <!-- word_wrap calismiyor >
 </p>
-<% puts @job.body.inspect %>
+< puts @job.body.inspect -->

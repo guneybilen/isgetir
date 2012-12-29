@@ -342,14 +342,44 @@ $(document).ready(function() {
             tip = $("<span/>").html("loaading...");
         }
 
+        var sa;
 
         $.ajax({
             url: url,
             success: function(html){
-                tip.html(html);
-            }
-        });
+//                sa = $('.show_ajax').text();
+//                alert(sa);
+//                  $('.show').attr('text', );
+//                alert(html);
+//                html = $('show_ajax').toString().split(' ');
+//                for(var key in html) {
+//                    obj += obj + key;
+//                }
 
+//                html = jQuery.makeArray(html);
+//                alert(typeof(html));
+//
+//                  alert(typeof(html));
+//                p = $(html).length;
+//                alert(p);
+//                if (p > 5){
+//                   html = html.splice(4,0,'\n');
+//                   html.join(' ');
+//                    alert(html);
+//                }
+                tip = tip.html(html);  //.replace(/(\r\n|\n|\r)/gm,"");
+//                  sa =$(html).find($('.show_ajax').innerText);
+//                alert(sa);
+        }});
+
+//        tip = jQuery.makeArray(tip)
+//        tip = tip.toString();
+//        alert(tip.text());
+//        tip.toArray().each(function(i){
+//          alert($(this[i]));
+//         });
+
+//        return $("<span/>").html(sa);
         return tip;
     },
     showURL: false,
