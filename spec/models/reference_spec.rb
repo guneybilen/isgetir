@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Reference do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before :each do
+    @ref = Reference.create!()
+  end
+
+  it 'should respond to' do
+    @ref.should respond_to(:job)
+  end
 end
+
+

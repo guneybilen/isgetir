@@ -4,4 +4,6 @@ class Reference < ActiveRecord::Base
 
   attr_accessible  :name, :lastname, :phone, :cell, :email
 
+  validates :job_id, :presence => true
+
 end

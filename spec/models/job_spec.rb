@@ -36,6 +36,34 @@ describe Job do
     it "should reject long content" do
       @user.jobs.build(:body => "a" * 301).should_not be_valid
     end
+
+    describe "comments creation" do
+      before :each do
+        #test_sign_in(@user)
+
+        begin
+          @y = Factory(:job1, :user => @user)
+          @z = @y.comments.build(name: "guney bilen", email: "g@bilen.com", body: "harika bir is").should be_valid
+        rescue ActiveRecord::RecordInvalid => invalid
+          puts invalid.record.errors.full_messages
+        end
+
+      end
+
+      it "should be able to save the built comment" do
+        @z.should == true
+      end
+
+      it "should create a new comment" do
+        t = @y.comments.create!(name: "guney bilen", email: "g@bilen.com", body: "harika bir is")
+        @y.comments.should include(t)
+      end
+
+      it "should create a new reference" do
+        @y.references.create!(name: "hasan bilen", email: "h@bilen.com").should be_valid
+      end
+
+    end
   end
 end
 
