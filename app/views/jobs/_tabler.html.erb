@@ -58,7 +58,7 @@
 
           <td><%= truncate(job.title, :length => 10, :omission => t('general.continued')) %></td>
           <td><%= truncate(job.location, :length => 10, :omission => t('general.continued')) %></td>
-          <td><%= truncate(job.body, :length => 40, :separator => ' ', :omission => t('general.continued') ) %></td>
+          <td class="tabler_body_td" ><%= truncate(job.body, :length => 40, :separator => ' ', :omission => t('general.continued') )%></td>
           <td><%= time_ago_in_words(job.created_at) %> <%= t('general.time_ago_in_words') %></td>
 
           <td>
