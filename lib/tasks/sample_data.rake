@@ -10,18 +10,18 @@ namespace :db do
                  :password_confirmation => "guney"
     )
     admin.toggle!(:is_admin)
-    99.times do |n|
-      email = "example-#{n+1}@yahoo.com"
-      password = "guney"
-      User.create!(
-                   :email => email,
-                   :password => password,
-                   :password_confirmation => password)
-    end
-    User.all(:limit => 6).each do |user|
-      10.times do
-        user.jobs.create!(:title => Faker::Lorem.sentence(1), :body => Faker::Lorem.sentence)
-      end
-    end
+    #99.times do |n|
+    #  email = "example-#{n+1}@yahoo.com"
+    #  password = "guney"
+    #  User.create!(
+    #               :email => email,
+    #               :password => password,
+    #               :password_confirmation => password)
+    #end
+    #User.all(:limit => 6).each do |user|
+    #  10.times do
+    #    user.jobs.create!(:title => Faker::Lorem.sentence(1), :body => Faker::Lorem.sentence)
+    #  end
+    #end
   end
 end

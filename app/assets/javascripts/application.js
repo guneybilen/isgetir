@@ -328,6 +328,7 @@ $(document).ready(function() {
         window.location.href = '/users/admin_update_user_interface?user=' + user_parameter
     });
 
+//    $(".tabler_body_td, .show").tooltip({
     $(".show").tooltip({
     bodyHandler: function(){
 
