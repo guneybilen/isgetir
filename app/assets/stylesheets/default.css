@@ -359,9 +359,13 @@ table, th,td{
     text-align: left;
 }
 
-table tr{
+table {
    position: relative;
-    border-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+tr {
+   padding: 200px;
 }
 
 table{

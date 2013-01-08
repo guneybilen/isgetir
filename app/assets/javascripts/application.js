@@ -9,22 +9,24 @@
 //= require_tree .
 
 
-function url_parameters(str) {
+/*function url_parameters(str) {
     var ary = [];
     ary = str.split("&");
-//                                    alert(ary[0]);
+                                    alert(ary[0]);
     var pattern = /^_=\d+/;
-//                                     alert(ary[0].match(pattern));
+                                     alert(ary[0].match(pattern));
     if (ary[0].match(pattern) != null) {
         delete ary[0];
-//                                     alert(ary);
+                                     alert(ary);
     }
     ary = ary.toString();
     ary = ary.replace(/^,/, "");
-    ary = ary.replace(/,\s*/gi, "&");
+    ary = ary.replace(/,\s*//*gi, "&");
     alert(ary);
     document.location.hash = "ajaxing?" + str;
-}
+}*/
+
+
 
 $(document).ready(function() {
 
@@ -33,7 +35,7 @@ $(document).ready(function() {
     $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
 
 
-    $(".sort_by_links_tr a, .for_all_listing a").live("click", function(e) {
+    $(".sort_by_links_tr a, .for_all_listing a").live("click", function() {
         window.scrollTo(0, 0);
         var str = {};
         str = getUrlParams(this.href);
@@ -111,10 +113,10 @@ $(document).ready(function() {
     });
 
 
-    locale = $("div.set_locale").text();
+    var locale = $("div.set_locale").text();
 
     $('a.show').click(function() {
-        $link = $(this);
+        var $link = $(this);
 
         if (locale == "tr"){
             $link.text("Gösteriyor...") }
@@ -296,7 +298,7 @@ $(document).ready(function() {
         {open2(attr);}
 
         return false;
-    })
+    });
 
 
     $('.manage').click(function(){
@@ -344,7 +346,7 @@ $(document).ready(function() {
             tip = $("<span/>").html("loaading...");
         }
 
-        var sa;
+//        var sa;
 
         $.ajax({
             url: url,
@@ -404,7 +406,7 @@ function open1(attr){
                         type: 'DELETE',
                         data: attr
 //                        success: function(result) {}
-                    })
+                    });
                     $( this ).dialog( "close" );
                 },
                 "İptal": function() {
@@ -415,7 +417,7 @@ function open1(attr){
 
 }
 
-function open2(){
+function open2(attr){
   $( "#dialog-confirm" ).dialog({
             resizable: false,
             height: 250,
@@ -427,7 +429,7 @@ function open2(){
                         type: 'DELETE',
                         data: attr //,
 //                        success: function(result) {}
-                    })
+                    });
                     $( this ).dialog( "close" );
                 },
                 "Cancel": function() {
