@@ -56,7 +56,7 @@
           <% end %>
           </td>
 
-          <td><%= truncate(job.title, :length => 10, :omission => t('general.continued')) %></td>
+          <td class="title"><%= truncate(job.title, :length => 10, :omission => t('general.continued')) %></td>
           <td><%= truncate(job.location, :length => 10, :omission => t('general.continued')) %></td>
           <td href="<%= url_for job %>" class="tabler_body_td">
             <%= truncate(job.body, :length => 40, :separator => ' ', :omission => t('general.continued') )%></td>

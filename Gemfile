@@ -1,12 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+#gem 'rails', '3.1.0'
 
+ gem 'rails', '3.2.10'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'therubyracer'
+#group :development do
+#  gem 'therubyracer', :platforms => :ruby, :require => 'v8'
+#end
+
+#gem 'libv8', '3.11.8'
+#gem 'therubyracer', "0.11.0"
+
+
 # therubyracer gem asagıdaki problemi çözüyor:
 # guney@pc:~/Desktop/isgetir$ rails s
 # /home/guney/.rvm/gems/ruby-1.9.2-p180@rails323/gems/execjs-1.4.0/lib/execjs/ 
@@ -27,8 +35,10 @@ gem 'exception_notification', git: 'git://github.com/alanjds/exception_notificat
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  #gem 'sass-rails', "  ~> 3.1.0"
+  #gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
@@ -77,7 +87,8 @@ end
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-  gem 'factory_girl_rails', '1.0'
+  #gem 'factory_girl_rails', '1.0'
+  gem 'factory_girl_rails'
   gem 'webrat'
   gem 'minitest'
   gem 'turn', :require => false

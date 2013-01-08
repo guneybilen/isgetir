@@ -359,8 +359,13 @@ table, th,td{
     text-align: left;
 }
 
+table tr{
+   position: relative;
+    border-bottom: 15px;
+}
+
 table{
-    top: -35px;
+    top: 25px;
     width: 1000px;
     border-collapse: collapse;
 }
@@ -374,11 +379,11 @@ tr.alt td {
 }
 
 .kategori{
-    width: 100px;
+    width: 150px;
 }
 
 .location, .title{
-    width: 85px;
+    width: 115px;
 }
 
 .date{

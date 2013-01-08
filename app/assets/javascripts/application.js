@@ -34,6 +34,7 @@ $(document).ready(function() {
 
 
     $(".sort_by_links_tr a, .for_all_listing a").live("click", function(e) {
+        document.location.top();
         var str = {};
         str = getUrlParams(this.href);
         var i = $('#select_box').children(":selected").attr("value");
