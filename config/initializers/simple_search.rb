@@ -1,3 +1,3 @@
 require 'active_record'
-require 'simple_search'
+require Rails.root.to_s +  "/lib/simple_search/simple_search"
 ActiveRecord::Base.send(:extend, SearchPlugin::SimpleSearch)
