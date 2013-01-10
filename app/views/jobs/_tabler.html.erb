@@ -43,7 +43,7 @@
 
   <% if !@jobs.blank? %>
       <% @jobs.each do |job| %>
-          <tr>
+          <tr class="row">
           <td>
           <% if !job.category.nil? %>
               <% if I18n.locale == :en %>
@@ -67,14 +67,19 @@
           </td>
 
           <%# p "**********************************************" + current_user.is_admin?.to_s %>
-          <% if (job.owned_by?(current_user) || current_user.is_admin?) %>
-          <td class="member_specific_edit"><%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %></td>
-          <td class="member_specific_delete">
-              <%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %>
-            </td>
+          <% if !current_user.nil? %>
+            <% if (job.owned_by?(current_user) || current_user.is_admin?) %>
+                <td class="member_specific_edit"><%= link_to t('general.edit'), edit_job_path(job), {:class => "visited"} %></td>
+                <td class="member_specific_delete">
+                <%= link_to t('general.delete'), job, confirm: t('general.sure'), method: :delete, :class => "visited" %>
+                </td>
+            <% else %>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            <% end %>
           <% else %>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
           <% end %>
             </tr>
       <% end %>

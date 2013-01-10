@@ -364,12 +364,11 @@ table {
     margin-bottom: 25px;
 }
 
-tr {
-   padding: 200px;
+.row {
+   border-bottom: 10px solid #ffefd5;
 }
 
 table{
-    top: 25px;
     width: 1000px;
     border-collapse: collapse;
 }
