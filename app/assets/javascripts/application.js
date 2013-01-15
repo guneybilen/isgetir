@@ -30,6 +30,8 @@
 
 $(document).ready(function() {
 
+
+
 //    $("#select_box").val(0);  // bu IE9'da calismiyor
 
     $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
@@ -331,11 +333,18 @@ $(document).ready(function() {
         window.location.href = '/users/admin_update_user_interface?user=' + user_parameter
     });
 
-//    $(".tabler_body_td, .show").tooltip({
-    $(".show").tooltip({
+    $(".td_for_tooltip, .show").tooltip({
+//    $(".show").tooltip({
     bodyHandler: function(){
 
-        var url = $(this).attr("href");
+        var url;
+        var that = $(".input_field_for_tooltip");
+//        alert(that.val());
+        if($(this).is($(".td_for_tooltip")))
+        { url = that.val(); }
+        else
+        { url = $(this).attr("href"); }
+
         var tip;
 
         if (locale == "tr"){
@@ -349,6 +358,7 @@ $(document).ready(function() {
 //        var sa;
 
         $.ajax({
+
             url: url,
             success: function(html){
 //                sa = $('.show_ajax').text();

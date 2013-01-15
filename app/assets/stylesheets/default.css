@@ -25,11 +25,12 @@ body{
 p{
     font-size: 1em;
 }
-.sort_by{
+
+/*.sort_by{
     float: left;
     clear: both;
     margin-top: 0px;
-}
+}*/
 
 /*.sort_by_links_tr a{
     text-align: left;
@@ -386,9 +387,16 @@ tr.alt td {
 }
 
 .location, .title{
-    width: 115px;
+    width: 75px;
+    padding-right: 25px;
 }
 
+.job_body{
+    width: 150px;
+    padding-right: 100px;
+    padding-left: 120px;
+
+}
 .date{
     white-space: nowrap;
     width: 250px;
