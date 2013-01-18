@@ -3,10 +3,12 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
-require File.dirname(__FILE__) + "/factories"
+#require File.dirname(__FILE__) + "/factories"  # rails's upgrade ettikten sonra bu line one extra call yapmaya basladi.
+# Rails'i upgrade ettikten sora factories otomatik olarak yuklenmeye basladi. Yukardaki line gereksiz ve fazladan
+# olmaya basladi.
+
 #require "webrat"
 #require 'webrat/core/matchers'
-
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

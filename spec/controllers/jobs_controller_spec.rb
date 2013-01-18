@@ -46,8 +46,8 @@ describe JobsController do
     #let(:user) { Factory(:user1) }
 
     before :each do
-      @user = Factory(:user1)
-      @job = Factory(:job, :user=>@user)
+      @user = FactoryGirl.create(:user1)
+      @job = FactoryGirl.create(:job, :user=>@user)
     end
 
 
@@ -87,7 +87,7 @@ describe JobsController do
   end
   describe "POST 'create'" do
     before(:each) do
-      @user = test_sign_in(Factory(:user1))
+      @user = test_sign_in(FactoryGirl.create(:user1))
     end
 
     describe "failure" do
@@ -129,10 +129,10 @@ describe JobsController do
   describe "DELETE 'destroy'" do
     describe "for an unauthorized user" do
       before(:each) do
-        @user = Factory(:user1)
-        wrong_user = Factory(:user1, :email => Factory.next(:email))
+        @user = FactoryGirl.create(:user1)
+        wrong_user = FactoryGirl.create(:user1, :email => FactoryGirl.generate(:email))
         test_sign_in(wrong_user)
-        @job = Factory(:job, :user => @user)
+        @job = FactoryGirl.create(:job, :user => @user)
       end
       it "should deny access" do
         delete :destroy, :id => @job
@@ -142,9 +142,9 @@ describe JobsController do
 
     describe "for an authorized user" do
       before(:each) do
-        @user = Factory(:user1)
+        @user = FactoryGirl.create(:user1)
         test_sign_in(@user)
-        @job = Factory(:job, :user => @user)
+        @job = FactoryGirl.create(:job, :user => @user)
       end
       it "should destroy the job" do
         lambda do
@@ -153,4 +153,30 @@ describe JobsController do
       end
     end
   end
+
+
+  describe "from a translation from the rspec testing book" do
+
+    before(:each) do
+      @some_user = FactoryGirl.create(:user1)
+      test_sign_in(@some_user)
+      @job = FactoryGirl.create(:job1, :user => @some_user)
+      #p @job
+    end
+
+    # it yerine context kullandin mi asagidaki kodlarda hata veriyor
+
+    it "rspec testing book pg 200 or 201" do
+      @job.stub(:update_attributes).and_return(true)
+      Job.should_receive(:find).with("1").and_return(@job)
+      Job.find("1")
+      put :update, :id => 1
+    end
+     it "another rspec book example" do
+       Job.stub(:find).and_return(@job)
+       @job.should_receive(:update_attributes).and_return(true)
+       @job.update_attributes(:title => "Lorem ipsum", :body => "Lorem ipsum")
+     end
+  end
+
 end
