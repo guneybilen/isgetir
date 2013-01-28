@@ -1,7 +1,7 @@
 
 <%= div_for comment do %>
 
-    <%= comment.name %> &lt;<%= comment.email %>&gt;
+    <%= comment.name %> <!-- &lt;< comment.email >&gt; -->
     <br />
     <%= t('general.said') %>;
     <br />
@@ -9,7 +9,6 @@
     &nbsp;&nbsp;&nbsp;
     <br />
     <% if (@job.owned_by?(current_user)) || (current_user.is_admin?) %>
-        <%= comment.id %>
         <span class='actions'>
             <%= link_to t('general.delete'), {:controller=>:comments,
                                                 :action=>:destroy,
