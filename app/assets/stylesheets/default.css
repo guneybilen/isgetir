@@ -498,3 +498,11 @@ a.disabled {
     width: 50%;
     /*float: left;*/
 }
+
+#notify_friend_form{
+    clear:right;
+}
+
+.field_text_area{
+    width: 320px;
+}

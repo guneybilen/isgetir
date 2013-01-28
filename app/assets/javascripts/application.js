@@ -101,6 +101,12 @@ $(document).ready(function() {
         $('#new_comment_link').hide();
     });
 
+
+    $(".comment_submit").live("click", function(){
+        $(".comment_form").slideUp();
+        $('#new_comment_link').show();
+    });
+
 // for dynamically added content you must use live method for click event
 // Internet den ogrendim.
 

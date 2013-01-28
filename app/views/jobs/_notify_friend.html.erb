@@ -1,15 +1,15 @@
 <%= form_tag(notify_friend_job_path(@job), :id => 'notify_friend_form',:style => 'display:none') do %>
-    <div class="field">
+    <div class="field_notify_friend">
       <%= label_tag :name, t('general.your_name') %>:<br />
       <%= text_field_tag :name, '', :class => "notify_friend_name" %>
     </div>
-    <div class="field">
+    <div class="field_notify_friend">
       <%= label_tag :email, t('general.friends_email_address') %>:<br />
       <%= text_field_tag :email, '', :class => "notify_friend_email" %>
     </div>
     <br />
     <%= hidden_field_tag(:hidden, '', :class => "hidden_field_tag") %>
-    <div class="actions">
+    <div class="action_notify_friend">
       <%= submit_tag t('general.send'), :class => "notify_friend_submit" %> &nbsp; <%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), '#', :onclick => "$('#notify_friend_form').slideUp()" %>
     </div>

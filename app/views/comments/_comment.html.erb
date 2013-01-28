@@ -8,10 +8,19 @@
     <span  class= 'konu'><%= comment.body %></span>
     &nbsp;&nbsp;&nbsp;
     <br />
-    <% if @job.owned_by? current_user %>
+    <% if (@job.owned_by?(current_user)) || (current_user.is_admin?) %>
+        <%= comment.id %>
         <span class='actions'>
-            <%= link_to t('general.delete'), [@job, comment], :confirm => t('general.sure'),
-                                        :method => :delete, :remote => true %>
+            <%= link_to t('general.delete'), {:controller=>:comments,
+                                                :action=>:destroy,
+                                                :job_id => @job.id,
+                                                :id => comment.id},
+                                                {:confirm => t('general.sure'),
+                                                :method => :delete,
+                                                :remote => true}  %>
+          <!-- link_to ya yukarda [@job, :comment] verdinmi :job_id veya :id parametrelerini geciremiyorsun -->
+          <!-- link_to ya [@job, :comment] yerine yukardaki gibi explicit :controller ve :action verdin mi
+          routes.rb'ye sunu eklemen lazim: match 'comment_destroy_path' => "comments#destroy" -->
         </span>
     <% end  %>
 

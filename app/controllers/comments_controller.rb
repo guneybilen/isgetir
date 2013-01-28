@@ -42,12 +42,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    begin
-      @job = current_user.jobs.find(params[:job_id])
-    rescue ActiveRecord::RecordNotFound
-      flash.now[:alert] = t('comments_controller.alert.deleting_other_users_comments')
-      redirect_to Job.find(params[:job_id])
-      #render :text => "You cannot delete other people's comment"
+    if !(current_user.is_admin?)
+      begin
+        @job = current_user.jobs.find(params[:job_id])
+      rescue ActiveRecord::RecordNotFound
+        flash.now[:alert] = t('comments_controller.alert.deleting_other_users_comments')
+        redirect_to Job.find(params[:job_id])
+        #render :text => "You cannot delete other people's comment"
+      end
+    else
+      @job = Job.find_by_id(params[:job_id])
     end
 
     if !@job.nil?

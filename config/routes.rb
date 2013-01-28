@@ -12,6 +12,8 @@ Isgetir::Application.routes.draw do
   # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
 
+  match 'comment_destroy_path' => "comments#destroy"
+
   resources :jobs do
 
     member do
