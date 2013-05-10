@@ -249,7 +249,7 @@ div.index{
 
 #search_form_submit{
     height: 40px;
-    width: 60px;
+    width: 100px;
     padding: 0 0 5px;
     float: right;
     margin-left: 5px;
@@ -258,7 +258,7 @@ div.index{
 
 .search_by_category .search_by_category_submit{
     height: 40px;
-    width: 60px;
+    width: 100px;
     float: left;
     padding: 0 0 5px;
     margin-left: 5px;

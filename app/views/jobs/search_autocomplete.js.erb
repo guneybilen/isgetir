@@ -13,9 +13,12 @@ myArray=myArray.split(',');
 //alert(myArray);
 
 
-$("#search_form_text_field").autocomplete
-        (
-                {
+$("#search_form_text_field").autocomplete({
+
+                    select: function(evt,ui){
+                        alert("gunye");
+                    },
+
                     source: function(request, response) {
                         var results = $.ui.autocomplete.filter(myArray, request.term);
 
@@ -46,6 +49,7 @@ $("#search_form_text_field").autocomplete
                     max: 5,
                     cache: false
 //                    ,
+
 //                  focus: function(event,ui){
 //
 //            }

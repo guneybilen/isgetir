@@ -87,6 +87,9 @@ $(document).ready(function() {
         return false;
     });
 
+//    $('#search_form_text_field').click(function() {
+//        alert(this.selectedItem);
+//    });
 
     $('#search_form_text_field').val('');
 
