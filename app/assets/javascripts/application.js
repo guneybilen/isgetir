@@ -342,17 +342,11 @@ $(document).ready(function() {
         window.location.href = '/users/admin_update_user_interface?user=' + user_parameter
     });
 
-    $(".td_for_tooltip, .show").tooltip({
-//    $(".show").tooltip({
+    $(".td_for_tooltip").tooltip({
     bodyHandler: function(){
 
-        var url;
-        var that = $(".input_field_for_tooltip");
-//        alert(that.val());
-        if($(this).is($(".td_for_tooltip")))
-        { url = that.val(); }
-        else
-        { url = $(this).attr("href"); }
+//        alert($(this).next().attr('value'));
+        var url = $(this).children().val();
 
         var tip;
 
@@ -361,7 +355,42 @@ $(document).ready(function() {
         }
 
         if (locale == "en"){
-            tip = $("<span/>").html("loaading...");
+            tip = $("<span/>").html("loading...");
+        }
+
+//        var sa;
+
+        $.ajax({
+
+            url: url,
+            success: function(html){
+             tip = tip.html(html);  //.replace(/(\r\n|\n|\r)/gm,"");
+
+        }});
+
+        return tip;
+    },
+    showURL: false,
+    track: true,
+    delay: 0,
+    extraClass:"show_ajax matwork"     // right is a css class
+});
+
+/*
+
+    $(".show").tooltip({
+    bodyHandler: function(){
+
+        var url = $(this).attr("href");
+
+        var tip;
+
+        if (locale == "tr"){
+            tip = $("<span/>").html("yüklüyor...");
+        }
+
+        if (locale == "en"){
+            tip = $("<span/>").html("loading...");
         }
 
 //        var sa;
@@ -410,7 +439,14 @@ $(document).ready(function() {
     delay: 0,
     extraClass:"show_ajax matwork"     // right is a css class
 });
+
+*/
+
 });
+
+
+
+
 
 function open1(attr){
 //     alert(attr)

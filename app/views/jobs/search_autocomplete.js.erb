@@ -15,10 +15,6 @@ myArray=myArray.split(',');
 
 $("#search_form_text_field").autocomplete({
 
-                    select: function(evt,ui){
-                        alert("gunye");
-                    },
-
                     source: function(request, response) {
                         var results = $.ui.autocomplete.filter(myArray, request.term);
 

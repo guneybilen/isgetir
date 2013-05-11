@@ -2,6 +2,11 @@
 <html>
 <head>
   <title><%= title %></title>
+  <% if I18n.locale.to_s == "tr"  %>
+    <%= favicon_link_tag 'is.ico' %>
+  <% elsif I18n.locale.to_s == "en"  %>
+    <%= favicon_link_tag 'job.ico' %>
+  <% end %>
   <%= stylesheet_link_tag    "application" %>
   <%= stylesheet_link_tag "default" %>
   <%= javascript_include_tag "application" %>

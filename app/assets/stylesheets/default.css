@@ -362,7 +362,7 @@ table, th,td{
 
 table {
    position: relative;
-    margin-bottom: 25px;
+   margin-bottom: 25px;
 }
 
 .row {
@@ -370,7 +370,7 @@ table {
 }
 
 table{
-    width: 1000px;
+    /*width: 1100px;*/
     border-collapse: collapse;
 }
 
@@ -383,23 +383,24 @@ tr.alt td {
 }
 
 .kategori{
-    width: 150px;
+    width: 50px;
+    padding-right: 50px;
 }
 
-.location, .title{
-    width: 75px;
-    padding-right: 25px;
+.title{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.location{
+    padding-right: 50px;
 }
 
 .job_body{
-    width: 150px;
-    padding-right: 100px;
-    padding-left: 120px;
 
 }
 .date{
     white-space: nowrap;
-    width: 250px;
+    width: 200px;
 }
 .show{
     font-size: 0.8em;
