@@ -1,12 +1,24 @@
-$("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index.html.erb")) %>");
+$("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index")) %>");
+
 //$('.for_select_box_listing').hide();
 $('.for_all_listing').show();
 
-var cat_id = "<%= params[:job][:category_id] %>";
+
+var j;
+
+j= "<%= if !params[:job].nil? then params[:job][:category_id] end %>"
+var cat_id = "<%= params[:category_id] %>";
+
+if (j!='')
+$('#select_box').val(j);
+else
 $('#select_box').val(cat_id);
+
+
+
 if(cat_id > 0){
 $('#remove_category_anchor a').click( function(e){ e.preventDefault()}).addClass('disabled');
-//$('.for_after_category_removed').css('marginLeft', '-3px');
+  //$('.for_after_category_removed').css('marginLeft', '-3px');
 }
 
 if(cat_id == 0 || cat_id == undefined){
@@ -25,3 +37,53 @@ $(".stripeMe tr:even").addClass("alt");
 //alert($('#remove_category_anchor a').find(":hidden"));
 
 window.scrollTo(0, 0);
+
+$(".search_by_category_submit").live('click', function(){alert('guney')});
+
+/*
+   $("body").on({
+    ajaxStart: function() {
+        $('.for_spinner').show();
+    },
+    ajaxStop: function() {
+        setTimeout(function(){
+                  $('.for_spinner').hide();
+                    }, 5000)}
+});
+*/
+
+var locale = $("div.set_locale").text();
+
+    $(".td_for_tooltip").tooltip({
+    bodyHandler: function(){
+
+//        alert($(this).next().attr('value'));
+        var url = $(this).children().val();
+
+        var tip;
+
+        if (locale == "tr"){
+            tip = $("<span/>").html("yüklüyor...");
+        }
+
+        if (locale == "en"){
+            tip = $("<span/>").html("loading...");
+        }
+
+//        var sa;
+
+        $.ajax({
+
+            url: url,
+            success: function(html){
+             tip = tip.html(html);  //.replace(/(\r\n|\n|\r)/gm,"");
+
+        }});
+
+        return tip;
+    },
+    showURL: false,
+    track: true,
+    delay: 0,
+    extraClass:"show_ajax matwork"     // right is a css class
+});

@@ -24,13 +24,32 @@ class JobsController < ApplicationController
 
   def ajaxing
 
-    if (params[:job][:category_id] == '')
+    if params[:category_id].blank? && params[:job][:category_id].blank?
+      puts "**********             #{params[:job]}       **************Category_id is Empty*********************"
+
       sorting
     else
 
-      @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
-      #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
-      @jobs = @jobs.paginate(:per_page => 20, :page => params[:page])
+      if !params[:job].nil?
+        @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
+        puts "*************************Jobs is not nil*****************    #{params[:job]}    ******************************"
+
+      else
+        @jobs = Job.search_by_category(params[:category_id]).order(sort_column + " " + sort_direction)
+        #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
+        puts "*************************Jobs is nil***********************************************"
+        @jobs_paged = @jobs.paginate(:per_page => 20, :page => params[:page])
+      end
+
+
+        @jobs = @jobs.paginate(:per_page => 20, :page => params[:page])
+      #puts "**********             #{params}       *********************************** #{@jobs_paged.nil?}"
+
+      if !@jobs_paged.nil? && @jobs_paged.empty?
+        #puts "**********             #{params}       ***************Jobs Empty ******************************** #{@jobs.inspect}"
+        @jobs = @jobs.paginate(:per_page => 20, :page => 1)
+
+      end
 
     end
 

@@ -28,13 +28,62 @@
 
 
 
+
 $(document).ready(function() {
 
+//    $("body").on({
+//    ajaxStart: function() {
+//        $('.for_spinner').show();
+//    },
+//    ajaxStop: function() {
+//        setTimeout(function(){
+//                  $('.for_spinner').hide();
+//                    }, 0)}
+//});
 
 
 //    $("#select_box").val(0);  // bu IE9'da calismiyor
 
-    $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
+//    $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
+
+//    $(".search_by_category_submit").click(function(){alert('guney');});
+//    $(document).on('click',".search_by_category_submit", function(){
+//        alert('guney');
+//        var i = $('#select_box').children(":selected").attr("value");
+//            $.ajax({
+//            url:'/ajaxing/?category_id=' + i,
+//            beforeSend:function(){
+//                $('.for_spinner').show();
+////                $("body").addClass("loading");
+//            },
+//            complete: function(){
+//                setTimeout(function(){
+////                        $("body").removeClass("loading");
+//
+//                  $('.for_spinner').hide();
+//                    }, 5000)}
+//            });
+//    });
+
+    if ($("select#select_box").val()>0){
+        var i = $('#select_box').children(":selected").attr("value");
+//        $.getScript('/ajaxing/?category_id=' + i);
+//
+        $.ajax({
+            url:'/ajaxing/?category_id=' + i,
+            beforeSend:function(){
+                $('.for_spinner').show();
+//                $("body").addClass("loading");
+            },
+            complete: function(){
+//                setTimeout(function(){
+//                        $("body").removeClass("loading");
+
+                  $('.for_spinner').hide();
+//                    }, 5000)}
+//                });
+            }});
+    }
 
 
     $(".sort_by_links_tr a, .for_all_listing a").live("click", function() {
@@ -44,11 +93,44 @@ $(document).ready(function() {
         var i = $('#select_box').children(":selected").attr("value");
         if(i>0) {
             $('#remove_category_anchor a').hide();
-            $.getScript('/ajaxing/?' + i + '&' + str);
+//            $.getScript('/ajaxing/?category_id=' + i + '&' + str);
+           $.ajax({
+            url:'/ajaxing/?category_id=' + i + '&' + str,
+            beforeSend:function(){
+                $('.for_spinner').show();
+//                $("body").addClass("loading");
+            },
+            complete: function(){
+//                setTimeout(function(){
+//                        $("body").removeClass("loading");
+
+                  $('.for_spinner').hide();
+//                    }, 5000)}
+//            });
+            }});
             return false;
         }
 
-        $.getScript("jobs/search/?" + str);
+/*        $.ajaxSetuup ve $.ajax kullanip $.getScript("jobs/search/?" + str); kullanarak
+        yukardaki $("body").live... kullanildiginda ilk page load ettiginde page 2 ye tikladiginda
+        spinner gif yuklemiyor.*/
+        $.ajax({
+            url:"jobs/search/?" + str,
+            beforeSend:function(){
+                $('.for_spinner').show();
+//                $("body").addClass("loading");
+            },
+            complete: function(){
+//                setTimeout(function(){
+//                        $("body").removeClass("loading");
+
+                  $('.for_spinner').hide();
+//                    }, 5000)}
+//        });
+                }});
+//        $.ajax({url:"jobs/search/?" + str});
+
+//        $.getScript("jobs/search/?" + str);
 //        url_parameters(str);
         return false;
     });

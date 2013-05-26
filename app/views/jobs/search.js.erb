@@ -1,4 +1,4 @@
-$("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index.html.erb")) %>");
+$("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index")) %>");
 $('.for_autocomplete_listing').show();
 
 
@@ -16,3 +16,107 @@ $(".stripeMe tr:even").addClass("alt");
 
 
 window.scrollTo(0, 0);
+
+//   $("body").on({
+//    ajaxStart: function() {
+//        $('.for_spinner').show();
+//    },
+//    ajaxStop: function() {
+//        setTimeout(function(){
+//                  $('.for_spinner').hide();
+//                    }, 5000)}
+//});
+
+
+var locale = $("div.set_locale").text();
+
+    $(".td_for_tooltip").tooltip({
+    bodyHandler: function(){
+
+//        alert($(this).next().attr('value'));
+        var url = $(this).children().val();
+
+        var tip;
+
+        if (locale == "tr"){
+            tip = $("<span/>").html("yüklüyor...");
+        }
+
+        if (locale == "en"){
+            tip = $("<span/>").html("loading...");
+        }
+
+//        var sa;
+
+        $.ajax({
+
+            url: url,
+            success: function(html){
+             tip = tip.html(html);  //.replace(/(\r\n|\n|\r)/gm,"");
+
+        }});
+
+        return tip;
+    },
+    showURL: false,
+    track: true,
+    delay: 0,
+    extraClass:"show_ajax matwork"     // right is a css class
+});
+
+    $(".for_autocomplete_listing a").click( function() {
+//        alert("guney");
+        window.scrollTo(0, 0);
+        var str = {};
+        str = getUrlParams(this.href);
+        var i = $('#select_box').children(":selected").attr("value");
+        if(i>0) {
+            $('#remove_category_anchor a').hide();
+//            $.getScript('/ajaxing/?category_id=' + i + '&' + str);
+           $.ajax({
+            url:'/ajaxing/?category_id=' + i + '&' + str,
+            beforeSend:function(){
+                $('.for_spinner').show();
+//                $("body").addClass("loading");
+            },
+            complete: function(){
+//                setTimeout(function(){
+//                        $("body").removeClass("loading");
+
+                  $('.for_spinner').hide();
+//                    }, 5000)}
+//            });
+
+            }});
+            return false;
+        }
+
+/*        $.ajaxSetuup ve $.ajax kullanip $.getScript("jobs/search/?" + str); kullanarak
+        yukardaki $("body").live... kullanildiginda ilk page load ettiginde page 2 ye tikladiginda
+        spinner gif yuklemiyor.*/
+        $.ajax({
+            url:"jobs/search/?" + str,
+            beforeSend:function(){
+//                alert("guney");
+                $('.for_spinner').show();
+//                $("body").addClass("loading");
+            },
+            complete: function(){
+//                setTimeout(function(){
+//                        $("body").removeClass("loading");
+
+                  $('.for_spinner').hide();
+//                    }, 5000)}
+//        });
+          }});
+//        $.ajax({url:"jobs/search/?" + str});
+
+//        $.getScript("jobs/search/?" + str);
+//        url_parameters(str);
+        return false;
+    });
+
+    function getUrlParams(href) {
+        var params = (href.split('?')[1] || '');
+        return params;
+    }
