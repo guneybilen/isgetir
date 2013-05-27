@@ -24,6 +24,12 @@ class JobsController < ApplicationController
 
   def ajaxing
 
+    if params[:category_id].to_s=="0"
+      puts "************************************************0*************************************************"
+      sorting
+    end
+
+
     if params[:category_id].blank? && params[:job][:category_id].blank?
       puts "**********             #{params[:job]}       **************Category_id is Empty*********************"
 
@@ -34,7 +40,7 @@ class JobsController < ApplicationController
         @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
         puts "*************************Jobs is not nil*****************    #{params[:job]}    ******************************"
 
-      else
+      elsif params[:category_id].to_s!="0"
         @jobs = Job.search_by_category(params[:category_id]).order(sort_column + " " + sort_direction)
         #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
         puts "*************************Jobs is nil***********************************************"
@@ -54,6 +60,7 @@ class JobsController < ApplicationController
     end
 
 
+
     respond_to do |format|
       #format.html # index.html.erb
       format.js  # burda ajaxing.js.erb invoke edilsin istiyorum
@@ -69,7 +76,7 @@ class JobsController < ApplicationController
           .paginate(:per_page => 20, :page => params[:page])
       return
     else
-      @jobs = Job.search(params[:keyword]).order(sort_column + " " + sort_direction)
+      @jobs = Job.search(params[:keyword].gsub(' ', '').strip).order(sort_column + " " + sort_direction)
         .paginate(:per_page => 20, :page => params[:page])
     end
 
@@ -83,8 +90,11 @@ class JobsController < ApplicationController
   end
 
   def search_autocomplete
+    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{params[:keyword].gsub('+', '').strip}$$$$$$$$$$$$$$$$$$"
+    stripped = params[:keyword].gsub('+', '').strip
+    #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{stripped}$$$$$$$$$$$$$$$$$$"
     if (params[:keyword].length > 1)
-      @jobs = Job.search(params[:keyword])
+      @jobs = Job.search(stripped)
       @jobs = @jobs.map{|p| [p.title, p.body, p.location]}.flatten.reject(&:nil?).reject(&:blank?)
                           .uniq.map(&:capitalize).sort
             #.sort_by{|p| p.length}

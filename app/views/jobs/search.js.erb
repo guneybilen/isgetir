@@ -12,20 +12,8 @@ batin.on ('click',  function() {
 
 $(".stripeMe tr:even").addClass("alt");
 
-//params = $('#select_box').children(":selected").attr("value");
-
 
 window.scrollTo(0, 0);
-
-//   $("body").on({
-//    ajaxStart: function() {
-//        $('.for_spinner').show();
-//    },
-//    ajaxStop: function() {
-//        setTimeout(function(){
-//                  $('.for_spinner').hide();
-//                    }, 5000)}
-//});
 
 
 var locale = $("div.set_locale").text();
@@ -33,7 +21,6 @@ var locale = $("div.set_locale").text();
     $(".td_for_tooltip").tooltip({
     bodyHandler: function(){
 
-//        alert($(this).next().attr('value'));
         var url = $(this).children().val();
 
         var tip;
@@ -46,7 +33,6 @@ var locale = $("div.set_locale").text();
             tip = $("<span/>").html("loading...");
         }
 
-//        var sa;
 
         $.ajax({
 
@@ -65,27 +51,20 @@ var locale = $("div.set_locale").text();
 });
 
     $(".for_autocomplete_listing a").click( function() {
-//        alert("guney");
         window.scrollTo(0, 0);
         var str = {};
         str = getUrlParams(this.href);
         var i = $('#select_box').children(":selected").attr("value");
         if(i>0) {
-            $('#remove_category_anchor a').hide();
-//            $.getScript('/ajaxing/?category_id=' + i + '&' + str);
+           $('#remove_category_anchor a').hide();
            $.ajax({
             url:'/ajaxing/?category_id=' + i + '&' + str,
             beforeSend:function(){
                 $('.for_spinner').show();
-//                $("body").addClass("loading");
             },
             complete: function(){
-//                setTimeout(function(){
-//                        $("body").removeClass("loading");
 
                   $('.for_spinner').hide();
-//                    }, 5000)}
-//            });
 
             }});
             return false;
@@ -97,22 +76,12 @@ var locale = $("div.set_locale").text();
         $.ajax({
             url:"jobs/search/?" + str,
             beforeSend:function(){
-//                alert("guney");
                 $('.for_spinner').show();
-//                $("body").addClass("loading");
             },
             complete: function(){
-//                setTimeout(function(){
-//                        $("body").removeClass("loading");
 
                   $('.for_spinner').hide();
-//                    }, 5000)}
-//        });
           }});
-//        $.ajax({url:"jobs/search/?" + str});
-
-//        $.getScript("jobs/search/?" + str);
-//        url_parameters(str);
         return false;
     });
 
@@ -120,3 +89,50 @@ var locale = $("div.set_locale").text();
         var params = (href.split('?')[1] || '');
         return params;
     }
+
+
+    $(".search_by_category_submit").click(function(e){
+        e.preventDefault();
+        var i = $('#select_box').children(":selected").attr("value");
+        var u;
+        if (i==0)
+           u = '/ajaxing/?category_id=' + 0;
+        if (i>0)
+           u = '/ajaxing/?category_id=' + i;
+
+            $.ajax
+            ({
+                url:u,
+                beforeSend:function()
+                {
+                    $('.for_spinner').show();
+                },
+
+                complete: function()
+                {
+                  $('.for_spinner').hide();
+                }
+            });
+    });
+
+
+$("#search_form_submit").click(function(e){
+
+        e.preventDefault();
+
+        var u = $("#search_form").serialize();
+
+            $.ajax
+            ({
+                url:'/jobs//search?' + u,
+                beforeSend:function()
+                {
+                    $('.for_spinner').show();
+                },
+
+                complete: function()
+                {
+                  $('.for_spinner').hide();
+                }
+            });
+    });

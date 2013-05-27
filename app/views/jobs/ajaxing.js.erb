@@ -1,6 +1,5 @@
 $("#for_ajax").html("<%= escape_javascript(render(:file => "jobs/index")) %>");
 
-//$('.for_select_box_listing').hide();
 $('.for_all_listing').show();
 
 
@@ -17,8 +16,7 @@ $('#select_box').val(cat_id);
 
 
 if(cat_id > 0){
-$('#remove_category_anchor a').click( function(e){ e.preventDefault()}).addClass('disabled');
-  //$('.for_after_category_removed').css('marginLeft', '-3px');
+    $('#remove_category_anchor a').click( function(e){ e.preventDefault()}).addClass('disabled');
 }
 
 if(cat_id == 0 || cat_id == undefined){
@@ -34,30 +32,16 @@ batin.on ('click',  function() {
 
 $(".stripeMe tr:even").addClass("alt");
 
-//alert($('#remove_category_anchor a').find(":hidden"));
 
 window.scrollTo(0, 0);
 
 $(".search_by_category_submit").live('click', function(){alert('guney')});
-
-/*
-   $("body").on({
-    ajaxStart: function() {
-        $('.for_spinner').show();
-    },
-    ajaxStop: function() {
-        setTimeout(function(){
-                  $('.for_spinner').hide();
-                    }, 5000)}
-});
-*/
 
 var locale = $("div.set_locale").text();
 
     $(".td_for_tooltip").tooltip({
     bodyHandler: function(){
 
-//        alert($(this).next().attr('value'));
         var url = $(this).children().val();
 
         var tip;
@@ -69,8 +53,6 @@ var locale = $("div.set_locale").text();
         if (locale == "en"){
             tip = $("<span/>").html("loading...");
         }
-
-//        var sa;
 
         $.ajax({
 
@@ -87,3 +69,49 @@ var locale = $("div.set_locale").text();
     delay: 0,
     extraClass:"show_ajax matwork"     // right is a css class
 });
+
+
+    $(".search_by_category_submit").click(function(e){
+        e.preventDefault();
+        var i = $('#select_box').children(":selected").attr("value");
+        var u;
+        if (i==0)
+           u = '/ajaxing/?category_id=' + 0;
+        if (i>0)
+           u = '/ajaxing/?category_id=' + i;
+
+            $.ajax
+            ({
+                url:u,
+                beforeSend:function()
+                {
+                    $('.for_spinner').show();
+                },
+
+                complete: function()
+                {
+                  $('.for_spinner').hide();
+                }
+            });
+    });
+
+$("#search_form_submit").click(function(e){
+
+        e.preventDefault();
+
+        var u = $("#search_form").serialize();
+
+            $.ajax
+            ({
+                url:'/jobs//search?' + u,
+                beforeSend:function()
+                {
+                    $('.for_spinner').show();
+                },
+
+                complete: function()
+                {
+                  $('.for_spinner').hide();
+                }
+            });
+    });

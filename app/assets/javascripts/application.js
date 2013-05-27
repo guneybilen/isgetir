@@ -9,79 +9,70 @@
 //= require_tree .
 
 
-/*function url_parameters(str) {
-    var ary = [];
-    ary = str.split("&");
-                                    alert(ary[0]);
-    var pattern = /^_=\d+/;
-                                     alert(ary[0].match(pattern));
-    if (ary[0].match(pattern) != null) {
-        delete ary[0];
-                                     alert(ary);
-    }
-    ary = ary.toString();
-    ary = ary.replace(/^,/, "");
-    ary = ary.replace(/,\s*//*gi, "&");
-    alert(ary);
-    document.location.hash = "ajaxing?" + str;
-}*/
-
-
-
-
 $(document).ready(function() {
-
-//    $("body").on({
-//    ajaxStart: function() {
-//        $('.for_spinner').show();
-//    },
-//    ajaxStop: function() {
-//        setTimeout(function(){
-//                  $('.for_spinner').hide();
-//                    }, 0)}
-//});
 
 
 //    $("#select_box").val(0);  // bu IE9'da calismiyor
 
 //    $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
 
-//    $(".search_by_category_submit").click(function(){alert('guney');});
-//    $(document).on('click',".search_by_category_submit", function(){
-//        alert('guney');
-//        var i = $('#select_box').children(":selected").attr("value");
-//            $.ajax({
-//            url:'/ajaxing/?category_id=' + i,
-//            beforeSend:function(){
-//                $('.for_spinner').show();
-////                $("body").addClass("loading");
-//            },
-//            complete: function(){
-//                setTimeout(function(){
-////                        $("body").removeClass("loading");
-//
-//                  $('.for_spinner').hide();
-//                    }, 5000)}
-//            });
-//    });
+    $(".search_by_category_submit").live('click', function(e){
+        e.preventDefault();
+        var i = $('#select_box').children(":selected").attr("value");
+        var u;
+        if (i==0)
+           u = '/ajaxing/?category_id=' + 0;
+        if (i>0)
+           u = '/ajaxing/?category_id=' + i;
+
+            $.ajax
+            ({
+                url:u,
+                beforeSend:function()
+                {
+                    $('.for_spinner').show();
+                },
+
+                complete: function()
+                {
+                  $('.for_spinner').hide();
+                }
+            });
+    });
+
+        $("#search_form_submit").live('click', function(e){
+
+        e.preventDefault();
+
+        var u = $("#search_form").serialize();
+
+//            alert('guney');
+
+            $.ajax
+            ({
+                url:'/jobs//search?' + u,
+                beforeSend:function()
+                {
+                    $('.for_spinner').show();
+                },
+
+                complete: function()
+                {
+                  $('.for_spinner').hide();
+                }
+            });
+    });
 
     if ($("select#select_box").val()>0){
         var i = $('#select_box').children(":selected").attr("value");
-//        $.getScript('/ajaxing/?category_id=' + i);
-//
+
         $.ajax({
             url:'/ajaxing/?category_id=' + i,
             beforeSend:function(){
                 $('.for_spinner').show();
-//                $("body").addClass("loading");
             },
             complete: function(){
-//                setTimeout(function(){
-//                        $("body").removeClass("loading");
-
                   $('.for_spinner').hide();
-//                    }, 5000)}
-//                });
             }});
     }
 
@@ -92,21 +83,14 @@ $(document).ready(function() {
         str = getUrlParams(this.href);
         var i = $('#select_box').children(":selected").attr("value");
         if(i>0) {
-            $('#remove_category_anchor a').hide();
-//            $.getScript('/ajaxing/?category_id=' + i + '&' + str);
+           $('#remove_category_anchor a').hide();
            $.ajax({
             url:'/ajaxing/?category_id=' + i + '&' + str,
             beforeSend:function(){
                 $('.for_spinner').show();
-//                $("body").addClass("loading");
             },
             complete: function(){
-//                setTimeout(function(){
-//                        $("body").removeClass("loading");
-
                   $('.for_spinner').hide();
-//                    }, 5000)}
-//            });
             }});
             return false;
         }
@@ -118,20 +102,10 @@ $(document).ready(function() {
             url:"jobs/search/?" + str,
             beforeSend:function(){
                 $('.for_spinner').show();
-//                $("body").addClass("loading");
             },
             complete: function(){
-//                setTimeout(function(){
-//                        $("body").removeClass("loading");
-
                   $('.for_spinner').hide();
-//                    }, 5000)}
-//        });
                 }});
-//        $.ajax({url:"jobs/search/?" + str});
-
-//        $.getScript("jobs/search/?" + str);
-//        url_parameters(str);
         return false;
     });
 
@@ -169,16 +143,22 @@ $(document).ready(function() {
         return false;
     });
 
-//    $('#search_form_text_field').click(function() {
-//        alert(this.selectedItem);
-//    });
-
     $('#search_form_text_field').val('');
 
     $('#search_form_text_field').live('input', function() {
         var params = {};
+//        alert(params[this.name]);
         params[this.name] = this.value;
-        $.get('jobs/search_autocomplete', params);
+//        alert(this.value);
+//        var repl = $.trim(this.value);
+        var repl = this.value;
+        var repl = $.trim(this.value);
+//        repl = repl.replace(/^%20/, '');
+//        alert(repl);
+//        $.get('jobs/search_autocomplete?keyword=', repl);
+        $.ajax({
+            url:'jobs/search_autocomplete?keyword=' + repl
+        })
     });
 
 
