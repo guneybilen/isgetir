@@ -1,58 +1,58 @@
-$(".stripeMe tr:even").addClass("alt");
-
-var myArray= "<%=  @jobs %>";
-
-myArray=myArray.replace(/&quot;/gi,"");
-myArray=myArray.replace(/\./gi,"");
-myArray=myArray.replace(/\[/gi,"");
-myArray=myArray.replace(/\]/gi,"");
-myArray=myArray.replace(/,\s+/gi,",");
-myArray=myArray.split(',');
-
-
-
-//alert(myArray);
-
-$("#search_form_text_field").autocomplete({
-
-                    source: function(request, response) {
-                        var results = $.ui.autocomplete.filter(myArray, request.term);
-
-                        response(results.slice(0, 10));
-                    },
-                    dataType: "json",
-                    // minLength: 1 demekle 1 characterden sonra aramaya basla demek oluyor
-                    // minLength dogru durust calismiyor
-
-                    search: function() {
-                        var term = this.value;
-                        if ( term.length < 1 ) {
-                            return false;
-                        }
-                    }
-                    ,
-                    delay: 400,
-                    highlight: true,
-                    max: 5,
-                    cache: false,
-
-                    open: function(event, ui) {
-                       $('.for_spinner').show();
-                   }
-                   ,
-                    close: function(event, ui) {
-                       $('.for_spinner').hide();
-                   }
-
-
-                    }
-        );
-
-
-
-
-
-
-
-
-
+//$(".stripeMe tr:even").addClass("alt");
+//
+//var myArray= "<%=  @jobs %>";
+//
+//myArray=myArray.replace(/&quot;/gi,"");
+//myArray=myArray.replace(/\./gi,"");
+//myArray=myArray.replace(/\[/gi,"");
+//myArray=myArray.replace(/\]/gi,"");
+//myArray=myArray.replace(/,\s+/gi,",");
+//myArray=myArray.split(',');
+//
+//
+//
+////alert(myArray);
+//
+//$("#search_form_text_field").autocomplete({
+//
+//                    source: function(request, response) {
+//                        var results = $.ui.autocomplete.filter(myArray, request.term);
+//
+//                        response(results.slice(0, 10));
+//                    },
+//                    dataType: "json",
+//                    // minLength: 1 demekle 1 characterden sonra aramaya basla demek oluyor
+//                    // minLength dogru durust calismiyor
+//
+//                    search: function() {
+//                        var term = this.value;
+//                        if ( term.length < 1 ) {
+//                            return false;
+//                        }
+//                    }
+//                    ,
+//                    delay: 400,
+//                    highlight: true,
+//                    max: 5,
+//                    cache: false,
+//
+//                    open: function(event, ui) {
+//                       $('.for_spinner').show();
+//                   }
+//                   ,
+//                    close: function(event, ui) {
+//                       $('.for_spinner').hide();
+//                   }
+//
+//
+//                    }
+//        );
+//
+//
+//
+//
+//
+//
+//
+//
+//

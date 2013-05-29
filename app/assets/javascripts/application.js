@@ -126,6 +126,7 @@ $(document).ready(function() {
 
 
     $('#main_list_link').live('click', function(){
+
         $.ajax(
             {
                 url: '/jobs/search',
@@ -137,6 +138,7 @@ $(document).ready(function() {
                 success: function(){
                     $(".spinner").hideLoading();
                     $(".spinner #main_list_link").show();
+                    document.getElementById('token-input-search_form_text_field').focus();
                 }
             });
 
@@ -145,22 +147,55 @@ $(document).ready(function() {
 
     $('#search_form_text_field').val('');
 
-    $('#search_form_text_field').live('input', function() {
-        var params = {};
-//        alert(params[this.name]);
-        params[this.name] = this.value;
-//        alert(this.value);
+//    $('#search_form_text_field').live('input', function() {
+//        var params = {};
+////        alert(params[this.name]);
+//        params[this.name] = this.value;
+////        alert(this.value);
+////        var repl = $.trim(this.value);
+//        var repl = this.value;
 //        var repl = $.trim(this.value);
-        var repl = this.value;
-        var repl = $.trim(this.value);
-//        repl = repl.replace(/^%20/, '');
-//        alert(repl);
-//        $.get('jobs/search_autocomplete?keyword=', repl);
-        $.ajax({
-            url:'jobs/search_autocomplete?keyword=' + repl
-        })
-    });
+////        repl = repl.replace(/^%20/, '');
+////        alert(repl);
+////        $.get('jobs/search_autocomplete?keyword=', repl);
+//        $.ajax({
+//            url:'jobs/search_autocomplete?keyword=' + repl
+//        })
+//    });
 
+    var locale = $("div.set_locale").text();
+
+    if (locale=="tr")
+      var hint = "Aradığınız bilgiyi girin"
+    if (locale=="en")
+      var hint = "Please type in a search term"
+    if (locale=="tr")
+      var no_result = "Hiç bir sonuç bulunamadı"
+    if (locale=="en")
+      var no_result = "Could not find anything"
+    if (locale=="tr")
+      var searching = "Araştırılıyor..."
+    if (locale=="en")
+      var searching = "Searching..."
+
+
+
+
+    $('#search_form_text_field').tokenInput("jobs/search_autocomplete",
+        {
+            theme: "facebook",
+            minChars: 2,
+            resultsLimit: 15,
+            hintText: hint,
+            noResultsText: no_result,
+            searchingText: searching,
+            preventDuplicates: true,
+            resultsFormatter: function(item){
+              return "<li>"  +
+              item.name  + "," + "<span style='padding-left: 10px'>"+ item.location + "</span>" + "</li>"
+          }
+        }
+    );
 
     $('#new_comment_link').click ( function() {
         $('#new_comment_link').hide();
@@ -185,8 +220,6 @@ $(document).ready(function() {
         $('#password_reset').slideUp();
     });
 
-
-    var locale = $("div.set_locale").text();
 
     $('a.show').click(function() {
         var $link = $(this);

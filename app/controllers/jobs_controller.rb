@@ -76,8 +76,13 @@ class JobsController < ApplicationController
           .paginate(:per_page => 20, :page => params[:page])
       return
     else
-      @jobs = Job.search(params[:keyword].gsub(' ', '').strip).order(sort_column + " " + sort_direction)
-        .paginate(:per_page => 20, :page => params[:page])
+
+      # @jobs = Job.find(params[:keyword]).order(sort_column + " " + sort_direction)  hata veriyor array has not method order
+      @jobs = Job.find_by_sql(" SELECT *  FROM JOBS WHERE id IN(#{params[:keyword]}) ORDER BY #{sort_column} #{sort_direction}")
+      @jobs = @jobs.paginate(:per_page => 20, :page => params[:page])
+      #puts "(((((((((((((((((((((((((((((#{@jobs})))))))))))))))))))))))))))))))))))))))"
+      #@jobs = Job.search(params[:keyword].gsub(' ', '').strip).order(sort_column + " " + sort_direction)
+      #  .paginate(:per_page => 20, :page => params[:page])
     end
 
       respond_to do |format|
@@ -91,16 +96,27 @@ class JobsController < ApplicationController
 
   def search_autocomplete
     #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{params[:keyword].gsub('+', '').strip}$$$$$$$$$$$$$$$$$$"
-    stripped = params[:keyword].gsub('+', '').strip
+    #stripped = params[:keyword].gsub('+', '').strip
     #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{stripped}$$$$$$$$$$$$$$$$$$"
-    if (params[:keyword].length > 1)
-      @jobs = Job.search(stripped)
-      @jobs = @jobs.map{|p| [p.title, p.body, p.location]}.flatten.reject(&:nil?).reject(&:blank?)
-                          .uniq.map(&:capitalize).sort
+    keyword = params[:q]
+    h= Array.new
+    if (keyword.length > 1)
+      @jobs = Job.search(keyword)
+      @jobs.each do |job|
+      @jobs = h << ({:id => job.id, :name => job.body.truncate(40, :separator => ' '), :location => job.location})
+      end
+       puts @jobs
+      #@jobs = @jobs.map{|p| [p.title, p.body, p.location]}.flatten.reject(&:nil?).reject(&:blank?)
+      #                    .uniq.map(&:capitalize).sort.to_json
+
+
             #.sort_by{|p| p.length}
 
       #@jobs = @jobs..map{|p| p.strip}
       #@jobs = ["Ankara", "Erzurum"]
+
+      #@jobs = [{:id => "856", :name => "House"}, {:id =>"1035", :name => "Desperate Housewives"}]
+
 
       respond_to do |format|
         #format.html {render :action => 'index'}

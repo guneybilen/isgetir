@@ -136,3 +136,33 @@ $("#search_form_submit").click(function(e){
                 }
             });
     });
+
+
+    if (locale=="tr")
+      var hint = "Aradığınız bilgiyi girin"
+    if (locale=="en")
+      var hint = "Please type in a search term"
+    if (locale=="tr")
+      var no_result = "Hiç bir sonuç bulunamadı"
+    if (locale=="en")
+      var no_result = "Could not find anything"
+    if (locale=="tr")
+      var searching = "Araştırılıyor..."
+    if (locale=="en")
+      var searching = "Searching..."
+
+    $('#search_form_text_field').tokenInput("jobs/search_autocomplete",
+        {
+
+            theme: "facebook",
+            minChars: 2,
+            resultsLimit: 15,
+            hintText: hint,
+            noResultsText: no_result,
+            searchingText: searching,
+            preventDuplicates: true,
+            resultsFormatter: function(item){
+              return "<li>"  + item.name  + "," + "<span style='padding-left: 10px'>"+ item.location + "</span>" + "</li>"
+          }
+        }
+    );
