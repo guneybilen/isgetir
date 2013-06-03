@@ -57,6 +57,13 @@ class JobsController < ApplicationController
 
       end
 
+    if params[:locale]=="tr"
+      I18n.locale = :tr
+    end
+    if params[:locale]=="en"
+      I18n.locale = :en
+    end
+
     end
 
 
@@ -70,10 +77,12 @@ class JobsController < ApplicationController
 
 
   def search
+
     if (params[:keyword].blank?)
       #@jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
       @jobs = Job.order(sort_column + " " + sort_direction)
           .paginate(:per_page => 20, :page => params[:page])
+      redirect_to :action => :index
       return
     else
 
@@ -83,6 +92,14 @@ class JobsController < ApplicationController
       #puts "(((((((((((((((((((((((((((((#{@jobs})))))))))))))))))))))))))))))))))))))))"
       #@jobs = Job.search(params[:keyword].gsub(' ', '').strip).order(sort_column + " " + sort_direction)
       #  .paginate(:per_page => 20, :page => params[:page])
+    end
+
+    puts "(((((((((((((((((((((((((((((#{params[:locale]})))))))))))))))))))))))))))))))))))))))"
+    if params[:locale]=="tr"
+      I18n.locale = :tr
+    end
+    if params[:locale]=="en"
+      I18n.locale = :en
     end
 
       respond_to do |format|
@@ -139,10 +156,19 @@ class JobsController < ApplicationController
     end
 =end
     @title = t('general.main_list')
+
+    #if params[:locale]=="tr"
+    #  I18n.locale = :tr
+    #end
+    #if params[:locale]=="en"
+    #  I18n.locale = :en
+    #end
+
     sorting # defined in the application controller
 
     respond_to do |format|
       format.html # index.html.erb
+      #format.js
       format.json { render json: @jobs }
     end
   end

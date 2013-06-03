@@ -177,7 +177,7 @@ class UsersController < ApplicationController
   end
 
   def admin_manage
-    #puts "_______________________________________________________ #{params}"
+    puts "_______________________________________________________ #{params}"
     if self.is_admin?
       @user = User.paginate(:page => params[:page])
     else

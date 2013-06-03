@@ -3,9 +3,9 @@
 <head>
   <title><%= title %></title>
   <% if I18n.locale.to_s == "tr"  %>
-    <%= favicon_link_tag 'is.ico' %>
+    <%= favicon_link_tag('is.ico', :class=>"favicon") %>
   <% elsif I18n.locale.to_s == "en"  %>
-    <%= favicon_link_tag 'job.ico' %>
+    <%= favicon_link_tag('job.ico', :class=>"favicon") %>
   <% end %>
   <%= stylesheet_link_tag    "application" %>
   <%= stylesheet_link_tag "default" %>

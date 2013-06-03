@@ -1,7 +1,7 @@
 
 <div class="users">
 
-<% if @admin_type1 == 'destroy' || @admin_type2 ='delete' %>
+<% if @admin_type1 == 'destroy' || @admin_type2 =='delete' %>
 
   <%= form_tag({:controller => 'users', :action => 'destroy'}, :method => :delete, :class => 'delete_form_tag') do %>
     <% @user.each do |user| %>

@@ -50,7 +50,7 @@ $(document).ready(function() {
 
             $.ajax
             ({
-                url:'/jobs//search?' + u,
+                url:'/jobs/search?' + u,
                 beforeSend:function()
                 {
                     $('.for_spinner').show();
@@ -166,22 +166,22 @@ $(document).ready(function() {
     var locale = $("div.set_locale").text();
 
     if (locale=="tr")
-      var hint = "Aradığınız bilgiyi girin"
+      {var hint = "Aradığınız bilgiyi girin";}
     if (locale=="en")
-      var hint = "Please type in a search term"
+      {var hint = "Please type in a search term";}
     if (locale=="tr")
-      var no_result = "Hiç bir sonuç bulunamadı"
+      {var no_result = "Hiç bir sonuç bulunamadı";}
     if (locale=="en")
-      var no_result = "Could not find anything"
+      {var no_result = "Could not find anything";}
     if (locale=="tr")
-      var searching = "Araştırılıyor..."
+      {var searching = "Araştırılıyor...";}
     if (locale=="en")
-      var searching = "Searching..."
+      {var searching = "Searching...";}
 
 
 
 
-    $('#search_form_text_field').tokenInput("jobs/search_autocomplete",
+    $('#search_form_text_field').tokenInput("/jobs/search_autocomplete",
         {
             theme: "facebook",
             minChars: 2,

@@ -1,13 +1,13 @@
 <div class='admin_page'>
-<%= link_to "Show Users", users_path %>
+<%= link_to t('admin.show_users'), users_path %>
 <br />
-<%= link_to "Edit User Job", admin_manage_users_path, :class => "manage" %>
+<%= link_to t('admin.edit_user_job'), admin_manage_users_path, :class => "manage" %>
 <br />
-<%= link_to "Delete Users", admin_manage_users_path, :class => "delete" %>
+<%= link_to t("admin.delete_users"), admin_manage_users_path, :class => "delete" %>
 <br />
-<%= link_to "Add Users", new_user_path %>
+<%= link_to t("admin.add_users"), new_user_path %>
 <br />
-<%= link_to "Change Password", admin_edit_user_users_path %>
+<%= link_to t("admin.change_password"), admin_edit_user_users_path %>
 <br />
 <br />
 

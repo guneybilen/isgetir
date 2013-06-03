@@ -5,6 +5,7 @@ Isgetir::Application.routes.draw do
 
   #match 'jobs/new' => 'jobs#new'
 
+  match "/:locale/jobs" => "jobs#index"
 
   match 'jobs/search' => 'jobs#search'
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
@@ -14,17 +15,24 @@ Isgetir::Application.routes.draw do
 
   match 'comment_destroy_path' => "comments#destroy"
 
-  resources :jobs do
+  scope "/:locale" do
+    resources :jobs do
 
-    member do
-      post :notify_friend
+      member do
+        post :notify_friend
+      end
+      collection do
+        get :search_autocomplete
+        get :search
+        get :ajaxing
+      end
+      resources :comments
     end
-    collection do
-      #get 'autocomplete'
-      get :search
-    end
-    resources :comments
   end
+
+  #scope "/:locale" do
+  #  resources :jobs
+  #end
 
 =begin
 

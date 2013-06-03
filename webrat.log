@@ -316,3 +316,11 @@ REQUESTING PAGE: GET http://www.example.com/jobs with {} and HTTP headers {"HTTP
 REQUESTING PAGE: GET /jobs/new with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/jobs"}
 REQUESTING PAGE: POST /jobs with {"utf8"=>"✓", "job"=>{"title"=>"Lorem ipsum", "location"=>"", "references_attributes"=>{"0"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}, "1"=>{"name"=>"", "lastname"=>"", "phone"=>"", "cell"=>"", "email"=>"", "_destroy"=>"0"}}, "category_id"=>"", "body"=>"Lorem ipsum dolor sit amet"}, "commit"=>"Gönder", "hidden"=>""} and HTTP headers {"HTTP_REFERER"=>"/jobs/new"}
 REQUESTING PAGE: GET http://www.example.com/jobs/1 with {} and HTTP headers {"HTTP_REFERER"=>"/jobs"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /users/new with {} and HTTP headers {}
+REQUESTING PAGE: POST /users?locale=tr with {"utf8"=>"✓", "user"=>{"email"=>"", "password"=>"", "password_confirmation"=>""}, "hidden"=>"", "commit"=>"Gönder"} and HTTP headers {"HTTP_REFERER"=>"/users/new"}
+REQUESTING PAGE: GET /users/new with {} and HTTP headers {}
+REQUESTING PAGE: POST /users?locale=tr with {"utf8"=>"✓", "user"=>{"email"=>"user@example.com", "password"=>"foobar", "password_confirmation"=>"foobar"}, "hidden"=>"", "commit"=>"Gönder"} and HTTP headers {"HTTP_REFERER"=>"/users/new"}
+REQUESTING PAGE: GET http://www.example.com/tr/jobs with {} and HTTP headers {"HTTP_REFERER"=>"/users?locale=tr"}
+REQUESTING PAGE: GET /login with {} and HTTP headers {}
+REQUESTING PAGE: POST /session?locale=tr with {"utf8"=>"✓", "email"=>"", "password"=>"", "commit"=>"Üye Girişi"} and HTTP headers {"HTTP_REFERER"=>"/login"}

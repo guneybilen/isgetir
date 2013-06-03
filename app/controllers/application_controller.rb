@@ -89,6 +89,14 @@ class ApplicationController < ActionController::Base
 # Make current_user available in templates as a helper
   helper_method :current_user
 
+  #Every helper method dependent on url_for (e.g. helpers for named routes like root_path or root_url,
+  #resource routes like books_path or books_url, etc.) will now automatically include the locale in the
+  #query string, like this: http://localhost:3001/?locale=ja.
+  #http://guides.rubyonrails.org/i18n.html
+  def default_url_options(options={})
+   { :locale => I18n.locale }
+  end
+
 # Filter method to enforce a login requirement
 # Apply as a before_filter on any controller you want to protect
   def authenticate

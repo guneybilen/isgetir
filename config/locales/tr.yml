@@ -1,6 +1,13 @@
 
 tr:
 
+  admin:
+    add_users: Kullanıcılar Ekle
+    delete_users: Kullanıcılar Sil
+    edit_user_job: Kullanıcı İşi Düzenle
+    show_users: Kullanıcıları Göster
+    change_password: Şifre Değiştir
+
   application_controller:
     access_denied:
       log_in_to_continue: Lutfen devam edebilmek icin sisteme giriş yapınız
