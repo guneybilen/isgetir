@@ -127,9 +127,13 @@ $(document).ready(function() {
 
     $('#main_list_link').live('click', function(){
 
+//        $("#select_box").find("option#1").attr("selected", true);
+          $("#select_box").val(0);
+//          alert("guney");
+
         $.ajax(
             {
-                url: '/jobs/search',
+                url: '/jobs/search/?category_id=0',
 //        dataType: "html",
                 beforeSend: function(){
                     $(".spinner").showLoading();
@@ -164,6 +168,11 @@ $(document).ready(function() {
 //    });
 
     var locale = $("div.set_locale").text();
+
+    if(locale=="tr")
+       $(".favicon").attr("href", "/assets/is.ico");
+    if(locale=="en")
+       $(".favicon").attr("href", "/assets/job.ico");
 
     if (locale=="tr")
       {var hint = "Aradığınız bilgiyi girin";}

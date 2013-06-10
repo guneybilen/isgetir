@@ -78,7 +78,16 @@ class JobsController < ApplicationController
 
   def search
 
+    if (params[:category_id]=="0")
+      puts "(((((((((((((((((((((((((((((#{params[:keyword].blank?})))))))))))))))))))))))))))))))))))))))"
+      #@jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
+      @jobs = Job.order(sort_column + " " + sort_direction)
+          .paginate(:per_page => 20, :page => params[:page])
+      return
+    end
+
     if (params[:keyword].blank?)
+      puts "(((((((((((((((((((((((((((((#{params[:keyword].blank?})))))))))))))))))))))))))))))))))))))))"
       #@jobs = Job.limit(0).paginate(:per_page => 1, :page => params[:page])
       @jobs = Job.order(sort_column + " " + sort_direction)
           .paginate(:per_page => 20, :page => params[:page])
@@ -157,12 +166,12 @@ class JobsController < ApplicationController
 =end
     @title = t('general.main_list')
 
-    #if params[:locale]=="tr"
-    #  I18n.locale = :tr
-    #end
-    #if params[:locale]=="en"
-    #  I18n.locale = :en
-    #end
+    if params[:locale]=="tr"
+      loc = "tr"
+    end
+    if params[:locale]=="en"
+      loc = "en"
+    end
 
     sorting # defined in the application controller
 

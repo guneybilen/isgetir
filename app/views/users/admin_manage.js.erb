@@ -23,3 +23,11 @@ $('.confirm_button').live('click', function() {
         });
     return false
 })
+
+
+var locale = $("div.set_locale").text();
+
+if(locale=="tr")
+   $(".favicon").attr("href", "/assets/is.ico");
+if(locale=="en")
+   $(".favicon").attr("href", "/assets/job.ico");

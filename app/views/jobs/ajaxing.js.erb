@@ -39,6 +39,22 @@ $(".search_by_category_submit").live('click', function(){alert('guney')});
 
 var locale = $("div.set_locale").text();
 
+var loc = "<%= params[:locale] %>";
+
+
+//  if(loc=="tr")
+//  {
+//       alert("tr");
+//      location.reload(true);
+//       $(".favicon").attr("href", "/assets/is.ico");
+//  }
+//  if(loc=="en")
+//  {
+//       alert("en");
+//      location.reload(true);
+//       $(".favicon").attr("href", "/assets/job.ico");
+//  }
+
     $(".td_for_tooltip").tooltip({
     bodyHandler: function(){
 
@@ -146,3 +162,5 @@ $("#search_form_submit").click(function(e){
     );
 
      document.getElementById('token-input-search_form_text_field').focus();
+
+
