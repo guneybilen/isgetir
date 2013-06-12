@@ -15,38 +15,46 @@ require 'will_paginate/array'
 class JobsController < ApplicationController
   before_filter :authenticate,
                 :except => [:index, :show, :notify_friend, :search,
-                            :search_autocomplete, :ajaxing]
+                            :search_autocomplete, :search_by_cat_id]
 
   #respond_to :html, :js
 
   helper_method :sort_column, :sort_direction
 
 
-  def ajaxing
+  def search_by_cat_id
 
-    if params[:category_id].to_s=="0"
-      puts "************************************************0*************************************************"
+    if !params[:job].nil?
+      if params[:job][:category_id].nil?
+        #puts "************************************************0*************************************************"
+        sorting
+      end
+
+
+      if params[:job][:category_id].to_s==""
+        #puts "************************************************1*************************************************"
+        sorting
+      end
+
+      if params[:job][:category_id].to_i > 0
+        @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
+        #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
+        #puts "*************************Jobs is not nil********************************              ***************"
+        @jobs_paged = @jobs.paginate(:per_page => 20, :page => params[:page])
+      end
+    end
+
+    if params[:job].nil? && params[:category_id].to_s==""
+      #puts "************************************************2*************************************************"
       sorting
     end
 
-
-    if params[:category_id].blank? && params[:job][:category_id].blank?
-      puts "**********             #{params[:job]}       **************Category_id is Empty*********************"
-
-      sorting
-    else
-
-      if !params[:job].nil?
-        @jobs = Job.search_by_category(params[:job][:category_id]).order(sort_column + " " + sort_direction)
-        puts "*************************Jobs is not nil*****************    #{params[:job]}    ******************************"
-
-      elsif params[:category_id].to_s!="0"
+    if params[:category_id].to_i > 0
         @jobs = Job.search_by_category(params[:category_id]).order(sort_column + " " + sort_direction)
         #puts "**********             #{params}       *********************************** #{@jobs.inspect}"
-        puts "*************************Jobs is nil***********************************************"
+        #puts "*************************Jobs is nil********************************              ***************"
         @jobs_paged = @jobs.paginate(:per_page => 20, :page => params[:page])
-      end
-
+    end
 
         @jobs = @jobs.paginate(:per_page => 20, :page => params[:page])
       #puts "**********             #{params}       *********************************** #{@jobs_paged.nil?}"
@@ -57,22 +65,22 @@ class JobsController < ApplicationController
 
       end
 
-    if params[:locale]=="tr"
-      I18n.locale = :tr
-    end
-    if params[:locale]=="en"
-      I18n.locale = :en
-    end
+    #if params[:locale]=="tr"
+    #  I18n.locale = :tr
+    #end
+    #if params[:locale]=="en"
+    #  I18n.locale = :en
+    #end
 
-    end
+    #end
 
+    render 'index'
 
-
-    respond_to do |format|
-      #format.html # index.html.erb
-      format.js  # burda ajaxing.js.erb invoke edilsin istiyorum
-      #format.json { render json: @jobs }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.js  # burda ajaxing.js.erb invoke edilsin istiyorum
+    #  format.json { render json: @jobs }
+    #end
   end
 
 
@@ -98,18 +106,22 @@ class JobsController < ApplicationController
       # @jobs = Job.find(params[:keyword]).order(sort_column + " " + sort_direction)  hata veriyor array has not method order
       @jobs = Job.find_by_sql(" SELECT *  FROM JOBS WHERE id IN(#{params[:keyword]}) ORDER BY #{sort_column} #{sort_direction}")
       @jobs = @jobs.paginate(:per_page => 20, :page => params[:page])
-      #puts "(((((((((((((((((((((((((((((#{@jobs})))))))))))))))))))))))))))))))))))))))"
+      puts "(((((((((((((((((((((((((((((#{@jobs})))))))))))))))))))))))))))))))))))))))"
       #@jobs = Job.search(params[:keyword].gsub(' ', '').strip).order(sort_column + " " + sort_direction)
       #  .paginate(:per_page => 20, :page => params[:page])
+      render "index" and return
     end
 
     puts "(((((((((((((((((((((((((((((#{params[:locale]})))))))))))))))))))))))))))))))))))))))"
+
+=begin
     if params[:locale]=="tr"
       I18n.locale = :tr
     end
     if params[:locale]=="en"
       I18n.locale = :en
     end
+=end
 
       respond_to do |format|
         #format.html {redirect_to @jobs_path}     # burda sanirim index action'i invoke et DEGIL de

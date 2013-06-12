@@ -1,15 +1,23 @@
-<%= form_tag(ajaxing_path, :method => :get , :class => "search_by_category", :remote => true) do %>
+<%= form_tag(search_by_cat_id_path, :method => :get , :class => "search_by_category") do %>
     <% if I18n.locale == :en  %>
         <%= select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
-                   {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) %>
+                   {:include_blank => t('general.none') }, {:id => "select_box"}) %>
+
+        <!-- Yukarinin asagidakiden farki yukarda :remote => true yok ajax a gerek yok-->
+        <!-- select("job", "category_id", Category.order(:name).collect {|p| [ p.name, p.id ] },
+                           {:include_blank => t('general.none'), :remote=>true }, {:id => "select_box"}) -->
+
+        <!-- options_from_collection_for_select(Category.order(:name).collect {|p| [ p.name, p.id ] }, "category_id",0) -->
         <%= hidden_field_tag :direction, params[:direction] %>
         <%= hidden_field_tag :sort, params[:sort] %>
     <% elsif I18n.locale == :tr %>
         <%= select("job", "category_id", Category.order(:isim).collect {|p| [ p.isim, p.id ] },
-                   {:include_blank => t('general.none'), :remote=>true },
+                   {:include_blank => t('general.none') },
                    {:id => "select_box"}) %>
-
-        <!-- For hidden_field_tag  "You have to pass first parameter as name, and second as value"
+        <!-- select>
+        < options_from_collection_for_select(Category.order(:id), "id", "isim" ,0) >
+        </select -->
+          <!-- For hidden_field_tag  "You have to pass first parameter as name, and second as value"
 
              hidden_field_tag("page", "1", {:id => "page_no"})
              hidden_field_tag :param_name, 'param_value', {:id => 'ashish_id', :name => 'another_name'}
@@ -27,7 +35,7 @@
 
 
 
-<%= form_tag(search_jobs_path, :method => :get , :id => "search_form", :remote => true) do %>
+<%= form_tag(search_jobs_path, :method => :get , :id => "search_form") do %>
 
       <%= hidden_field_tag :direction, params[:direction] %>
       <%= hidden_field_tag :sort, params[:sort] %>

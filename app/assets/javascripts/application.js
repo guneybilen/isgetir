@@ -16,67 +16,66 @@ $(document).ready(function() {
 
 //    $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
 
-    $(".search_by_category_submit").live('click', function(e){
-        e.preventDefault();
-        var i = $('#select_box').children(":selected").attr("value");
-        var u;
-        if (i==0)
-           u = '/ajaxing/?category_id=' + 0;
-        if (i>0)
-           u = '/ajaxing/?category_id=' + i;
+//    $(".search_by_category_submit").live('click', function(e){
+//        e.preventDefault();
+//        var i = $('#select_box').children(":selected").attr("value");
+//        var u;
+//        if (i==0)
+//           u = '/ajaxing/?category_id=' + 0;
+//        if (i>0)
+//           u = '/ajaxing/?category_id=' + i;
+//
+//            $.ajax
+//            ({
+//                url:u,
+//                beforeSend:function()
+//                {
+//                    $('.for_spinner').show();
+//                },
+//
+//                complete: function()
+//                {
+//                  $('.for_spinner').hide();
+//                }
+//            });
+//    });
 
-            $.ajax
-            ({
-                url:u,
-                beforeSend:function()
-                {
-                    $('.for_spinner').show();
-                },
-
-                complete: function()
-                {
-                  $('.for_spinner').hide();
-                }
-            });
-    });
-
-        $("#search_form_submit").live('click', function(e){
-
-        e.preventDefault();
-
-        var u = $("#search_form").serialize();
-
-//            alert('guney');
-
-            $.ajax
-            ({
-                url:'/jobs/search?' + u,
-                beforeSend:function()
-                {
-                    $('.for_spinner').show();
-                },
-
-                complete: function()
-                {
-                  $('.for_spinner').hide();
-                }
-            });
-    });
-
-    if ($("select#select_box").val()>0){
-        var i = $('#select_box').children(":selected").attr("value");
-
-        $.ajax({
-            url:'/ajaxing/?category_id=' + i,
-            beforeSend:function(){
-                $('.for_spinner').show();
-            },
-            complete: function(){
-                  $('.for_spinner').hide();
-            }});
-    }
+//        $("#search_form_submit").live('click', function(e){
+//
+//        e.preventDefault();
+//
+//        var u = $("#search_form").serialize();
+//
+//            $.ajax
+//            ({
+//                url:'/jobs/search?' + u,
+//                beforeSend:function()
+//                {
+//                    $('.for_spinner').show();
+//                },
+//
+//                complete: function()
+//                {
+//                  $('.for_spinner').hide();
+//                }
+//            });
+//    });
+//
+//    if ($("select#select_box").val()>0){
+//        var i = $('#select_box').children(":selected").attr("value");
+//
+//        $.ajax({
+//            url:'/ajaxing/?category_id=' + i,
+//            beforeSend:function(){
+//                $('.for_spinner').show();
+//            },
+//            complete: function(){
+//                  $('.for_spinner').hide();
+//            }});
+//    }
 
 
+/*
     $(".sort_by_links_tr a, .for_all_listing a").live("click", function() {
         window.scrollTo(0, 0);
         var str = {};
@@ -95,9 +94,11 @@ $(document).ready(function() {
             return false;
         }
 
+*/
 /*        $.ajaxSetuup ve $.ajax kullanip $.getScript("jobs/search/?" + str); kullanarak
         yukardaki $("body").live... kullanildiginda ilk page load ettiginde page 2 ye tikladiginda
-        spinner gif yuklemiyor.*/
+        spinner gif yuklemiyor.*//*
+
         $.ajax({
             url:"jobs/search/?" + str,
             beforeSend:function(){
@@ -109,10 +110,35 @@ $(document).ready(function() {
         return false;
     });
 
+*/
+    var z= getUrlParams(window.location.href);
+
+//    alert(z);
+
+    if(z.indexOf("%5Bcategory_id%5D") != -1)
+    {
+        var t=/%5Bcategory_id%5D=(\d+)/;
+        var b = t.exec(z)[1];
+        $("#select_box").val(b);
+    }
+
+    var w = /^category_id=(\d+)/.test(z);
+
+//    alert(w);
+
+    if(w)
+    {
+         var t=/^category_id=(\d+)/;
+         var b = t.exec(z)[1];
+         $("#select_box").val(b);
+    }
+
+
     function getUrlParams(href) {
         var params = (href.split('?')[1] || '');
         return params;
     }
+
 
 
     $('.for_all_listing').show();
@@ -125,7 +151,7 @@ $(document).ready(function() {
     });
 
 
-    $('#main_list_link').live('click', function(){
+/*    $('#main_list_link').live('click', function(){
 
 //        $("#select_box").find("option#1").attr("selected", true);
           $("#select_box").val(0);
@@ -147,7 +173,7 @@ $(document).ready(function() {
             });
 
         return false;
-    });
+    });*/
 
     $('#search_form_text_field').val('');
 
@@ -331,79 +357,15 @@ $(document).ready(function() {
         }
 
 
-//        var req = requirements(taym2);
-
-//        if (!req){return false;}
-
-
-//        if($('.notify_friend_captcha_answer').val() != $('.notify_friend_captcha_question').text()){
-//            if (locale == "tr"){
-//                alert("Lütfen kodu kutuya giriniz"); }
-//
-//            if (locale == "en"){
-//                alert("Please enter the code in the textbox"); }
-//
-//            $('.notify_friend_captcha_question').animate({'backgroundColor' : "blue", "color" : "white"}, 5000);
-//            $('.notify_friend_captcha_question').animate({'backgroundColor' : "white", "color" : "red"}, 5000);
-//            return false;
-//        }
     });
 
 
-/*
-    function requirements(taym){
-        if($('.hidden_field_tag').val() !=''){
-            alert("Code 999");
-            nfn.val('');
-            nfe.val('');
-            return false;
-        }
-
-
-        if(taym1+10>taym){
-            alert('Code 888');
-            nfn.val('');
-            nfe.val('');
-            return false;
-        }
-
-        return true;
-    }
-*/
-
-//    var captcha = randomString();
-//    $('.notify_friend_captcha_question').text(captcha);
-//    $('.notify_friend_captcha_question').css({'color': 'red'});
-//    alert(randomString());
-
-/*    function randomString() {
-        var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-        var string_length = 5;
-        var randomstring = '';
-        for (var i=0; i<string_length; i++) {
-            var rnum = Math.floor(Math.random() * chars.length);
-            randomstring += chars.substring(rnum,rnum+1);
-        }
-
-        return randomstring;
-    }*/
-
-/*    $(".stripeMe tr").mouseover(function(){
-        $(this).addClass('over');
-    });
-
-      $(".stripeMe tr").mouseout(function(){
-        $(this).removeClass('over');
-    });*/
 
     $(".stripeMe tr:even").addClass("alt");
 
 
     $('input:checkbox').prop("checked", false);
 
-//    $('.check_box').each( function(){
-//        $(this).attr('checked', false)
-//    });
 
     $('.confirm_button').click(function(){
         var attr = $('.delete_form_tag').serialize();
@@ -419,19 +381,10 @@ $(document).ready(function() {
     $('.manage').click(function(){
 
         window.location.href = '/users/admin_manage?admin=manage';
-//        $.ajax({
-//            url: '/users/admin_manage',
-//            type: 'GET',
-//            data: {admin:'manage'},
-//            dataType: "script"
-//          success: function(result) {}
-//        });
-//         $.getScript('/users/admin_manage/?' + 'admin=manage');
         return false;
 
     });
 
-//    $('input:submit').val('save');
 
      $('.delete').click(function(){
 
@@ -479,73 +432,6 @@ $(document).ready(function() {
     delay: 0,
     extraClass:"show_ajax matwork"     // right is a css class
 });
-
-/*
-
-    $(".show").tooltip({
-    bodyHandler: function(){
-
-        var url = $(this).attr("href");
-
-        var tip;
-
-        if (locale == "tr"){
-            tip = $("<span/>").html("yüklüyor...");
-        }
-
-        if (locale == "en"){
-            tip = $("<span/>").html("loading...");
-        }
-
-//        var sa;
-
-        $.ajax({
-
-            url: url,
-            success: function(html){
-//                sa = $('.show_ajax').text();
-//                alert(sa);
-//                  $('.show').attr('text', );
-//                alert(html);
-//                html = $('show_ajax').toString().split(' ');
-//                for(var key in html) {
-//                    obj += obj + key;
-//                }
-
-//                html = jQuery.makeArray(html);
-//                alert(typeof(html));
-//
-//                  alert(typeof(html));
-//                p = $(html).length;
-//                alert(p);
-//                if (p > 5){
-//                   html = html.splice(4,0,'\n');
-//                   html.join(' ');
-//                    alert(html);
-//                }
-                tip = tip.html(html);  //.replace(/(\r\n|\n|\r)/gm,"");
-//                  sa =$(html).find($('.show_ajax').innerText);
-//                alert(sa);
-        }});
-
-//        tip = jQuery.makeArray(tip)
-//        tip = tip.toString();
-//        alert(tip.text());
-//        tip.toArray().each(function(i){
-//          alert($(this[i]));
-//         });
-
-//        return $("<span/>").html(sa);
-        return tip;
-    },
-    showURL: false,
-    track: true,
-    delay: 0,
-    extraClass:"show_ajax matwork"     // right is a css class
-});
-
-*/
-
 });
 
 

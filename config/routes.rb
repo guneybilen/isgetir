@@ -7,9 +7,9 @@ Isgetir::Application.routes.draw do
 
   match "/:locale/jobs" => "jobs#index"
 
-  match 'jobs/search' => 'jobs#search'
+  match ':locale/jobs/search' => 'jobs#search'
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
-  match '/ajaxing' => 'jobs#ajaxing', :as => 'ajaxing' # according to
+  match ':locale/search_by_cat_id' => 'jobs#search_by_cat_id', :as => 'search_by_cat_id' # according to
   # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
 
@@ -54,14 +54,16 @@ Isgetir::Application.routes.draw do
 
   #match '/users/admin_manage:admin' => redirect('/jobs#index')   bu rule calismiyor.
 
-  resources :users do
-    collection do
-      put :admin_updated_user
-      get :admin_update_user_interface
-      get :admin_manage
-      get :admin
-      get :admin_edit_user
-      put :admin_change_password
+  scope "/:locale" do
+    resources :users do
+      collection do
+        put :admin_updated_user
+        get :admin_update_user_interface
+        get :admin_manage
+        get :admin
+        get :admin_edit_user
+        put :admin_change_password
+      end
     end
   end
 
