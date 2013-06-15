@@ -1,9 +1,9 @@
  class SessionsController < ApplicationController
   #force_ssl
 
-   # include SessionsHelper
+   #include SessionsHelper
 
-   #before_filter  :store_location
+   before_filter  :store_location
 
   def create
     #puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#{params[:email]}"
@@ -21,7 +21,14 @@
         p admin
         redirect_to user_admin_path and return false
       end
-      redirect_back_or jobs_path
+      puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    #{params[:category_id]}"
+
+      if params[:category_id].to_i > 0
+        #redirect_to search_by_cat_id_path
+        redirect_back_or jobs_path
+      else
+        redirect_back_or jobs_path
+      end
       #redirect_to jobs_path
     else
       flash.now[:alert] = t('sessions_controller.create.failure')

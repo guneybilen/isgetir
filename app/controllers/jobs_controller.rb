@@ -13,7 +13,7 @@ require 'will_paginate/array'
 # app/controllers/jobs_controller.rb:57:in `search_by_category'
 
 class JobsController < ApplicationController
-  before_filter :authenticate,
+  before_filter :set_page, :authenticate,
                 :except => [:index, :show, :notify_friend, :search,
                             :search_autocomplete, :search_by_cat_id]
 
@@ -22,7 +22,18 @@ class JobsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 
+  def set_page
+    if params[:page].to_s == ""
+      puts "**********             #{params}       ***************"
+      params[:page]=1
+    end
+  end
+
   def search_by_cat_id
+       if params[:page].to_s == ""
+      puts "**********             #{params}       ***************"
+      params[:page]=1
+       end
 
     if !params[:job].nil?
       if params[:job][:category_id].nil?

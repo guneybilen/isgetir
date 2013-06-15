@@ -25,6 +25,7 @@ Isgetir::Application.routes.draw do
         get :search_autocomplete
         get :search
         get :ajaxing
+        get :search_by_cat_id
       end
       resources :comments
     end
@@ -81,6 +82,7 @@ Isgetir::Application.routes.draw do
   # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
 
+  #match "session" => "sessions#create", :as => "sessions"
 
 
   # The priority is based upon order of creation:

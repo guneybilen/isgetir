@@ -11,8 +11,12 @@
         <%= link_to t("general.menu.logout"), logout_path %>
     <% else %>
         <%= link_to t("general.menu.create_user"), new_user_path %> |
-        <%= link_to t("general.menu.login"), login_path %>
-    <% end %>
+        <% if !params[:job].nil? %>
+            <%= link_to t("general.menu.login"), login_path(:locale => 'tr',:category_id => params[:job][:category_id], :sort => params[:sort], :direction => params[:direction],:keyword => params[:keyword], :page => params[:page])%>
+        <% else  %>
+            <%= link_to t("general.menu.login"), login_path %>
+        <% end %>
+     <% end %>
     <% if logged_in? && is_admin? %>
       | <%= link_to t('general.users'), admin_users_path %>
     <% end %>

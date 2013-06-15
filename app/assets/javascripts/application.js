@@ -141,14 +141,14 @@ $(document).ready(function() {
 
 
 
-    $('.for_all_listing').show();
+//    $('.for_all_listing').show();
 
-
+/*
     $('.for_autocomplete_listing a').live ('click', function() {
         var url = getUrlParams(this.href);
         $.getScript('jobs/search/?' + url);
         return false;
-    });
+    });*/
 
 
 /*    $('#main_list_link').live('click', function(){

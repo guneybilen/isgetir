@@ -13,6 +13,12 @@
     </div>
     <div class="submit_actions">
       <br />
+          <%= hidden_field_tag :category_id, params[:category_id] %>
+          <%= hidden_field_tag :locale, params[:locale] %>
+          <%= hidden_field_tag :sort, params[:sort] %>
+          <%= hidden_field_tag :direction, params[:direction] %>
+          <%= hidden_field_tag :keyword, params[:keyword] %>
+          <%= hidden_field_tag :page, params[:page] %>
       <%= submit_tag t('general.login'), :class => "login_submit" %> &nbsp; <%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.cancel'), root_path %>
     </div>
@@ -28,6 +34,8 @@
                   :id => "forgot_my_password" %>
       <br /><br />
       <%= render :file => 'password_resets/new'%>
+
+
 </div>
 </div>
 

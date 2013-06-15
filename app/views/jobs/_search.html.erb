@@ -28,6 +28,8 @@
                                      {:id => "direction_search_by_category"} %>
         <%= hidden_field_tag :sort, params[:sort],
                                      {:id => "sort_search_by_category"} %>
+        <%= hidden_field_tag :page, params[:page] %>
+        <%= hidden_field_tag :keyword, params[:keyword] %>
     <% end  %>
         <%= submit_tag t('general.search'), :class => "search_by_category_submit" %>
 
@@ -39,6 +41,8 @@
 
       <%= hidden_field_tag :direction, params[:direction] %>
       <%= hidden_field_tag :sort, params[:sort] %>
+      <%= hidden_field_tag :page, params[:page] %>
+      <%= hidden_field_tag :keyword, params[:keyword] %>
 
 
       <%= submit_tag t('general.search'), :id => "search_form_submit" %>
