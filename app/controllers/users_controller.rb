@@ -12,6 +12,17 @@ class UsersController < ApplicationController
   end
   def create
 
+    if params[:category_id] != "" && params[:category_id] != ""
+      path = search_by_cat_id_path(:locale => 'tr',:category_id => params[:category_id], :sort => params[:sort], :direction => params[:direction])
+      puts "**************************************************************************************search_by_cat_id_path"
+    elsif params[:keyword] !=""
+      path = search_path(:locale => 'tr',:category_id => params[:category_id], :sort => params[:sort], :direction => params[:direction],:keyword => params[:keyword], :page => params[:page])
+      puts "**************************************************************************************search_path"
+    else
+      path = jobs_path
+      puts "**************************************************************************************jobs_path"
+    end
+
   if !Rails.env.test?
    @time_too_fast = ''
 
@@ -38,7 +49,7 @@ class UsersController < ApplicationController
         flash[:notice] = t('users_controller.create.success')
         redirect_to new_user_path and return false end
       session[:user_id] = @user.auth_token
-      redirect_to jobs_path, :notice => t('users_controller.create.success')
+      redirect_to path, :notice => t('users_controller.create.success')
     else
       render :action => 'new'
     end

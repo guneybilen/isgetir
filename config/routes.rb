@@ -7,7 +7,7 @@ Isgetir::Application.routes.draw do
 
   match "/:locale/jobs" => "jobs#index"
 
-  match ':locale/jobs/search' => 'jobs#search'
+  match ':locale/jobs/search' => 'jobs#search', :as => "search"
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
   match ':locale/search_by_cat_id' => 'jobs#search_by_cat_id', :as => 'search_by_cat_id' # according to
   # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
@@ -82,7 +82,6 @@ Isgetir::Application.routes.draw do
   # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
 
-  #match "session" => "sessions#create", :as => "sessions"
 
 
   # The priority is based upon order of creation:
