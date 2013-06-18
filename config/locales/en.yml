@@ -128,6 +128,7 @@ en:
     permanent: These items will be removed permanently. Are you sure?
     admin: Member Administration
     choose: Please select an email from the list
+    listed_jobs: My Listed Jobs
 
   will_paginate:
     previous: Previous

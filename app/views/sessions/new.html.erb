@@ -19,8 +19,10 @@
           <%= hidden_field_tag :direction, params[:direction] %>
           <%= hidden_field_tag :keyword, params[:keyword] %>
           <%= hidden_field_tag :page, params[:page] %>
+          <%= hidden_field_tag :login_for_user_jobs, params[:login_for_user_jobs]  %>
       <%= submit_tag t('general.login'), :class => "login_submit" %> &nbsp; <%= t('general.or') %> &nbsp;
-      <%= link_to t('general.link_to.cancel'), root_path %>
+      <%= link_to t('general.link_to.back'), "#", :class => "geri" %>
+
     </div>
     <br />
     <div class="field">

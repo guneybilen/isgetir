@@ -135,6 +135,7 @@ tr:
     permanent: Bunlar geri getirelemez şekilde silinicektir. Emin misiniz?
     admin: Üye Yönetimi
     choose: Lütfen listeden bir email seçiniz
+    listed_jobs: Listelenen İşlerim
 
   will_paginate:
     previous: Önceki

@@ -187,11 +187,17 @@ div.index{
 
 .listing_jobs{
     color: #2e6e9e;
-    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    margin-left: 350px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
+
+.my_jobs{
+    float: right;
+}
 
 
 .current {

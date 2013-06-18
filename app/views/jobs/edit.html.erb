@@ -6,6 +6,10 @@
 <br />
 <%= link_to t('general.job_page'), @job %> |
 <%= link_to t('general.link_to.root_path'), jobs_path %>
+<br /><br />
+<% if logged_in? and current_user.jobs.count > 0 %>
+    <%= link_to t("general.listed_jobs"), user_jobs_path %>
+<% end  %>
 
 
 

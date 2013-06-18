@@ -115,6 +115,11 @@ $(document).ready(function() {
 
 //    alert(z);
 
+    $(".geri").click(function(e){
+        e.preventDefault();
+        window.history.back();
+    });
+
     if(z.indexOf("%5Bcategory_id%5D") != -1)
     {
         var t=/%5Bcategory_id%5D=(\d+)/;

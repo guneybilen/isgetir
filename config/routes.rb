@@ -12,6 +12,7 @@ Isgetir::Application.routes.draw do
   match ':locale/search_by_cat_id' => 'jobs#search_by_cat_id', :as => 'search_by_cat_id' # according to
   # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
+  match ":locale/jobs/user_jobs" => "jobs#user_jobs", :as => "user_jobs"
 
   match 'comment_destroy_path' => "comments#destroy"
 
@@ -74,6 +75,8 @@ Isgetir::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy] # , :only => [:new, :create, :destroy] added after reading rails by example
 
   resources :password_resets
+
+  match ":locale/login_for_user_jobs/:login_for_user_jobs" => "sessions#new", :as =>"login_for_user_jobs"
 
   match '/login' => "sessions#new", :as => "login" # according to
   # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path

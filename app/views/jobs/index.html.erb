@@ -17,8 +17,12 @@
   <%= render "users/header" %>
 
   <div id = "listing_jobs_line">
-    <h1 class="listing_jobs"><%= t('general.h1.listing_jobs') %></h1>
-
+    <span class="listing_jobs"><%= t('general.h1.listing_jobs') %></span>
+    <% if !logged_in? %>
+      <%= link_to t("general.listed_jobs"), login_for_user_jobs_path(:login_for_user_jobs => 1), {:class => "my_jobs"} %>
+    <% else %>
+      <%= link_to t("general.listed_jobs"), user_jobs_path, {:class => "my_jobs"} %>
+    <% end %>
   </div>
 
 

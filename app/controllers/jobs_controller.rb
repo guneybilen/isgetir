@@ -187,12 +187,14 @@ class JobsController < ApplicationController
 =end
     @title = t('general.main_list')
 
+=begin
     if params[:locale]=="tr"
       loc = "tr"
     end
     if params[:locale]=="en"
       loc = "en"
     end
+=end
 
     sorting # defined in the application controller
 
@@ -353,8 +355,11 @@ class JobsController < ApplicationController
       redirect_to root_path and return false
     end
 
-    @job = current_user.jobs.find(params[:id])
-
+    if current_user.is_admin?
+      @job = Job.find(params[:id])
+    else
+      @job = current_user.jobs.find(params[:id])
+    end
 
     @job.destroy
 
@@ -385,6 +390,11 @@ class JobsController < ApplicationController
       render 'show'
     end
 
+  end
+
+  def user_jobs
+    @jobs = current_user.jobs.paginate(:per_page => 20, :page => params[:page])
+    render 'index'
   end
 
   private

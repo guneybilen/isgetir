@@ -5,7 +5,13 @@
 
    before_filter  :store_location
 
+  def new
+    #log_in_user_jobs = request.fullpath.include?("login_for_user_jobs")
+    #puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   #{log_in_user_jobs}    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+  end
+
   def create
+
     #puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#{params[:email]}"
     if user = User.authenticate(params[:email], params[:password])
     admin = Admin.authenticate(params[:email], params[:password])
@@ -17,11 +23,17 @@
       end
       flash[:notice] = t('sessions_controller.create.success')
       # puts "############################################# #{session[:return_to]}"
+
       if admin
         p admin
         redirect_to user_admin_path and return false
       end
       #puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    #{params[:category_id]}"
+
+      puts "------------------------------------    #{params[:login_for_user_jobs]}   ----------------------------------------"
+      if login_for_user_jobs
+        redirect_to user_jobs_path and return false
+      end
 
       redirect_back_or root_path
     else

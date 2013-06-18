@@ -42,6 +42,18 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def path_to
+    if params[:category_id] != "" && params{:category_id} != "0"
+      return search_by_cat_id_path(:locale => 'tr',:category_id => params[:category_id], :sort => params[:sort], :direction => params[:direction]) #request.fullpath
+    elsif params[:page].to_i > 1
+      return root_path(:locale => 'tr',:category_id => params[:category_id], :sort => params[:sort], :direction => params[:direction],:keyword => params[:keyword], :page => params[:page]) #request.fullpath
+      #puts "In sessions_helper +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   #{session[:return_to]}"
+    elsif params[:keyword] != ""
+      return search_path(:locale => 'tr',:category_id => params[:category_id], :sort => params[:sort], :direction => params[:direction],:keyword => params[:keyword], :page => params[:page])
+      #puts "In sessions_helper ???????????????????????????????????????????????????????????????????   #{session[:return_to]}"
+    end
+  end
+
   def time_later
     @time_later = Time.now
     if ((session[:time_now] + 5) >= @time_later)
@@ -129,4 +141,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :is_admin?
 
+  def login_for_user_jobs
+    login_user_jobs = request.fullpath.include?("login_for_user_jobs")
+    params[:login_for_user_jobs].to_i == 1
+  end
 end

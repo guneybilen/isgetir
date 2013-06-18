@@ -48,7 +48,11 @@
 <%= hidden_field_tag(:hidden, '', :class => "hidden_field_tag") %>
 
 
+<% if logged_in? and current_user.jobs.count > 0 %>
+    <%= link_to t("general.listed_jobs"), user_jobs_path %>
+<% end  %>
 
+<br /><br />
 <%= link_to t('jobs.show.link_to.jobs_list'), jobs_path %>
 
 
