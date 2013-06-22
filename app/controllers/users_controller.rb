@@ -144,19 +144,23 @@ class UsersController < ApplicationController
   end
 
   def destroy
-     @admin_type1 = params[:id]
-     @admin_type2 = params[:admin]
+     #@admin_type1 = params[:id]
+     #@admin_type2 = params[:manage]
+      @destroy ='delete'
+
     if !current_user.nil? && current_user.is_admin?
       #p params
-      @user = User.find(params[:users])
-      User.destroy(@user)
+      if !params[:users].nil?
+        @user = User.find(params[:users])
+        User.destroy(@user)
+      end
       if (params[:page].blank?)
         @user = User.paginate(:page => 1)
         #@page = 1
       else
         #@page = params[:page]
         @user = User.paginate(:page => params[:page])
-        #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+        puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$       #{@user}            $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
         #render :js => "alert('Hello Rails');"
       end
 
@@ -164,7 +168,9 @@ class UsersController < ApplicationController
       #puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@user}"
 
         respond_to do |format|
+          #format.html
           format.js  # burda destroy.js.erb invoke edilsin istiyorum
+          format.html
         end
       #end
      else
@@ -196,7 +202,7 @@ class UsersController < ApplicationController
     end
 
      @admin_type1 = params[:id]
-     @admin_type2 = params[:admin]
+     @admin_type2 = params[:manage]
 
     #respond_to do |format|
     #  format.html {

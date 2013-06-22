@@ -56,12 +56,13 @@ Isgetir::Application.routes.draw do
 
   #match '/users/admin_manage:admin' => redirect('/jobs#index')   bu rule calismiyor.
 
+  match ":locale/admin_manage/:manage" => "users#admin_manage", :as => "admin_manage_users"
+
   scope "/:locale" do
     resources :users do
       collection do
         put :admin_updated_user
         get :admin_update_user_interface
-        get :admin_manage
         get :admin
         get :admin_edit_user
         put :admin_change_password
@@ -75,6 +76,7 @@ Isgetir::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy] # , :only => [:new, :create, :destroy] added after reading rails by example
 
   resources :password_resets
+
 
   match ":locale/login_for_user_jobs/:login_for_user_jobs" => "sessions#new", :as =>"login_for_user_jobs"
 

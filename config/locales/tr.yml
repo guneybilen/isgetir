@@ -2,8 +2,8 @@
 tr:
 
   admin:
-    add_users: Kullanıcılar Ekle
-    delete_users: Kullanıcılar Sil
+    add_user: Kullanıcı Ekle
+    delete_users: Kullanıcı Sil
     edit_user_job: Kullanıcı İşi Düzenle
     show_users: Kullanıcıları Göster
     change_password: Şifre Değiştir

@@ -1,5 +1,5 @@
 
-$("#main").html("<%= escape_javascript(render(:file => "users/admin_update.html.erb")) %>");
+$("#main").html("<%= escape_javascript(render(:file => "users/admin_update")) %>");
 var admin_type = "<%= @admin_type %>"
 
 var batin = $("input:submit");
@@ -17,7 +17,7 @@ $('.confirm_button').live('click', function() {
      $.ajax({
             url: '/users/admin_update_user',
             type: 'POST',
-            data: {admin:'manage'},
+            data: {manage:'manage'},
             dataType: "script"
 //          success: function(result) {}
         });

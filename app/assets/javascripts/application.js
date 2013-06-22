@@ -383,9 +383,9 @@ $(document).ready(function() {
     });
 
 
-    $('.manage').click(function(){
+/*    $('.manage').click(function(){
 
-        window.location.href = '/users/admin_manage?admin=manage';
+        window.location.href = '/admin_manage?admin=manage';
         return false;
 
     });
@@ -393,10 +393,10 @@ $(document).ready(function() {
 
      $('.delete').click(function(){
 
-        window.location.href = '/users/admin_manage?admin=delete';
+        window.location.href = 'tr/users/admin_manage?admin=delete';
 
         return false;
-     });
+     });*/
 
     var user_parameter = $('.user_in_admin_updated_user').val();
 
