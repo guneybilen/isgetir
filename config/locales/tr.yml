@@ -87,6 +87,7 @@ tr:
     references: Referanslar
     category_is_not_specified: Kategori belirlenmemiş
     password_cannot_be_blank: Şifre kutusu boş olamaz
+    password_cannot_be_blank_admin_pages: kutusu boş olamaz
     time_ago_in_words: önce
     continued:  ...
     edit: Düzenle

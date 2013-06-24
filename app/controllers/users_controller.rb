@@ -66,10 +66,11 @@ class UsersController < ApplicationController
   end
 
   def admin_change_password
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+
     user = {:id => params[:User][:id], :password=>params[:password],
             :password_confirmation=>params[:password_confirmation]}
     @user = User.find_by_id(params[:User][:id])
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$                        #{@user}                                  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 
     if @user.nil?
       flash[:notice] = t('general.choose')
@@ -77,12 +78,12 @@ class UsersController < ApplicationController
     end
 
     if params[:password].blank?
-      @user.errors.add('', t('general.password_cannot_be_blank'))
-      render 'admin_edit_user'
+      @user.errors.add(:password, t('general.password_cannot_be_blank_admin_pages'))
+      render 'admin_edit_user' and return false
     end
 
     if params[:password] != params[:password_confirmation]
-      @user.errors.add('', t('activerecord.errors.models.user.attributes.password.confirmation'))
+      @user.errors.add(:password, t('activerecord.errors.models.user.attributes.password.confirmation'))
       render 'admin_edit_user'
     elsif @user.update_attributes(user)
       redirect_to admin_users_path, :notice => t('users_controller.update.success')

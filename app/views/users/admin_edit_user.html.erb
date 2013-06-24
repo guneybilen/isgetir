@@ -4,6 +4,7 @@
   <% if !@user.nil? %>
 
      <% if @user.errors.any? %>
+          <%= puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #{@user.errors.to_s}" %>
         <br />
         <div class="errorExplanation">
           <h3>
@@ -24,10 +25,10 @@
       <% end %>
     <% end %>
 
-  <%= form_tag({:controller => 'users', :action => 'admin_change_password'}, :method => :put) do %>
+  <%= form_tag({:controller => 'users', :action => 'admin_change_password'}, :autocomplete=>"off" , :method => :put) do %>
 
     <%= collection_select(:User, :id, User.order(:email), :id, :email,
-                             {:prompt => t('general.other')}, {:id => 'collection_select',:size => 10}) %>
+                             {:prompt => false}, {:id => 'collection_select',:size => 10}) %>
 
     <!-- select("user", "id", User.order(:email).collect {|p| [ p.email, p.id ] },
               {:include_blank => t('general.none')}, {:id => "select_box"}) -->
