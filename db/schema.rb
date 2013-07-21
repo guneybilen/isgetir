@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204223148) do
+ActiveRecord::Schema.define(:version => 20130721144046) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20121204223148) do
   create_table "comments", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.text     "body"
+    t.string   "body",       :limit => 1000
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "job_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20121204223148) do
 
   create_table "jobs", :force => true do |t|
     t.string   "title"
-    t.text     "body"
+    t.string   "body",         :limit => 3000
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20121204223148) do
     t.datetime "password_reset_sent_at"
     t.string   "salt"
     t.boolean  "is_admin",               :default => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
