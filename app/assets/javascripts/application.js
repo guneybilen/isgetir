@@ -11,6 +11,35 @@
 
 $(document).ready(function() {
 
+    var locale = $("div.set_locale").text();
+
+    //$('#job_body').click(function(){alert('g')});
+
+    $('#job_body').bind('input', function(e){
+    e= e || window.event;
+    var who= e.target || e.srcElement;
+    if(who){
+        var val= who.value, L= val.length;
+        if(L > 2950){
+            who.style.color= 'red';
+        }
+        else who.style.color= ''
+        if(L> 3000){
+            who.value= who.value.substring(0, 3000);
+            if(locale == 'en')
+            {
+                alert('Your message is too long, please shorten it to 3000 characters or less');
+            }
+            if(locale == 'tr')
+            {
+                alert('Lütfen mesajınızı 3000 veya daha az karakterle sınırlayınız.');
+            }
+                who.style.color= '';
+        }
+      }
+        return false;
+    });
+
 
 //    $("#select_box").val(0);  // bu IE9'da calismiyor
 
@@ -198,7 +227,6 @@ $(document).ready(function() {
 //        })
 //    });
 
-    var locale = $("div.set_locale").text();
 
     if(locale=="tr")
        $(".favicon").attr("href", "/assets/is.ico");
@@ -487,7 +515,6 @@ function open2(attr){
                 }
             }
         });
-
 }
 
 
