@@ -41,6 +41,31 @@ $(document).ready(function() {
     });
 
 
+    $('#comment_text_area').live('input', function(e){
+    e= e || window.event;
+    var who= e.target || e.srcElement;
+    if(who){
+        var val= who.value, L= val.length;
+        if(L > 2950){
+            who.style.color= 'red';
+        }
+        else who.style.color= ''
+        if(L> 3000){
+            who.value= who.value.substring(0, 3000);
+            if(locale == 'en')
+            {
+                alert('Your message is too long, please shorten it to 3000 characters or less');
+            }
+            if(locale == 'tr')
+            {
+                alert('Lütfen mesajınızı 3000 veya daha az karakterle sınırlayınız.');
+            }
+                who.style.color= '';
+        }
+      }
+        return false;
+    });
+
 //    $("#select_box").val(0);  // bu IE9'da calismiyor
 
 //    $("select#select_box").find("option#1").attr("selected", true);  // bu hem IE9'da hemde firefoxda calisiyor
