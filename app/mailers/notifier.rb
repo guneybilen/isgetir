@@ -24,6 +24,7 @@ class Notifier < ActionMailer::Base
 
   def comment_added(comment)
     @job = comment.job
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " + @job.user.email
     mail :to => @job.user.email,
          :subject => t('general.new_comment_for') + " #{@job.title}", :from =>  "admin@isgetir.com"
   end

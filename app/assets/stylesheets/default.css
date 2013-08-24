@@ -349,8 +349,23 @@ input[type="submit"] {
     width: 150px;
 }
 
-div.actions .password_reset, div.actions .password_reset_submit{
+div.actions .password_reset, div.actions{
+    clear: left;
+    margin-top: 70px;
+    margin-left: -180px;
     width: 175px;
+}
+
+.password_reset_submit{
+    clear: left;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.password_resets_text_field_tag{
+}
+
+.password_reset_cancel{
 }
 
 .change_password_after_email{
@@ -489,11 +504,11 @@ a.disabled {
 }
 
 .fields_in_sessions_new{
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .matwork{
-    margin-top: 0px;
+    margin-top: 0;
     margin-right: 5px;
     width: 10%;
     float: left;

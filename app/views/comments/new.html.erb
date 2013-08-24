@@ -1,5 +1,5 @@
 <br />
-<%= form_for([@job, @job.comments.new], :remote => true,
+<%= form_for(([@job, @job.comments.new]), :remote => true,
              :html => {:style => 'display: none;', :class => "comment_form"}) do |f| %>
     <div class="field_comment">
       <%= f.label t('general.name') %><br />

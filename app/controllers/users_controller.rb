@@ -110,6 +110,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:user])
     #p @user
     @jobs = @user.jobs
+    flash[:notice]=""
+    flash[:alert]=""
   end
 
   def admin_updated_user

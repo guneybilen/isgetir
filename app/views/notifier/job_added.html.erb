@@ -7,7 +7,21 @@
 <br /><br />
 <%= t('notifier.job_added.posted_user_email_address') %>: <%= @job.user.email %>
 <br /><br />
-<%= t('notifier.job_added.to_read_the_posted_job') %> <%= link_to @job.title, job_url(@job, :host => 'www.isgetir.com') %>
+<%= t('notifier.job_added.to_read_the_posted_job') %>
+  <%= link_to(url_for(locale: locale,
+                controller: 'jobs',
+                action: 'show',
+                id: @job.id,
+                host: "www.isgetir.com"),
+                url_for(locale: locale,
+                controller: 'jobs',
+                action: 'show',
+                id: @job.id,
+                host: "www.isgetir.com"))%>
+
+    <!-- asagidaki job_url methodu routing error veriyor:
+        'no route matches action=show controller=jobs...' -->
+    <!-- link_to @job.title, job_url(@job, :host => 'www.isgetir.com') -->
 </p>
 </body>
 </html>

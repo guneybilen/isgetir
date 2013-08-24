@@ -31,7 +31,7 @@ tr:
   password_resets_controller:
     create:
       failure: O email ile bir kullanıcı bulunamadı
-      success: Şifrenizi değiştirmek icin email gönderildi
+      success: Şifrenizi değiştirmek için email gönderildi
     update:
       password_expired: Şifrenizi değiştirmek icin gönderilen email zaman aşımına uğradi
       success: Şifrenizi güncellendi

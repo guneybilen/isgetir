@@ -3,10 +3,6 @@ Isgetir::Application.routes.draw do
 
   root :to => 'jobs#index'
 
-  #match 'jobs/new' => 'jobs#new'
-
-  match "/:locale/jobs" => "jobs#index"
-
   match ':locale/jobs/search' => 'jobs#search', :as => "search"
   match 'jobs/search_autocomplete' => 'jobs#search_autocomplete'
   match ':locale/search_by_cat_id' => 'jobs#search_by_cat_id', :as => 'search_by_cat_id' # according to
@@ -32,6 +28,8 @@ Isgetir::Application.routes.draw do
     end
   end
 
+  match 'users/admin_update_user_interface' => 'users#admin_update_user_interface', :as => 'admin_update_user_interface'
+
   #scope "/:locale" do
   #  resources :jobs
   #end
@@ -40,7 +38,7 @@ Isgetir::Application.routes.draw do
 
   match 'users/admin_updated_user' => 'users#admin_updated_user', :as => 'admin_updated_user'
 
-  match 'users/admin_update_user_interface' => 'users#admin_update_user_interface', :as => 'admin_update_user_interface'
+
 
   match 'users/admin_manage' => 'users#admin_manage', :as => 'admin_manage'
 
@@ -81,10 +79,10 @@ Isgetir::Application.routes.draw do
   match ":locale/login_for_user_jobs/:login_for_user_jobs" => "sessions#new", :as =>"login_for_user_jobs"
 
   match '/login' => "sessions#new", :as => "login" # according to
-  # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
+  # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
   match '/logout' => "sessions#destroy", :as => "logout" # according to
-  # ruby on rails by example (by Hartl), mathc '/smth' already gives us smth_path
+  # ruby on rails by example (by Hartl), match '/smth' already gives us smth_path
   # ve bende denedim dogruymus.
 
 

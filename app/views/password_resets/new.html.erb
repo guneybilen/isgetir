@@ -1,18 +1,20 @@
 
 <%= form_tag password_resets_path, :method => :post, :id => "password_reset",:style => 'display:none' do %>
-  <div class="field">
+
     <%= label_tag t('general.your_email_address') %>:
     <br />
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <br />
-  <div class="actions"><%= submit_tag t('general.reset_password'), :class => "password_reset" %>
+    <%= text_field_tag :email, params[:email], :class => "password_resets_text_field_tag" %>
+
+    <br />  <br />
+  <%= submit_tag t('general.reset_password'), :class => "password_reset" %>
+  <span class="password_reset_cancel">
   &nbsp;
   <%= t('general.or') %>
   &nbsp;
   <%= link_to t('general.link_to.cancel'), '#' ,
-                  :id => "cancel_password_reset"%>
-  </div>
+                 :id => "cancel_password_reset"%>
+  </span>
+
 <% end %>
 
 
