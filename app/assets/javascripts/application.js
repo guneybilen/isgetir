@@ -425,7 +425,8 @@ $(document).ready(function() {
     $('input:checkbox').prop("checked", false);
 
 
-    $('.confirm_button').click(function(){
+    $('.confirm_button').live('click', function(){
+        $('.confirm_button').attr('disabled', false);
         var attr = $('.delete_form_tag').serialize();
         if (locale == 'tr')
         {open1(attr);}

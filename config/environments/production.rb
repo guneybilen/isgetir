@@ -89,8 +89,8 @@ Isgetir::Application.configure do
       :enable_starttls_auto => true,
       :port => 587,
       :authentication => :plain,
-      :user_name => "admin@isgetir.com",
-      :password => 'xswcde1234'
+      :user_name => ENV['GOOGLE_USER'],
+      :password => ENV['GOOGLE_PASS']
   }
 
 end

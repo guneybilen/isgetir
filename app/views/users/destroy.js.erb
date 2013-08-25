@@ -3,6 +3,7 @@ $(".users").html("<%= escape_javascript(render(:file => "users/admin_manage", :f
 var batin = $("input:submit");
 batin.button();
 
+
 batin.on ('click',  function() {
     batin.attr("disabled", true);
 });

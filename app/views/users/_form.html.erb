@@ -51,6 +51,13 @@
       &nbsp;<%= t('general.or') %> &nbsp;
       <%= link_to t('general.link_to.back'), "#", :class => "geri" %>
     </div>
+      <br />
+      <%= link_to t('general.main_list'),root_path, { :class=>"root"} %>
+       <% if current_user.is_admin? %>
+        <br />
+        <br />
+      <%= link_to t('general.admin'), admin_users_path %>
+      <% end %>
 <% end %>
 
 

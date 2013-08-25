@@ -134,7 +134,7 @@ tr:
     users: Üyeler
     remove: Yok Et
     permanent: Bunlar geri getirelemez şekilde silinicektir. Emin misiniz?
-    admin: Üye Yönetimi
+    admin: Yönetim
     choose: Lütfen listeden bir email seçiniz
     listed_jobs: Listelenen İşlerim
 
