@@ -53,7 +53,7 @@
     </div>
       <br />
       <%= link_to t('general.main_list'),root_path, { :class=>"root"} %>
-       <% if current_user.is_admin? %>
+       <% if logged_in? && current_user.is_admin? %>
         <br />
         <br />
       <%= link_to t('general.admin'), admin_users_path %>
