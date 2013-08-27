@@ -5,7 +5,7 @@ var admin_type = "<%= @admin_type %>"
 var batin = $("input:submit");
 batin.button();
 
-$(".confirm_button").prop('value', "Edit")
+$(".submit_button_for_users_destroy").prop('value', "Edit")
 
 batin.on ('click',  function() {
     batin.attr("disabled", true);
@@ -13,7 +13,7 @@ batin.on ('click',  function() {
 
 var params = $('.delete_form_tag').serialize();
 
-$('.confirm_button').live('click', function() {
+$('.submit_button_for_users_destroy').live('click', function() {
      $.ajax({
             url: '/users/admin_update_user',
             type: 'POST',
