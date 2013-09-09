@@ -22,7 +22,6 @@ source 'http://rubygems.org'
 # https://github.com/sstephenson/execjs for a list of available runtimes. 
 # (ExecJS::RuntimeUnavailable)
 
-gem 'sqlite3', :group => [:development, :test]
 
 gem 'pg', :group => [:production]
 gem 'thin', :group => [:production]
@@ -75,6 +74,7 @@ group :development, :test do
 # version 2.6.1 koymadin mi rake db:migrate
 # rspec yuzunden su hatayi veriyor: "undefined method `prerequisites' for nil:NilClass"
   gem 'faker'
+  gem 'sqlite3'
 end
 
 # Use unicorn as the web server
