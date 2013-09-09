@@ -29,6 +29,10 @@ gem 'eventmachine', '~> 1.0.0.beta.4.1'
 gem 'will_paginate', "~> 3.0.2"
 gem "meta_on_rails"
 
+group :development do
+  gem 'taps', :require => false
+end
+
 gem 'exception_notification', git: 'git://github.com/alanjds/exception_notification.git'
 
 # Gems used only for assets and not required
