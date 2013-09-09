@@ -25,7 +25,7 @@ source 'http://rubygems.org'
 
 gem 'pg', :group => [:production]
 gem 'thin', :group => [:production]
-gem 'eventmachine', '1.0.0.beta.4.1'
+gem 'eventmachine'
 gem 'will_paginate', "~> 3.0.2"
 gem "meta_on_rails"
 gem 'faker'
