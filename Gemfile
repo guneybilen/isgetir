@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 #gem 'rails', '3.1.0'
 
- ruby "1.9.2"
  gem 'rails', '3.2.2'
 
 # Bundle edge Rails instead:
@@ -26,9 +25,10 @@ source 'http://rubygems.org'
 
 gem 'pg', :group => [:production]
 gem 'thin', :group => [:production]
-gem 'eventmachine', '~> 1.0.0.beta.4.1'
+gem 'eventmachine', '1.0.0.beta.4.1'
 gem 'will_paginate', "~> 3.0.2"
 gem "meta_on_rails"
+gem 'faker'
 
 group :development do
   gem 'taps', :require => false
@@ -78,7 +78,6 @@ group :development, :test do
   gem 'rspec-rails' #," ~> 2.6.1"
 # version 2.6.1 koymadin mi rake db:migrate
 # rspec yuzunden su hatayi veriyor: "undefined method `prerequisites' for nil:NilClass"
-  gem 'faker'
   gem 'sqlite3'
 end
 

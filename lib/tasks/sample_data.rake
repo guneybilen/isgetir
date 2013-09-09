@@ -15,7 +15,7 @@ namespace :db do
                 "Izmir", "San Francisco", "San Diego", "Boston", "Miami"]
     l= Random.new
 
-    99.times do |n|
+    30.times do |n|
       email = "example-#{n+1}@yahoo.com"
       password = "guney"
       User.create!(
