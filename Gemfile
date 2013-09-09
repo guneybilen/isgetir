@@ -28,6 +28,7 @@ gem 'thin', :group => [:production]
 gem 'eventmachine', '~> 1.0.0.beta.4.1'
 gem 'will_paginate', "~> 3.0.2"
 gem "meta_on_rails"
+gem 'faker'
 
 gem 'exception_notification', git: 'git://github.com/alanjds/exception_notification.git'
 
@@ -73,7 +74,6 @@ group :development, :test do
   gem 'rspec-rails' #," ~> 2.6.1"
 # version 2.6.1 koymadin mi rake db:migrate
 # rspec yuzunden su hatayi veriyor: "undefined method `prerequisites' for nil:NilClass"
-  gem 'faker'
   gem 'sqlite3'
 end
 
