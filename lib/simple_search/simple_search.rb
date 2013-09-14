@@ -12,9 +12,15 @@
       conditions = []
 # Build the conditions array from the parameters
       self.searchable_fields.each do |field|
-        #MySQL considers LIKE case insensitive, you need to use ILIKE on postgresql to get the same behavior.
-        conditions << "#{self.table_name}.#{field.to_s} LIKE '%#{value}%'"
+
+        if Rails.env.production?
+          #MySQL considers LIKE case insensitive, you need to use ILIKE on postgresql to get the same behavior.
+          conditions << "#{self.table_name}.#{field.to_s} ILIKE '%#{value}%'"
+        else
+          conditions << "#{self.table_name}.#{field.to_s} LIKE '%#{value}%'"
+        end
       end
+
       return self.where(conditions.join(' OR '))
     end
   end
