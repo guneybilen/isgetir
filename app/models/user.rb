@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   def authenticated?(password)
     self.hashed_password == encrypt(password)
   end
+
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
